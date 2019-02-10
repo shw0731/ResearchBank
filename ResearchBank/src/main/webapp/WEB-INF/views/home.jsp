@@ -29,7 +29,7 @@
         <div class="col-lg-8 mx-auto text-center">
           <h2 class="section-heading text-white">We've got what you need!</h2>
           <hr class="light my-4">
-          <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+          <p class="text-faded mb-4">Take any survey or anything you want it in our Research Bank! we can help your creative thinks, huge idea, dynamic entertainment! Let's get it your IDEA in our ResearchBank!</p>
           <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
         </div>
       </div>
