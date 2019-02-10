@@ -11,7 +11,7 @@
 <body style="background-color: gray;">
 
 
-  <section class="bg-primary" id="about">
+  <section class="bg-primary" id="about" style="padding: 21.5rem 0;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
@@ -28,8 +28,6 @@
       </div>
     </div>
   </section>
-
-<%@ include file="/WEB-INF/views/Common/footer.jsp" %>
 
 </body>
 </html>
