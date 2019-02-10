@@ -25,6 +25,57 @@
   <link href="/resources/css/creative.css" rel="stylesheet">
 
 </head>
+
+<style>
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  background-color: #2e3436;
+  margin-top : 10px;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  
+  left:1;
+  color: white;
+  text-decoration: none;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+</style>
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -35,20 +86,40 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          <li class="nav-item subnav">
+            <a class="nav-link js-scroll-trigger subnavbtn" href="#about">About</a>
+            <div class="subnav-content">
+		      <a href="#">Link 1</a>
+		      <a href="#">Link 2</a>
+		      <a href="#">Link 3</a>
+		    </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Research</a>
+          <li class="nav-item subnav">
+            <a class="nav-link js-scroll-trigger subnavbtn" href="#services">Research</a>
+            <div class="subnav-content">
+		      <a href="#">Link ㄱ</a>
+		      <a href="#">Link ㄴ</a>
+		      <a href="#">Link ㄷ</a>
+		    </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">My Bank</a>
+          <li class="nav-item subnav">
+            <a class="nav-link js-scroll-trigger subnavbtn" href="#portfolio">My Bank</a>
+            <div class="subnav-content">
+		      <a href="#">Link dfa</a>
+		      <a href="#">Link asdf</a>
+		      <a href="#">Link ert</a>
+		     </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Services</a>
+          <li class="nav-item subnav">
+            <a class="nav-link js-scroll-trigger subnavbtn" href="#contact">Services</a>
+            <div class="subnav-content">
+		      <a href="#">Link a</a>
+		      <a href="#">Link b</a>
+		      <a href="#">Link c</a>
+		     </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/login">Login</a>
+          <li class="nav-item subnav">
+            <a class="nav-link js-scroll-trigger" href="/login.do">Login</a>
           </li>
         </ul>
       </div>
