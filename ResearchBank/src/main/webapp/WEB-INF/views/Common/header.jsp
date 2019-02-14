@@ -32,6 +32,9 @@
 .subnav {
   float: left;
   overflow: hidden;
+  transition: 1s;
+  display:block;
+  
 }
 
 /* Subnav button */
@@ -40,20 +43,23 @@
   border: none;
   outline: none;
   color: white;
-  padding: 14px 16px;
+  padding: 50px 50px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  transition: 1s;
 }
 /* Style the subnav content - positioned absolute */
 .subnav-content {
   display: none;
   position: absolute;
   background-color: #2e3436;
-  margin-top : 10px;
+  margin-top : 0px;
+  margin-left: 15px;
   width: 100%;
   height: 50px;
   z-index: 1;
+  transition: 1s;
 }
 
 /* Style the subnav links */
@@ -62,6 +68,7 @@
   left:1;
   color: white;
   text-decoration: none;
+  transition: 1s;
 }
 
 /* Add a grey background color on hover */
@@ -72,8 +79,12 @@
 
 /* When you move the mouse over the subnav container, open the subnav content */
 .subnav:hover .subnav-content {
+
+  
   display: block;
+  
 }
+
 
 </style>
 <!-- Navigation -->
