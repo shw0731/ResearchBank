@@ -42,8 +42,8 @@ public class HomeController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) throws Exception {
-		return homeService.home(locale, model);
+	public String index(Locale locale, Model model) throws Exception {
+		return homeService.index(locale, model);
 	}
 	
 }

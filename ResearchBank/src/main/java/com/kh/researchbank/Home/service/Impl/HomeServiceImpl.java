@@ -39,7 +39,7 @@ public class HomeServiceImpl implements HomeService {
 	 * @description 메인페이지
 	 *********************/
 	@Override
-	public String home(Locale locale, Model model) throws Exception {
+	public String index(Locale locale, Model model) throws Exception {
 		String forward =  "home";
 		
 		LOGGER.info("Welcome home! The client locale is {}.", locale);

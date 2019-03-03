@@ -31,5 +31,5 @@ public interface HomeService {
 	 * 
 	 * @description 메인페이지
 	 ******************/
-	public String home(Locale locale, Model model) throws Exception;
+	public String index(Locale locale, Model model) throws Exception;
 }

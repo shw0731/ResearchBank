@@ -1,4 +1,4 @@
-package com.kh.researchbank.Research.web;
+package com.kh.researchbank.Auth.Register.web;
 
 import javax.annotation.Resource;
 
@@ -6,15 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.researchbank.Research.service.ResearchService;
+import com.kh.researchbank.Auth.Register.service.RegisterService;
+
 
 /**
- * @Class Name : ResearchController.java
- * @Description : 리서치
+ * @Class Name : RegisterController.java
+ * @Description : 계정등록
  * @Modification Information
  *  수정일      수정자              수정내용
  * ---------   ---------   -------------------------------
- * 2019.03.03              최초생성
+ * 2019.02.07              최초생성
  *
  * @author KH 
  * @since 2019. 02.07
@@ -25,19 +26,20 @@ import com.kh.researchbank.Research.service.ResearchService;
  */
 
 @Controller
-public class ResearchController {
+public class RegisterController {
 
-	@Resource(name = "researchService")
-	protected ResearchService researchService;
+	@Resource(name = "registerService")
+	protected RegisterService registerService;
 	
 	
-	/**********
-	 * @title 리서치페이지 
-	 * @return view
+	/***********************
+	 * @title 계정 등록
+	 * @return
 	 * @throws Exception
-	 */
-	@RequestMapping(value="/research" , method=RequestMethod.GET)
+	 ***********************/
+	@RequestMapping(value="/register" , method=RequestMethod.GET)
 	public String index() throws Exception {
-		return researchService.index();
+		return registerService.index();
 	}
+	 
 }

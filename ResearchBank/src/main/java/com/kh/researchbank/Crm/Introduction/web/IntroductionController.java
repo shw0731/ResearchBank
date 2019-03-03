@@ -1,4 +1,4 @@
-package com.kh.researchbank.Research.web;
+package com.kh.researchbank.Crm.Introduction.web;
 
 import javax.annotation.Resource;
 
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.researchbank.Research.service.ResearchService;
+import com.kh.researchbank.Crm.Introduction.service.IntroductionService;
 
 /**
- * @Class Name : ResearchController.java
+ * @Class Name : IntroductionController.java
  * @Description : 리서치
  * @Modification Information
  *  수정일      수정자              수정내용
@@ -25,19 +25,19 @@ import com.kh.researchbank.Research.service.ResearchService;
  */
 
 @Controller
-public class ResearchController {
+public class IntroductionController {
 
-	@Resource(name = "researchService")
-	protected ResearchService researchService;
+	@Resource(name="introductionService")
+	protected  IntroductionService introductionService;
 	
 	
 	/**********
-	 * @title 리서치페이지 
-	 * @return view
+	 * @title 소개 
+	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/research" , method=RequestMethod.GET)
+	@RequestMapping(value="/introduction" , method = RequestMethod.GET)
 	public String index() throws Exception {
-		return researchService.index();
+		return introductionService.index();
 	}
 }

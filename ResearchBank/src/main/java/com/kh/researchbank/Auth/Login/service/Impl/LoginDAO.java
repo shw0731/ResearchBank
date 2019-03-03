@@ -1,9 +1,8 @@
-package com.kh.researchbank.Research.service;
-
+package com.kh.researchbank.Auth.Login.service.Impl;
 
 /**
- * @Class Name : ResearchService.java
- * @Description : 설문조사
+ * @Class Name : HomeService.java
+ * @Description : 메인
  * @Modification Information
  *  수정일      수정자              수정내용
  * ---------   ---------   -------------------------------
@@ -17,12 +16,6 @@ package com.kh.researchbank.Research.service;
  *      Copyright (C) by KH All right reserved.
  */
 
-public interface ResearchService {
+public class LoginDAO {
 
-	/**********
-	 * @title 리서치 
-	 * @return
-	 * @throws Exception
-	 */
-	public String index() throws Exception;
 }

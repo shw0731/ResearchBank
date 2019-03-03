@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <body id="page-top">
-	<%@ include file="/WEB-INF/views/Common/header.jsp" %>
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
   <header class="masthead text-center text-white d-flex">
     <div class="container my-auto">
@@ -17,7 +17,7 @@
           <hr>
         </div>
         <div class="col-lg-8 mx-auto">
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Start Research</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="/research.do">Start Research</a>
         </div>
       </div>
     </div>
@@ -183,7 +183,7 @@
     </div>
   </section>
 
-<%@ include file="/WEB-INF/views/Common/footer.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 

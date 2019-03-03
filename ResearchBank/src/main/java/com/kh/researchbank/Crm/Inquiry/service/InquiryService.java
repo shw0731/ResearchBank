@@ -1,26 +1,27 @@
-package com.kh.researchbank.Research.service;
+package com.kh.researchbank.Crm.Inquiry.service;
 
 
 /**
- * @Class Name : ResearchService.java
- * @Description : 설문조사
+ * @Class Name : InquiryController.java
+ * @Description : 1:1 문의
  * @Modification Information
  *  수정일      수정자              수정내용
  * ---------   ---------   -------------------------------
- * 2019.02.07              최초생성
+ * 2019.03.03              최초생성
  *
  * @author KH 
- * @since 2019. 02.07
+ * @since 2019. 03.03
  * @version 1.0
  * @see
  *
  *      Copyright (C) by KH All right reserved.
  */
 
-public interface ResearchService {
+public interface InquiryService {
 
+	
 	/**********
-	 * @title 리서치 
+	 * @title 1:1문의 
 	 * @return
 	 * @throws Exception
 	 */

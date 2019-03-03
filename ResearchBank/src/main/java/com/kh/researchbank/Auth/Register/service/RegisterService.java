@@ -1,9 +1,8 @@
-package com.kh.researchbank.Research.service;
-
+package com.kh.researchbank.Auth.Register.service;
 
 /**
- * @Class Name : ResearchService.java
- * @Description : 설문조사
+ * @Class Name : RegisterService.java
+ * @Description : 게정등록
  * @Modification Information
  *  수정일      수정자              수정내용
  * ---------   ---------   -------------------------------
@@ -17,12 +16,12 @@ package com.kh.researchbank.Research.service;
  *      Copyright (C) by KH All right reserved.
  */
 
-public interface ResearchService {
+public interface RegisterService {
 
-	/**********
-	 * @title 리서치 
+	/***********************
+	 * @title 계정 등록
 	 * @return
 	 * @throws Exception
-	 */
+	 ***********************/
 	public String index() throws Exception;
 }

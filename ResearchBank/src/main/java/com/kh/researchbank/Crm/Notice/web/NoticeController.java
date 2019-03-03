@@ -1,4 +1,4 @@
-package com.kh.researchbank.Research.web;
+package com.kh.researchbank.Crm.Notice.web;
 
 import javax.annotation.Resource;
 
@@ -6,18 +6,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.researchbank.Research.service.ResearchService;
+import com.kh.researchbank.Crm.Notice.service.NoticeService;
 
 /**
- * @Class Name : ResearchController.java
- * @Description : 리서치
+ * @Class Name : InquiryController.java
+ * @Description : 공지사항
  * @Modification Information
  *  수정일      수정자              수정내용
  * ---------   ---------   -------------------------------
  * 2019.03.03              최초생성
  *
  * @author KH 
- * @since 2019. 02.07
+ * @since 2019. 03.03
  * @version 1.0
  * @see
  *
@@ -25,19 +25,20 @@ import com.kh.researchbank.Research.service.ResearchService;
  */
 
 @Controller
-public class ResearchController {
+public class NoticeController {
 
-	@Resource(name = "researchService")
-	protected ResearchService researchService;
+	@Resource(name="noticeService")
+	protected NoticeService noticeService;
 	
 	
 	/**********
-	 * @title 리서치페이지 
-	 * @return view
+	 * @title 공지사항 목록 
+	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/research" , method=RequestMethod.GET)
+	@RequestMapping(value="/notice" , method=RequestMethod.GET)
 	public String index() throws Exception {
-		return researchService.index();
+		return noticeService.index();
 	}
+	
 }
