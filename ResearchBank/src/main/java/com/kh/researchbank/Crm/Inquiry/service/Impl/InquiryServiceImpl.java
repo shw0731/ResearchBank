@@ -41,7 +41,7 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public List<Map<String, Object>> show(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(map);
+		System.out.println(map.toString());
 		return inquiryDAO.show(map);
 		
 	}
