@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="inquiry">
+
+<select id="show" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		 SELECT
+			IDX,
+			TITLE,
+			HIT_CNT,
+			REGIST_DATE
+		FROM
+			INQUIRY
+		ORDER BY IDX DESC
+	]]>
+	</select>
+
+<insert id="create" parameterType="hashmap">
+	<![CDATA[
+		INSERT INTO INQUIRY
+		(
+			IDX,
+			TITLE,
+			CONTENTS,
+			HIT_CNT,
+			DEL_GB,
+			REGIST_DATE,
+			INQUIRY_STATE
+		)
+		VALUES
+		(
+			SEQ_INQUIRY_IDX.NEXTVAL,
+			#{TITLE},
+			#{CONTENT},
+			0,
+			N,
+			SYSDATE,
+			0
+		)
+			
+	]]>
+
+</insert>
+
+<update id="updateHitCnt" parameterType="hashmap">
+	<![CDATA[
+		UPDATE INQUIRY
+		SET
+			TITLE = #{TITLE},
+			CONTENTS = #{CONTENTS}
+		WHERE
+			IDX=#{IDX}
+	]]>
+</update>
+
+<update id="delete" parameterType="hashmap">
+	<![CDATA[
+		UPDATE INQUIRY
+		SET
+			DEL_GB = 'Y'
+		WHERE
+			IDX = #{IDX}
+	]]>
+</update>
+
+
+</mapper>
