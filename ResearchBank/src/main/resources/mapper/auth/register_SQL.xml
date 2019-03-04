@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="auth">
+	
+	<insert id="insertMember" parameterType="com.kh.researchbank.Auth.Register.vo.RegisterVO">
+		<![CDATA[
+			INSERT INTO MEMBER_LIST 
+				(MEMBER_ID,
+				MEMBER_PW,
+				MEMBER_NICKNAME,
+				MEMBER_POINT,
+				MEMBER_GENDER,
+				MEMBER_ADDRESS,
+				MEMBER_MARRY,
+				MEMBER_AREA,
+				MEMBER_JOB,
+				ROLE_ID
+				)
+				VALUES 
+				(
+				#{member_id},
+				#{member_pw},
+				#{member_nickname},
+				#{member_point},
+				#{member_gender},
+				#{member_address},
+				#{member_marry},
+				#{member_area},
+				#{member_job},
+				#{role_id}
+				)
+		]]>
+	</insert>
+	
+<!-- 	<select id="checkDuplicationId" parameterType="String" resultType="integer">
+		select count(*) as existIdNum From MEMBER_LIST 
+		where MEMBER_ID = #{inputId}
+	</select>
+	
+	<select id="checkDuplicationNickname" parameterType="String" resultType="integer">
+		select count(*) as existIdNum From MEMBER_LIST 
+		where MEMBER_NICKNAME = #{inputNickname}
+	</select>
+	
+	<update id="updateMember" parameterType="hashmap">
+		<![CDATA[
+			UPDATE MEMBER_LIST 
+			SET 
+				MEMBER_PW = #{member_pw},
+				MEMBER_NICKNAME = #{member_nickname},
+				MEMBER_ADDRESS = #{member_address},
+				MEMBER_MARRY = #{member_marry},
+				MEMBER_AREA = #{member_area},
+				MEMBER_JOB = #{member_job} 
+			WHERE
+				MEMBER_ID=#{member_id}
+		]]>
+	</update>
+	
+	<update id="deleteMember" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM MEMBER_LIST 
+			WHERE 
+				MEMBER_ID=#{member_id}
+		]]>
+	</update> -->
+</mapper>

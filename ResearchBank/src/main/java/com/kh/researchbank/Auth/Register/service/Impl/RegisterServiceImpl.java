@@ -1,10 +1,12 @@
 package com.kh.researchbank.Auth.Register.service.Impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 
 import com.kh.researchbank.Auth.Register.service.RegisterService;
+import com.kh.researchbank.Auth.Register.service.dao.RegisterDAO;
+import com.kh.researchbank.Auth.Register.vo.RegisterVO;
 
 /**
  * @Class Name : HomeService.java
@@ -21,20 +23,46 @@ import com.kh.researchbank.Auth.Register.service.RegisterService;
  *
  *      Copyright (C) by KH All right reserved.
  */
-@Service("registerService")
+/*@Service("registerService")
 public class RegisterServiceImpl implements RegisterService{
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RegisterServiceImpl.class);
 	
-	/**************************
+	*//**************************
 	 * @title 계정 등록 페이지
 	 * @param
 	 * @return view
-	 ***************************/
+	 ***************************//*
 	@Override
 	public String index() throws Exception {
 		String forward = "/auth/register/index";
 		return forward;
+	}*/
+@Service
+public class RegisterServiceImpl implements RegisterService {
+	
+	//의존주입
+	@Inject
+	private RegisterDAO registerDao;
+	
+	//회원가입 객체 가져오는것
+	@Override
+	public void MemberRegister(RegisterVO registerVo) {
+		
+		registerDao.MemberRegister(registerVo);
 	}
-
+	
+	/*
+	 * //ID중복체크 public int CheckDuplicationId(String inputId) {
+	 * 
+	 * int idCnt = registerDao.CheckDuplicationId(inputId); return idCnt; } //별명
+	 * 중복체크 public int CheckDuplicationNickname(String inputNickname) {
+	 * 
+	 * int NicknameCnt = registerDao.CheckDuplicationNickname(inputNickname); return
+	 * NicknameCnt; }
+	 * 
+	 * //로그인 관련 public void Login(LoginVO loginVo) {
+	 * 
+	 * }
+	 */
 }
