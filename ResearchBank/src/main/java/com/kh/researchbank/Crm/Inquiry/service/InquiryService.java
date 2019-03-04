@@ -1,5 +1,8 @@
 package com.kh.researchbank.Crm.Inquiry.service;
 
+import java.util.List;
+import java.util.Map;
+
 
 /**
  * @Class Name : InquiryController.java
@@ -25,5 +28,15 @@ public interface InquiryService {
 	 * @return
 	 * @throws Exception
 	 */
-	public String index() throws Exception;
+	List<Map<String, Object>> show(Map<String, Object> map) throws Exception;
+	
+	void creat(Map<String,Object>map) throws Exception;
+	
+	Map<String,Object> showDetail(Map<String, Object> map) throws Exception;
+	
+	void update(Map<String,Object>map) throws Exception;
+	
+	void delete(Map<String,Object>map) throws Exception;
+
+	String index() throws Exception;
 }
