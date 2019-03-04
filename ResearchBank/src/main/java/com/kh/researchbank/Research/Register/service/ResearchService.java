@@ -1,4 +1,4 @@
-package com.kh.researchbank.Research.service;
+package com.kh.researchbank.Research.Register.service;
 
 
 /**

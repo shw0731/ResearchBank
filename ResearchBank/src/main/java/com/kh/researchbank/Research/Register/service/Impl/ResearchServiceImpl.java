@@ -1,10 +1,10 @@
-package com.kh.researchbank.Research.service.Impl;
+package com.kh.researchbank.Research.Register.service.Impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.kh.researchbank.Research.service.ResearchService;
+import com.kh.researchbank.Research.Register.service.ResearchService;
 
 /**
  * @Class Name : ResearchServiceImpl.java

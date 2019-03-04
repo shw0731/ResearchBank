@@ -1,4 +1,4 @@
-package com.kh.researchbank.Research.web;
+package com.kh.researchbank.Research.Register.web;
 
 import javax.annotation.Resource;
 
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.researchbank.Research.service.ResearchService;
+import com.kh.researchbank.Research.Register.service.ResearchService;
 
 /**
  * @Class Name : ResearchController.java
