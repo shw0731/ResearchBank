@@ -25,4 +25,8 @@ public interface ResearchService {
 	 * @throws Exception
 	 */
 	public String index() throws Exception;
+	
+	public String store() throws Exception;
+	
+	
 }

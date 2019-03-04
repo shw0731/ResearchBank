@@ -113,7 +113,7 @@
             <div class="subnav-content">
 		      <a href="#">내 설문조사</a>
 		      <a href="#">참여한설문조사</a>
-		      <a href="#">설문조사목록</a>
+		      <a href="research/register/index">설문조사등록</a>
 		     </div>
           </li>
           <li class="nav-item subnav">

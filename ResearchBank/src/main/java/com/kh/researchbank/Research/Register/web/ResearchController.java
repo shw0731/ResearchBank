@@ -36,8 +36,8 @@ public class ResearchController {
 	 * @return view
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/research" , method=RequestMethod.GET)
+	@RequestMapping(value="/research/register/index" , method=RequestMethod.GET)
 	public String index() throws Exception {
-		return researchService.index();
+		return "research/register/index";
 	}
 }

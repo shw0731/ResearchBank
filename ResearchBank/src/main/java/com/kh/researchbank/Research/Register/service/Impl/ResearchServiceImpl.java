@@ -33,7 +33,14 @@ public class ResearchServiceImpl implements ResearchService {
 	 */
 	@Override
 	public String index() throws Exception {
-		String forward = "/research/index";
+		String forward = "research/register/index";
+		
+		return forward;
+	}
+	
+	@Override
+	public String store() throws Exception{
+		String forward = "research/list/index";
 		
 		return forward;
 	}
