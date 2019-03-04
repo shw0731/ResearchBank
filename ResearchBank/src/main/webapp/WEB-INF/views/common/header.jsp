@@ -121,7 +121,7 @@
             <div class="subnav-content">
 		      <a href="/notice">공지사항</a>
 		      <a href="inquiry">1:1문의</a>
-		      <a href="#">마이페이지</a>
+		      <a href="mypage">마이페이지</a>
 		     </div>
           </li>
           <li class="nav-item subnav">
