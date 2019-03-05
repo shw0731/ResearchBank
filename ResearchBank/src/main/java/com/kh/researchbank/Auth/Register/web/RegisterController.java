@@ -62,20 +62,19 @@ public class RegisterController{
 		return "auth/login/index";
 	}
 	
-	@RequestMapping("register.do")
+	@RequestMapping(value="/register.do", method=RequestMethod.GET)
 	public String RegisterPage() {
 		return "auth/register/index";
 	}
+	@RequestMapping(value="/register.do", method=RequestMethod.POST)
+	public String registerPOST(RegisterVO registerVo) {
+	 registerSvc.MemberRegister(registerVo);
+	 	return "auth/Login/index"; 
+	 }
 	
 	@RequestMapping("memberLogin.do")
 	public String SubmitRegister(LoginVO loginVo) {
 		return "";
-	}
-	
-	@RequestMapping("memberRegister.do")
-	public String SubmitRegister(RegisterVO registerVo) {
-		registerSvc.MemberRegister(registerVo);
-		return "auth/login/index";
 	}
 	
 	/*

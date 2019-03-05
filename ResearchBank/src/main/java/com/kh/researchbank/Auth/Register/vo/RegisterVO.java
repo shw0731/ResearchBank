@@ -12,7 +12,14 @@ public class RegisterVO {
 	private String member_area;
 	private String member_job;
 	private int role_id=0;
+	private int member_birth;
 	
+	public int getMember_birth() {
+		return member_birth;
+	}
+	public void setMember_birth(int member_birth) {
+		this.member_birth = member_birth;
+	}
 	public String getMember_id() {
 		return member_id;
 	}
