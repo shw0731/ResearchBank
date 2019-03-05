@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mypage">
+	
+	<select id="updateMember" parameterType="com.kh.researchbank.Auth.MyPage.vo.MyPageVO">
+		<![CDATA[
+			SELECT
+				MEMBER_ID,
+				MEMBER_NICKNAME,
+				MEMBER_POINT,
+				MEMBER_GENDER,
+				MEMBER_ADDRESS,
+				MEMBER_MARRY,
+				MEMBER_AREA,
+				MEMBER_JOB,
+			FROM
+				MEMBER_LIST
+		]]>
+	</select>
+</mapper>	

@@ -1,12 +1,18 @@
 package com.kh.researchbank.Auth.MyPage.web;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.researchbank.Auth.MyPage.service.MyPageService;
 import com.kh.researchbank.Auth.MyPage.service.Impl.MyPageServiceImpl;
+import com.kh.researchbank.Auth.MyPage.vo.MyPageVO;
 
 /**
  * @Class Name : MyPageController.java
@@ -39,5 +45,12 @@ public class MyPageController {
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String index() throws Exception{
 		return mypageService.index();
+	}
+	
+	// 회원정보수정
+	@RequestMapping("updateMember")
+	public String updateMember(MyPageVO mypageVo) {
+		
+		return "auth/mypage/update/index";
 	}
 }
