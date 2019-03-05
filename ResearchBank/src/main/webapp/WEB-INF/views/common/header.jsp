@@ -144,5 +144,11 @@
 
   <!-- Custom scripts for this template -->
   <script src="/resources/js/creative.min.js"></script>
+      <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+       <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+  
   
   
