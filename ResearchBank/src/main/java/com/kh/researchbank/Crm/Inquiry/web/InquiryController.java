@@ -48,7 +48,7 @@ public class InquiryController {
 	//문의 리스트 보기
 	@RequestMapping(value="/inquiry" , method=RequestMethod.GET)
 	public ModelAndView index(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/crm/inquiry/index");
+		ModelAndView mv = new ModelAndView("crm/inquiry/index");
 		
 		List<Map<String,Object>> list =
 				inquiryService.show(commandMap.getMap());
