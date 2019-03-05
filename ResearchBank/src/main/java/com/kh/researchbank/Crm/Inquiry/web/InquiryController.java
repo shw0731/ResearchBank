@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.researchbank.Crm.Inquiry.service.InquiryService;
-import com.kh.researchbank.Crm.Inquiry.service.Impl.CommandMap;;
+import com.kh.researchbank.common.CommandMap;;
 
 /**
  * @Class Name : InquiryController.java

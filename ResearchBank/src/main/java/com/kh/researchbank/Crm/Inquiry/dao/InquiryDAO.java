@@ -3,8 +3,9 @@ package com.kh.researchbank.Crm.Inquiry.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.kh.researchbank.Crm.Inquiry.dao.AbstractDAO;
 import org.springframework.stereotype.Repository;
+
+import com.kh.researchbank.common.AbstractDAO;
 
 
 @Repository("sampleDAO")

@@ -1,4 +1,4 @@
-package com.kh.researchbank.Crm.Inquiry.dao;
+package com.kh.researchbank.common;
 
 
 import java.util.List;

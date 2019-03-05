@@ -1,4 +1,4 @@
-package com.kh.researchbank.Crm.Inquiry.service.Impl;
+package com.kh.researchbank.common;
 
 import java.util.HashMap;
 import java.util.Map;
