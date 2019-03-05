@@ -22,24 +22,24 @@
 				#{member_id},
 				#{member_pw},
 				#{member_nickname},
-				#{member_point},
+				0,
 				#{member_gender},
 				#{member_address},
 				#{member_marry},
 				#{member_area},
 				#{member_job},
-				#{role_id}
+				0
 				)
 		]]>
 	</insert>
 	
-<!-- 	<select id="checkDuplicationId" parameterType="String" resultType="integer">
+ 	<select id="checkDuplicationId" parameterType="String" resultType="integer">
 		select count(*) as existIdNum From MEMBER_LIST 
 		where MEMBER_ID = #{inputId}
 	</select>
 	
 	<select id="checkDuplicationNickname" parameterType="String" resultType="integer">
-		select count(*) as existIdNum From MEMBER_LIST 
+		select count(*) as existNicknameNum From MEMBER_LIST 
 		where MEMBER_NICKNAME = #{inputNickname}
 	</select>
 	
@@ -64,5 +64,5 @@
 			WHERE 
 				MEMBER_ID=#{member_id}
 		]]>
-	</update> -->
+	</update>
 </mapper>
