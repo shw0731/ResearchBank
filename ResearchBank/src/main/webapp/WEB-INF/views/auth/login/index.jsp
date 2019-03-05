@@ -21,7 +21,7 @@
 	          <input type="text" placeholder="아이디를 입력하세요" />
 				<input type="text" placeholder="비밀번호를 입력하세요" />
 				<a class="btn btn-light btn-xl" href="#">Login</a>
-	          <a class="btn btn-light btn-xl" href="/register">Register</a>
+	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>
           </div>
           <a href="#"><p class="text-faded mb-4">forgot your password?</p></a>
         </div>

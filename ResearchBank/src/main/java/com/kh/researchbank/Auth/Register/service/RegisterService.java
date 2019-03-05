@@ -1,5 +1,7 @@
 package com.kh.researchbank.Auth.Register.service;
 
+import com.kh.researchbank.Auth.Register.vo.RegisterVO;
+
 /**
  * @Class Name : RegisterService.java
  * @Description : 게정등록
@@ -23,5 +25,13 @@ public interface RegisterService {
 	 * @return
 	 * @throws Exception
 	 ***********************/
-	public String index() throws Exception;
+	/* public String index() throws Exception; */
+	
+	public void MemberRegister(RegisterVO registerVo);
+	
+	/*
+	 * public int CheckDuplicationId(String inputId);
+	 * 
+	 * public int CheckDuplicationNickname(String inputNickname);
+	 */
 }
