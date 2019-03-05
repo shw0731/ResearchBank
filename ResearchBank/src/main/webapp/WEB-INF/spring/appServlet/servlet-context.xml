@@ -36,7 +36,7 @@
 	
 	<mvc:annotation-driven>
         <mvc:argument-resolvers>
-            <beans:bean class="com.kh.researchbank.Crm.Inquiry.resolver.CustomMapArgumentResolver"></beans:bean>
+            <beans:bean class="com.kh.researchbank.common.CustomMapArgumentResolver"></beans:bean>
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
 	
