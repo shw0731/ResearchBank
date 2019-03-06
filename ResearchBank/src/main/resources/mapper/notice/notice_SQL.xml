@@ -12,6 +12,23 @@
                 NOTICE
             ORDER BY NOTICE_IDX DESC
         ]]>
-    </select>
+	</select>
+
+	<insert id="create" parameterType="hashmap">
+    	<![CDATA[
+        INSERT INTO NOTICE
+        (
+           		NOTICE_IDX,
+                NOTICE_SUBJECT,
+                NOTICE_CONTEXT
+        )
+        VALUES
+        (
+            NOTICE_SEQ.NEXTVAL,
+            #{NOTICE_SUBJECT},
+            #{NOTICE_CONTEXT}
+        )
+    ]]>
+	</insert>
 
 </mapper>

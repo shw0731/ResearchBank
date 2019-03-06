@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.researchbank.Crm.Notice.service.dao.AbstractDAO;
+import com.kh.researchbank.common.CommandMap;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,8 +12,12 @@ import org.springframework.stereotype.Repository;
 public class NoticeDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>)selectList("notice.index", map);
+	public List<CommandMap> index(CommandMap map) throws Exception{
+		return (List<CommandMap>)selectList("notice.index", map);
+	}
+	
+	public void create(Map<String,Object> map) throws Exception{
+		insert("notice.create",map);
 	}
 	
 }

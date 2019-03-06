@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.researchbank.Crm.Notice.service.NoticeService;
 import com.kh.researchbank.Crm.Notice.service.dao.NoticeDAO;
+import com.kh.researchbank.common.CommandMap;
 
 /**
  * @Class Name : MoticeServiceImpl.java
@@ -43,8 +44,16 @@ public class NoticeServiceImpl implements NoticeService{
 
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception {
+	public List<CommandMap> index(CommandMap map) throws Exception {
 		return noticeDAO.index(map);
+	}
+
+
+
+	@Override
+	public void createNotice(Map<String, Object> map) throws Exception {
+		noticeDAO.create(map);
+		
 	}
 
 }

@@ -3,6 +3,8 @@ package com.kh.researchbank.Crm.Notice.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.researchbank.common.CommandMap;
+
 /**
  * @Class Name : NoticeService.java
  * @Description : 공지사항
@@ -27,5 +29,8 @@ public interface NoticeService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String, Object>> index(Map<String, Object> commandMap) throws Exception;
+	public List<CommandMap> index(CommandMap commandMap) throws Exception;
+
+	public void createNotice(Map<String, Object> map) throws Exception;
+
 }
