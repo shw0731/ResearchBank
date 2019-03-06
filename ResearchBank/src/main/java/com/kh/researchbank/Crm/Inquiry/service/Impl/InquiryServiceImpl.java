@@ -12,11 +12,11 @@ import com.kh.researchbank.Crm.Inquiry.service.InquiryService;
 
 /**
  * @Class Name : InquiryController.java
- * @Description : 1:1 문의
+ * @Description : 1:1 臾몄쓽
  * @Modification Information
- *  수정일      수정자              수정내용
+ *  �닔�젙�씪      �닔�젙�옄              �닔�젙�궡�슜
  * ---------   ---------   -------------------------------
- * 2019.03.03              최초생성
+ * 2019.03.03              理쒖큹�깮�꽦
  *
  * @author KH 
  * @since 2019. 03.03
@@ -41,7 +41,6 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public List<Map<String, Object>> show(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(map.toString());
 		return inquiryDAO.show(map);
 		
 	}
@@ -60,6 +59,13 @@ public class InquiryServiceImpl implements InquiryService{
 		Map<String,Object> resultMap = inquiryDAO.showDetail(map);
 		return resultMap;
 	}
+	
+	@Override
+	public void storecomment(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub	
+		inquiryDAO.storecomment(map);
+		
+	}
 
 	@Override
 	public void update(Map<String, Object> map) throws Exception {
@@ -76,7 +82,7 @@ public class InquiryServiceImpl implements InquiryService{
 
 	
 	/**********
-	 * @title 1:1문의 목록 
+	 * @title 1:1臾몄쓽 紐⑸줉 
 	 * @return
 	 * @throws Exception
 	 */

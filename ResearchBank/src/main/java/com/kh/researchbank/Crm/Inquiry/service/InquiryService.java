@@ -6,11 +6,11 @@ import java.util.Map;
 
 /**
  * @Class Name : InquiryController.java
- * @Description : 1:1 문의
+ * @Description : 1:1 臾몄쓽
  * @Modification Information
- *  수정일      수정자              수정내용
+ *  �닔�젙�씪      �닔�젙�옄              �닔�젙�궡�슜
  * ---------   ---------   -------------------------------
- * 2019.03.03              최초생성
+ * 2019.03.03              理쒖큹�깮�꽦
  *
  * @author KH 
  * @since 2019. 03.03
@@ -24,7 +24,7 @@ public interface InquiryService {
 
 	
 	/**********
-	 * @title 1:1문의 
+	 * @title 1:1臾몄쓽 
 	 * @return
 	 * @throws Exception
 	 */
@@ -33,6 +33,8 @@ public interface InquiryService {
 	void creat(Map<String,Object>map) throws Exception;
 	
 	Map<String,Object> showDetail(Map<String, Object> map) throws Exception;
+	
+	void storecomment(Map<String,Object>map) throws Exception;
 	
 	void update(Map<String,Object>map) throws Exception;
 	

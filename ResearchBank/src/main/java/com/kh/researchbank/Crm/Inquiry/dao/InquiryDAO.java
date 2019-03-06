@@ -28,6 +28,11 @@ public class InquiryDAO extends AbstractDAO{
 	public Map<String, Object> showDetail(Map<String,Object>map) throws Exception{
 			return (Map<String,Object>)selectOne("inquiry.showDetail",map);
 		}
+	
+	public void storecomment(Map<String,Object>map)throws Exception{
+		update("inquiry.comments",map);
+		
+	}
 		
 	public void update(Map<String,Object>map)throws Exception{
 		update("inquiry.update",map);
@@ -35,7 +40,7 @@ public class InquiryDAO extends AbstractDAO{
 	}
 	
 	public void delete(Map<String,Object> map) throws Exception{
-		update("sample.delete",map);
+		update("inquiry.delete",map);
 	}
 	
 }
