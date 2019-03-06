@@ -1,8 +1,14 @@
 package com.kh.researchbank.Auth.MyPage.service.Impl;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
+import com.kh.researchbank.Auth.MyPage.dao.MyPageDAO;
 import com.kh.researchbank.Auth.MyPage.service.MyPageService;
+
 
 /**
  * @Class Name : MyPageServiceImpl.java
@@ -22,10 +28,20 @@ import com.kh.researchbank.Auth.MyPage.service.MyPageService;
 @Service("mypageService")
 public class MyPageServiceImpl implements MyPageService {
 
+	@Resource(name="mypageDAO")
+	private MyPageDAO mypageDAO;
+	
 	@Override
 	public String index() throws Exception{
 		String forward = "auth/mypage/index"; 
 		
 		return forward; 
 	}
+	
+	@Override
+	public Map<String, Object> selectOneMember(Object object) throws Exception {
+		// TODO Auto-generated method stub
+		return mypageDAO.selectOneMember(object);
+	}
+	
 }
