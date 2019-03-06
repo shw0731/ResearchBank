@@ -33,4 +33,6 @@ public interface NoticeService {
 
 	public void createNotice(Map<String, Object> map) throws Exception;
 
+	public Map<String, Object> showNotice(Map<String, Object> map) throws Exception;
+
 }

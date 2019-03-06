@@ -31,4 +31,17 @@
     ]]>
 	</insert>
 
+	<select id="show" parameterType="hashmap" resultType="hashmap">
+    	<![CDATA[
+        SELECT
+        	*
+        FROM
+        	NOTICE
+        WHERE
+        	notice_idx=#{notice_idx}
+         
+    ]]>
+	</select>
+
+
 </mapper>

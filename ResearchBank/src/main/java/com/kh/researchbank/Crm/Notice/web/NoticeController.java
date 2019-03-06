@@ -1,6 +1,7 @@
 package com.kh.researchbank.Crm.Notice.web;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
@@ -74,5 +75,16 @@ public class NoticeController {
 	     
 	    return mv;
 	}
+	
+	@RequestMapping(value="/notice/show")//리스트에서 상세보기로
+	public ModelAndView showNotice(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("crm/notice/show");
+	     
+	    Map<String,Object> map = noticeService.showNotice(commandMap.getMap());
+	    mv.addObject("map", map);
+	     
+	    return mv;
+	}
+
 
 }
