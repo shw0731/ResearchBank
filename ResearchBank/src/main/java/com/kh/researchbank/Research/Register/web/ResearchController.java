@@ -5,8 +5,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.researchbank.Research.Register.service.ResearchService;
+import com.kh.researchbank.common.CommandMap;
 
 /**
  * @Class Name : ResearchController.java
@@ -37,7 +39,14 @@ public class ResearchController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/research/register/index" , method=RequestMethod.GET)
-	public String index() throws Exception {
-		return "research/register/index";
+	public ModelAndView index(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("research/register/index");
+		return mv;
+	}
+	
+	@RequestMapping(value="/research/register/store", method=RequestMethod.POST)
+	public ModelAndView store(CommandMap commandMap)throws Exception{
+		ModelAndView mv = new ModelAndView("research/register/edit");
+		return mv;
 	}
 }
