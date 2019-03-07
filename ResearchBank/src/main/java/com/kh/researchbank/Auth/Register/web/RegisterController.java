@@ -23,7 +23,7 @@ public class RegisterController {
 	}
 	@RequestMapping(value="/register.do", method=RequestMethod.POST)
 	public String SubmitRegister(RegisterVO registerVo) {
-		System.out.println(registerVo);
+		/* System.out.println(registerVo); */
 		registerService.insertMember(registerVo);
 		return "auth/login/index";
 	}

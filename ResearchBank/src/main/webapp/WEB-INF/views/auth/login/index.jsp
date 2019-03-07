@@ -23,10 +23,12 @@
 			</a>
           <hr class="light my-4">
           <div class="login_input_area">
-	          <input type="text" placeholder="아이디를 입력하세요" />
-				<input type="text" placeholder="비밀번호를 입력하세요" />
+          <form role="form" name="form" action="loginCheck.do" method="post">
+          	          <input type="text" id="member_id" name="member_id" placeholder="아이디를 입력하세요" />
+				<input type="text" id="member_pw" name="member_pw" placeholder="비밀번호를 입력하세요" />
 				<a class="btn btn-light btn-xl" href="#">Login</a>
 	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>
+	          </form>
           </div>
           <a href="#"><p class="text-faded mb-4">forgot your password?</p></a>
         </div>

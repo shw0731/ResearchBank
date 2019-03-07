@@ -1,12 +1,12 @@
-package com.kh.researchbank.Auth.Login.service;
+package com.kh.researchbank.Auth.Login.dao;
 
 import javax.servlet.http.HttpSession;
 
 import com.kh.researchbank.Auth.Login.vo.LoginVO;
 
 /**
- * @Class Name : LoginService.java
- * @Description : 로그인
+ * @Class Name : HomeService.java
+ * @Description : 메인
  * @Modification Information
  *  수정일      수정자              수정내용
  * ---------   ---------   -------------------------------
@@ -20,17 +20,13 @@ import com.kh.researchbank.Auth.Login.vo.LoginVO;
  *      Copyright (C) by KH All right reserved.
  */
 
-public interface LoginService {
-	
-	/******************
-	 * @title 로그인 페이지
-	 * @return 
-	 * @throws Exception
-	 */
+public interface LoginDAO {
+
 	// 01_01. 회원 로그인 체크
-    public boolean loginCheck(LoginVO vo, HttpSession session);
+    public boolean loginCheck(LoginVO vo);
     // 01_02. 회원 로그인 정보
     public LoginVO viewMember(LoginVO vo);
     // 02. 회원 로그아웃
     public void logout(HttpSession session);
 }
+
