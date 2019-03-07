@@ -17,7 +17,7 @@
 
 <div class="wrap">
 <h1>회원가입</h1>
-<form id="frm">
+<form role="form" name="form" action="register.do" method="post">
  <table class="board_list">
   <thead align="left" valign=middle>
    <tr>
@@ -27,35 +27,44 @@
     <td colspan="3"><textarea cols="100" rows="20" readonly="readonly"> <%@ include file="/WEB-INF/views/auth/register/terms.txt" %> </textarea></td>
    </tr>
    <tr>
-    <td colspan="3" align="center"><input type="radio" id="agree_checkbox" name="AGREE" value="0">약관에 동의합니다.
-    <input type="radio" id="agree_checkbox" name="AGREE" value="1" checked>약관에 동의하지 않습니다.</td>
+    <td colspan="3" align="center"><input type="radio" id="agree_checkbox" name="agree_checkbox" value="0">약관에 동의합니다.
+    <input type="radio" id="agree_checkbox" name="agree_checkbox" value="1" checked>약관에 동의하지 않습니다.</td>
+    
    </tr>
   </thead>
   <tbody align=left" valign=middle>
    <tr>
     <th scope="row">아이디(E-mail)</th>
-    <td><input type="text" id="member_id" name="ID" placeholder="이메일 주소를 적어주세요">
-    <a href="#" id="member_id_checkBtn" class="btn">중복확인</a></td>
+    <td><input type="text" id="member_id" name="member_id" placeholder="이메일 주소를 적어주세요">
+    <input type="button" class="btn btn-default" style="width: 30%;" value="중복확인" onclick="duplicationId();" />
     <td></td>
    </tr>
    <tr>
     <th scope="row">비밀번호</th>
-    <td><input type="password" id="member_pw" name="PASSWORD" ></td>
+    <td><input type="password" id="member_pw" name="member_pw" ></td>
     <td></td>
    </tr>
    <tr>
-    <th scope="row">별명</th>
-    <td><input type="text" id="member_nickname" name="NICKNAME">
-    <a href="#" id="member_nickname_checkBtn" class="btn">중복확인</a></td>
+    <th scope="row">비밀번호확인</th>
+    <td><input type="password" id="member_repw" name="member_repw"></td>
     <td></td>
    </tr>
+   <tr>
+    <th scope="row">닉네임</th>
+    <td><input type="text" id="member_nickname" name="member_nickname">
+    <input type="button" class="btn btn-default" style="width: 30%;" value="중복확인" onclick="duplicationNickname();" />
+    <input type="hidden" id="agree_checkboxf" name="agree_checkboxf" value="0">
+   <input type="hidden" id="member_point" name="member_point" value="0">
+   <input type="hidden" id="role_id" name="role_id" value="0">
+    <td></td>
+<!--    </tr>
     <tr>
     <th scope="row">주소</th>
     <td><input type="text" id="member_address" name="ADDRESS" placeholder="주소 검색후 상세주소 작성">
 	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 	</td>
-   </tr>
-   <tr>
+   </tr> -->
+<!--    <tr>
     <th scope="row">실거주지역(지역설문조사시)</th>
     <td valign="top">
 		<select id="member_area" name="AREA">
@@ -78,8 +87,8 @@
 			<option value="제주도">제주도</option>
 		</select>
 	</td>
-    </tr>
-    <tr>
+    </tr> -->
+<!--     <tr>
     <th scope="row">생년월일</th>
     <td valign="top">
 		<select id="member_birth_1" name="BIRTH_1">
@@ -251,29 +260,28 @@
        <option value="31">31</option>
      </select>일
 	</td>
-   </tr>
-   <tr>
+   </tr> -->
+<!--    <tr>
     <th scope="row">성별</th>
     <td><input type="radio" id="member_gender" name="GENDER" value="0" checked>여자
     <input type="radio" id="member_gender" name="GENDER" value="1">남자
     </td>
-   </tr>
-    <tr>
+   </tr> -->
+<!--     <tr>
     <th scope="row">결혼유무</th>
     <td><input type="radio" id="member_marry" name="MARRY" value="0" checked>미혼
     <input type="radio" id="member_marry" name="MARRY" value="1">기혼</td>
-   </tr>
-    <tr>
+   </tr> -->
+<!--     <tr>
     <th scope="row">직업</th>
     <td><input type="text" id="member_job" name="JOB"></td>
-   </tr>
-  </tbody>
+   </tr> -->
+   
+ </tbody>
   <tfoot>
    <tr>
     <td colspan="3" align="center">
-    	<input type="submit" value="회원가입">
-     <!-- <a href="#" class="btn" id="registerBtn">회원가입</a> -->
-     <a href="/" class="btn" id="homeBtn">취소</a>
+    	<input type="button" class="btn btn-lg btn-success btn-block" value="회원가입" onclick="DosignUp();" />
     </td>
    </tr>
   </tfoot>
@@ -281,7 +289,7 @@
 </form>
 </div>
 
-<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+<!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -315,9 +323,101 @@
             autoClose: false //기본값 true
         });
     }
-</script>
+</script> -->
 <script type="text/javascript">
+var isCheckId = 0;
+function duplicationId () {
+	var inputId = $("#member_id").val();
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "duplicationCheck.do",
+		data: inputId,
+		success: function (data) {
+			if(data == "S") {
+				alert("사용가능한 아이디입니다.");
+				
+				$("#divInputId").addClass("has-success")
+				$("#divInputId").removeClass("has-error")
+				
+				$("#signUpUserPwd").focus();
+				isCheckId = 1;
+			} else {
+				alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+				
+				$("#divInputId").addClass("has-error")
+				$("#divInputId").removeClass("has-success")
+				
+				$("#signUpUserId").focus();
+			}
+		},
+		error: function(req, status, errThrown) {
+			alert("network error occur");
+		}
+	});
+}
 
+var isCheckNickname = 0;
+function duplicationNickname () {
+	var inputNickname = $("#member_nickname").val();
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "duplicationCheckNickname.do",
+		data: inputNickname,
+		success: function (data) {
+			if(data == "S") {
+				alert("사용가능한 닉네임입니다.");
+				
+				$("#divInputNickname").addClass("has-success")
+				$("#divInputNickname").removeClass("has-error")
+				
+				$("#signUpUserPwd").focus();
+				isCheckNickname = 1;
+			} else {
+				alert("닉네임이 존재합니다. 다른 닉네임을 입력해주세요.");
+				
+				$("#divInputNickname").addClass("has-error")
+				$("#divInputNickname").removeClass("has-success")
+				
+				$("#signUpUserNickname").focus();
+			}
+		},
+		error: function(req, status, errThrown) {
+			alert("network error occur");
+		}
+	});
+}
+
+function DosignUp() {
+	
+	var inputAgree= $("#agree_checkbox").val;
+	var inputAgreef= $("#agree_checkboxf").val;
+	var inputId = $("#member_id").val();
+	var inputPwd = $("#member_pw").val();
+	var inputPwdCfm = $("#member_repw").val();
+	var inputNickName = $("#member_nickname").val();
+	
+	
+ 	if(inputAgree != inputAgreef) { alert("약관에 동의하셔야 가입가능합니다."); return; }
+
+	if(inputId.length == 0) { alert("아이디를 입력해 주세요."); $("#member_id").focus(); return; }
+	if(isCheckId == 0) { alert("아이디 중복 체크를 해주세요."); $("#member_id").focus(); return; }
+	
+	if(inputPwd.length == 0) { alert("비밀번호를 입력해 주세요."); $("#member_pw").focus(); return; }
+	if(inputPwd != inputPwdCfm) { alert("비밀번호가 서로 다릅니다. 비밀번호를 확인해 주세요."); $("#member_repw").focus(); return; }
+	
+	if(inputNickName.length == 0) { alert("닉네임을 입력해 주세요."); $("#member_nickname").focus(); return; }
+	if(isCheckNickname == 0) { alert("닉네임 중복 체크를 해주세요."); $("#member_nickname").focus(); return; }
+	
+	if(confirm("회원가입을 하시겠습니까?")) {
+		alert("가입!");
+		document.form.submit();
+		/* location.href= "login.do"; */
+	}
+}
+
+/* 
 $(document).ready(function() {
 	 $("#member_id_checkBtn").unbind("click").click(function(e) {
 	  e.preventDefault();
@@ -410,7 +510,7 @@ $(document).ready(function() {
 		  });
 		 }
 		}
-
+ */
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>

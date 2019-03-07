@@ -3,11 +3,9 @@ package com.kh.researchbank.Auth.Register.service.dao;
 import com.kh.researchbank.Auth.Register.vo.RegisterVO;
 
 public interface RegisterDAO {
-	public void MemberRegister(RegisterVO registerVo);
+	public void insertMember(RegisterVO registerVO);
 	
-	/*
-	 * public int CheckDuplicationId(String inputId);
-	 * 
-	 * public int CheckDuplicationNickname(String inputNickname);
-	 */
+	public int CheckDuplication(String inputId);
+	
+	public int CheckDuplicationNickname(String inputNickname);
 }

@@ -1,68 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="auth">
-	
+<mapper namespace="com.kh.researchbank.Auth.Register.vo.RegisterVO">
+
 	<insert id="insertMember" parameterType="com.kh.researchbank.Auth.Register.vo.RegisterVO">
-		<![CDATA[
-			INSERT INTO MEMBER_LIST 
-				(MEMBER_ID,
-				MEMBER_PW,
-				MEMBER_NICKNAME,
-				MEMBER_POINT,
-				MEMBER_GENDER,
-				MEMBER_ADDRESS,
-				MEMBER_MARRY,
-				MEMBER_AREA,
-				MEMBER_JOB,
-				ROLE_ID
-				)
-				VALUES 
-				(
-				#{member_id},
-				#{member_pw},
-				#{member_nickname},
-				0,
-				#{member_gender},
-				#{member_address},
-				#{member_marry},
-				#{member_area},
-				#{member_job},
-				0
-				)
-		]]>
+		insert into member_list (member_id, member_pw, member_nickname, member_point, role_id)
+		values (
+			#{member_id},					<!-- 회원 아이디 -->
+			#{member_pw},					<!-- 회원 비밀번호 -->
+			#{member_nickname},				<!-- 회원 닉네임 -->
+			#{member_point},				<!-- 회원 포인트 -->
+			#{role_id}						<!-- 계정 권한  -->
+		)
 	</insert>
 	
- 	<select id="checkDuplicationId" parameterType="String" resultType="integer">
-		select count(*) as existIdNum From MEMBER_LIST 
-		where MEMBER_ID = #{inputId}
+	<select id="checkDuplicationId" parameterType="String" resultType="integer">
+		select count(*) as existIdNum From member_list 
+		where member_id = #{inputId}
 	</select>
 	
-	<select id="checkDuplicationNickname" parameterType="String" resultType="integer">
-		select count(*) as existNicknameNum From MEMBER_LIST 
-		where MEMBER_NICKNAME = #{inputNickname}
+	<select id="checkDuplicationNickName" parameterType="String" resultType="integer">
+		select count(*) as existNicknameNum From member_list 
+		where member_nickname = #{inputNickname}
 	</select>
 	
-	<update id="updateMember" parameterType="hashmap">
-		<![CDATA[
-			UPDATE MEMBER_LIST 
-			SET 
-				MEMBER_PW = #{member_pw},
-				MEMBER_NICKNAME = #{member_nickname},
-				MEMBER_ADDRESS = #{member_address},
-				MEMBER_MARRY = #{member_marry},
-				MEMBER_AREA = #{member_area},
-				MEMBER_JOB = #{member_job} 
-			WHERE
-				MEMBER_ID=#{member_id}
-		]]>
-	</update>
-	
-	<update id="deleteMember" parameterType="hashmap">
-		<![CDATA[
-			DELETE FROM MEMBER_LIST 
-			WHERE 
-				MEMBER_ID=#{member_id}
-		]]>
-	</update>
 </mapper>

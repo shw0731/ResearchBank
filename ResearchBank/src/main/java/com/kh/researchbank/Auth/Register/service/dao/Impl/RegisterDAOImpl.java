@@ -14,17 +14,19 @@ public class RegisterDAOImpl implements RegisterDAO{
 	@Inject
 	private SqlSession session;
 	
-	public void MemberRegister(RegisterVO registerVo) {
+	public void insertMember(RegisterVO registerVo) {
 		session.insert("insertMember", registerVo);
 	}
 	
-	/*
-	 * public int CheckDuplicationId(String inputId) { int
-	 * idCount=session.selectOne("checkDuplicationId", inputId.replace("=", ""));
-	 * return idCount; }
-	 * 
-	 * public int CheckDuplicationNickname(String inputNickname) { int
-	 * NicknameCount=session.selectOne("checkDuplicationNickname",
-	 * inputNickname.replace("=", "")); return NicknameCount; }
-	 */
+	public int CheckDuplication(String inputId) {
+		
+		int idCount = session.selectOne("checkDuplicationId", inputId.replace("=", ""));
+		return idCount;
+	}
+	
+	public int CheckDuplicationNickname(String inputNickname) {
+		
+		int NickCount = session.selectOne("checkDuplicationNickName", inputNickname.replace("=", ""));
+		return NickCount;
+	}
 }
