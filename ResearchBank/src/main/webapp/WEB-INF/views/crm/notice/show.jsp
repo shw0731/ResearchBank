@@ -32,15 +32,7 @@
 			<tbody>
 				<tr>
 					<th scope="row">글 번호</th>
-					<td>${map.NTICE_INDEX }</td>
-					<th scope="row">조회수</th>
-					<td></td>
-				</tr>
-				<tr>
-					<th scope="row">작성자</th>
-					<td></td>
-					<th scope="row">작성시간</th>
-					<td></td>
+					<td>${map.NOTICE_IDX }</td>
 				</tr>
 				<tr>
 					<th scope="row">제목</th>
@@ -52,7 +44,9 @@
 			</tbody>
 		</table>
 
-		<a href="#this" class="btn" id="list">목록으로</a> <a href="#this" class="btn" id="update">수정하기</a>
+		<a href="#this" class="btn" id="index">목록으로</a> 
+		<a href="#this" class="btn" id="update">수정하기</a>
+		
 
 		<section class="right_section"></section>
 	</div>
@@ -63,28 +57,29 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#create").on("click", function(e) { //글쓰기 버튼
+			$("#index").on("click", function(e) {//목록으로!
 				e.preventDefault();
-				fn_createNotice();
+				fn_indexNotice();
 			});
 
-			$("a[name='title']").on("click", function(e) { //제목
-				e.preventDefault();
-				fn_showNotice($(this));
-			});
+			$("#update").on("click", function(e){//수정으로!
+                e.preventDefault();
+                fn_updateNotice();
+            });
 		});
 
-		function fn_createNotice() {
+		function fn_indexNotice() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/notice/create' />");
+			comSubmit.setUrl("<c:url value='/notice' />");//목록으로
 			comSubmit.submit();
 		}
 
-		function fn_showNotice(obj) {
-			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/notice/show' />");
-			comSubmit.addParam("NOTICE_IDX", obj.parent().find("NOTICE_#IDX").val());
-			comSubmit.submit();
+		function fn_updateNotice() {
+			var idx = "${map.NOTICE_IDX}"; // 글번호 저장
+            var comSubmit = new ComSubmit();
+            comSubmit.setUrl("<c:url value='/notice/update' />");//수정페이지로 가자
+            comSubmit.addParam("NOTICE_IDX", idx); // 해당 인덱스 그대로 들고오기
+            comSubmit.submit();
 		}
 	</script>
 

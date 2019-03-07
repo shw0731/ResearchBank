@@ -18,12 +18,12 @@ import com.kh.researchbank.common.CommandMap;
 
 /**
  * @Class Name : InquiryController.java
- * @Description : 공지사항
+ * @Description : 怨듭��궗�빆
  * @Modification Information
- *  수정일      수정자              수정내용
+ *  �닔�젙�씪      �닔�젙�옄              �닔�젙�궡�슜
  * ---------   ---------   -------------------------------
- * 2019.03.03              최초생성
- * 2019.03.04  윤창희            '흔한개발자'의 방식 적용
+ * 2019.03.03              理쒖큹�깮�꽦
+ * 2019.03.04  �쑄李쏀씗            '�쓷�븳媛쒕컻�옄'�쓽 諛⑹떇 �쟻�슜
  *
  * @author KH 
  * @since 2019. 03.03
@@ -42,7 +42,7 @@ public class NoticeController {
 	
 	
 	/**********
-	 * @title 공지사항 목록 
+	 * @title 怨듭��궗�빆 紐⑸줉 
 	 * @return
 	 * @throws Exception
 	 */
@@ -57,16 +57,16 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/notice/create") //리스트에서 쓰기 화면으로
+	@RequestMapping(value="/notice/create") //由ъ뒪�듃�뿉�꽌 �벐湲� �솕硫댁쑝濡�
 	public ModelAndView openNoticeWrite(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("crm/notice/create");
 		
 		return mv;
 	}
-	@RequestMapping(value="/notice/createNotice") //쓰기화면 에서 리스트로
+	@RequestMapping(value="/notice/createNotice") //�벐湲고솕硫� �뿉�꽌 由ъ뒪�듃濡�
 	public ModelAndView createNotice(CommandMap commandMap) throws Exception{
 		
-		System.out.println("=================TEST=================");
+		System.out.println("=================TEST_create=================");
 		System.out.println(commandMap.getMap());
 		
        
@@ -76,15 +76,41 @@ public class NoticeController {
 	    return mv;
 	}
 	
-	@RequestMapping(value="/notice/show")//리스트에서 상세보기로
+	@RequestMapping(value="/notice/show") // 상세보기
 	public ModelAndView showNotice(CommandMap commandMap) throws Exception{
+		
+		System.out.println("=================TEST_show=================");
+		System.out.println(commandMap.getMap());
+		
 	    ModelAndView mv = new ModelAndView("crm/notice/show");
+	     
+	    Map<String,Object> map = noticeService.showNotice(commandMap.getMap());
+	    mv.addObject("map", map);
+	    
+	    return mv;
+	}
+
+
+	@RequestMapping(value="/notice/update")// 수정하기
+	public ModelAndView openBoardUpdate(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("crm/notice/update");
+	    System.out.println("=================TEST_update=================");
+		System.out.println(commandMap.getMap());
 	     
 	    Map<String,Object> map = noticeService.showNotice(commandMap.getMap());
 	    mv.addObject("map", map);
 	     
 	    return mv;
 	}
-
+	 
+	@RequestMapping(value="/notice/edit") //수정하기 저장
+	public ModelAndView updateBoard(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/notice/show");
+	     
+	    noticeService.editNotice(commandMap.getMap());
+	     
+	    mv.addObject("NOTICE_IDX", commandMap.get("NOTICE_IDX"));
+	    return mv;
+	}
 
 }

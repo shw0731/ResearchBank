@@ -34,14 +34,25 @@
 	<select id="show" parameterType="hashmap" resultType="hashmap">
     	<![CDATA[
         SELECT
-        	*
+        	NOTICE_IDX,
+            NOTICE_SUBJECT,
+            NOTICE_CONTEXT
         FROM
         	NOTICE
         WHERE
-        	notice_idx=#{notice_idx}
+        	NOTICE_IDX=#{NOTICE_IDX}
          
     ]]>
 	</select>
 
-
+	<update id="update" parameterType="hashmap">
+    <![CDATA[
+        UPDATE NOTICE
+        SET
+            NOTICE_SUBJECT = #{NOTICE_SUBJECT},
+            NOTICE_CONTEXT = #{NOTICE_CONTEXT}
+        WHERE
+            NOTICE_IDX = #{NOTICE_IDX}   
+    ]]>
+	</update>
 </mapper>

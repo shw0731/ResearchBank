@@ -64,4 +64,11 @@ public class NoticeServiceImpl implements NoticeService{
 		return resultMap;
 	}
 
+
+	@Override
+	public void editNotice(Map<String, Object> map) throws Exception {
+		noticeDAO.update(map);
+		
+	}
+
 }

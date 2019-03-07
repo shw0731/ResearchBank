@@ -21,8 +21,15 @@ public class NoticeDAO extends AbstractDAO{
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> show(Map<String, Object> map) {
+	public Map<String, Object> show(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("notice.show", map);
 	}
+
+	public void update(Map<String, Object> map) throws Exception {
+		update("notice.update",map);
+		
+	}
+	
+	
 	
 }
