@@ -55,4 +55,15 @@
             NOTICE_IDX = #{NOTICE_IDX}   
     ]]>
 	</update>
+	
+	<delete id="delete" parameterType="hashmap">
+	<![CDATA[
+        DELETE FROM NOTICE
+        WHERE
+            NOTICE_IDX = #{NOTICE_IDX}
+    ]]>
+	
+	</delete>
+	
+	
 </mapper>

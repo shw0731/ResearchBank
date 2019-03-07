@@ -37,4 +37,6 @@ public interface NoticeService {
 
 	public void editNotice(Map<String, Object> map) throws Exception;
 
+	public void deleteNotice(Map<String, Object> map) throws Exception;
+
 }

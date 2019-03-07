@@ -114,5 +114,15 @@ public class NoticeController {
 	    mv.addObject("NOTICE_IDX", commandMap.get("NOTICE_IDX"));
 	    return mv;
 	}
+	
+	@RequestMapping(value="/notice/delete")
+	public ModelAndView deleteNotice(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/notice");
+	     
+	    noticeService.deleteNotice(commandMap.getMap());
+	     
+	    return mv;
+	}
+
 
 }

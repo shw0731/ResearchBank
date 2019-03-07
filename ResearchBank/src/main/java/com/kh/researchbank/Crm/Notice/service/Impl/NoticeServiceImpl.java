@@ -71,4 +71,10 @@ public class NoticeServiceImpl implements NoticeService{
 		
 	}
 
+	@Override
+	public void deleteNotice(Map<String, Object> map) throws Exception {
+		noticeDAO.deleteNotice(map);
+		
+	}
+
 }
