@@ -14,7 +14,7 @@
 	width:150px;
 }
 </style>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/resources/js/research/jQuery.serializeObject.js"></script>
 
 <script type="text/javascript">
 	
@@ -33,11 +33,11 @@ var fn_addCon = function(){
 	var idx = $('.condition').length;
 	if(idx<5){
 		
-		$('.condition').eq(idx-1).after('<div id="condition_subject" class="condition"><strong>조건'+(idx+1)+':</strong><input name="condition[]" type="text" >'
+		$('.condition').eq(idx-1).after('<div id="condition_subject" class="condition"><strong>조건'+(idx+1)+':</strong><input name="condition_subject'+(idx+1)+'" type="text" >'
 		+'<button type="button" id="conAddBtn" onclick="fn_addCon(); return false;">+</button>'
 		+'<button type="button" id="conRmBtn" onclick="fn_rmCon('+idx+'); return false;">X</button>'
-		+'<div id="condition_option" class="option"><strong>보기1:</strong><input id="opt" name="condition[2][]" type="text"></div><div id="condition_option" class="option">'
-		+'<strong>보기2:</strong><input id="opt" name="condition[2][]" type="text"><button type="button" id="optAddBtn" onclick="fn_addConOpt('+idx+',1); return false;">+</button>	</div></div>');
+		+'<div id="condition_option" class="option"><strong>보기1:</strong><input id="opt" name="con_opt'+(idx+1)+'" type="text"></div><div id="condition_option" class="option">'
+		+'<strong>보기2:</strong><input id="opt" name="con_opt'+(idx+1)+'" type="text"><button type="button" id="optAddBtn" onclick="fn_addConOpt('+idx+',1); return false;">+</button>	</div></div>');
 	 	$('.condition').eq(idx-1).children('button').eq(0).hide(); 
 	 	if(idx==4)
 	 		$('.condition').eq(idx).children('button').eq(0).hide();
@@ -56,7 +56,7 @@ var fn_rmCon = function(idx){
 		$(' > strong', this).text('조건'+(idx+1)+':');
 		$(' > button', this).eq(1).attr('onclick','fn_rmCon('+idx+')');
 		$(' > div', this).each(function(optIdx){
-			
+			$(' > input', this).eq(0).attr('name','con_opt'+(idx+1));
 			if(optIdx==1){
 				$(' > button',this).eq(0).attr('onclick','fn_addConOpt('+idx+','+optIdx+')');
 			}else if(optIdx>2){
@@ -76,7 +76,7 @@ var fn_rmCon = function(idx){
 var fn_addConOpt = function(conIdx,optIdx){
 	if(optIdx<4){
 		$('.condition').eq(conIdx).find('div').eq(optIdx).after('<div id="condition_option" class="option">'
-			+'<strong>보기'+(optIdx+2)+':</strong>	<input id="opt" name="condition[2][]" type="text">'
+			+'<strong>보기'+(optIdx+2)+':</strong>	<input id="opt" name="con_opt'+(conIdx+1)'" type="text">'
 			+'<button type="button" id="optAddBtn" onclick="fn_addConOpt('+conIdx+','+(optIdx+1)+'); return false;">+</button>'
 			+'<button type="button" id="optRmBtn" onclick="fn_rmConOpt('+conIdx+','+(optIdx+1)+'); return false;">x</button></div>');
 		$('.condition').eq(conIdx).find('div').eq(optIdx).find('button').eq(0).hide();
@@ -174,8 +174,10 @@ var fn_rmQueOpt = function(queIdx, optIdx){
 
 //설문조사 저장
 var fn_storeSurvey = function(){
-	
-	console.log($('#frm').serializeObject());
+
+
+
+	 console.log($('#frm').serializeObject()); 
 	
 }
 </script>
