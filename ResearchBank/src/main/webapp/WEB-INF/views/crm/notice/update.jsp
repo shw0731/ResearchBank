@@ -35,23 +35,17 @@
 						<td>${map.NOTICE_IDX }<input type="hidden" id="NOTICE_IDX"
 							name="NOTICE_IDX" value="${map.NOTICE_IDX}">
 						</td>
-						<th scope="row">조회수</th>
-						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">작성자</th>
-						<td></td>
-						<th scope="row">작성시간</th>
-						<td></td>
-					</tr>
+	                    <th scope="row">제목</th>
+	                    <td colspan="3">
+	                        <input type="text" id="NOTICE_SUBJECT" name="NOTICE_SUBJECT" class="wdp_90" value="${map.NOTICE_SUBJECT }"/>
+	                    </td>
+	                </tr>
+
+
 					<tr>
-						<th scope="row">제목</th>
-						<td colspan="3"><input type="text" id="NOTICE_SUBJECT"
-							class="wdp_90" value="${map.NOTICE_SUBJECT}" /></td>
-					</tr>
-					<tr>
-						<td colspan="4" class="view_text"><textarea rows="20"
-								cols="100" title="내용" id="NOTICE_CONTEXT" name="NOTICE_CONTEXT">${map.NOTICE_CONTEXT}</textarea>
+						<td colspan="4" class="view_text"><textarea rows="20" cols="100" title="내용" id="NOTICE_CONTEXT" name="NOTICE_CONTEXT">${map.NOTICE_CONTEXT}</textarea>
 						</td>
 					</tr>
 				</tbody>
