@@ -30,7 +30,7 @@
 		<a href="#this" class="btn" id="write">작성하기</a>
 		<a href="/inquiry" class="btn" id="list">목록으로</a>
 	</form>
-	
+		<form id="commonForm" name="commonForm"></form>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -53,6 +53,7 @@
 		
 		function fn_insertBoard(){
 			var comSubmit = new ComSubmit("frm");
+			console.log('adkk')
 			comSubmit.setUrl("<c:url value='/inquiry/createInquiry' />");
 			comSubmit.submit();
 		}

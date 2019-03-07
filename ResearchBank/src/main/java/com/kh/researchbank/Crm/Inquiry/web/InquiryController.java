@@ -71,9 +71,10 @@ public class InquiryController {
 	//문의 작성 완료
 	@RequestMapping(value="/inquiry/createInquiry")
 	public ModelAndView createInquiry(CommandMap commandMap) throws Exception{
-		
 		ModelAndView mv = new ModelAndView("redirect:/inquiry");
+		
 		inquiryService.creat(commandMap.getMap());
+		
 		
 		return mv;
 	}

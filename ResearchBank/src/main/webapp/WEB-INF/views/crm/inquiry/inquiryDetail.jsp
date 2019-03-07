@@ -49,7 +49,7 @@
 				e.preventDefault();
 				fn_openBoardUpdate(0);
 			});
-			$("#comment").on("click", function(e){
+			$("#comment").on("click", function(e){//답글달기 버튼
 				e.preventDefault();
 				fn_openBoardUpdate(1);
 			});
@@ -59,11 +59,11 @@
 		function fn_openBoardUpdate(value){
 			var idx = "${map.IDX}";
 			var comSubmit = new ComSubmit();
-			if(value==0){
+			if(value==0){ //수정하기
 			comSubmit.setUrl("<c:url value='/inquiry/updateInquiry' />");
 			comSubmit.addParam("IDX", idx);
 			comSubmit.submit();
-			}else if(value==1){
+			}else if(value==1){ //답글달기
 				comSubmit.setUrl("<c:url value='/inquiry/commentInquiry' />");
 				comSubmit.addParam("IDX", idx);
 				comSubmit.submit();

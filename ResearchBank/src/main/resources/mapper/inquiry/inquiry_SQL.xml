@@ -14,7 +14,7 @@
 			INQUIRY
 		WHERE
 			DEL_GB = 'N'
-		ORDER BY IDX DESC
+		ORDER BY RE_REF desc, re_step asc
 	]]>
 	</select>
 	
@@ -41,23 +41,27 @@
 			INQUIRY_STATE,
             PARENT_IDX,
             IDX,
+            RE_STEP,
+            RE_REF,
             REGIST_DATE,
             HIT_CNT,
             DEL_GB,
             TITLE,
             CONTENTS
-		)
+            )
 		VALUES
 		(
 			0,
             0,
             SEQ_INQUIRY_IDX.NEXTVAL,
+           0,
+           SEQ_INQUIRY_IDX.NEXTVAL,
             SYSDATE,
             0,
             'N',
 			#{TITLE},
 			#{CONTENTS}
-		)
+        )
 			
 	]]>
 
@@ -77,12 +81,32 @@
 
 <update id="comments" parameterType="hashmap">
 		<![CDATA[
-			UPDATE INQUIRY
-			SET
-				TITLE = #{TITLE},
-				CONTENTS = #{CONTENTS}
-			WHERE
-				IDX = #{IDX}	
+			INSERT INTO INQUIRY
+		(
+			INQUIRY_STATE,
+            PARENT_IDX,
+            IDX,
+            RE_STEP,
+            RE_REF,
+            REGIST_DATE,
+            HIT_CNT,
+            DEL_GB,
+            TITLE,
+            CONTENTS
+            )
+		VALUES
+		(
+			0,
+            0,
+           #{IDX},
+           SEQ_INQUIRY_IDX.NEXTVAL + 1,
+           1,
+            SYSDATE,
+            0,
+            'N',
+			#{TITLE},
+			#{CONTENTS}
+        )
 		]]>
 	</update>
 
