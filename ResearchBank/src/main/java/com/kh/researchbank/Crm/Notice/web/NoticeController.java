@@ -106,7 +106,9 @@ public class NoticeController {
 	@RequestMapping(value="/notice/edit") //수정하기 저장
 	public ModelAndView updateBoard(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("redirect:/notice/show");
-	     
+	    System.out.println("=================TEST_edit=================");
+		System.out.println(commandMap.getMap());
+		
 	    noticeService.editNotice(commandMap.getMap());
 	     
 	    mv.addObject("NOTICE_IDX", commandMap.get("NOTICE_IDX"));

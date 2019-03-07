@@ -52,11 +52,11 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#index").on("click", function(e) {
+				$("#index").on("click", function(e) {//목록으로
 					e.preventDefault();
 					fn_indexNotice();
 				});
-				$("#create").on("click", function(e) {
+				$("#create").on("click", function(e) { // 작성완료
 					e.preventDefault();
 					fn_createNotice();
 				});
