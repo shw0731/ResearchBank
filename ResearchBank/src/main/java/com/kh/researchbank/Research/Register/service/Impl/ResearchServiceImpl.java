@@ -1,5 +1,7 @@
 package com.kh.researchbank.Research.Register.service.Impl;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -39,7 +41,7 @@ public class ResearchServiceImpl implements ResearchService {
 	}
 	
 	@Override
-	public String store() throws Exception{
+	public String store(Map<String, Object> map) throws Exception{
 		String forward = "research/list/index";
 		
 		return forward;

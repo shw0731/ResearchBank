@@ -47,6 +47,8 @@ public class ResearchController {
 	@RequestMapping(value="/research/register/store", method=RequestMethod.POST)
 	public ModelAndView store(CommandMap commandMap)throws Exception{
 		ModelAndView mv = new ModelAndView("research/register/edit");
+		
+		researchService.store(commandMap.getMap());
 		return mv;
 	}
 }
