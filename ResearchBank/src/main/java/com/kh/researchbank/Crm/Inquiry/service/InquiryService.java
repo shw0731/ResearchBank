@@ -41,4 +41,7 @@ public interface InquiryService {
 	void delete(Map<String,Object>map) throws Exception;
 
 	String index() throws Exception;
+	
+	int listCount(int IDX) throws Exception;
+
 }

@@ -132,5 +132,12 @@
 	]]>
 </update>
 
+	<!-- 댓글 세기 -->
+	<select id="listCount" parameterType="integer" resultType="integer">
+			SELECT count(*) FROM Inquiry
+			where 
+			IDX = #{IDX}
+	</select>
+
 
 </mapper>

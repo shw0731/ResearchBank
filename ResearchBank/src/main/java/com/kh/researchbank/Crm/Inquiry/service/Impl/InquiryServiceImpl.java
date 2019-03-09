@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.kh.researchbank.Crm.Inquiry.dao.InquiryDAO;
 import com.kh.researchbank.Crm.Inquiry.service.InquiryService;
 
+import org.mybatis.spring.SqlSessionTemplate;
+
 /**
  * @Class Name : InquiryController.java
  * @Description : 1:1 臾몄쓽
@@ -31,6 +33,9 @@ public class InquiryServiceImpl implements InquiryService{
 
 	@Resource
 	private InquiryDAO inquiryDAO;
+	
+	@Resource
+	private SqlSessionTemplate sqlSessionTemplate;
 	
 	@Override
 	   public String index() throws Exception {
@@ -78,6 +83,12 @@ public class InquiryServiceImpl implements InquiryService{
 	public void delete(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		inquiryDAO.delete(map);
+	}
+
+	@Override
+	public int listCount(int IDX) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("inquiry.listCount", IDX);
 	}
 
 	

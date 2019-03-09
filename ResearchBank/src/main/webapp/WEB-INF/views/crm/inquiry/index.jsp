@@ -22,18 +22,68 @@
 		<ul class="nav nav-tabs" role="tablist">
 
 			<li role="presentation" class="active"><a href="#home"
-				aria-controls="home" role="tab" data-toggle="tab">FAQ</a></li>
-			<li role="presentation"><a href="#oneone" aria-controls="oneone"
-				role="tab" data-toggle="tab">1:1문의</a></li>
+				aria-controls="home" role="tab" data-toggle="tab">1:1문의</a></li>
+				
+				<li role="presentation"><a href="#oneone" aria-controls="oneone"
+				role="tab" data-toggle="tab">FAQ</a></li>
+				
 			<li role="presentation"><a href="#profile"
 				aria-controls="profile" role="tab" data-toggle="tab">마일리지 프로그램</a></li>
 		</ul>
+
 
 		<!-- Tab panes -->
 		<div class="tab-content">
 
 
-			<div role="tabpanel" class="tab-pane active" id="home">
+ <div role="tabpanel" class="tab-pane active" id="home">
+		<table>
+					<colgroup>
+						<col width="10%" />
+						<col width="*" />
+						<col width="15%" />
+						<col width="20%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">글번호</th>
+							<th scope="col">제목</th>
+							<th scope="col">조회수</th>
+							<th scope="col">작성일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${fn:length(list) > 0}">
+								<c:forEach items="${list }" var="row">
+									<tr>
+										<td>${row.IDX }</td>
+										<td class="title"><a href="#this" name="title">${row.TITLE }</a>
+											<input type="hidden" id="IDX" value="${row.IDX }"></td>
+										<td>${row.HIT_CNT }</td>
+										<td>${row.REGIST_DATE}</td>
+									</tr>
+
+								</c:forEach>
+							</c:when>
+
+							 <c:otherwise>
+								<tr>
+									<td colspan="4">조회된 결과가 없습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+				<a href="/inquiry/storeInquiryWrite" class="btn" id="write">글쓰기</a>
+				<div class="paging">
+               ${pagingHtml}
+            </div>
+
+
+
+			</div>
+ <div role="tabpanel" class="tab-pane" id="oneone">
 
 				<div class="panel-group" id="accordion" role="tablist"
 					aria-multiselectable="true">
@@ -144,6 +194,8 @@
 					<div></div>
 
 				</div>
+				
+				
 			</div>
 
 
@@ -158,50 +210,6 @@
 
 			</div>
 
-			<div role="tabpanel" class="tab-pane" id="oneone">
-		<table>
-					<colgroup>
-						<col width="10%" />
-						<col width="*" />
-						<col width="15%" />
-						<col width="20%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">글번호</th>
-							<th scope="col">제목</th>
-							<th scope="col">조회수</th>
-							<th scope="col">작성일</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:choose>
-							<c:when test="${fn:length(list) > 0}">
-								<c:forEach items="${list }" var="row">
-									<tr>
-										<td>${row.IDX }</td>
-										<td class="title"><a href="#this" name="title">${row.TITLE }</a>
-											<input type="hidden" id="IDX" value="${row.IDX }"></td>
-										<td>${row.HIT_CNT }</td>
-										<td>${row.REGIST_DATE}</td>
-									</tr>
-
-								</c:forEach>
-							</c:when>
-
-							 <c:otherwise>
-								<tr>
-									<td colspan="4">조회된 결과가 없습니다.</td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
-					</tbody>
-				</table>
-				<a href="/inquiry/storeInquiryWrite" class="btn" id="write">글쓰기</a>
-
-
-
-			</div>
 
 
 		</div>
@@ -213,7 +221,7 @@
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			fn_selectBoardList(1);
+/* 			fn_selectBoardList(1); */
 			$("a[name='title']").on("click", function(e) { //제목 
 				e.preventDefault();
 				fn_openBoardDetail($(this));

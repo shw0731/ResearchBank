@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.researchbank.common.AbstractDAO;
 
 
-@Repository("sampleDAO")
+@Repository("inquiryDAO")
 public class InquiryDAO extends AbstractDAO{
 	
 	@SuppressWarnings("unchecked")
