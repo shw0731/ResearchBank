@@ -18,6 +18,8 @@
 				<tr>
 					<th scope="row">제목</th>
 					<td><input type="text" id="TITLE" name="TITLE" class="wdp_90"></input></td>
+					<input type='radio' id='INQUIRY_STATE' name='INQUIRY_STATE' class="wdp_90" value='1'/>비밀글
+						<input type='radio' id='INQUIRY_STATE' name='INQUIRY_STATE'  class="wdp_90" value='0'/>일반글
 				</tr>
 				<tr>
 					<td colspan="2" class="view_text">
@@ -53,7 +55,6 @@
 		
 		function fn_insertBoard(){
 			var comSubmit = new ComSubmit("frm");
-			console.log('adkk')
 			comSubmit.setUrl("<c:url value='/inquiry/createInquiry' />");
 			comSubmit.submit();
 		}

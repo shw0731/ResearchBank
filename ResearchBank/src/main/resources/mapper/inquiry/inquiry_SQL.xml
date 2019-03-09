@@ -14,7 +14,7 @@
 			INQUIRY
 		WHERE
 			DEL_GB = 'N'
-		ORDER BY RE_REF desc, re_step asc
+		ORDER BY RE_REF DESC, RE_STEP ASC
 	]]>
 	</select>
 	
@@ -51,10 +51,10 @@
             )
 		VALUES
 		(
-			0,
+			#{INQUIRY_STATE},
             0,
             SEQ_INQUIRY_IDX.NEXTVAL,
-           0,
+          0,
            SEQ_INQUIRY_IDX.NEXTVAL,
             SYSDATE,
             0,
@@ -98,9 +98,9 @@
 		(
 			0,
             0,
+            SEQ_INQUIRY_IDX.NEXTVAL,
+         	1,
            #{IDX},
-           SEQ_INQUIRY_IDX.NEXTVAL + 1,
-           1,
             SYSDATE,
             0,
             'N',

@@ -30,25 +30,45 @@
 					<th scope="row">작성시간</th>
 					<td>${map.CREA_DTM }</td>
 				</tr>
+				<c:choose>
+				<c:when test = "${comment == 0}">
 				<tr>
 					<th scope="row">제목</th>
 					<td colspan="3">
 						<input type="text" id="TITLE" name="TITLE" class="wdp_90" value="${map.TITLE }"/>
 					</td>
+					
 				</tr>
 				<tr>
 					<td colspan="4" class="view_text">
 						<textarea rows="20" cols="100" title="내용" id="CONTENTS" name="CONTENTS">${map.CONTENTS }</textarea>
+											<a href="#this" class="btn" id="update">저장하기</a>
+												<a href="/inquiry" class="btn" id="list">목록으로</a>
 					</td>
 				</tr>
+				</c:when>
+				<c:when test = "${comment == 1 }">
+				<tr>
+					<th scope="row">제목</th>
+					<td colspan="3">
+						<input type="text" id="TITLE" name="TITLE" class="wdp_90" value="  RE:답변입니다 :-)"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" class="view_text">
+						<textarea rows="20" cols="100" title="내용" id="CONTENTS" name="CONTENTS"></textarea>
+						<br/>
+						<a href="#this" class="btn" id="comment">답글달기</a>
+							<a href="/inquiry" class="btn" id="list">목록으로</a>
+					</td>
+				</tr>
+				
+				</c:when>
+				</c:choose>
 			</tbody>
 		</table>
 	</form>
 	
-	<a href="/inquiry" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="update">저장하기</a>
-	<a href="#this" class="btn" id="comment">답글달기</a>
-	<a href="#this" class="btn" id="delete">삭제하기</a>
 	<form id="commonForm" name="commonForm"></form>
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	<script type="text/javascript">

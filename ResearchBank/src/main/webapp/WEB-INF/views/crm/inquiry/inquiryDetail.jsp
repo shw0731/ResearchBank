@@ -17,6 +17,7 @@
 			<tr>
 				<th scope="row">글 번호</th>
 				<td>${map.IDX }</td>
+				<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
 				<th scope="row">조회수</th>
 				<td>${map.HIT_CNT }</td>
 			</tr>
@@ -39,6 +40,7 @@
 	<a href="/inquiry" class="btn" id="list">목록으로</a>
 	<a href="#this" class="btn" id="update">수정하기</a>
 	<a href="#this" class="btn" id="comment">답글달기</a>
+	<a href="#this" class="btn" id="delete">삭제하기</a>
 	
 	<form id="commonForm" name="commonForm"></form>
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
@@ -52,6 +54,12 @@
 			$("#comment").on("click", function(e){//답글달기 버튼
 				e.preventDefault();
 				fn_openBoardUpdate(1);
+			});
+			
+
+			$("#delete").on("click", function(e){ //삭제하기 버튼
+				e.preventDefault();
+				fn_deleteBoard();
 			});
 		});
 		
@@ -68,6 +76,17 @@
 				comSubmit.addParam("IDX", idx);
 				comSubmit.submit();
 			}
+		}
+		
+
+		function fn_deleteBoard(){
+			
+
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/inquiry/deleteInquiry' />");
+			comSubmit.addParam("IDX", $("#IDX").val());
+			comSubmit.submit();
+			
 		}
 	</script>
 </body>

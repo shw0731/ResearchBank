@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.researchbank.Crm.Inquiry.InquiryModel;
+import com.kh.researchbank.Crm.Inquiry.paging.Pagination;
 import com.kh.researchbank.Crm.Inquiry.service.InquiryService;
 import com.kh.researchbank.common.CommandMap;
+import com.kh.researchbank.Crm.Inquiry.paging.Paging;
 
 /**
  * @Class Name : InquiryController.java
@@ -34,6 +38,13 @@ import com.kh.researchbank.common.CommandMap;
 @Controller
 public class InquiryController {
 	
+	private int currentPage = 1;
+	private int totalCount;
+	private int blockCount = 10;
+	private int blockPage = 5;
+	private String pagingHtml;
+	private Paging page;
+	
 	@Resource(name = "inquiryService")
 	private InquiryService inquiryService;
 	
@@ -50,12 +61,13 @@ public class InquiryController {
 	//문의 리스트 보기
 
 	@RequestMapping(value="/inquiry")
-	public ModelAndView index(CommandMap commandMap) throws Exception {
+	public ModelAndView index(CommandMap commandMap,HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("crm/inquiry/index");
 		
 		List<Map<String,Object>> list =
 				inquiryService.show(commandMap.getMap());
 		mv.addObject("list",list);
+		
 		return mv;
 	}
 	
@@ -95,6 +107,7 @@ public class InquiryController {
 		Map<String,Object> map =
 				inquiryService.showDetail(commandMap.getMap());
 		mv.addObject("comment",1);
+		mv.addObject("IDX",commandMap.get("IDX"));
 		mv.addObject("map", map);
 		
 		return mv;
@@ -141,7 +154,7 @@ public class InquiryController {
 	@RequestMapping(value="/inquiry/deleteInquiry")
 	public ModelAndView deleteInquiry(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/inquiry");
-				
+
 		inquiryService.delete(commandMap.getMap());
 		
 		return mv;
