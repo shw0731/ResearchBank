@@ -80,32 +80,7 @@ function ComAjax(opt_formId){
         });
     };
 }
-(function($){
-	$.fn.serializeObject = function () {
-		"use strict";
 
-		var result = {};
-		var extend = function (i, element) {
-			var node = result[element.name];
-
-	// If node with same name exists already, need to convert it to an array as it
-	// is a multi-value field (i.e., checkboxes)
-
-			if ('undefined' !== typeof node && node !== null) {
-				if ($.isArray(node)) {
-					node.push(element.value);
-				} else {
-					result[element.name] = [node, element.value];
-				}
-			} else {
-				result[element.name] = element.value;
-			}
-		};
-
-		$.each(this.serializeArray(), extend);
-		return result;
-	};
-})(jQuery);
 
 /*
  * divId : 페이징 태그가 그려질 div pageIndx : 현재 페이지 위치가 저장될 input 태그 id recordCount :

@@ -1,5 +1,6 @@
 package com.kh.researchbank.Research.Register.service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +28,7 @@ public interface ResearchService {
 	 */
 	public String index() throws Exception;
 	
-	public String store(Map<String, Object> map) throws Exception;
+	public void store(Map<String, Object> map) throws Exception;
 	
 	
 }
