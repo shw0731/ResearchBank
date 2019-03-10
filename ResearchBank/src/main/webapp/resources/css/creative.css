@@ -17,7 +17,7 @@ body {
 hr {
   max-width: 50px;
   border-width: 3px;
-  border-color: #F05F40;
+  border-color: #7ea4b3;
 }
 
 hr.light {
@@ -25,13 +25,13 @@ hr.light {
 }
 
 a {
-  color: #F05F40;
+  color: #000000;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 
 a:hover {
-  color: #f05f40;
+  color: #7ea4b3;
 }
 h1 {
 	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -47,7 +47,7 @@ h6 {
 }
 
 .bg-primary {
-  background-color: #F05F40 !important;
+  background-color: #7ea4b3 !important;
 }
 
 .bg-dark {
@@ -345,7 +345,7 @@ div .login_input_area a{
 }
 
 
-/*헤더 글꼴 설정*/
+/*占쎈엘占쎈쐭 疫뀐옙�몭占� 占쎄퐬占쎌젟*/
 .subnav-content > a {
   font-weight: 700;
   text-transform: uppercase;

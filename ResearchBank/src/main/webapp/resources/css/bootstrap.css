@@ -3365,7 +3365,7 @@ input[type="button"].btn-block {
 }
 .collapse {
   display: none;
-  visibility: hidden;
+  visibility: .inherit;
 }
 .collapse.in {
   display: block;
@@ -4037,10 +4037,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .tab-content > .tab-pane {
   display: none;
-  visibility: hidden;
+  visibility: collapse;
 }
 .tab-content > .active {
-  display: block;
+  display: none;
   visibility: visible;
 }
 .nav-tabs .dropdown-menu {
@@ -6334,7 +6334,7 @@ button.close {
   display: none !important;
 }
 .show {
-  display: block !important;
+  display: -webkit-box;
 }
 .invisible {
   visibility: hidden;

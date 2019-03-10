@@ -15,11 +15,13 @@
 			<caption>게시글 작성</caption>
 			<tbody>
 			<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				<td><img src="/resources/images/icon_secret.gif"> 비밀글
+			<input type="checkbox" value="1" name="INQUIRY_STATE" id="INQUIRY_STATE"/>
+				일반글<input type="checkbox" value="0" name="INQUIRY_STATE" id="INQUIRY_STATE"/>
+			</td>
 				<tr>
 					<th scope="row">제목</th>
-					<td><input type="text" id="TITLE" name="TITLE" class="wdp_90"></input></td>
-					<input type='radio' id='INQUIRY_STATE' name='INQUIRY_STATE' class="wdp_90" value='1'/>비밀글
-						<input type='radio' id='INQUIRY_STATE' name='INQUIRY_STATE'  class="wdp_90" value='0'/>일반글
+					<td><input type="text" id="TITLE" name="TITLE" class="wdp_100"></input></td>
 				</tr>
 				<tr>
 					<td colspan="2" class="view_text">

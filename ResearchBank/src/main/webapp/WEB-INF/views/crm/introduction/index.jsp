@@ -26,10 +26,10 @@
 <div class="gridcontainer">
   <div class="image"></div>
   <div class="name">
-    <span>Travis Neilson</span>
+    <span>Lee subin</span>
   </div>
   <div class="about">
-    <p>Travis designs search at Google. He's the creator of <b>DevTips</b>, a youtube channel where he helped people learn about Design and Code.</p>
+    <p>세상 제일 귀염둥이<b>너무귀여어</b>메롱</p>
   </div>
 
   <div class="sociallinks">

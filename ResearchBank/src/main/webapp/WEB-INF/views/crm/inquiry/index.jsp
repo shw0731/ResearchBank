@@ -1,55 +1,52 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/a.css" rel="stylesheet">
+<link href="/resources/css/creative.css" rel="stylesheet">
+<!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
 <title>Research!</title>
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
 	<br />
+	<div style="margin:50px; align:center;">
 	<h2>고객지원실</h2>
-	<div role="tabpanel">
-
+	</div>
+	<div role="tabpanel" style="margin:50px;">
 		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
 
-			<li role="presentation" class="active"><a href="#home"
-				aria-controls="home" role="tab" data-toggle="tab">1:1문의</a></li>
-				
-				<li role="presentation"><a href="#oneone" aria-controls="oneone"
-				role="tab" data-toggle="tab">FAQ</a></li>
-				
-			<li role="presentation"><a href="#profile"
-				aria-controls="profile" role="tab" data-toggle="tab">마일리지 프로그램</a></li>
-		</ul>
+	<ul class="nav nav-pill" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#oneone" aria-controls="oneone" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+		</ul><br/>
+		</div>
+		<!-- Tab panes --><!-- 시작 -->
+		<div class="tab-content" style="margin:50px;">
+ 
+ <!-- 챕터1 -->
+ <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px;/*  margin: auto; */" >
 
-
-		<!-- Tab panes -->
-		<div class="tab-content">
-
-
- <div role="tabpanel" class="tab-pane active" id="home">
-		<table>
-					<colgroup>
-						<col width="10%" />
-						<col width="*" />
-						<col width="15%" />
-						<col width="20%" />
-					</colgroup>
+				<!-- 	<colgroup >
+						<col width="15%"  /> 글번호
+						<col width="*" /> 제목
+						<col width="15%" /> 조회수
+						<col width="30%" /> 작성일
+					</colgroup> -->
+					 <table class="table table-striped table-bordered table-hover"
+                        id="dataTables-example"  >
 					<thead>
-						<tr>
-							<th scope="col">글번호</th>
-							<th scope="col">제목</th>
-							<th scope="col">조회수</th>
-							<th scope="col">작성일</th>
+						<tr class="info" align="center" >
+							<th width="15%">글번호</th>
+							<th width="*">제목</th>
+							<th width="15%">조회수</th>
+							<th width="30%">작성일</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -57,12 +54,18 @@
 							<c:when test="${fn:length(list) > 0}">
 								<c:forEach items="${list }" var="row">
 									<tr>
-										<td>${row.IDX }</td>
-										<td class="title"><a href="#this" name="title">${row.TITLE }</a>
+										<td align="center">${row.IDX }</td>
+										<td class="odd gradeX">
+										<c:if test="${row.INQUIRY_STATE=='1'}">
+                        <img src="/resources/images/icon_secret.gif">
+									</c:if>
+										<a href="#this" name="title">
+										${row.TITLE }</a>
 											<input type="hidden" id="IDX" value="${row.IDX }"></td>
-										<td>${row.HIT_CNT }</td>
-										<td>${row.REGIST_DATE}</td>
+										<td align="center">${row.HIT_CNT }</td>
+										<td align="center">${row.REGIST_DATE}</td>
 									</tr>
+
 
 								</c:forEach>
 							</c:when>
@@ -72,11 +75,16 @@
 									<td colspan="4">조회된 결과가 없습니다.</td>
 								</tr>
 							</c:otherwise>
+							
+							
 						</c:choose>
 					</tbody>
+					
 				</table>
+				<div align="right">
 				<a href="/inquiry/storeInquiryWrite" class="btn" id="write">글쓰기</a>
-				<div class="paging">
+				</div>
+				<div class="paging" align="center">
                ${pagingHtml}
             </div>
 
@@ -197,9 +205,7 @@
 				
 				
 			</div>
-
-
-
+			
 			<div role="tabpanel" class="tab-pane" id="profile">
 				RESEARCH BANK 마일리지 프로그램<br /> 1. 포인트 전환 신청 시기: 매월 1일부터 25일까지<br />
 				2. 현금 입금 시기: 포인트 전환 신청을 한 다음 달 영업일 초<br /> 3. 포인트 전환 가능 금액:
@@ -215,7 +221,7 @@
 		</div>
 		<!-- 탭컨텐츠ㅡ누르면 토글하는거 -->
 
-	</div>
+	<!-- </div> -->
 	<!-- 탭판넬 ㅡ아코디언-->
 	<form id="commonForm" name="commonForm"></form>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
@@ -226,6 +232,11 @@
 				e.preventDefault();
 				fn_openBoardDetail($(this));
 			});
+			
+			$('#myTab a').click(function (e) {
+				  e.preventDefault()
+				  $(this).tab('show')
+				})
 
 		});
 

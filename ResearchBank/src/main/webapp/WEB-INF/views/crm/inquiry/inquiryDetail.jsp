@@ -3,45 +3,65 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/a.css" rel="stylesheet">
+<link href="/resources/css/creative.css" rel="stylesheet">
+<!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
+<title>Research!</title>
+
 </head>
 <body>
-	<table class="board_view">
-		<colgroup>
-			<col width="15%"/>
-			<col width="35%"/>
-			<col width="15%"/>
-			<col width="35%"/>
-		</colgroup>
-		<caption>게시글 상세</caption>
-		<tbody>
-			<tr>
-				<th scope="row">글 번호</th>
-				<td>${map.IDX }</td>
-				<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
-				<th scope="row">조회수</th>
-				<td>${map.HIT_CNT }</td>
-			</tr>
-			<tr>
-<!-- 				<th scope="row">작성자</th> -->
-<%-- 				<td>${map.CREA_ID }</td> --%>
-				<th scope="row">작성시간</th>
-				<td>${map.REGIST_DATE }</td>
-			</tr>
-			<tr>
-				<th scope="row">제목</th>
-				<td colspan="3">${map.TITLE }</td>
-			</tr>
-			<tr>
-				<td colspan="4">${map.CONTENTS }</td>
-			</tr>
-		</tbody>
-	</table>
-	
-	<a href="/inquiry" class="btn" id="list">목록으로</a>
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<br />
+	<br />
+	<br />
+	<div style="margin:50px; align:center;">
+	<h2>고객지원실</h2>
+	</div>
+	<div role="tabpanel" style="margin:50px;">
+		<!-- Nav tabs -->
+
+	<ul class="nav nav-pill" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#oneone" aria-controls="oneone" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+		</ul><br/>
+		</div>
+		<!-- Tab panes --><!-- 시작 -->
+		<div class="tab-content" style="margin:50px;">
+ 
+ <!-- 챕터1 -->
+ <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px;/*  margin: auto; */" >
+
+				<!-- 	<colgroup >
+						<col width="15%"  /> 글번호
+						<col width="*" /> 제목
+						<col width="15%" /> 조회수
+						<col width="30%" /> 작성일
+					</colgroup> -->
+					 <table class="table table-striped table-bordered table-hover"
+                        id="dataTables-example"  >
+					<thead>
+						<tr class="info" align="center" >
+							<th scope="row">제목</th>
+				<td colspan="20">${map.TITLE }</td>
+						</tr>
+					</thead>
+					<tbody>
+						<td colspan="4">${map.CONTENTS }</td>
+					</tbody>
+					
+				</table>
+				<div align="right">
+				<a href="/inquiry" class="btn" id="list">목록으로</a>
 	<a href="#this" class="btn" id="update">수정하기</a>
 	<a href="#this" class="btn" id="comment">답글달기</a>
 	<a href="#this" class="btn" id="delete">삭제하기</a>
-	
+				</div>
+				
+				</div></div>
+				
+				
 	<form id="commonForm" name="commonForm"></form>
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	
@@ -91,3 +111,4 @@
 	</script>
 </body>
 </html>
+				

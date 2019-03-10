@@ -96,8 +96,8 @@
 			var comSubmit = new ComSubmit("frm");
 			
 			if(comment==0){
-				console.log('asd');
 				comSubmit.setUrl("<c:url value='/inquiry/editInquiry' />");
+				comSubmit.addParam("INQUIRY_STATE", $("#INQUIRY_STATE").val());
 				comSubmit.submit();
 			}else if(comment==1){
 				comSubmit.setUrl("<c:url value='/inquiry/editComment' />");

@@ -88,9 +88,9 @@ public class InquiryController {
 		mv.addObject("totalCount", totalCount);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.addObject("currentPage", currentPage);
+		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
 		mv.addObject("list", list);
 		
-	/*	mv.setViewName("/");*/
 		
 		return mv;
 	}
@@ -130,6 +130,7 @@ public class InquiryController {
 		ModelAndView mv = new ModelAndView("crm/inquiry/inquiryUpdate"); // 코멘트 창 열면 윗글 내용 나오게하기
 		Map<String, Object> map = inquiryService.showDetail(commandMap.getMap());
 		mv.addObject("comment", 1);
+		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
 		mv.addObject("IDX", commandMap.get("IDX"));
 		mv.addObject("map", map);
 
@@ -143,6 +144,7 @@ public class InquiryController {
 
 		inquiryService.storecomment(commandMap.getMap());
 
+		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
 		mv.addObject("comment", 1);
 		mv.addObject("IDX", commandMap.get("IDX"));
 		return mv;
