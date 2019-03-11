@@ -1,7 +1,7 @@
 package com.kh.researchbank.Research.Register.service.Impl;
 
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.researchbank.Research.Register.service.ResearchService;
 
 /**
@@ -61,14 +60,8 @@ public class ResearchServiceImpl implements ResearchService {
 			System.out.println("방법3) key : " + key + " / value : " + map.get(key));
 		}
 
-		Map<String, Object> queMap = (Map<String, Object>) map.get("question");
-
-		keys = queMap.keySet().iterator();
-		while (keys.hasNext()) {
-			String key = keys.next();
-			System.out.println("방법3) key : " + key + " / value : " + queMap.get(key));
-		}
-
+		
+		
 		researchDAO.store(map);
 
 	}

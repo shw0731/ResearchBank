@@ -24,6 +24,9 @@
                                                  , #{survey_subject}
                                                  , '123123')
      ]]>
+     <selectKey keyProperty="survey_seq" resultType="int">
+     	SELECT SURVEY_SEQ.CURRVAL FROM DUAL
+     </selectKey>
     </insert>
 </mapper>
 
