@@ -19,23 +19,23 @@
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    
-   
+   			 <tbody>
+                      <tr>
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">${member_nickname}님의 프로필 정보</h3>
+              <h3 class="panel-title">${MEMBER_NICKNAME}님의 프로필 정보</h3>
             </div>
             <div class="panel-body">
               <div class="row">
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
-                    <tbody>
-                      <tr>
+                   
                         <td>아이디:</td>
                         <td>${member_id}</td>
                       </tr>
                       <tr>
                         <td>닉네임:</td>
-                        <td>${member_nickname}</td>
+                        <td>${MEMBER_NICKNAME}</td>
                       </tr> 
                       <tr>
                         <td>포인트:</td>
@@ -51,7 +51,7 @@
                       </tr>
                       <tr>
                         <td>주소:</td>
-                        <td>${member_address}</td>
+                        <td>${MEMBER_ADDRESS}</td>
                       </tr>
                       <tr>
                         <td>결혼 여부:</td>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <head>
   <meta charset="utf-8">
@@ -27,7 +28,6 @@
 </head>
 
 <style>
-
 /* The subnavigation menu */
 .subnav {
   float: left;
@@ -36,7 +36,6 @@
   display:block;
   
 }
-
 /* Subnav button */
 .subnav .subnavbtn {
   font-size: 16px; 
@@ -61,7 +60,6 @@
   z-index: 1;
   transition: 1s;
 }
-
 /* Style the subnav links */
 .subnav-content a {
   
@@ -70,22 +68,17 @@
   text-decoration: none;
   transition: 1s;
 }
-
 /* Add a grey background color on hover */
 .subnav-content a:hover {
   background-color: #eee;
   color: black;
 }
-
 /* When you move the mouse over the subnav container, open the subnav content */
 .subnav:hover .subnav-content {
-
   
   display: block;
   
 }
-
-
 </style>
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -124,9 +117,16 @@
 		      <a href="/mypage">마이페이지</a>
 		     </div>
           </li>
+          <c:if test="${MEMBER_NICKNAME == null }">
           <li class="nav-item subnav">
             <a class="nav-link js-scroll-trigger" href="/login.do">Login</a>
           </li>
+   		  </c:if>	
+   		  <c:if test="${MEMBER_NICKNAME != null }">
+          <li class="nav-item subnav">
+            <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
+          </li>
+   		  </c:if>    	
         </ul>
       </div>
     </div>
@@ -149,6 +149,3 @@
        <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/resources/common.js'/>" charset="utf-8"></script>
-  
-  
-  

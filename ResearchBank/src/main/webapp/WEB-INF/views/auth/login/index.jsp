@@ -7,11 +7,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <title>Login</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-</head>
+</head>  
 
 <body style="background-color: gray;">
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+ <form name="loginform" method="post" action="/loginSuccess">
+      <div id="loginformmiddle">
+
+         <h2>Login</h2>
+
+         <div id="id_label">ID</div>
+         <div id="username_input">
+
+            <div id="username_inputleft"></div>
+            
+               <div id="username_inputmiddle">
+                  
+                  <input type="text" name="MEMBER_ID" id="ID" required="required"> 
+                  <img id="url_user" src="resources/file/img/login/mailicon.png" alt="">
+
+               </div>
+
+               <div id="username_inputright"></div>
+         </div>
+         <div id="password_label">비밀번호</div>
+     
+         <div id="password_input">
+
+            <div id="password_inputleft"></div>
+
+            <div id="password_inputmiddle">
+                    
+               <input type="password" name="MEMBER_PW" id="PW" required="required"> 
+               <img id="url_password" src="resources/file/img/login/passicon.png" alt="">
+
+            </div>
+
+
+            <div id="password_inputright"></div>
+
+         </div>
+
+         <div id="submit">
+          <!--   로그인 버튼이 이미지이기 때문에 따로 submit 설정 -->
+            <input type="image" src="resources/file/img/login/login.png" id="submit2"
+               value="Sign In" onchange="javascript:document.getElementById('frm').value=this.value">
+              <!--  onchange : 버튼 -> 태그 ID가 frm인 것의 값을 찾아서 바꿔줌 -->
+         </div>
+         <li>${MEMBER_NICKNAME}&nbsp;님 로그인 상태입니다</li>	
+         
+         아이디/비밀번호 찾기
+         <div id="links_left">
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:find_Id();">아이디 찾기</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:find_Pw();">비밀번호 찾기</a>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             
+             아이디 저장
+             <input type="checkbox" id="idsave" name="idsave" value="" onclick="">아이디 저장
+             
+         </div>
+         
+         회원가입 페이지로
+         <div id="links_right">
+            <a href="/SG/joinEmail">회원가입</a>
+         </div>
+      </div>
+      </form> 
 
   <section class="bg-primary" id="about" style="padding: 21.5rem 0;">
     <div class="container">
@@ -23,11 +90,11 @@
 			</a>
           <hr class="light my-4">
           <div class="login_input_area">
-          <form role="form" name="form" action="loginCheck.do" method="post">
+          <form role="form" name="form" action="/loginSuccess" method="post">
           	          <input type="text" id="member_id" name="member_id" placeholder="아이디를 입력하세요" />
-				<input type="text" id="member_pw" name="member_pw" placeholder="비밀번호를 입력하세요" />
-				<a class="btn btn-light btn-xl" href="#">Login</a>
-	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>
+				<input type="password" id="member_pw" name="member_pw" placeholder="비밀번호를 입력하세요" />
+				<a class="btn btn-light btn-xl" href="/loginSuccess">Login</a>
+	          <a class="btn btn-light btn-xl" href="/register.do">Register</a> 
 	          </form>
           </div>
           <a href="#"><p class="text-faded mb-4">forgot your password?</p></a>
