@@ -15,7 +15,7 @@
 <body style="background-color: gray;">
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
- <form name="loginform" method="post" action="/loginSuccess">
+ <%-- <form name="loginform" method="post" action="/loginSuccess">
       <div id="loginformmiddle">
 
          <h2>Login</h2>
@@ -78,7 +78,7 @@
             <a href="/SG/joinEmail">회원가입</a>
          </div>
       </div>
-      </form> 
+      </form>  --%>
 
   <section class="bg-primary" id="about" style="padding: 21.5rem 0;">
     <div class="container">
@@ -93,7 +93,7 @@
           <form role="form" name="form" action="/loginSuccess" method="post">
           	          <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디를 입력하세요" />
 				<input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호를 입력하세요" />
-				<button><a class="btn btn-light btn-xl">Login</a></button>
+				<button class="btn btn-light btn-xl"><a class="btn btn-light btn-xl">Login</a></button>
 	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>   
 	          </form>   
           </div>
