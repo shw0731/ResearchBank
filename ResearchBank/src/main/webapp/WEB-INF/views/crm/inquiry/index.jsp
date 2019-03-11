@@ -8,17 +8,42 @@
 <link href="/resources/css/creative.css" rel="stylesheet">
 <!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
 <title>Research!</title>
+<style>
+.small1 { width: 250px; }
+.small2 { height: 100px; }
+.box2-1 {
+		width: 100px;
+		height: 100px;
+		background-image: url("/images/inquiry/FAQ.jpg");
+	}
+thead>tr>th{text-align: center;}
+   tbody>tr>td:nth-child(1){width:80px; text-align: center;}
+   tbody>tr>td:nth-child(3){width:110px; text-align: center;}
+   tbody>tr>td:nth-child(4){width:130px; text-align: center;}
+   tbody>tr>td:nth-child(5){width:70px; text-align: center;}
+   tbody>tr:HOVER{color:#da8c92;cursor: pointer;}
+   .menu-wrap{text-align: right;}
+   .form-wrap{text-align: center;}
+   
+#wrap .box{ 
+    width:300px;
+    height:300px;
+    margin:0 auto;
+}
 
+</style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
 	<br />
-	<div style="margin:50px; align:center;">
+	<div style="margin:50px; text-align: center;">
 	<h2>고객지원실</h2>
 	</div>
-	<div role="tabpanel" style="margin:50px;">
+
+	
+	<div role="tabpanel" style="width:200px; margin: 50px 670px; padding:1px; text-align: center;" id="#box2-1">
 		<!-- Nav tabs -->
 
 	<ul class="nav nav-pill" role="tablist">
@@ -31,7 +56,7 @@
 		<div class="tab-content" style="margin:50px;">
  
  <!-- 챕터1 -->
- <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px;/*  margin: auto; */" >
+ <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px; margin: 50px 330px; padding:1px; text-align: center;" align="center" >
 
 				<!-- 	<colgroup >
 						<col width="15%"  /> 글번호
@@ -39,8 +64,10 @@
 						<col width="15%" /> 조회수
 						<col width="30%" /> 작성일
 					</colgroup> -->
+					
+					<img class="small1" src="/resources/images/inquiry/Q.jpg">
 					 <table class="table table-striped table-bordered table-hover"
-                        id="dataTables-example"  >
+                        id="dataTables-example">
 					<thead>
 						<tr class="info" align="center" >
 							<th width="15%">글번호</th>
@@ -91,25 +118,24 @@
 
 
 			</div>
- <div role="tabpanel" class="tab-pane" id="oneone">
+ <div role="tabpanel" class="tab-pane" id="oneone" style="width: 430px; margin: 50px 550px; padding:1px; text-align: center;">
 
-				<div class="panel-group" id="accordion" role="tablist"
-					aria-multiselectable="true">
+<!-- 아코디언 시작! -->
+지주 묻는 질문과 답변
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-					자주묻는 질문과 답변
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingOne">
-
-
-
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapseOne" aria-expanded="true"
-								aria-controls="collapseOne"> 로그인 및 회원가입은 어떻게 하나요? </a>
+			로그인 및 회원가입은 어떻게 하나요?
+			</a>
+			</h4>
 						</div>
-						<div id="collapseOne" class="panel-collapse collapse in"
-							role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body">Anim pariatur cliche reprehenderit,
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      							Anim pariatur cliche reprehenderit,
 								enim eiusmod high life accusamus terry richardson ad squid. 3
 								wolf moon officia aute, non cupidatat skateboard dolor brunch.
 								Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
@@ -119,22 +145,21 @@
 								proident. Ad vegan excepteur butcher vice lomo. Leggings
 								occaecat craft beer farm-to-table, raw denim aesthetic synth
 								nesciunt you probably haven't heard of them accusamus labore
-								sustainable VHS.</div>
+								sustainable VHS.
+								</div>
 						</div>
 					</div>
 
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingTwo">
-							<h4 class="panel-title">
-								<a class="collapsed" data-toggle="collapse"
-									data-parent="#accordion" href="#collapseTwo"
-									aria-expanded="false" aria-controls="collapseTwo"> 비밀번호를
-									잊어버렸어요! </a>
+					 <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+         비밀번호를 잊어버렸어요! </a>
 							</h4>
 						</div>
-						<div id="collapseTwo" class="panel-collapse collapse"
-							role="tabpanel" aria-labelledby="headingTwo">
-							<div class="panel-body">Anim pariatur cliche reprehenderit,
+						   <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+      							Anim pariatur cliche reprehenderit,
 								enim eiusmod high life accusamus terry richardson ad squid. 3
 								wolf moon officia aute, non cupidatat skateboard dolor brunch.
 								Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
@@ -157,9 +182,8 @@
 									교환은 어디서 하나요? </a>
 							</h4>
 						</div>
-						<div id="collapseThree" class="panel-collapse collapse"
-							role="tabpanel" aria-labelledby="headingThree">
-							<div class="panel-body">Anim pariatur cliche reprehenderit,
+					  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">Anim pariatur cliche reprehenderit,
 								enim eiusmod high life accusamus terry richardson ad squid. 3
 								wolf moon officia aute, non cupidatat skateboard dolor brunch.
 								Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
@@ -199,14 +223,15 @@
 						</div>
 					</div>
 
-					<div></div>
+					</div>
 
 				</div>
 				
 				
-			</div>
 			
-			<div role="tabpanel" class="tab-pane" id="profile">
+			
+			<div role="tabpanel" class="tab-pane" id="profile" style="width: 800px; margin: 50px 330px; padding:1px; text-align:center;">
+			<img class="small1" src="/resources/images/inquiry/M.jpg"> <br/>
 				RESEARCH BANK 마일리지 프로그램<br /> 1. 포인트 전환 신청 시기: 매월 1일부터 25일까지<br />
 				2. 현금 입금 시기: 포인트 전환 신청을 한 다음 달 영업일 초<br /> 3. 포인트 전환 가능 금액:
 				10,000원부터 10,000원 단위로 전환 가능 <br /> 4. 포인트 전환 계좌 이체 수수료: 500원<br />
@@ -215,10 +240,10 @@
 
 
 			</div>
+</div>
 
 
 
-		</div>
 		<!-- 탭컨텐츠ㅡ누르면 토글하는거 -->
 
 	<!-- </div> -->
@@ -237,6 +262,7 @@
 				  e.preventDefault()
 				  $(this).tab('show')
 				})
+			$('.collapseOne').collapse('toggle')
 
 		});
 
