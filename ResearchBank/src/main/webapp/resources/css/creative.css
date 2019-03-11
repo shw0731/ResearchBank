@@ -343,9 +343,9 @@ div .login_input_area input{
 div .login_input_area a{
 	margin-top : 30px;
 }
+tr.hide{display:none}
 
-
-/*占쎈엘占쎈쐭 疫뀐옙�몭占� 占쎄퐬占쎌젟*/
+/*�뜝�럥�뿕�뜝�럥�맠 �뼨�먯삕占쎈き�뜝占� �뜝�럡�맟�뜝�럩�젧*/
 .subnav-content > a {
   font-weight: 700;
   text-transform: uppercase;

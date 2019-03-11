@@ -77,7 +77,7 @@ public class AbstractDAO {
 	    }
 	    map.put("START", (nPageIndex * nPageRow) + 1);
 	    map.put("END", (nPageIndex * nPageRow) + nPageRow);
-	     
+	    
 	    return sqlSession.selectList(queryId, map);
 	}
 

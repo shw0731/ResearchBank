@@ -44,10 +44,9 @@ public class NoticeServiceImpl implements NoticeService{
 
 
 	@SuppressWarnings("unchecked")
-	public List<CommandMap> index(CommandMap map) throws Exception {
-		return noticeDAO.index(map);
+	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>)noticeDAO.index(map);
 	}
-
 
 
 	@Override
@@ -76,5 +75,9 @@ public class NoticeServiceImpl implements NoticeService{
 		noticeDAO.deleteNotice(map);
 		
 	}
+
+
+
+	
 
 }

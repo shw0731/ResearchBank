@@ -3,15 +3,17 @@
 
 <mapper namespace="notice">
 	<select id="index" parameterType="hashmap" resultType="hashmap">
+        <include refid="common.pagingPre"/>
         <![CDATA[
             SELECT
+            	ROW_NUMBER() OVER (ORDER BY NOTICE_IDX DESC) RNUM,
                 NOTICE_IDX,
                 NOTICE_SUBJECT,
                 NOTICE_CONTEXT
             FROM
                 NOTICE
-            ORDER BY NOTICE_IDX DESC
         ]]>
+        <include refid="common.pagingPost"/>
 	</select>
 
 	<insert id="create" parameterType="hashmap">
@@ -40,7 +42,7 @@
         FROM
         	NOTICE
         WHERE
-        	NOTICE_IDX=#{NOTICE_IDX}
+        	NOTICE_IDX=#{NOTICE_IDX, jdbcType=INTEGER}
          
     ]]>
 	</select>

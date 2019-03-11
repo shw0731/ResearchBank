@@ -24,12 +24,12 @@ import com.kh.researchbank.common.CommandMap;
 public interface NoticeService {
 
 	/**********
-	 * @param commandMap 
+	 * @param map 
 	 * @title 공지사항 목록 
 	 * @return
 	 * @throws Exception
 	 */
-	public List<CommandMap> index(CommandMap commandMap) throws Exception;
+	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception;
 
 	public void createNotice(Map<String, Object> map) throws Exception;
 

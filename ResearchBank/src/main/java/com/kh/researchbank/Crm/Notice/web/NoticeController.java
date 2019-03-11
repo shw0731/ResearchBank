@@ -2,14 +2,12 @@ package com.kh.researchbank.Crm.Notice.web;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,21 +47,35 @@ public class NoticeController {
 	
 	@RequestMapping(value="/notice")
 	public @ResponseBody ModelAndView index(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("crm/notice/index");
+		ModelAndView mv = new ModelAndView("crm/notice/index");	
 		
-		List<CommandMap> list = noticeService.index(commandMap);
-		mv.addObject("list",list);
 		
 		return mv;
 	}
 	
-	@RequestMapping(value="/notice/create") //由ъ뒪�듃�뿉�꽌 �벐湲� �솕硫댁쑝濡�
+	@RequestMapping(value="/notice/paging") // 페이징 구간
+	public ModelAndView indexPaging(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("jsonView");
+	     
+	    List<Map<String,Object>> list = noticeService.index(commandMap.getMap());
+	    
+		mv.addObject("list",list);
+	    if(list.size() > 0){
+	        mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
+	    }
+	    else{
+	        mv.addObject("TOTAL", 0);
+	    }
+	    return mv;
+	}
+	
+	@RequestMapping(value="/notice/create") //글작성 뷰로 이동
 	public ModelAndView openNoticeWrite(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("crm/notice/create");
 		
 		return mv;
 	}
-	@RequestMapping(value="/notice/createNotice") //�벐湲고솕硫� �뿉�꽌 由ъ뒪�듃濡�
+	@RequestMapping(value="/notice/createNotice") //글작성 완료
 	public ModelAndView createNotice(CommandMap commandMap) throws Exception{
 		
 		System.out.println("=================TEST_create=================");
