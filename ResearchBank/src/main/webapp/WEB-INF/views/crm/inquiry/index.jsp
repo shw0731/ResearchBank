@@ -3,20 +3,17 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
-<link href="/resources/css/creative.css" rel="stylesheet">
-<!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
+<link href="/resources/css/sb-admin-2.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 <title>Research!</title>
 <style>
 .small1 { width: 250px; }
 .small2 { height: 100px; }
-.box2-1 {
-		width: 100px;
-		height: 100px;
-		background-image: url("/images/inquiry/FAQ.jpg");
-	}
-thead>tr>th{text-align: center;}
+
+/* thead>tr>th{text-align: center;}
    tbody>tr>td:nth-child(1){width:80px; text-align: center;}
    tbody>tr>td:nth-child(3){width:110px; text-align: center;}
    tbody>tr>td:nth-child(4){width:130px; text-align: center;}
@@ -24,11 +21,18 @@ thead>tr>th{text-align: center;}
    tbody>tr:HOVER{color:#da8c92;cursor: pointer;}
    .menu-wrap{text-align: right;}
    .form-wrap{text-align: center;}
-   
+    */
 #wrap .box{ 
     width:300px;
     height:300px;
     margin:0 auto;
+}
+
+p{
+font-family: 'Noto Sans KR', sans-serif;
+}
+p.a{
+ font-weight: 300;
 }
 
 </style>
@@ -39,11 +43,11 @@ thead>tr>th{text-align: center;}
 	<br />
 	<br />
 	<div style="margin:50px; text-align: center;">
-	<h2>고객지원실</h2>
+	<h2><p class="p">고객지원실</p></h2>
 	</div>
 
 	
-	<div role="tabpanel" style="width:200px; margin: 50px 670px; padding:1px; text-align: center;" id="#box2-1">
+	<div role="tabpanel" style="width:300px; margin: 10px 635px; padding:1px; text-align: center;" id="#box2-1">
 		<!-- Nav tabs -->
 
 	<ul class="nav nav-pill" role="tablist">
@@ -56,7 +60,7 @@ thead>tr>th{text-align: center;}
 		<div class="tab-content" style="margin:50px;">
  
  <!-- 챕터1 -->
- <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px; margin: 50px 330px; padding:1px; text-align: center;" align="center" >
+ <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px; margin: 10px 330px; padding:1px; text-align: center; font-family:p.a" align="center" >
 
 				<!-- 	<colgroup >
 						<col width="15%"  /> 글번호
@@ -65,7 +69,7 @@ thead>tr>th{text-align: center;}
 						<col width="30%" /> 작성일
 					</colgroup> -->
 					
-					<img class="small1" src="/resources/images/inquiry/Q.jpg">
+					<img class="small1" src="/resources/images/inquiry/Q.jpg"><br/><br/><br/>
 					 <table class="table table-striped table-bordered table-hover"
                         id="dataTables-example">
 					<thead>
@@ -118,9 +122,10 @@ thead>tr>th{text-align: center;}
 
 
 			</div>
- <div role="tabpanel" class="tab-pane" id="oneone" style="width: 430px; margin: 50px 550px; padding:1px; text-align: center;">
+ <div role="tabpanel" class="tab-pane" id="oneone" style="width: 500px; margin: 30px 480px; padding:1px; text-align: center;">
 
 <!-- 아코디언 시작! -->
+<img class="small1" src="/resources/images/inquiry/FAQ.jpg"><br/>
 지주 묻는 질문과 답변
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -262,8 +267,9 @@ thead>tr>th{text-align: center;}
 				  e.preventDefault()
 				  $(this).tab('show')
 				})
-			$('.collapseOne').collapse('toggle')
-
+			$('#myCollapsible').on('hidden.bs.collapse', function () {
+  // do something…
+})
 		});
 
 		function fn_openBoardDetail(obj) {
