@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
@@ -131,12 +131,10 @@ p.a{
 
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 
 			로그인 및 회원가입은 어떻게 하나요?
 			</a>
-			</h4>
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
@@ -267,9 +265,7 @@ p.a{
 				  e.preventDefault()
 				  $(this).tab('show')
 				})
-			$('#myCollapsible').on('hidden.bs.collapse', function () {
-  // do something…
-})
+
 		});
 
 		function fn_openBoardDetail(obj) {
