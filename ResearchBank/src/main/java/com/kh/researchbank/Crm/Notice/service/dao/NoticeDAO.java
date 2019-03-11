@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 public class NoticeDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
-	public List<CommandMap> index(CommandMap map) throws Exception{
-		return (List<CommandMap>)selectList("notice.index", map);
+	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception{
+		return (List<Map<String, Object>>)selectPagingList("notice.index", map);
 	}
 	
 	public void create(Map<String,Object> map) throws Exception{
