@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+canvas {
+  margin-bottom : 100%;
+  background: linear-gradient(
+    to bottom,
+    rgb(6,9,43) 0%,
+    rgb(30,45,75) 100%
+  );
+}
+
+canvas, menu {
+  width:100%;
+  position: absolute;
+  top: 100;
+  color: white;
+  margin-top : 100%;
+}
+input, button {
+  color: gray;
+  font-size: 30px;
+  background: transparent;
+  border: 3px solid gray;
+  padding: 5px;
+  margin-top: 5px;
+  transition: all 500ms;
+}
+
+button.active {
+  color: aqua;
+  border-color: aqua;
+  box-shadow: 0 0 4px aqua;
+  text-shadow: 0 0 14px aqua;
+  transition: all 500ms;
+}
+
+label {
+  display: inline-block;
+  color: gray;
+  padding: 10px;
+}

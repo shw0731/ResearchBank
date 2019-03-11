@@ -17,7 +17,8 @@ $('.more').click(function(){
 });
 
 function after(){
-  $('body').css('background','#FBE1E4');
+  $('body').css('background','#000000');
+  $('.container').css('display','flex');
   $('.gridcontainer').css('opacity','1');
 }
 setTimeout("after();", 3400);
