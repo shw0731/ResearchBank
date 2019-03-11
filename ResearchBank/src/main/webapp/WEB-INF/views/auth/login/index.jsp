@@ -91,11 +91,11 @@
           <hr class="light my-4">
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
-          	          <input type="text" id="member_id" name="member_id" placeholder="아이디를 입력하세요" />
-				<input type="password" id="member_pw" name="member_pw" placeholder="비밀번호를 입력하세요" />
-				<a class="btn btn-light btn-xl" href="/loginSuccess">Login</a>
-	          <a class="btn btn-light btn-xl" href="/register.do">Register</a> 
-	          </form>
+          	          <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디를 입력하세요" />
+				<input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호를 입력하세요" />
+				<button><a class="btn btn-light btn-xl">Login</a></button>
+	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>   
+	          </form>   
           </div>
           <a href="#"><p class="text-faded mb-4">forgot your password?</p></a>
         </div>
@@ -103,7 +103,7 @@
     </div>
   </section>
 
-
+ 
 <script type='text/javascript'>
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
