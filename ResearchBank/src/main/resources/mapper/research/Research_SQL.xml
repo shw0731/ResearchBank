@@ -15,7 +15,7 @@
                             , SURVEY_SUBJECT
                             , MEMBER_ID) VALUES ( SURVEY_SEQ.nextval
                                                  , SYSDATE
-                                                 , SYSDATE
+                                                 , #{deadline_date}
                                                  , #{survey_point}
                                                  , #{maximum_part}
                                                  , 0
@@ -38,10 +38,10 @@
                          , CON_OPT2
                          , CON_OPT3
                          , CON_OPT4
-                         ) values ( 67
+                         ) values ( #{survey_idx}
                                   , CONDITION_SEQ.nextval
-                                  , 0
-                                  , 1
+                                  , #{condition_order}
+                                  , #{condition_subject}
                                   <foreach collection="con_opt" item="item">
                                   , #{item}
                                   </foreach>
@@ -55,6 +55,36 @@
                                   ,null
                                   </if>
                                   )	
+    
+	</insert>
+	
+    <insert id="insertQue" parameterType="hashmap">
+   	INSERT INTO QUESTION_LIST (SURVEY_IDX
+                         	, QUESTION_IDX
+                         	, QUESTION_ORDER
+                        	, QUESTION_SUBJECT
+                         	, QUE_OPT0
+                         	, QUE_OPT1
+                         	, QUE_OPT2
+                         	, QUE_OPT3
+                         	, QUE_OPT4
+                         	) values ( #{survey_idx}
+                                  	 , QUESTION_SEQ.nextval
+                                  	 , #{question_order}
+                                  	 , #{question_subject}
+                                  	 <foreach collection="que_opt" item="item">
+                                  	 , #{item}
+                                  	 </foreach>
+                                  	 <if test="que_opt.size == 2">
+                                  	 ,null ,null ,null
+                                  	 </if>
+                                  	 <if test="que_opt.size == 3">
+                                  	 ,null ,null
+                                  	 </if>
+                                  	 <if test="que_opt.size == 4">
+                                  	 ,null
+                                  	 </if>
+                                   	 )	
     
 	</insert>
 </mapper>

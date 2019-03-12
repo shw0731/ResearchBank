@@ -33,10 +33,6 @@ public class ResearchDAO extends AbstractDAO {
 		insert("research.insertSurvey",map);
 		int survey_idx= (Integer) map.get("survey_seq");
 		
-		for(int i=0;i<conList.size();i++) {
-			
-			System.out.println(conList.get(i).toString());
-		}
 		
 		for(int i=0;i<conList.size();i++) {
 			
@@ -44,7 +40,10 @@ public class ResearchDAO extends AbstractDAO {
 			
 			insert("research.insertCon",conList.get(i) );
 		}
+		for(int i=0; i<queList.size();i++) {
+			queList.get(i).put("survey_idx", survey_idx);
+			insert("research.insertQue", queList.get(i));
+		}
 		
-		System.out.println(map.toString());
 	}
 }

@@ -234,7 +234,6 @@ var fn_storeSurvey = function(){
 
 	
 	var jsonData = JSON.stringify($('#frm').serializeObject());
-	console.log(jsonData);
 	var jsonSubmit = new JsonSubmit(jsonData);
 	jsonSubmit.setUrl("/research/register/store");
 	jsonSubmit.ajax();
@@ -245,7 +244,7 @@ var fn_storeSurvey = function(){
 var JsonSubmit = function(jsonData){
 	this.url = "";
 	this.param = jsonData;
-	console.log(this.param);
+	
 	this.setUrl = function setUrl(url){
 		this.url = url;
 	};

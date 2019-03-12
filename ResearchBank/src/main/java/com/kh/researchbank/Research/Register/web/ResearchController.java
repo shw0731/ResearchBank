@@ -47,16 +47,22 @@ public class ResearchController {
 	 * @return view
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/research/register/index" , method=RequestMethod.GET)
+	@RequestMapping(value="/research/index" , method=RequestMethod.GET)
+	
 	public ModelAndView index(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("research/register/index");
 		return mv;
 	}
 	
-	@RequestMapping(value="/research/register/store", method=RequestMethod.POST)
-	@ResponseBody
+	@RequestMapping(value="/research/create" , method=RequestMethod.GET)
+	public ModelAndView create(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("research/create");
+		return mv;
+	}
+	
+	@RequestMapping(value="/research/store", method=RequestMethod.POST)
 	public ModelAndView store(@RequestBody String str)throws Exception{
-		ModelAndView mv = new ModelAndView("research/register/index");
+		ModelAndView mv = new ModelAndView("research/index");
 		
 		
 		String jsonStr =str;
