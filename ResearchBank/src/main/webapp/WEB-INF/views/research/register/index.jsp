@@ -14,6 +14,7 @@
 	width:150px;
 }
 </style>
+
 <script src="/resources/js/research/jquery.serializeObject.js"></script>
 <script src="/resources/js/research/research.js"></script>
 <script type="text/javascript">
@@ -26,6 +27,11 @@ $(document).ready(function(){
 		else
 			$('.condition').hide();
 	});
+	$.ajaxSetup({
+	    headers: {
+	      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+	  });
 });	
 
 </script>
@@ -48,7 +54,7 @@ $(document).ready(function(){
 <br/>
 	<div id="condition_subject" class="condition">
 		<strong>조건1:</strong><input name="condition[0][condition_subject]" type="text">
-		<input type="hidden" name="condition[0][condtion_order]" value=0>
+		<input type="hidden" name="condition[0][condition_order]" value=0>
 		
 		<button type="button" id="conAddBtn" onclick="fn_addCon(); return false;">+</button><br/>
 		<div id="condition_option" class="option">

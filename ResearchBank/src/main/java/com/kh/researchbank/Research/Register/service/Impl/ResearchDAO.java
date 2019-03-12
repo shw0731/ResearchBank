@@ -30,7 +30,21 @@ public class ResearchDAO extends AbstractDAO {
 			System.out.println("que_opt :"+resultMap.get("que_opt"));
 		}
 		
-		Object surIdx = insert("research.insert",map);
-		System.out.println(map.get("survey"));
+		insert("research.insertSurvey",map);
+		int survey_idx= (Integer) map.get("survey_seq");
+		
+		for(int i=0;i<conList.size();i++) {
+			
+			System.out.println(conList.get(i).toString());
+		}
+		
+		for(int i=0;i<conList.size();i++) {
+			
+			conList.get(i).put("survey_idx", survey_idx);
+			
+			insert("research.insertCon",conList.get(i) );
+		}
+		
+		System.out.println(map.toString());
 	}
 }

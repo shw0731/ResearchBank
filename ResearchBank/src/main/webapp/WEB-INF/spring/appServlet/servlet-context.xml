@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
     <!-- Use for Annotation 2019/02/07 -->
-<!-- <context:component-scan base-package="com.kh.researchbank">
+<!--     <context:component-scan base-package="egovframework">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
@@ -19,13 +19,7 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 <!-- 	<annotation-driven /> -->
-	<context:component-scan base-package="com.kh.researchbank" />
-	
-	<mvc:annotation-driven>
-        <mvc:argument-resolvers>
-            <beans:bean class="com.kh.researchbank.common.CustomMapArgumentResolver"></beans:bean>
-        </mvc:argument-resolvers>
-    </mvc:annotation-driven>
+
 	<default-servlet-handler/>
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -36,11 +30,15 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	
+	<context:component-scan base-package="com.kh.researchbank" />
 	
 	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 	
-
+	<mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <beans:bean class="com.kh.researchbank.common.CustomMapArgumentResolver"></beans:bean>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
 	
      <beans:bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
      
@@ -60,3 +58,4 @@
 
 	
 </beans:beans>
+

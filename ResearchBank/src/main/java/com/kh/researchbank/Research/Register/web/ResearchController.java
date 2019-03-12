@@ -1,16 +1,20 @@
 package com.kh.researchbank.Research.Register.web;
 
 import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.researchbank.Research.Register.service.ResearchService;
 import com.kh.researchbank.common.CommandMap;
@@ -50,17 +54,17 @@ public class ResearchController {
 	}
 	
 	@RequestMapping(value="/research/register/store", method=RequestMethod.POST)
-	public ModelAndView store(CommandMap commandMap)throws Exception{
+	@ResponseBody
+	public ModelAndView store(@RequestBody String str)throws Exception{
 		ModelAndView mv = new ModelAndView("research/register/index");
-		Iterator<String> keys = commandMap.getMap().keySet().iterator();
-		String jsonStr ="";
-		while ( keys.hasNext() ) {
-		    String key = keys.next();
-		   
-		    jsonStr = key;
-		}   
-
-		Map<String, Object> smap = new ObjectMapper().readValue(jsonStr, HashMap.class);
+		
+		
+		String jsonStr =str;
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
+		System.out.println(jsonStr);
+		Map<String, Object> smap = objectMapper.readValue(jsonStr, HashMap.class);
 	
 		researchService.store(smap);
 		return mv;

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="research">
-	<insert id="insert" parameterType="hashmap">
+	<insert id="insertSurvey" parameterType="hashmap">
      <![CDATA[
          INSERT INTO SURVEY_LIST ( SURVEY_IDX
                             , REG_DATE
@@ -28,5 +28,34 @@
      	SELECT SURVEY_SEQ.CURRVAL FROM DUAL
      </selectKey>
     </insert>
+    <insert id="insertCon" parameterType="hashmap">
+   	INSERT INTO CONDITION_LIST (SURVEY_IDX
+                         , CONDITION_IDX
+                         , CONDITION_ORDER
+                         , CONDITION_SUBJECT
+                         , CON_OPT0
+                         , CON_OPT1
+                         , CON_OPT2
+                         , CON_OPT3
+                         , CON_OPT4
+                         ) values ( 67
+                                  , CONDITION_SEQ.nextval
+                                  , 0
+                                  , 1
+                                  <foreach collection="con_opt" item="item">
+                                  , #{item}
+                                  </foreach>
+                                  <if test="con_opt.size == 2">
+                                  ,null ,null ,null
+                                  </if>
+                                  <if test="con_opt.size == 3">
+                                  ,null ,null
+                                  </if>
+                                  <if test="con_opt.size == 4">
+                                  ,null
+                                  </if>
+                                  )	
+    
+	</insert>
 </mapper>
 
