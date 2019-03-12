@@ -341,11 +341,11 @@ div .login_input_area input{
 		text-align: center;
 }
 div .login_input_area a{
-	margin-top : 30px;
+	margin-top : 0px;
 }
 tr.hide{display:none}
 
-/*�뜝�럥�뿕�뜝�럥�맠 �뼨�먯삕占쎈き�뜝占� �뜝�럡�맟�뜝�럩�젧*/
+/*占쎈쐻占쎈윥占쎈퓮占쎈쐻占쎈윥占쎈쭬 占쎈섀占쎈Ŋ�굲�뜝�럥�걤占쎈쐻�뜝占� 占쎈쐻占쎈윞占쎈쭫占쎈쐻占쎈윪占쎌젳*/
 .subnav-content > a {
   font-weight: 700;
   text-transform: uppercase;

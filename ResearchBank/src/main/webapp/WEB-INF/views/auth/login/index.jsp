@@ -93,7 +93,7 @@
           <form role="form" name="form" action="/loginSuccess" method="post">
           	          <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디를 입력하세요" />
 				<input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호를 입력하세요" />
-				<button class="btn btn-light btn-xl"><a class="btn btn-light btn-xl">Login</a></button>
+				<button class="btn btn-light btn-xl">Login</button>
 	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>   
 	          </form>   
           </div>
