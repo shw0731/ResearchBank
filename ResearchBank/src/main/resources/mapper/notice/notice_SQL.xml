@@ -10,7 +10,7 @@
                 NOTICE_IDX,
                 NOTICE_SUBJECT,
                 NOTICE_CONTEXT,
-                NOTICE_DATE
+                TO_CHAR(NOTICE_DATE,'YYYY.MM.DD') AS NOTICE_DATE
             FROM
                 NOTICE
         ]]>

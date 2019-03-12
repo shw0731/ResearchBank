@@ -8,6 +8,7 @@
 <link href="/resources/css/creative.css" rel="stylesheet">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- jQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -77,16 +78,18 @@ tbody>tr:HOVER {
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
-	
+
 	<div role="tabpanel" class="tab-pane active" id="home"
 		style="width: 50%; margin: 10% 25% 10% 25%; padding: 1px; text-align: center;"
 		align="center">
 		<img class="small1" src="/resources/images/notice/Title.jpg">
-		<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+		<table class="table table-striped table-bordered table-hover"
+			id="dataTables-example">
 			<thead>
 				<tr class="info" align="center">
 					<th width="15%">글번호</th>
 					<th width="*">제목</th>
+					<th width="15%">날짜</th>
 				</tr>
 			</thead>
 
@@ -119,10 +122,9 @@ tbody>tr:HOVER {
 		</table>
 
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
-		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> 
-		<br /> 
-		
-		<a href="#this" class="btn" id="create">글쓰기</a><br /> <strong
+		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br /> <a
+			href="#this" class="btn" id="create">글쓰기</a><br /> 
+			<strong
 			class="haha"></strong>
 	</div>
 
@@ -211,12 +213,17 @@ tbody>tr:HOVER {
 											+ "<td>"
 											+ value.NOTICE_IDX
 											+ "</td>"
+											
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"
 											+ value.NOTICE_SUBJECT
 											+ "</a>"
 											+ "<input type='hidden' id='NOTICE_IDX' name='title' value=" + value.NOTICE_IDX + ">"
 											+ "</td>"
+											
+												+ "<td>" 
+												+ value.NOTICE_DATE
+												+ "</td>"
 
 											+ "</tr>";
 								});

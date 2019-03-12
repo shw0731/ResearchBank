@@ -8,6 +8,7 @@
 <link href="/resources/css/creative.css" rel="stylesheet">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- jQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -33,11 +34,16 @@
 			<colgroup>
 				<col width="15%" />
 				<col width="35%" />
+				<col width="15%" />
+				<col width="35%" />
 			</colgroup>
 			<thead>
 				<tr class="info" align="center">
 					<th scope="row">제목</th>
-					<td colspan="20">${map.NOTICE_SUBJECT }</td>
+					<td colspan="1">${map.NOTICE_SUBJECT }</td>
+					<th scope="row">작성일</th>
+					<fmt:formatDate var="resultRegDt" value="${map.NOTICE_DATE}" pattern="yyyy-MM-dd"/>			
+					<td colspan="1">${resultRegDt}</td>
 				</tr>
 			</thead>
 			<tbody>
