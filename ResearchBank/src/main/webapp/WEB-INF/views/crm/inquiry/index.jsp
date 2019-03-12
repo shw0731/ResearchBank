@@ -6,9 +6,11 @@
 <link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
-<link href="/resources/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 <title>Research!</title>
+
 <style>
 .small1 { width: 250px; }
 .small2 { height: 100px; }
@@ -36,18 +38,18 @@ p.a{
 }
 
 </style>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
 	<br />
-	<div style="margin:50px; text-align: center;">
+	<div style="margin:3% 20% 1% 20%; text-align: center;">
 	<h2><p class="p">고객지원실</p></h2>
 	</div>
 
 	
-	<div role="tabpanel" style="width:300px; margin: 10px 635px; padding:1px; text-align: center;" id="#box2-1">
+	<div role="tabpanel" style="width: 50%; margin: 5% 20% 1% 41%; padding: 1px; text-align: center;" id="#box2-1">
 		<!-- Nav tabs -->
 
 	<ul class="nav nav-pill" role="tablist">
@@ -60,9 +62,11 @@ p.a{
 		<div class="tab-content" style="margin:50px;">
  
  <!-- 챕터1 -->
- <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px; margin: 10px 330px; padding:1px; text-align: center; font-family:p.a" align="center" >
+ <div role="tabpanel" class="tab-pane active" id="home"
+ style=" width: 50%; margin: 1% 25% 2% 25%; padding: 1px; font-family:p.a" align="center" >
 
 				<!-- 	<colgroup >
+			
 						<col width="15%"  /> 글번호
 						<col width="*" /> 제목
 						<col width="15%" /> 조회수
@@ -84,19 +88,20 @@ p.a{
 						<c:choose>
 							<c:when test="${fn:length(list) > 0}">
 								<c:forEach items="${list }" var="row">
+							
 									<tr>
 										<td align="center">${row.IDX }</td>
 										<td class="odd gradeX">
 										<c:if test="${row.INQUIRY_STATE=='1'}">
                         <img src="/resources/images/icon_secret.gif">
 									</c:if>
-										<a href="#this" name="title">
-										${row.TITLE }</a>
-											<input type="hidden" id="IDX" value="${row.IDX }"></td>
+										                                <a href="#this" name="title">${row.TITLE }</a>
+                                <input type="hidden" id="IDX" value="${row.IDX }">
+</td>
+											
 										<td align="center">${row.HIT_CNT }</td>
 										<td align="center">${row.REGIST_DATE}</td>
 									</tr>
-
 
 								</c:forEach>
 							</c:when>
@@ -118,15 +123,15 @@ p.a{
 				<div class="paging" align="center">
                ${pagingHtml}
             </div>
-
+<form id="commonForm" name="commonForm"></form>
 
 
 			</div>
- <div role="tabpanel" class="tab-pane" id="oneone" style="width: 500px; margin: 30px 480px; padding:1px; text-align: center;">
+ <div role="tabpanel" class="tab-pane" id="oneone" style="width: 50%; margin: 1% 25% 2% 25%; padding: 1px; text-align: center;">
 
 <!-- 아코디언 시작! -->
 <img class="small1" src="/resources/images/inquiry/FAQ.jpg"><br/>
-지주 묻는 질문과 답변
+지주 묻는 질문과 답변<br/>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
   <div class="panel panel-default">
@@ -230,11 +235,9 @@ p.a{
 
 				</div>
 				
-				
 			
-			
-			<div role="tabpanel" class="tab-pane" id="profile" style="width: 800px; margin: 50px 330px; padding:1px; text-align:center;">
-			<img class="small1" src="/resources/images/inquiry/M.jpg"> <br/>
+			<div role="tabpanel" class="tab-pane" id="profile" style="width: 50%; margin: 1% 25% 2% 25%; padding: 1px; text-align: center;">
+						<img class="small1" src="/resources/images/inquiry/M.jpg"> <br/>
 				RESEARCH BANK 마일리지 프로그램<br /> 1. 포인트 전환 신청 시기: 매월 1일부터 25일까지<br />
 				2. 현금 입금 시기: 포인트 전환 신청을 한 다음 달 영업일 초<br /> 3. 포인트 전환 가능 금액:
 				10,000원부터 10,000원 단위로 전환 가능 <br /> 4. 포인트 전환 계좌 이체 수수료: 500원<br />
@@ -256,15 +259,17 @@ p.a{
 	<script type="text/javascript">
 		$(document).ready(function() {
 /* 			fn_selectBoardList(1); */
-			$("a[name='title']").on("click", function(e) { //제목 
-				e.preventDefault();
-				fn_openBoardDetail($(this));
-			});
+			      $("a[name='title']").on("click", function(e){ //제목 
+                e.preventDefault();
+                fn_openBoardDetail($(this));
+            });
+
+
 			
 			$('#myTab a').click(function (e) {
 				  e.preventDefault()
 				  $(this).tab('show')
-				})
+				});
 
 		});
 

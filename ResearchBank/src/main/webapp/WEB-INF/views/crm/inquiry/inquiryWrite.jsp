@@ -2,38 +2,96 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="/resources/css/creative.css" rel="stylesheet">
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/a.css" rel="stylesheet">
 
+<!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+<title>Research!</title>
+
+<style>
+.small1 { width: 250px; }
+.small2 { height: 100px; }
+
+/* thead>tr>th{text-align: center;}
+   tbody>tr>td:nth-child(1){width:80px; text-align: center;}
+   tbody>tr>td:nth-child(3){width:110px; text-align: center;}
+   tbody>tr>td:nth-child(4){width:130px; text-align: center;}
+   tbody>tr>td:nth-child(5){width:70px; text-align: center;}
+   tbody>tr:HOVER{color:#da8c92;cursor: pointer;}
+   .menu-wrap{text-align: right;}
+   .form-wrap{text-align: center;}
+    */
+#wrap .box{ 
+    width:300px;
+    height:300px;
+    margin:0 auto;
+}
+
+p{
+font-family: 'Noto Sans KR', sans-serif;
+}
+p.a{
+ font-weight: 300;
+}
+
+</style>
 </head>
 <body>
-	<form id="frm">
-		<table class="board_view">
-			<colgroup>
-				<col width="15%">
-				<col width="*"/>
-			</colgroup>
-			<caption>게시글 작성</caption>
-			<tbody>
-			<br/><br/><br/><br/><br/><br/><br/><br/><br/>
-				<td><img src="/resources/images/icon_secret.gif"> 비밀글
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<br />
+	<br />
+	<br />
+	<div style="margin:3% 20% 1% 20%; text-align: center;">
+	<h2><p class="p">고객지원실</p></h2>
+	</div>
+	
+		
+		<!-- Tab panes --><!-- 시작 -->
+		<div class="tab-content" style="margin:50px;">
+ 
+ <!-- 챕터1 -->
+<div role="tabpanel" class="tab-pane active" id="home" style="width: 50%; margin: 1% 25% 10% 25%; padding:1px; text-align: center; font-family:p.a" align="center" >
+				<form id="frm">
+					<!-- 	<colgroup >
+						<col width="15%"  /> 글번호
+						<col width="*" /> 제목
+						<col width="15%" /> 조회수
+						<col width="30%" /> 작성일
+					</colgroup> -->
+					<img class="small1" src="/resources/images/inquiry/Q.jpg"><br/><br/><br/>
+
+			<!-- <tbody> -->
+			<img src="/resources/images/icon_secret.gif"> 비밀글
 			<input type="checkbox" value="1" name="INQUIRY_STATE" id="INQUIRY_STATE"/>
 				일반글<input type="checkbox" value="0" name="INQUIRY_STATE" id="INQUIRY_STATE"/>
 			</td>
-				<tr>
+				 <table class="table table-striped table-bordered table-hover"
+                        id="dataTables-example"  >
+                        <tbody>
+				<tr class="info" align="center" >
 					<th scope="row">제목</th>
 					<td><input type="text" id="TITLE" name="TITLE" class="wdp_100"></input></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="view_text">
-						<textarea rows="20" cols="100" title="내용" id="CONTENTS" name="CONTENTS"></textarea>
+					<td colspan="4" class="view_text">
+						<textarea rows="10%" cols="70%" title="내용" id="CONTENTS" name="CONTENTS"></textarea>
 					</td>
 				</tr>
-			</tbody>
-		</table>
-		
+			</tbody></table>
+			</table>
+			<div align="right">
+				<a href="/inquiry" class="btn" id="list">목록으로</a>
 		<a href="#this" class="btn" id="write">작성하기</a>
-		<a href="/inquiry" class="btn" id="list">목록으로</a>
-	</form>
+		</div>
+		</form>
+		
+	</div>
+	
+	</div>
+	
 		<form id="commonForm" name="commonForm"></form>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	<script type="text/javascript">
@@ -51,7 +109,7 @@
 		
 		function fn_openBoardList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");
+			comSubmit.setUrl("<c:url value='/inquiry' />");
 			comSubmit.submit();
 		}
 		

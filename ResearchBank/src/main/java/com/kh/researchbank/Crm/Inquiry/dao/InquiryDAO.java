@@ -24,9 +24,11 @@ public class InquiryDAO extends AbstractDAO{
 		update("inquiry.updateHitCnt", map);
 	}
 	
-	@SuppressWarnings("uncheked")
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> showDetail(Map<String,Object>map) throws Exception{
+		System.out.println(map.get("IDX"));
 			return (Map<String,Object>)selectOne("inquiry.showDetail",map);
+			
 		}
 	
 	public void storecomment(Map<String,Object>map)throws Exception{

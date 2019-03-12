@@ -2,36 +2,57 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
-<link href="/resources/css/creative.css" rel="stylesheet">
+
 <!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 <title>Research!</title>
 
+<style>
+.small1 { width: 250px; }
+.small2 { height: 100px; }
+
+/* thead>tr>th{text-align: center;}
+   tbody>tr>td:nth-child(1){width:80px; text-align: center;}
+   tbody>tr>td:nth-child(3){width:110px; text-align: center;}
+   tbody>tr>td:nth-child(4){width:130px; text-align: center;}
+   tbody>tr>td:nth-child(5){width:70px; text-align: center;}
+   tbody>tr:HOVER{color:#da8c92;cursor: pointer;}
+   .menu-wrap{text-align: right;}
+   .form-wrap{text-align: center;}
+    */
+#wrap .box{ 
+    width:300px;
+    height:300px;
+    margin:0 auto;
+}
+
+p{
+font-family: 'Noto Sans KR', sans-serif;
+}
+p.a{
+ font-weight: 300;
+}
+
+</style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
 	<br />
-	<div style="margin:50px; align:center;">
-	<h2>고객지원실</h2>
+	<div style="margin:3% 20% 1% 20%; text-align: center;">
+	<h2><p class="p">고객지원실</p></h2>
 	</div>
-	<div role="tabpanel" style="margin:50px;">
-		<!-- Nav tabs -->
 
-	<ul class="nav nav-pill" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#oneone" aria-controls="oneone" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-		</ul><br/>
-		</div>
 		<!-- Tab panes --><!-- 시작 -->
 		<div class="tab-content" style="margin:50px;">
  
  <!-- 챕터1 -->
- <div role="tabpanel" class="tab-pane active" id="home" style="width: 800px;/*  margin: auto; */" >
+<div role="tabpanel" class="tab-pane active" id="home" style="width: 50%; margin: 1% 25% 10% 25%; padding:1px; text-align: center; font-family:p.a" align="center" >
 
 				<!-- 	<colgroup >
 						<col width="15%"  /> 글번호
@@ -39,6 +60,7 @@
 						<col width="15%" /> 조회수
 						<col width="30%" /> 작성일
 					</colgroup> -->
+					<img class="small1" src="/resources/images/inquiry/Q.jpg"><br/><br/><br/>
 					 <table class="table table-striped table-bordered table-hover"
                         id="dataTables-example"  >
 					<thead>
@@ -60,6 +82,8 @@
 				</div>
 				
 				</div></div>
+				
+				
 				
 				
 	<form id="commonForm" name="commonForm"></form>
