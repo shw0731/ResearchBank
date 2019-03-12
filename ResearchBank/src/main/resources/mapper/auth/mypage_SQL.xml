@@ -3,19 +3,23 @@
 
 <mapper namespace="mypage">
 	
-	<select id="updateMember" parameterType="com.kh.researchbank.Auth.MyPage.vo.MyPageVO">
-		<![CDATA[
-			SELECT
-				MEMBER_ID,
-				MEMBER_NICKNAME,
-				MEMBER_POINT,
-				MEMBER_GENDER,
-				MEMBER_ADDRESS,
-				MEMBER_MARRY,
-				MEMBER_AREA,
-				MEMBER_JOB,
-			FROM
-				MEMBER_LIST
+	<!-- 회원 수정 -->
+<update id="updateMember" parameterType="hashmap">
+  <![CDATA[
+		UPDATE MEMBER_LIST 
+		  
+		  SET MEMBER_PW = #{MEMBER_PW}, 
+			  MEMBER_NICKNAME = #{MEMBER_NICKNAME}, 
+			  MEMBER_GENDER = #{MEMBER_GENDER}, 
+			  MEMBER_ADDRESS = #{MEMBER_ADDRESS}, 
+			  MEMBER_MARRY = #{MEMBER_MARRY}, 
+			  MEMBER_AREA = #{MEMBER_AREA}, 
+			  MEMBER_JOB = #{MEMBER_JOB},
+			  MEMBER_BIRTH = #{MEMBER_BIRTH}
+			
+			  WHERE MEMBER_ID = #{MEMBER_ID}
 		]]>
-	</select>
+</update>
+	
+	
 </mapper>	

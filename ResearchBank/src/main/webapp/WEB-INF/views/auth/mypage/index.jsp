@@ -31,7 +31,7 @@
                   <table class="table table-user-information">
                    
                         <td>아이디:</td>
-                        <td>${member_id}</td>
+                        <td>${MEMBER_ID}</td>
                       </tr>
                       <tr>
                         <td>닉네임:</td>
@@ -39,15 +39,15 @@
                       </tr> 
                       <tr>
                         <td>포인트:</td>
-                        <td>${member_point}</td>
+                        <td>${MEMBER_POINT}</td>
                       </tr>                  
                       <tr>
                         <td>성별:</td>
-                        <td>${member_gender}</td>
+                        <td>${MEMBER_GENDER}</td>
                       </tr>
                       <tr>
                         <td>생년월일:</td>
-                        <td>${member_birth}</td>
+                        <td>${MEMBER_BIRTH}</td>
                       </tr>
                       <tr>
                         <td>주소:</td>
@@ -55,18 +55,18 @@
                       </tr>
                       <tr>
                         <td>결혼 여부:</td>
-                        <td>${member_marry}</td>
+                        <td>${MEMBER_MARRY}</td>
                       </tr>
                       <tr>
                         <td>지역:</td>
-                        <td>${member_area}</td>
+                        <td>${MEMBER_AREA}</td>
                       </tr>      
                        <tr>
                         <td>직업:</td>
-                        <td>${member_job}</td>
+                        <td>${MEMBER_JOB}</td> 
                       </tr> 
                     </tbody>
-                  </table>
+                  </table> 
                   
                  <!--   <a href="#" class="btn btn-primary">My Sales Performance</a>
                   <a href="#" class="btn btn-primary">Team Sales Performance</a>-->
