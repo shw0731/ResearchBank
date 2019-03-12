@@ -9,7 +9,8 @@
             	ROW_NUMBER() OVER (ORDER BY NOTICE_IDX DESC) RNUM,
                 NOTICE_IDX,
                 NOTICE_SUBJECT,
-                NOTICE_CONTEXT
+                NOTICE_CONTEXT,
+                NOTICE_DATE
             FROM
                 NOTICE
         ]]>
@@ -22,13 +23,15 @@
         (
            		NOTICE_IDX,
                 NOTICE_SUBJECT,
-                NOTICE_CONTEXT
+                NOTICE_CONTEXT,
+                NOTICE_DATE
         )
         VALUES
         (
             NOTICE_SEQ.NEXTVAL,
             #{NOTICE_SUBJECT},
-            #{NOTICE_CONTEXT}
+            #{NOTICE_CONTEXT},
+            SYSDATE
         )
     ]]>
 	</insert>
@@ -38,7 +41,8 @@
         SELECT
         	NOTICE_IDX,
             NOTICE_SUBJECT,
-            NOTICE_CONTEXT
+            NOTICE_CONTEXT,
+            NOTICE_DATE
         FROM
         	NOTICE
         WHERE
