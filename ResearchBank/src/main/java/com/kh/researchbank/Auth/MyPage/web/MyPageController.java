@@ -19,72 +19,70 @@ import com.kh.researchbank.Auth.MyPage.service.Impl.MyPageServiceImpl;
 import com.kh.researchbank.Auth.MyPage.vo.MyPageVO;
 import com.kh.researchbank.common.CommandMap;
 
-
-
 /**
  * @Class Name : MyPageController.java
  * @Description : 메인
- * @Modification Information
- *  수정일      수정자              수정내용
- * ---------   ---------   -------------------------------
- * 2019.03.04              최초생성
+ * @Modification Information 수정일 수정자 수정내용 --------- ---------
+ *               ------------------------------- 2019.03.04 최초생성
  *
- * @author KH 
+ * @author KH
  * @since 2019. 03.04
  * @version 1.0
  * @see
  *
- *      Copyright (C) by KH All right reserved.
+ * 		Copyright (C) by KH All right reserved.
  */
 
 @Controller
 public class MyPageController {
-	
+
 	@Resource(name = "mypageService")
-	protected MyPageServiceImpl mypageService;
-	
+	protected MyPageService mypageService;
+
 	/***********************
-	 * @title  마이페이지
+	 * @title 마이페이지
 	 * @return
 	 * @throws Exception
 	 ***********************/
 
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String index() throws Exception{
-		return mypageService.index();
+	@RequestMapping(value = "/mypage")
+	public ModelAndView index(HttpSession session, CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("auth/mypage/index");
+
+		System.out.println("===========나의 정보 조회 컨트롤러 진입==========");
+		String mem_id = session.getAttribute("MEMBER_ID").toString();
+
+		commandMap.getMap().put("MEMBER_ID", mem_id);
+
+		Map<String, Object> myInfo = mypageService.myinfoDetail(commandMap.getMap());
+		System.out.println("===========나의 아이디=========== : " + myInfo.get("MEMBER_ID"));
+		mv.addObject("map", myInfo);
+		return mv;
 	}
-	
+
 	// 회원정보수정
 	@RequestMapping("updateMember")
 	public String updateMember(MyPageVO mypageVo) {
-		
+
 		return "auth/mypage/update/index";
 	}
-	
-	//회원 정보 수정 처리
-	   @RequestMapping(value = "/memberUpdateAction", method=RequestMethod.POST) 
-	   public String memUpdateAction(HttpSession session, Model model, CommandMap commandMap) throws Exception 
-	   {
-	     
-	      
-	      
-	      System.out.println("mmmmm : "+commandMap.getMap());
-	      
-	  
-	      
 
-	      //updatemember map 선언
-	      Map<String, Object> updatemember = new HashMap<String, Object>();
-	      updatemember = commandMap.getMap(); //update 할 정보들 updatemember에 넣음
-	      mypageService.updateMyinfo(updatemember); //update 쿼리 실행
-	      
-	      Map<String, Object> memberMap = new HashMap<String, Object>();
-	      memberMap = mypageService.myinfoDetail(commandMap.getMap()); //바뀐 회원정보 불러옴 
-	      model.addAttribute("memberInfo", memberMap); //model에 저장
-	       
-	     
-	       
-	       return "auth/mypage/index";
-	   }
-	
+	// 회원 정보 수정 처리
+	@RequestMapping(value = "/memberUpdateAction", method = RequestMethod.POST)
+	public String memUpdateAction(HttpSession session, Model model, CommandMap commandMap) throws Exception {
+
+		System.out.println("mmmmm : " + commandMap.getMap());
+
+		// updatemember map 선언
+		Map<String, Object> updatemember = new HashMap<String, Object>();
+		updatemember = commandMap.getMap(); // update 할 정보들 updatemember에 넣음
+		mypageService.updateMyinfo(updatemember); // update 쿼리 실행
+
+		Map<String, Object> memberMap = new HashMap<String, Object>();
+		memberMap = mypageService.myinfoDetail(commandMap.getMap()); // 바뀐 회원정보 불러옴
+		model.addAttribute("memberInfo", memberMap); // model에 저장
+
+		 return "redirect:mypage"; 
+	}
+
 }

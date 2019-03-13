@@ -13,13 +13,13 @@ import com.kh.researchbank.common.AbstractDAO;
 @Repository("mypageDAO")
 public class MyPageDAO extends AbstractDAO {      
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> selectOneMember(Object object) throws Exception {
+	public Map<String, Object> selectOneMember(Map<String, Object> commandMap) throws Exception {
 		// TODO Auto-generated method stub
-		return (Map<String, Object>) selectOne("mypage.selectOneMember", object);
+		return (Map<String, Object>) selectOne("mypage.myinfoDetail", commandMap);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> myinfoDetail(Map<String, Object>map) throws Exception 
+	public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception 
 	{
 		return (Map<String, Object>) selectOne("mypage.myinfoDetail", map);
 	}

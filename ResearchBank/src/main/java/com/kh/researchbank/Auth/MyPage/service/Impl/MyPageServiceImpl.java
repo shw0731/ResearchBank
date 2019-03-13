@@ -39,9 +39,9 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 	
 	@Override
-	public Map<String, Object> selectOneMember(Object object) throws Exception {
+	public Map<String, Object> selectOneMember(Map<String, Object> commandMap) throws Exception {
 		// TODO Auto-generated method stub
-		return mypageDAO.selectOneMember(object);
+		return mypageDAO.selectOneMember(commandMap);
 	}
 	
 	// 나의 회원정보 수정
@@ -53,7 +53,8 @@ public class MyPageServiceImpl implements MyPageService {
 
 		public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception
 		{
-		   return mypageDAO.myinfoDetail(map);
+			Map<String, Object> resultMap = mypageDAO.myinfoDetail(map);
+			return resultMap;
 		}
 	
 }

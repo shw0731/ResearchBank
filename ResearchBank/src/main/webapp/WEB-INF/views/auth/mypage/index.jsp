@@ -39,41 +39,41 @@
                       </tr> 
                       <tr>
                         <td>포인트:</td>
-                        <td>${MEMBER_POINT}</td>
+                        <td>${map.MEMBER_POINT}</td> 
                       </tr>                  
                       <tr>
                         <td>성별:</td>
-                        <c:if test="${MEMBER_GENDER == 0}">
+                        <c:if test="${map.MEMBER_GENDER == 0}">
    						 <td>여성</td> 
 						</c:if>
-						<c:if test="${MEMBER_GENDER == 1}">
+						<c:if test="${map.MEMBER_GENDER == 1}">
    						 <td>남성</td>  
 						</c:if>
                       </tr>
                       <tr>
                         <td>생년월일:</td>
-                        <td>${MEMBER_BIRTH}</td>
+                        <td>${map.MEMBER_BIRTH}</td>
                       </tr>
                       <tr>
                         <td>주소:</td>
-                        <td>${MEMBER_ADDRESS}</td>
+                        <td>${map.MEMBER_ADDRESS}</td>
                       </tr>
                       <tr>
                       	 <td>결혼 여부:</td>
-						<c:if test="${MEMBER_MARRY == 0}">
+						<c:if test="${map.MEMBER_MARRY == 0}">
    						 <td>미혼</td> 
 						</c:if>
-						<c:if test="${MEMBER_MARRY == 1}">
+						<c:if test="${map.MEMBER_MARRY == 1}">
    						 <td>기혼</td> 
 						</c:if>
 					 </tr>
                       <tr>
                         <td>지역:</td>
-                        <td>${MEMBER_AREA}</td>
+                        <td>${map.MEMBER_AREA}</td>
                       </tr>      
                        <tr>
                         <td>직업:</td>
-                        <td>${MEMBER_JOB}</td> 
+                        <td>${map.MEMBER_JOB}</td>    
                       </tr> 
                     </tbody>
                   </table> 

@@ -175,11 +175,11 @@
 				</div>
 				생년월일
 				<div class="form-group">
-					<input type="text" name="MEMBER_BIRTH" value="${MEMBER_BIRTH }" class="form-control"/>  
+					<input type="text" name="MEMBER_BIRTH" value="${map.MEMBER_BIRTH }" class="form-control"/>  
 				</div> 
 				주소
 				<div class="form-group">
-					<input type="text" id="sample6_address" class="form-control"  name="MEMBER_ADDRESS" value=${MEMBER_ADDRESS } placeholder="ex) 010-0000-0000">
+					<input type="text" id="sample6_address" class="form-control"  name="MEMBER_ADDRESS" value=${map.MEMBER_ADDRESS }">
 					<button class="button button-dimmed" onclick="zipfind()">주소 찾기</button> 
 				</div>
 				 
@@ -212,7 +212,7 @@
 				</div>
 				 직업
 				<div class="form-group">
-					<input type="text" class="form-control"  name="MEMBER_JOB" value= ${MEMBER_JOB } >
+					<input type="text" class="form-control"  name="MEMBER_JOB" value= ${map.MEMBER_JOB } >
 				</div>   
 		
 		<div class="btnArea">
