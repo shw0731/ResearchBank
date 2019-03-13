@@ -3,8 +3,16 @@
 
 <mapper namespace="mypage">
 	
+<!-- 회원 내역 -->
+<select id="myinfoDetail" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT * FROM MEMBER_LIST 
+		WHERE MEMBER_ID = #{MEMBER_ID}
+	]]>
+</select>	
+	
 	<!-- 회원 수정 -->
-<update id="updateMember" parameterType="hashmap">
+<update id="updateMyinfo" parameterType="hashmap"> 
   <![CDATA[
 		UPDATE MEMBER_LIST 
 		  

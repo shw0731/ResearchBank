@@ -13,7 +13,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script charset="UTF-8" type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/postcode/1484723365148/170118.js"></script>
-<script type="text/javascript">
+<script>
+	$(document).ready(function(){ 
+		$("#btnUpdate").click(function(){
+			document.form1.action = "${path}/memberUpdateAction";
+			document.form1.submit();
+		});
+	});
+</script>
+<!-- <script type="text/javascript">
     function zipfind() 
     {
         new daum.Postcode
@@ -133,52 +141,52 @@
       return true;
       
     }
-    </script>
+    </script> -->
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div class="wrap">
 <h1>회원정보 수정</h1>
 <hr />
-<form action="/updateMember" name="frm">
+<form name="form1">
 <td>
 				아이디
 				<div class="form-group">
-					<input type="text" name="m_id" id="m_id" style="font-weight:bold;"class="form-control" value = ${MEMBER_ID } readonly>
+					<input type="text" name="MEMBER_ID" id="m_id" style="font-weight:bold;"class="form-control" value = ${MEMBER_ID } readonly>
 				</div>
 				
 				비밀번호
 				<div class="form-group">
-					<input type="password" name="m_password" class="form-control"  onkeyup="checkPwd()"/>
+					<input type="password" name="MEMBER_PW" class="form-control"  onkeyup="checkPwd()"/>
 				</div>
 				비밀번호 확인
 				<div class="form-group">
-					<input type="password" name="m_password_check" class="form-control"  onkeyup="checkPwd()"/>
+					<input type="password" name="MEMBER_PW" class="form-control"  onkeyup="checkPwd()"/>
 				</div>   
 				 
 				닉네임
 				<div class="form-group">
-					<input type="text" class="form-control" name="m_name" style="font-weight:bold;" value=${MEMBER_NICKNAME } readonly>
+					<input type="text" class="form-control" name="MEMBER_NICKNAME" style="font-weight:bold;" value=${MEMBER_NICKNAME } readonly>
 				</div>
 				성별
 				<div class="form-group">
-					<input type="radio" id="member_gender" name="GENDER" style="font-weight:bold;" value="0">여자
-					<input type="radio" id="member_gender" name="GENDER" style="font-weight:bold;" value="1">남자
+					<input type="radio" id="member_gender" name="MEMBER_GENDER" style="font-weight:bold;" value="0">여자
+					<input type="radio" id="member_gender" name="MEMBER_GENDER" style="font-weight:bold;" value="1">남자
 				</div>
 				주소
 				<div class="form-group">
-					<input type="text" id="sample6_address" class="form-control"  name="m_phone" value=${MEMBER_ADDRESS} placeholder="ex) 010-0000-0000">
+					<input type="text" id="sample6_address" class="form-control"  name="MEMBER_ADDRESS" value=${MEMBER_ADDRESS } placeholder="ex) 010-0000-0000">
 					<button class="button button-dimmed" onclick="zipfind()">주소 찾기</button> 
 				</div>
 				 
 				결혼유무
 				<div class="form-group">
-					<input type="radio" id="member_marry" name="MARRY" style="font-weight:bold;" value="0">미혼
-					<input type="radio" id="member_marry" name="MARRY" style="font-weight:bold;" value="1">기혼
+					<input type="radio" id="MEMBER_MARRY" name="MARRY" style="font-weight:bold;" value="0">미혼
+					<input type="radio" id="MEMBER_MARRY" name="MARRY" style="font-weight:bold;" value="1">기혼
 				</div>
 				거주지역
 				<div class="form-group">
-					<select id="member_area" name="AREA">
+					<select id="MEMBER_AREA" name="AREA">
 						<option value="서울">서울</option>
 						<option value="대전">대전</option>
 						<option value="대구">대구</option>
@@ -204,7 +212,7 @@
 				</div>
 		</td>  
 		<div class="btnArea">
- 		<input class="effect effect-5" type="submit" onclick="checkpw();" value="회원정보 수정하기"/>
+ 		<input class="effect effect-5" type="button" id="btnUpdate" onclick="checkpw();" value="회원정보 수정하기"/>
  		</div> 		
  		</form>
 <section class="left_section">

@@ -65,25 +65,26 @@ public class MyPageController {
 	   @RequestMapping(value = "/memberUpdateAction")
 	   public String memUpdateAction(HttpSession session, Model model, CommandMap commandMap) throws Exception 
 	   {
-	      System.out.println("===========회원 정보 수정 처리(Ajax) 컨트롤러 진입===========");
-	      //split 된 이메일을 다시 합침
-	      String MEMBER_EMAIL = commandMap.getMap().get(("MEMBER_EMAIL1"))
-	            +"@"+ commandMap.getMap().get(("MEMBER_EMAIL2"));
+	     
 	      
-	      commandMap.getMap().put("MEMBER_EMAIL", MEMBER_EMAIL); //MEMBER_EMAIL map에 삽입
 	      
-	      //map 확인
-	      System.out.println("===========회원 정보 수정 처리(Ajax)에 필요할 commandMap 출력==========="); 
-	      System.out.println(commandMap.getMap());
+	      System.out.println("mmmmm : "+commandMap.getMap());
 	      
+	  
+	      
+
 	      //updatemember map 선언
 	      Map<String, Object> updatemember = new HashMap<String, Object>();
 	      updatemember = commandMap.getMap(); //update 할 정보들 updatemember에 넣음
 	      mypageService.updateMyinfo(updatemember); //update 쿼리 실행
+	      
+	      Map<String, Object> memberMap = new HashMap<String, Object>();
+	      memberMap = mypageService.myinfoDetail(commandMap.getMap()); //바뀐 회원정보 불러옴
+	      model.addAttribute("memberInfo", memberMap); //model에 저장
 	       
 	     
 	       
-	       return "auth/mypage/update/index";
+	       return "auth/mypage/index";
 	   }
 	
 }

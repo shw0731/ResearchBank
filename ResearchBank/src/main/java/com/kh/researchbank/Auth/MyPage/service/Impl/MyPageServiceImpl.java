@@ -50,5 +50,10 @@ public class MyPageServiceImpl implements MyPageService {
 		{
 	       mypageDAO.updateMyinfo(map);
 		}
+
+		public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception
+		{
+		   return mypageDAO.myinfoDetail(map);
+		}
 	
 }
