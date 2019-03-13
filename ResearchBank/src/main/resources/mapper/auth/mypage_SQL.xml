@@ -3,29 +3,20 @@
 
 <mapper namespace="mypage">
 	
-<!-- 회원 내역 -->
-<select id="myinfoDetail" parameterType="hashmap" resultType="hashmap">
-	<![CDATA[
-		SELECT * FROM MEMBER_LIST 
-		WHERE MEMBER_ID = #{MEMBER_ID}
-	]]>
-</select>	
-	
 	<!-- 회원 수정 -->
 <update id="updateMyinfo" parameterType="hashmap"> 
   <![CDATA[
 		UPDATE MEMBER_LIST 
 		  
-		  SET MEMBER_PW = #{MEMBER_PW}, 
-			  MEMBER_NICKNAME = #{MEMBER_NICKNAME}, 
-			  MEMBER_GENDER = #{MEMBER_GENDER}, 
-			  MEMBER_ADDRESS = #{MEMBER_ADDRESS}, 
-			  MEMBER_MARRY = #{MEMBER_MARRY}, 
-			  MEMBER_AREA = #{MEMBER_AREA}, 
-			  MEMBER_JOB = #{MEMBER_JOB},
-			  MEMBER_BIRTH = #{MEMBER_BIRTH}
+		  SET MEMBER_PW = #{MEMBER_PW, jdbcType=VARCHAR} , 
+			  MEMBER_NICKNAME = #{MEMBER_NICKNAME, jdbcType=VARCHAR}, 
+			  MEMBER_GENDER = #{MEMBER_GENDER, jdbcType=INTEGER}, 
+			  MEMBER_ADDRESS = #{MEMBER_ADDRESS, jdbcType=VARCHAR}, 
+			  MEMBER_MARRY = #{MEMBER_MARRY, jdbcType=INTEGER}, 
+			  MEMBER_AREA = #{MEMBER_AREA, jdbcType=VARCHAR}, 
+			  MEMBER_JOB = #{MEMBER_JOB, jdbcType=VARCHAR}
 			
-			  WHERE MEMBER_ID = #{MEMBER_ID}
+			  WHERE MEMBER_ID = #{MEMBER_ID, jdbcType=VARCHAR}    
 		]]>
 </update>
 	
