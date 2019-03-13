@@ -43,7 +43,12 @@
                       </tr>                  
                       <tr>
                         <td>성별:</td>
-                        <td>${MEMBER_GENDER}</td>
+                        <c:if test="${MEMBER_GENDER == 0}">
+   						 <td>여성</td> 
+						</c:if>
+						<c:if test="${MEMBER_GENDER == 1}">
+   						 <td>남성</td>  
+						</c:if>
                       </tr>
                       <tr>
                         <td>생년월일:</td>
@@ -54,9 +59,14 @@
                         <td>${MEMBER_ADDRESS}</td>
                       </tr>
                       <tr>
-                        <td>결혼 여부:</td>
-                        <td>${MEMBER_MARRY}</td>
-                      </tr>
+                      	 <td>결혼 여부:</td>
+						<c:if test="${MEMBER_MARRY == 0}">
+   						 <td>미혼</td> 
+						</c:if>
+						<c:if test="${MEMBER_MARRY == 1}">
+   						 <td>기혼</td> 
+						</c:if>
+					 </tr>
                       <tr>
                         <td>지역:</td>
                         <td>${MEMBER_AREA}</td>

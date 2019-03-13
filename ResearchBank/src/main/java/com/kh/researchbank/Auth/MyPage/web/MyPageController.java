@@ -78,10 +78,10 @@ public class MyPageController {
 	      updatemember = commandMap.getMap(); //update 할 정보들 updatemember에 넣음
 	      mypageService.updateMyinfo(updatemember); //update 쿼리 실행
 	      
-	     /* Map<String, Object> memberMap = new HashMap<String, Object>();
-	      memberMap = mypageService.myinfoDetail(commandMap.getMap()); //바뀐 회원정보 불러옴
+	      Map<String, Object> memberMap = new HashMap<String, Object>();
+	      memberMap = mypageService.myinfoDetail(commandMap.getMap()); //바뀐 회원정보 불러옴 
 	      model.addAttribute("memberInfo", memberMap); //model에 저장
-*/	       
+	       
 	     
 	       
 	       return "auth/mypage/index";

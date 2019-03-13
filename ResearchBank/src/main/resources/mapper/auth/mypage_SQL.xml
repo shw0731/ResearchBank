@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mypage">
+
+<select id="myinfoDetail" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT * FROM MEMBER_LIST 
+		WHERE MEMBER_ID = #{MEMBER_ID}
+	]]>
+</select>
 	
 	<!-- 회원 수정 -->
 <update id="updateMyinfo" parameterType="hashmap"> 
@@ -10,13 +17,14 @@
 		  
 		  SET MEMBER_PW = #{MEMBER_PW, jdbcType=VARCHAR} , 
 			  MEMBER_NICKNAME = #{MEMBER_NICKNAME, jdbcType=VARCHAR}, 
-			  MEMBER_GENDER = #{MEMBER_GENDER, jdbcType=INTEGER}, 
+			  MEMBER_GENDER = #{MEMBER_GENDER, jdbcType=INTEGER},
+			  MEMBER_BIRTH = #{MEMBER_BIRTH, jdbcType=VARCHAR}, 
 			  MEMBER_ADDRESS = #{MEMBER_ADDRESS, jdbcType=VARCHAR}, 
 			  MEMBER_MARRY = #{MEMBER_MARRY, jdbcType=INTEGER}, 
 			  MEMBER_AREA = #{MEMBER_AREA, jdbcType=VARCHAR}, 
-			  MEMBER_JOB = #{MEMBER_JOB, jdbcType=VARCHAR}
+			  MEMBER_JOB = #{MEMBER_JOB, jdbcType=VARCHAR} 
 			
-			  WHERE MEMBER_ID = #{MEMBER_ID, jdbcType=VARCHAR}    
+			  WHERE MEMBER_ID = #{MEMBER_ID}    
 		]]>
 </update>
 	

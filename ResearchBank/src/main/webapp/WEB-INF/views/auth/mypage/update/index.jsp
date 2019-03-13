@@ -173,6 +173,10 @@
 					<input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" value="0">여자
 					<input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" value="1">남자  
 				</div>
+				생년월일
+				<div class="form-group">
+					<input type="text" name="MEMBER_BIRTH" value="${MEMBER_BIRTH }" class="form-control"/>  
+				</div> 
 				주소
 				<div class="form-group">
 					<input type="text" id="sample6_address" class="form-control"  name="MEMBER_ADDRESS" value=${MEMBER_ADDRESS } placeholder="ex) 010-0000-0000">
