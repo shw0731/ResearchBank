@@ -85,9 +85,22 @@
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
           <h2 class="section-heading text-white">로그인</h2>
-          <a id="custom-login-btn" href="javascript:loginWithKakao()">
+          <!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
 			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-			</a>
+			</a> -->
+ 			<form role="form" name="form" action="/register.do" method="post">
+				<input type="hidden" id="member_id2" name="member_id">
+				<input type="hidden" id="member_pw2" name="member_pw">
+				<input type="hidden" id="member_nickname" name="member_nickname">
+				<input type="hidden" id="member_point" name="member_point" value="0">
+				<input type="hidden" id="role_id" name="role_id" value="0">
+			<div id="kakaoLogin" align="center">
+			    <a id="kakao-login-btn">
+			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="50%"/>
+			    </a>
+			    <a href="http://developers.kakao.com/logout"></a>
+			</div>
+			</form>
           <hr class="light my-4">
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
@@ -102,25 +115,165 @@
       </div>
     </div>
   </section>
-
- 
 <script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
-    function loginWithKakao() {
-      // 로그인 창을 띄웁니다.
-      Kakao.Auth.login({
+
+//카카오 로그인
+Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
+        
+$("#kakao-login-btn").on("click", function(){
+    //1. 로그인 시도
+    Kakao.Auth.login({
         success: function(authObj) {
-          alert(JSON.stringify(authObj));
+          //console.log(JSON.stringify(authObj));
+          //console.log(Kakao.Auth.getAccessToken());
+        
+          //2. 로그인 성공시, API를 호출합니다.
+          var isCheckId = 0;
+          Kakao.API.request({
+            url: '/v2/user/me',
+            success: function(res) {
+              console.log(JSON.stringify(res));
+              console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
+    	      console.log(res.kakao_account['email']);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
+    	      console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
+              $('#member_id').val(res.kakao_account['email']);
+              var inputId = $('#member_id').val();
+              $('#member_nickname').val(res.properties['nickname']);
+        	  $('#member_id').val(res.kakao_account['email']);
+        	  $('#member_pw').val(res.id);
+        	  var inputPw = $('#member_pw').val();
+        	  var inputNickname= $('#member_nickname').val();
+        	  var inputPoint= $('#member_point').val();
+        	  var inputRole=$('#role_id').val();
+        	  alert(JSON.stringify({
+                        member_id : res.kakao_account['email'],
+                        member_pw : res.id,
+                        member_nickname : res.properties['nickname'],
+                        member_point : "0",
+                        role_id : "0",
+                        }));
+              $.ajax({
+	       	  	  type: "post",
+	          	  url: "duplicationCheck.do",
+	          	  data: inputId,
+                  headers : {
+                      "Accept" : "application/json",
+                      "Content-Type" : "application/json"
+                    },
+                    
+                    success : function(idChk){
+                        
+                    	if(idChk==true){ //DB에 아이디가 없을 경우 => 회원가입
+                            console.log("회원가입중...");
+                            $.ajax({
+                                url : "oauth.do",
+                                method : "POST",
+                                headers : {
+                                  "Accept" : "application/json",
+                                  "Content-Type" : "application/json"
+                                },
+                                data : JSON.stringify({
+                                member_id : res.kakao_account['email'],
+                                member_pw : res.id,
+                                member_nickname : res.properties['nickname'],
+                                member_point : "0",
+                                role_id : "0",
+                                }),
+                                success : function(JSONData){
+                                   alert("회원가입이 정상적으로 되었습니다.");
+                                   $("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
+                                }
+                            })
+                        }
+                    	if(idChk==false) { //DB에 아이디가 존재할 경우 => 로그인
+                            console.log("로그인중...");
+                            $("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
+                        }
+                    }
+              })
+            },
+            fail: function(error) {
+              alert(JSON.stringify(error));
+            }
+          });
+                  
         },
         fail: function(err) {
           alert(JSON.stringify(err));
         }
       });
-    };
-  //]]>
+        
+})//e.o.kakao
+
 </script>
+<!-- <script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
+ 		   Kakao.Auth.createLoginButton({
+    	   container: '#kakao-login-btn',
+    	   success: function(authObj) {
+    	     Kakao.API.request({
+    	       url: '/v1/user/me',
+    	       success: function(res) {
+    	             /* alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
+    	             alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력 */
+    	             console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
+    	             console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
+    	             console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
+/* 					alert(res.id);
+    	             alert(res.kaccount_email);
+    	             alert(res.properties['nickname']); */
+    	         // res.properties.nickname으로도 접근 가능 )
+    	             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
+    	             kakaoLogin(res);
+    	            	  $('#member_nickname').val(res.properties['nickname']);
+    	            	  $('#member_id2').val(res.kaccount_email);
+    	            	  $('#member_pw2').val(res.id);
+    	            	 /*  location.href= "oauth.do" */
+    	              
+    	           }
+    	         })
+    	       },
+    	       fail: function(error) {
+    	         alert(JSON.stringify(error));
+    	       }
+    	     });
+
+  //]]>
+  
+  var kakaoLogin = function (res){
+	  var jstr = res;
+	  $.ajax({
+		  async: false,
+		  type: "post",
+		  url: "register.do",
+		  data: jstr,
+		  success: function(data)
+		  	if(data == "S") {
+				alert("가입하시겠습니까?");
+				$("#signUpUserPwd").focus();
+		  	}else{
+				alert("계정이 존재합니다. 로그인 해주세요.");
+				$("#signUpUserId").focus();
+		  	}
+				,
+		  error:  function(req, status, errThrown) {
+				alert("network error occur");
+			}
+		  
+	})
+  }
+</script>-->
+<!-- <script type="text/javascript">
+function CacaoReg() {
+	if(confirm("회원가입을 하시겠습니까?")) {
+		alert("가입!");
+		document.form.submit();
+	}
+}
+
+</script> -->
 
 </body>
 </html>

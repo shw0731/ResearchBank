@@ -17,6 +17,4 @@ public class LoginVO {
 	public void setMember_pw(String member_pw) {
 		this.member_pw = member_pw;
 	}
-	
-	
 }
