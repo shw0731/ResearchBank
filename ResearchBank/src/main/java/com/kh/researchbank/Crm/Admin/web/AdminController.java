@@ -38,12 +38,20 @@ public class AdminController {
 	
 	
 	//---------------------멤버 조회------------------------------//
-	@RequestMapping(value="/admin")
+	@RequestMapping(value="/admin/member")
 	public @ResponseBody ModelAndView indexMember(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("crm/admin/index");	
+		ModelAndView mv = new ModelAndView("crm/admin/indexMember");	
 		
 		return mv;
 	}
+	@RequestMapping(value="/admin/survey")
+	public @ResponseBody ModelAndView indexSurvey(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("crm/admin/indexSurvey");	
+		
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="/admin/memberPaging") // 페이징 구간
 	public ModelAndView indexMemberPaging(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("jsonView");

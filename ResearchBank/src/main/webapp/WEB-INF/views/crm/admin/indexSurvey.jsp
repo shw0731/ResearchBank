@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
 <html>
 <head>
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
@@ -76,6 +76,18 @@ tbody>tr:HOVER {
 </style>
 </head>
 <body>
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<br />
+	<br />
+
+	<div style="width: 50%; margin: 5% 20% 1% 42%; padding: 1px; text-align: center;">
+		<ul class="nav nav-pill">
+			<li role="presentation"><a href="/admin/member">회원관리</a>
+			</li>
+			<li role="presentation" class="active"><a href="/admin/survey">설문관리</a></li>
+		</ul>
+	</div>
+
 	<!-- -------------------설문지리스트----------------------------- -->
 	<div role="tabpanel" class="tab-pane active" id="home2"
 		style="width: 500; margin: 5% 5%; padding: 1px; text-align: center;"
@@ -99,7 +111,7 @@ tbody>tr:HOVER {
 			</thead>
 
 			<tbody class="surveyList">
-				
+
 			</tbody>
 		</table>
 
@@ -115,7 +127,7 @@ tbody>tr:HOVER {
 			};
 
 		});
-		
+
 		function fn_selectSurveyList(pageNo) {
 			var comAjax = new ComAjax();
 			comAjax.setUrl("<c:url value='/admin/surveyPaging' />");
@@ -124,8 +136,7 @@ tbody>tr:HOVER {
 			comAjax.addParam("PAGE_ROW", 15);
 			comAjax.ajax();
 		}
-	
-		
+
 		function fn_selectSurveyListCallback(data) {
 			var total = data.TOTAL;
 			var body = $("table>tbody.surveyList");
@@ -145,43 +156,17 @@ tbody>tr:HOVER {
 
 				var str = "";
 
-				$
-						.each(
-								data.list,
-								function(key, value) {
-									str += "<tr>"
-											+ "<td>"
-												+ value.SURVEY_IDX
-											+ "</td>"
-											+ "<td>"
-												+ value.REG_DATE
-											+ "</td>"
-											+ "<td>"
-												+ value.DEADLINE_DATE
-											+ "</td>"
-											+ "<td>"
-												+ value.SURVEY_POINT
-											+ "</td>"
-											+ "<td>"
-												+ value.MAXIMUM_PART
-											+ "</td>"
-											+ "<td>"
-												+ value.CURRENT_PART
-											+ "</td>"
-											+ "<td>"
-												+ value.ISREPLY
-											+ "</td>"
-											+ "<td>"
-												+ value.ISOPEN
-											+ "</td>"
-											+ "<td>"
-												+ value.SERVEY_SUBJECT
-											+ "</td>"
-											+ "<td>"
-												+ value.MEMBER_ID
-											+ "</td>"
-										+ "</tr>";
-								});
+				$.each(data.list, function(key, value) {
+					str += "<tr>" + "<td>" + value.SURVEY_IDX + "</td>"
+							+ "<td>" + value.REG_DATE + "</td>" + "<td>"
+							+ value.DEADLINE_DATE + "</td>" + "<td>"
+							+ value.SURVEY_POINT + "</td>" + "<td>"
+							+ value.MAXIMUM_PART + "</td>" + "<td>"
+							+ value.CURRENT_PART + "</td>" + "<td>"
+							+ value.ISREPLY + "</td>" + "<td>" + value.ISOPEN
+							+ "</td>" + "<td>" + value.SERVEY_SUBJECT + "</td>"
+							+ "<td>" + value.MEMBER_ID + "</td>" + "</tr>";
+				});
 				body.append(str);
 
 				/* $("a[name='title']").on("click", function(e) { //제목

@@ -26,7 +26,6 @@
 .box2-1 {
 	width: 100px;
 	height: 100px;
-	background-image: url("/images/inquiry/FAQ.jpg");
 }
 
 thead>tr>th {
@@ -78,6 +77,20 @@ tbody>tr:HOVER {
 	<br />
 	<br />
 
+	
+	<div style="width: 50%; margin: 5% 20% 1% 42%; padding: 1px; text-align: center;">
+		<ul class="nav nav-pill">
+			<li role="presentation" class="active">
+				<a href="/admin/member" >회원관리</a>
+			</li>
+			<li role="presentation">
+				<a href="/admin/survey">설문관리</a>
+			</li>
+		</ul>
+	</div>
+
+
+
 	<!-- ------------------멤버리스트------------------------- -->
 	<div role="tabpanel" class="tab-pane active" id="home1"
 		style="width: 500; margin: 5% 5%; padding: 1px; text-align: center;"
@@ -106,48 +119,14 @@ tbody>tr:HOVER {
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 	</div>
-	
-	
-	<!-- -------------------설문지리스트----------------------------- -->
-	<div role="tabpanel" class="tab-pane active" id="home2"
-		style="width: 500; margin: 5% 5%; padding: 1px; text-align: center;"
-		align="center">
-		<h3 align="center">설문리스트</h3>
-		<table class="table table-striped table-bordered table-hover"
-			id="dataTables-example">
-			<thead>
-				<tr class="info" align="center">
-					<th width="5%">번호</th>
-					<th width="10%">시작날짜</th>
-					<th width="10%">종료날짜</th>
-					<th width="5%">포인트</th>
-					<th width="5%">최대참여</th>
-					<th width="5%">현재참여</th>
-					<th width="5%">답변</th>
-					<th width="5%">활성화</th>
-					<th width="15%">제목</th>
-					<th width="5%">작성자</th>
-				</tr>
-			</thead>
-
-			<tbody class="surveyList">
-				
-			</tbody>
-		</table>
-
-		<div id="PAGE_NAVI2" class="paging" align="center"></div>
-		<input type="hidden" id="PAGE_INDEX2" name="PAGE_INDEX2" />
-	</div>
-
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-<!-- 
-	<form id="commonForm" name="commonForm"></form> -->
+
+	<form id="commonForm" name="commonForm"></form>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
 			window.onload = function() {
 				fn_selectBoardList(1);
-				fn_selectSurveyList(1);
 			};
 
 			/* $("a[name='title']").on("click", function(e) { //상세보기로
@@ -174,14 +153,6 @@ tbody>tr:HOVER {
 			comAjax.ajax();
 		}
 		
-		function fn_selectSurveyList(pageNo) {
-			var comAjax = new ComAjax();
-			comAjax.setUrl("<c:url value='/admin/surveyPaging' />");
-			comAjax.setCallback("fn_selectSurveyListCallback");
-			comAjax.addParam("PAGE_INDEX2", pageNo);
-			comAjax.addParam("PAGE_ROW", 15);
-			comAjax.ajax();
-		}
 
 		function fn_selectBoardListCallback(data) {
 			var total = data.TOTAL;
@@ -230,72 +201,6 @@ tbody>tr:HOVER {
 											+ "</td>"
 											+ "<td>"
 												+ value.MEMBER_JOB
-											+ "</td>"
-										+ "</tr>";
-								});
-				body.append(str);
-
-				/* $("a[name='title']").on("click", function(e) { //제목
-					e.preventDefault();
-					fn_showNotice($(this));
-				}); */
-
-			}
-		}
-		
-		function fn_selectSurveyListCallback(data) {
-			var total = data.TOTAL;
-			var body = $("table>tbody.surveyList");
-			body.empty();
-			if (total == 0) {
-				var str = "<tr>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
-						+ "</tr>";
-				body.append(str);
-			} else {
-				var params = {
-					divId : "PAGE_NAVI2",
-					pageIndex : "PAGE_INDEX2",
-					totalCount : total,
-					eventName : "fn_selectSurveyList"
-				};
-				gfn_renderPaging(params);
-
-				var str = "";
-
-				$
-						.each(
-								data.list,
-								function(key, value) {
-									str += "<tr>"
-											+ "<td>"
-												+ value.SURVEY_IDX
-											+ "</td>"
-											+ "<td>"
-												+ value.REG_DATE
-											+ "</td>"
-											+ "<td>"
-												+ value.DEADLINE_DATE
-											+ "</td>"
-											+ "<td>"
-												+ value.SURVEY_POINT
-											+ "</td>"
-											+ "<td>"
-												+ value.MAXIMUM_PART
-											+ "</td>"
-											+ "<td>"
-												+ value.CURRENT_PART
-											+ "</td>"
-											+ "<td>"
-												+ value.ISREPLY
-											+ "</td>"
-											+ "<td>"
-												+ value.ISOPEN
-											+ "</td>"
-											+ "<td>"
-												+ value.SERVEY_SUBJECT
-											+ "</td>"
-											+ "<td>"
-												+ value.MEMBER_ID
 											+ "</td>"
 										+ "</tr>";
 								});
