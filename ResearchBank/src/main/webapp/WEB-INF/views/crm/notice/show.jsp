@@ -26,8 +26,8 @@
 	<br />
 	<div role="tabpanel" class="tab-pane active" id="home"
 		style="width: 60%; margin: 5% 20% 5% 20%" align="center">
-		<h1>공지사항</h1>
-		<hr />
+		<img class="small1" src="/resources/images/notice/Title.jpg">
+		
 
 		<table class="table table-striped table-bordered table-hover"
 			id="dataTables-example">

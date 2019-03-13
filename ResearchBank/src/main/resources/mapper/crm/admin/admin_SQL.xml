@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+	<select id="memberList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+			SELECT
+				ROW_NUMBER() OVER (ORDER BY ROLE_ID DESC) RNUM,
+				MEMBER_ID,
+				MEMBER_NICKNAME,
+				MEMBER_POINT,
+				MEMBER_GENDER,
+				MEMBER_ADDRESS,
+				MEMBER_MARRY,
+				MEMBER_AREA,
+				MEMBER_JOB,
+				ROLE_ID
+			FROM
+				MEMBER_LIST
+		]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+	<select id="surveyList" parameterType="hashmap"
+		resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+			SELECT
+				ROW_NUMBER() OVER (ORDER BY SURVEY_IDX DESC) RNUM,
+				SURVEY_IDX,
+				TO_CHAR(REG_DATE,'YYYY.MM.DD') AS REG_DATE,
+				TO_CHAR(DEADLINE_DATE,'YYYY.MM.DD') AS DEADLINE_DATE,
+				SURVEY_POINT,
+				MAXIMUM_PART,
+				CURRENT_PART,
+				ISREPLY,
+				ISOPEN,
+				SURVEY_SUBJECT,
+				MEMBER_ID
+			FROM
+				SURVEY_LIST
+		]]>
+		<include refid="common.pagingPost" />
+	</select>
+
+</mapper>	

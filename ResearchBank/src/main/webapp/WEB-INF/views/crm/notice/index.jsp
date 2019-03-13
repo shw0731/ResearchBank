@@ -93,7 +93,7 @@ tbody>tr:HOVER {
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody class="notice">
 				<%-- <c:choose>
 					<c:when test="${fn:length(list) > 0}">
 						<c:forEach items="${list }" var="row">
@@ -120,6 +120,7 @@ tbody>tr:HOVER {
 
 
 		</table>
+
 
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br /> <a
@@ -175,7 +176,7 @@ tbody>tr:HOVER {
 
 		function fn_selectBoardListCallback(data) {
 			var total = data.TOTAL;
-			var body = $("table>tbody");
+			var body = $("table>tbody.notice");
 			body.empty();
 			if (total == 0) {
 				var str = "<tr>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
