@@ -44,4 +44,16 @@ public class MyPageServiceImpl implements MyPageService {
 		return mypageDAO.selectOneMember(object);
 	}
 	
+	// 나의 회원정보 수정
+		@Override
+		public void updateMyinfo(Map<String, Object> map) throws Exception
+		{
+	       mypageDAO.updateMyinfo(map);
+		}
+
+		public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception
+		{
+		   return mypageDAO.myinfoDetail(map);
+		}
+	
 }
