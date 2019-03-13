@@ -49,7 +49,7 @@ p.a{
 	</div>
 
 	
-	<div role="tabpanel" style="width: 50%; margin: 5% 20% 1% 41%; padding: 1px; text-align: center;" id="#box2-1">
+	<div role="tabpanel" style="width: 50%; margin: 5% 20% 1% 42%; padding: 1px; text-align: center;" id="#box2-1">
 		<!-- Nav tabs -->
 
 	<ul class="nav nav-pill" role="tablist">
@@ -63,7 +63,7 @@ p.a{
  
  <!-- 챕터1 -->
  <div role="tabpanel" class="tab-pane active" id="home"
- style=" width: 50%; margin: 1% 25% 2% 25%; padding: 1px; font-family:p.a" align="center" >
+ style=" width: 50%; margin: 1% 25% 2% 26%; padding: 1px; font-family:p.a" align="center" >
 
 				<!-- 	<colgroup >
 			
@@ -127,7 +127,7 @@ p.a{
 
 
 			</div>
- <div role="tabpanel" class="tab-pane" id="oneone" style="width: 50%; margin: 1% 25% 2% 25%; padding: 1px; text-align: center;">
+ <div role="tabpanel" class="tab-pane" id="oneone" style="width: 40%; margin: 1% 25% 2% 30%; padding: 1px; text-align: center;">
 
 <!-- 아코디언 시작! -->
 <img class="small1" src="/resources/images/inquiry/FAQ.jpg"><br/>
@@ -236,7 +236,7 @@ p.a{
 				</div>
 				
 			
-			<div role="tabpanel" class="tab-pane" id="profile" style="width: 50%; margin: 1% 25% 2% 25%; padding: 1px; text-align: center;">
+			<div role="tabpanel" class="tab-pane" id="profile" style="width: 50%; margin: 1% 25% 2% 26%; padding: 1px; text-align: center;">
 						<img class="small1" src="/resources/images/inquiry/M.jpg"> <br/>
 				RESEARCH BANK 마일리지 프로그램<br /> 1. 포인트 전환 신청 시기: 매월 1일부터 25일까지<br />
 				2. 현금 입금 시기: 포인트 전환 신청을 한 다음 달 영업일 초<br /> 3. 포인트 전환 가능 금액:

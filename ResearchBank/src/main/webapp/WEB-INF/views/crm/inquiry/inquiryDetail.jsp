@@ -47,7 +47,15 @@ p.a{
 	<div style="margin:3% 20% 1% 20%; text-align: center;">
 	<h2><p class="p">고객지원실</p></h2>
 	</div>
+<div role="tabpanel" class="tab-pane active" id="home"
+ style=" width: 50%; margin: 5% 20% 1% 41%; padding: 1px; text-align: center; font-family:p.a" align="center" >		<!-- Nav tabs -->
 
+	<ul class="nav nav-pill" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#oneone" aria-controls="oneone" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+		</ul><br/>
+		</div>
 		<!-- Tab panes --><!-- 시작 -->
 		<div class="tab-content" style="margin:50px;">
  
@@ -82,8 +90,6 @@ p.a{
 				</div>
 				
 				</div></div>
-				
-				
 				
 				
 	<form id="commonForm" name="commonForm"></form>
@@ -125,10 +131,10 @@ p.a{
 
 		function fn_deleteBoard(){
 			
-
+			var idx = "${map.IDX}";
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/inquiry/deleteInquiry' />");
-			comSubmit.addParam("IDX", $("#IDX").val());
+			comSubmit.addParam("IDX", idx);
 			comSubmit.submit();
 			
 		}
