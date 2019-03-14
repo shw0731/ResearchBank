@@ -15,4 +15,6 @@ public interface MyPageService {
 	 void updateMyinfo(Map<String, Object> map) throws Exception;
 
 	Map<String, Object> selectOneMember(Map<String, Object> commandMap) throws Exception;
+	
+	
 }

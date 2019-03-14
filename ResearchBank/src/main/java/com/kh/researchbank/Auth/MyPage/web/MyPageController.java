@@ -62,13 +62,19 @@ public class MyPageController {
 
 	// 회원정보수정
 	@RequestMapping("updateMember")
-	public String updateMember(CommandMap commandMap) throws Exception{
-		ModelAndView mv = new ModelAndView("auth/mypage/index");
+	public ModelAndView updateMember(HttpSession session, CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("auth/mypage/update/index");
+
+		System.out.println("===========나의 정보 조회 컨트롤러 진입==========");
+		String mem_id = session.getAttribute("MEMBER_ID").toString();
+
+		commandMap.getMap().put("MEMBER_ID", mem_id);
 
 		Map<String, Object> myInfo = mypageService.myinfoDetail(commandMap.getMap());
+		System.out.println("===========나의 아이디=========== : " + myInfo.get("MEMBER_ID"));
 		mv.addObject("map", myInfo);
 
-		return "mv";
+		return mv;    
 	}
 
 	// 회원 정보 수정 처리
