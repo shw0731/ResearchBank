@@ -146,13 +146,13 @@ $("#kakao-login-btn").on("click", function(){
         	  var inputNickname= $('#member_nickname').val();
         	  var inputPoint= $('#member_point').val();
         	  var inputRole=$('#role_id').val(); */
-        	  alert(JSON.stringify({
+        	  /* alert(JSON.stringify({
                         member_id : res.kakao_account['email'],
                         member_pw : res.id,
                         member_nickname : res.properties['nickname'],
                         member_point : "0",
                         role_id : "0",
-                        }));
+                        })); */
               $.ajax({
 	       	  	  type: "post",
 	          	  url: "duplicationCheck.do",
