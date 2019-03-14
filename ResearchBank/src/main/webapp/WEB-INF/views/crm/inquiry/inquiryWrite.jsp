@@ -13,6 +13,7 @@
 
 <!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js">
 <title>Research!</title>
 <style>
 .small1 { width: 250px; }
@@ -57,7 +58,7 @@ p.a{
  
  <!-- 챕터1 -->
 <div role="tabpanel" class="tab-pane active" id="home" style="width: 50%; margin: 1% 25% 10% 25%; padding:1px; text-align: center; font-family:p.a" align="center" >
-				<form id="frm">
+				<form id="frm" name="frm" action="/inquiry/createInquiry">
 
 					<!-- 	<colgroup >
 						<col width="15%"  /> 글번호
@@ -69,9 +70,8 @@ p.a{
 		
 			<!-- <tbody> -->
 			<img src="/resources/images/icon_secret.gif"> 비밀글
-			<input type="radio" value="1" name="INQUIRY_STATE" id="INQUIRY_STATE"/>
-				일반글<input type="radio" value="0" name="INQUIRY_STATE" id="INQUIRY_STATE"/>
-				 <table class="table table-striped table-bordered table-hover"
+			<input type="checkbox" name="INQUIRY_STATE" id="INQUIRY_STATE" value="1"/>
+				 <table class="table table-striped"
                         id="dataTables-example"  >
                         <tbody>
 				<tr class="info" align="center" >
@@ -83,12 +83,16 @@ p.a{
 					<td colspan="4" class="view_text">
 						<textarea rows="10%" cols="70%" title="내용" id="CONTENTS" name="CONTENTS">
 </textarea>
+<input type="hidden" name="MEMBER_ID" value="${MEMBER_ID}">
+  <input type="hidden" id="INQUIRY_STATE" value="${row.INQUIRY_STAT}">
 					</td>
 				</tr>
 			</tbody></table>
 			<div align="right">
 				<a href="/inquiry" class="btn" id="list">목록으로</a>
-	      <a href="#this" class="btn" id="write">작성하기</a>
+	   <!--    <a href="#this" class="btn" id="write">작성하기</a> -->
+			<input type="button" class="btn" value="작성하기" onclick="fn_error();" />
+
 		</div>
  		</form>
 	</div>
@@ -101,6 +105,7 @@ p.a{
   $(document).ready(function(){
       $("#write").on("click", function(e){ //작성하기 버튼
          e.preventDefault();
+      	fn_error();
          fn_insertBoard();
          
       });
@@ -117,7 +122,25 @@ p.a{
       comSubmit.setUrl("<c:url value='/inquiry/createInquiry' />");
       comSubmit.submit();
    }
+   
+   function fn_error() {
+		var title= $("#TITLE").val;
+		var contents= $("#CONTENTS").val;
+		
+		if(document.frm.TITLE.value == "") { alert("제목을 입력해 주세요."); $("#TITLE").focus(); return; }
+		
+		if(document.frm.CONTENTS.value == "") { alert("내용을 입력해 주세요."); $("#CONTENTS").focus(); return; }
+		
+		
+		
+		if(confirm("등록 하시겠습니까?")) {
+			alert("등록되었습니다.");
+			document.frm.submit();
+		}
 
+	   
+   }
+ 
    </script>
 </body>
 </html>

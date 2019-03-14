@@ -60,7 +60,8 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public Map<String, Object> showDetail(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-	/*	inquiryDAO.updateHitCnt(map);*/
+			
+		inquiryDAO.updateHitCnt(map);
 		Map<String,Object> resultMap = inquiryDAO.showDetail(map);
 		return resultMap;
 	}

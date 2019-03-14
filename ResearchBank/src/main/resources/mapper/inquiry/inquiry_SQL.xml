@@ -5,16 +5,23 @@
 
 <select id="show" parameterType="hashmap" resultType="hashmap">
 	<![CDATA[
+		
 		 SELECT
-			IDX,
-			TITLE,
-			HIT_CNT,
-			REGIST_DATE,
-			INQUIRY_STATE
+			i.IDX,
+			i.TITLE,
+			i.HIT_CNT,
+			i.REGIST_DATE,
+			i.INQUIRY_STATE,
+			i.RE_REF,
+			r.MEMBER_ID,
+			r.MEMBER_NICKNAME,
+			r.ROLE_ID,
+			i.PARENTS_ID
 		FROM
-			INQUIRY
+			INQUIRY i,
+			 MEMBER_LIST r
 		WHERE
-			DEL_GB = 'N'
+			i.MEMBER_ID = r.MEMBER_ID AND DEL_GB = 'N'
 		ORDER BY RE_REF DESC, RE_STEP ASC
 	]]>
 	</select>
@@ -23,24 +30,28 @@
 <select id="showDetail" parameterType="hashmap" resultType="hashmap">
 	<![CDATA[
 		 SELECT
-			IDX,
-			TITLE,
-			CONTENTS,
-			HIT_CNT,
-			REGIST_DATE
+			i.IDX,
+			i.TITLE,
+			i.CONTENTS,
+			i.HIT_CNT,
+			i.REGIST_DATE,
+			r.MEMBER_ID,
+			r.MEMBER_NICKNAME,
+			r.ROLE_ID,
+			i.INQUIRY_STATE
 		FROM
-			INQUIRY
+			INQUIRY i,
+			 MEMBER_LIST r
 		WHERE
-			IDX = #{IDX}
+			i.MEMBER_ID = r.MEMBER_ID AND IDX = #{IDX}
 	]]>
 	</select>
 
 <insert id="create" parameterType="hashmap">
-	<![CDATA[
+		<![CDATA[
 		INSERT INTO INQUIRY
 		(
 			INQUIRY_STATE,
-            PARENT_IDX,
             IDX,
             RE_STEP,
             RE_REF,
@@ -48,24 +59,24 @@
             HIT_CNT,
             DEL_GB,
             TITLE,
-            CONTENTS
+            CONTENTS,
+            MEMBER_ID
             )
 		VALUES
 		(
 			#{INQUIRY_STATE},
-            0,
             SEQ_INQUIRY_IDX.NEXTVAL,
-          0,
-           SEQ_INQUIRY_IDX.NEXTVAL,
+          	0,
+           	SEQ_INQUIRY_IDX.NEXTVAL,
             SYSDATE,
             0,
             'N',
 			#{TITLE},
-			#{CONTENTS}
+			#{CONTENTS},
+			#{MEMBER_ID}
         )
 			
-	]]>
-
+		]]>
 </insert>
 
 <update id="updateHitCnt" parameterType="hashmap">
@@ -80,12 +91,11 @@
 </update>
 
 
-<update id="comments" parameterType="hashmap">
+<insert id="comments" parameterType="hashmap">
 		<![CDATA[
 			INSERT INTO INQUIRY
 		(
 			INQUIRY_STATE,
-            PARENT_IDX,
             IDX,
             RE_STEP,
             RE_REF,
@@ -93,12 +103,13 @@
             HIT_CNT,
             DEL_GB,
             TITLE,
-            CONTENTS
+            CONTENTS,
+            MEMBER_ID,
+            PARENTS_ID
             )
 		VALUES
 		(
-			0,
-            0,
+			#{INQUIRY_STATE},
             SEQ_INQUIRY_IDX.NEXTVAL,
          	1,
            #{IDX},
@@ -106,10 +117,12 @@
             0,
             'N',
 			#{TITLE},
-			#{CONTENTS}
+			#{CONTENTS},
+			#{MEMBER_ID},
+			#{PARENTS_ID}
         )
 		]]>
-	</update>
+	</insert>
 
 <update id="update" parameterType="hashmap">
 		<![CDATA[

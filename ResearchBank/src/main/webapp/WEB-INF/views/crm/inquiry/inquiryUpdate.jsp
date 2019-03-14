@@ -56,7 +56,7 @@ p.a{
 <div role="tabpanel" class="tab-pane active" id="home" style="width: 50%; margin: 1% 25% 10% 25%; padding:1px; text-align: center; font-family:p.a" align="center" >
 		<form id="frm">
 		 	<img class="small1" src="/resources/images/inquiry/Q.jpg"><br/><br/><br/>
-					 <table class="table table-striped table-bordered table-hover"
+					 <table class="table table-striped"
                         id="dataTables-example">
 				
 			
@@ -94,6 +94,8 @@ p.a{
 				</c:when>
 				<c:when test = "${comment == 1 }">
 				<input type="text" id="TITLE" name="TITLE" class="wdp_90" value="  RE:답변입니다 :-)"/>
+				<input type="hidden" id="INQUIRY_STATE" value="${map.INQUIRY_STAT}">
+				<input type="hidden" id="MEMBER_NICKNAME" value="${MEMBER_NICKNAME}">
 				</c:when>
 						</c:choose>
 						</td>
@@ -102,13 +104,6 @@ p.a{
 					</thead>
 				 <c:choose>
 				<c:when test = "${comment == 0}">
-				<%--<tr class="info" align="center" >
-					<th scope="row">제목</th>
-					<td colspan="3">
-						<input type="text" id="TITLE" name="TITLE" class="wdp_90" value="${map.TITLE }"/>
-					</td>
-					
-				</tr> --%>
 			 	<tr>
 					<td colspan="4" class="view_text">
 						<textarea rows="10%" cols="70%" title="내용" id="CONTENTS" name="CONTENTS">${map.CONTENTS }</textarea>
@@ -122,6 +117,7 @@ p.a{
 				<tr>
 					<td colspan="4" class="view_text">
 						<textarea rows="10%" cols="70%" title="내용" id="CONTENTS" name="CONTENTS"></textarea>
+						<input type="hidden" value="member_id" id="member_id">
 						<br/>
 						<a href="#this" class="btn" id="comment">답글달기</a>
 							<a href="/inquiry" class="btn" id="list">목록으로</a>
@@ -160,23 +156,20 @@ p.a{
 		
 		function fn_updateBoard(comment){
 			var comSubmit = new ComSubmit("frm");
+			var INQUIRY_STATE = "${map.INQUIRY_STATE}";
+			var PARENTS_ID = "${map.MEMBER_ID}";
+			var MEMBER_ID = "${MEMBER_ID}";
 			
 			if(comment==0){
 				comSubmit.setUrl("<c:url value='/inquiry/editInquiry' />");
-				comSubmit.addParam("INQUIRY_STATE", $("#INQUIRY_STATE").val());
 				comSubmit.submit();
-			}else if(comment==1){
+			}else if(comment==1){ //답글을 쓴다면
 				comSubmit.setUrl("<c:url value='/inquiry/editComment' />");
+				comSubmit.addParam("INQUIRY_STATE",INQUIRY_STATE);
+				comSubmit.addParam("PARENTS_ID",PARENTS_ID);
+				comSubmit.addParam("MEMBER_ID",MEMBER_ID);
 				comSubmit.submit();	
 			}
-		}
-		
-		function fn_deleteBoard(){
-			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/inquiry/deleteInquiry' />");
-			comSubmit.addParam("IDX", $("#IDX").val());
-			comSubmit.submit();
-			
 		}
 	</script>
 </body>

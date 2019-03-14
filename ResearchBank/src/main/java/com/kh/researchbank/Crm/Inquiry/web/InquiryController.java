@@ -88,7 +88,6 @@ public class InquiryController {
 		mv.addObject("totalCount", totalCount);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.addObject("currentPage", currentPage);
-		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
 		mv.addObject("list", list);
 		
 		
@@ -100,6 +99,7 @@ public class InquiryController {
 	public ModelAndView store(CommandMap commandMap) throws Exception {
 
 		ModelAndView mv = new ModelAndView("crm/inquiry/inquiryWrite");
+		mv.addObject("MEMBER_NICKNAME", commandMap.get("MEMBER_NICKNAME"));
 
 		return mv;
 	}
@@ -108,9 +108,15 @@ public class InquiryController {
 	@RequestMapping(value = "/inquiry/createInquiry")
 	public ModelAndView createInquiry(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/inquiry");
-
-		inquiryService.creat(commandMap.getMap());
-
+		Map<String,Object> map = commandMap.getMap();
+		
+		if(commandMap.get("INQUIRY_STATE") == null) {
+			map.put("INQUIRY_STATE", 0);
+		}else {
+			map.put("INQUIRY_STATE", 1);
+		}	
+		inquiryService.creat(map);
+		
 		return mv;
 	}
 
@@ -120,6 +126,8 @@ public class InquiryController {
 		ModelAndView mv = new ModelAndView("crm/inquiry/inquiryDetail");
 		Map<String, Object> map = inquiryService.showDetail(commandMap.getMap());
 		mv.addObject("map", map);
+		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
+		mv.addObject("MEMBER_ID", commandMap.get("MEMBER_ID"));
 
 		return mv;
 	}
@@ -130,10 +138,8 @@ public class InquiryController {
 		ModelAndView mv = new ModelAndView("crm/inquiry/inquiryUpdate"); // 코멘트 창 열면 윗글 내용 나오게하기
 		Map<String, Object> map = inquiryService.showDetail(commandMap.getMap());
 		mv.addObject("comment", 1);
-		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
 		mv.addObject("IDX", commandMap.get("IDX"));
 		mv.addObject("map", map);
-
 		return mv;
 	}
 
@@ -142,11 +148,14 @@ public class InquiryController {
 	public ModelAndView editComment(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/inquiry");
 
-		inquiryService.storecomment(commandMap.getMap());
-
-		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
+		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE")); 
 		mv.addObject("comment", 1);
 		mv.addObject("IDX", commandMap.get("IDX"));
+		mv.addObject("PARENTS_ID", commandMap.get("PARENTS_ID"));
+		mv.addObject("MEMBER_ID", commandMap.get("MEMBER_ID"));
+		
+		inquiryService.storecomment(commandMap.getMap());
+		
 		return mv;
 	}
 
@@ -171,6 +180,8 @@ public class InquiryController {
 
 		mv.addObject("comment", 0);
 		mv.addObject("IDX", commandMap.get("IDX"));
+
+		
 		return mv;
 	}
 

@@ -25,8 +25,7 @@ public class InquiryDAO extends AbstractDAO{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> showDetail(Map<String,Object>map) throws Exception{
-		System.out.println(map.get("IDX"));
+	public Map<String, Object> showDetail(Map<String,Object>map) throws Exception{;
 			return (Map<String,Object>)selectOne("inquiry.showDetail",map);
 			
 		}
