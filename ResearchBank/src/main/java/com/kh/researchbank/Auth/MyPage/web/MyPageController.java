@@ -62,9 +62,13 @@ public class MyPageController {
 
 	// 회원정보수정
 	@RequestMapping("updateMember")
-	public String updateMember(MyPageVO mypageVo) {
+	public String updateMember(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("auth/mypage/index");
 
-		return "auth/mypage/update/index";
+		Map<String, Object> myInfo = mypageService.myinfoDetail(commandMap.getMap());
+		mv.addObject("map", myInfo);
+
+		return "mv";
 	}
 
 	// 회원 정보 수정 처리
