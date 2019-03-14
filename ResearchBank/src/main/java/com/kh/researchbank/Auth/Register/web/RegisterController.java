@@ -1,25 +1,19 @@
 package com.kh.researchbank.Auth.Register.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.kh.researchbank.Auth.Login.service.LoginService;
-import com.kh.researchbank.Auth.Login.vo.LoginVO;
+import com.fasterxml.jackson.core.JsonParser.Feature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.researchbank.Auth.Register.service.RegisterService;
-import com.kh.researchbank.Auth.Register.vo.KakaoVO;
 import com.kh.researchbank.Auth.Register.vo.RegisterVO;
 
 @Controller
@@ -42,10 +36,18 @@ public class RegisterController {
 
 	@RequestMapping(value="/oauth.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String SubmitKakaoRegister(KakaoVO kakaoVO) {
+	public String SubmitKakaoRegister(@RequestBody String jsonStr)throws Exception{
 		/* System.out.println(KakaoVo); */
-		registerService.insertKakaoMember(kakaoVO);
-		return "auth/login/index";
+		ObjectMapper objectMapper = new ObjectMapper();
+	      objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
+	      System.out.println(jsonStr);
+	      Map<String, Object> map = objectMapper.readValue(jsonStr, HashMap.class);
+	      for(String key : map.keySet()){
+	            String value = (String) map.get(key);
+	            System.out.println(key+" : "+value);
+	        }
+		 registerService.insertKakaoMember(map); 
+		return "redirect:loginSuccess";
 	}
 
 	
@@ -55,6 +57,7 @@ public class RegisterController {
 		
 		String checkRst;
 		int idCnt = registerService.CheckDuplication(inputId);
+		System.out.println(inputId);
 		if(idCnt > 0) 
 			checkRst = "F";
 		else 
@@ -76,5 +79,4 @@ public class RegisterController {
 		
 		return checkRst;
 	}
-
 }

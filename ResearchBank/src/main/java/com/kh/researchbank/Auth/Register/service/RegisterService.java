@@ -1,7 +1,8 @@
 package com.kh.researchbank.Auth.Register.service;
 
+import java.util.Map;
+
 import com.kh.researchbank.Auth.Login.vo.LoginVO;
-import com.kh.researchbank.Auth.Register.vo.KakaoVO;
 import com.kh.researchbank.Auth.Register.vo.RegisterVO;
 
 public interface RegisterService{
@@ -14,5 +15,5 @@ public interface RegisterService{
 	
 	public void LoginSuccess(LoginVO loginVO);
 	
-	public void insertKakaoMember(KakaoVO kakaoVO);
+	public void insertKakaoMember(Map map);
 }

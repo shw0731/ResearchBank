@@ -24,7 +24,7 @@
 		where member_nickname = #{inputNickname}
 	</select>
 	
-	<insert id="insertKakaoMember" parameterType="com.kh.researchbank.Auth.Register.vo.KakaoVO">
+	<insert id="insertKakaoMember" parameterType="hashmap">
 		insert into member_list(member_id, member_pw, member_nickname, member_point, role_id)
 		values (
 			#{member_id},					<!-- 회원 아이디 -->

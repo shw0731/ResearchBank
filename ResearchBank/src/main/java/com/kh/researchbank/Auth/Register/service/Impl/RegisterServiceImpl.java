@@ -1,5 +1,7 @@
 package com.kh.researchbank.Auth.Register.service.Impl;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -7,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.kh.researchbank.Auth.Login.vo.LoginVO;
 import com.kh.researchbank.Auth.Register.service.RegisterService;
 import com.kh.researchbank.Auth.Register.service.dao.RegisterDAO;
-import com.kh.researchbank.Auth.Register.vo.KakaoVO;
 import com.kh.researchbank.Auth.Register.vo.RegisterVO;
 
 @Service
@@ -35,7 +36,7 @@ public class RegisterServiceImpl implements RegisterService{
 		dao.loginSuccess(loginVO);
 	}
 	
-	public void insertKakaoMember(KakaoVO kakaoVO) {
-		dao.insertKakaoMember(kakaoVO);
+	public void insertKakaoMember(Map map) {
+		dao.insertKakaoMember(map);
 	}
 }

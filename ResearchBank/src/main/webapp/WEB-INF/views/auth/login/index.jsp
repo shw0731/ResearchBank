@@ -132,19 +132,20 @@ $("#kakao-login-btn").on("click", function(){
           Kakao.API.request({
             url: '/v2/user/me',
             success: function(res) {
+            	res.id += "@k";
               console.log(JSON.stringify(res));
               console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
     	      console.log(res.kakao_account['email']);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
     	      console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
               $('#member_id').val(res.kakao_account['email']);
-              var inputId = $('#member_id').val();
+              var inputId = res.kakao_account['email'];
               $('#member_nickname').val(res.properties['nickname']);
         	  $('#member_id').val(res.kakao_account['email']);
         	  $('#member_pw').val(res.id);
-        	  var inputPw = $('#member_pw').val();
+        	  /* var inputPw = res.id;
         	  var inputNickname= $('#member_nickname').val();
         	  var inputPoint= $('#member_point').val();
-        	  var inputRole=$('#role_id').val();
+        	  var inputRole=$('#role_id').val(); */
         	  alert(JSON.stringify({
                         member_id : res.kakao_account['email'],
                         member_pw : res.id,
@@ -156,22 +157,21 @@ $("#kakao-login-btn").on("click", function(){
 	       	  	  type: "post",
 	          	  url: "duplicationCheck.do",
 	          	  data: inputId,
-                  headers : {
-                      "Accept" : "application/json",
-                      "Content-Type" : "application/json"
-                    },
-                    
-                    success : function(idChk){
-                        
-                    	if(idChk==true){ //DB에 아이디가 없을 경우 => 회원가입
+	          	  headers : {
+                    /* "Accept" : "application/json", */
+                    "Content-Type" : "application/json"
+                  },
+                    success : function(data){
+                        console.log(data);
+                    	if(data=="S"){ //DB에 아이디가 없을 경우 => 회원가입
                             console.log("회원가입중...");
                             $.ajax({
                                 url : "oauth.do",
                                 method : "POST",
                                 headers : {
-                                  "Accept" : "application/json",
-                                  "Content-Type" : "application/json"
-                                },
+                                    "Accept" : "application/json",
+                                    "Content-Type" : "application/json"
+                                  },
                                 data : JSON.stringify({
                                 member_id : res.kakao_account['email'],
                                 member_pw : res.id,
@@ -185,7 +185,7 @@ $("#kakao-login-btn").on("click", function(){
                                 }
                             })
                         }
-                    	if(idChk==false) { //DB에 아이디가 존재할 경우 => 로그인
+                    	else { //DB에 아이디가 존재할 경우 => 로그인
                             console.log("로그인중...");
                             $("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
                         }
