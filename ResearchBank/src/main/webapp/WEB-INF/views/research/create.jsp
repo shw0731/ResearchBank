@@ -36,7 +36,7 @@ $(document).ready(function(){
 
 </script>
 
-<div class="wrap">
+<div class="wrap" style="margin:5% 20% 1% 30%;">
 
 
 <h1>설문조사시작</h1>
