@@ -29,6 +29,8 @@ import com.kh.researchbank.Research.Register.service.ResearchService;
 
 @Service("researchService")
 public class ResearchServiceImpl implements ResearchService {
+	
+	
 
 	@Resource(name = "researchDAO")
 	private ResearchDAO researchDAO;
@@ -44,10 +46,21 @@ public class ResearchServiceImpl implements ResearchService {
 	 * @throws Exception
 	 */
 	@Override
-	public String index() throws Exception {
-		String forward = "research/register/index";
-
-		return forward;
+	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception {
+			
+		return researchDAO.selectList(map);
+		
+	}
+	
+	@Override
+	public Map<String, Object> show(int survey_idx) throws Exception {
+		
+		Map<String, Object> map;
+		map= researchDAO.selectOne(survey_idx);
+		map.put("conList", researchDAO.selectCon(survey_idx));
+		map.put("queList", researchDAO.selectQue(survey_idx));
+		return map;
+		
 	}
 
 	@Override

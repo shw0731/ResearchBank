@@ -1,7 +1,6 @@
 package com.kh.researchbank.Research.Register.service.Impl;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +13,18 @@ import com.kh.researchbank.common.AbstractDAO;
 @Repository("researchDAO")
 public class ResearchDAO extends AbstractDAO {
 
+	public List<Map<String, Object>> selectList(Map<String, Object> map){
+		return (List<Map<String, Object>>)selectList("research.selectList", map);
+	}
+	public Map<String, Object> selectOne(int survey_idx){
+		return (Map<String, Object>) selectOne("research.selectOne", survey_idx);
+	}
+	public List<Map<String, Object>>selectCon(int survey_idx){
+		return (List<Map<String, Object>>) selectList("research.selectCon", survey_idx);
+	}
+	public List<Map<String, Object>>selectQue(int survey_idx){
+		return (List<Map<String, Object>>) selectList("research.selectQue", survey_idx);
+	}
 	
 	public void store(Map<String, Object> map) {
 		

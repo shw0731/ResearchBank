@@ -96,7 +96,7 @@
           <li class="nav-item subnav">
             <a class="nav-link js-scroll-trigger subnavbtn" href="#services">Research</a>
             <div class="subnav-content">
-		      <a href="#">리서치뱅크</a>
+		      <a href="/research/index">리서치뱅크</a>
 		      <a href="#">TOP 10 </a>
 		      <a href="#">랭크 오브 리서치</a>
 		    </div>

@@ -235,10 +235,23 @@ var fn_storeSurvey = function(){
 	
 	var jsonData = JSON.stringify($('#frm').serializeObject());
 	var jsonSubmit = new JsonSubmit(jsonData);
-	jsonSubmit.setUrl("/research/register/store");
+	jsonSubmit.setUrl("/research/store");
 	jsonSubmit.ajax();
 
 	
+}
+
+var fn_search = function(){
+
+	this.formId ="commonForm";
+    
+	
+	this.url = "/research/index";
+    
+	 var frm = $("#search")[0];        
+     frm.action = this.url;
+     frm.method = "get";
+     frm.submit();  
 }
 
 var JsonSubmit = function(jsonData){

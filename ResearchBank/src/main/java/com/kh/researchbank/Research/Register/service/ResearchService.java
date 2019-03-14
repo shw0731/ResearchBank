@@ -26,9 +26,10 @@ public interface ResearchService {
 	 * @return
 	 * @throws Exception
 	 */
-	public String index() throws Exception;
+	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception;
 	
 	public void store(Map<String, Object> map) throws Exception;
 	
+	public Map<String, Object> show(int survey_idx) throws Exception;
 	
 }
