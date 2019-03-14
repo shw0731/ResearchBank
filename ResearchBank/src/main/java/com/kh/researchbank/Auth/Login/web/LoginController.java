@@ -63,7 +63,7 @@ public class LoginController
 		    	//세션 영역 저장(아이디, 회원 이름, 회원번호)
 		    	session.setAttribute("MEMBER_ID", commandMap.get("MEMBER_ID"));
 		    	session.setAttribute("MEMBER_NICKNAME", loginChk.get("MEMBER_NICKNAME"));  
-		    	session.setAttribute("ROLE_ID", loginChk.get("ROLE_ID")); 
+		    	session.setAttribute("ROLE_ID", loginChk.get("ROLE_ID"));   
 		    /*	session.setAttribute("MEMBER_POINT", loginChk.get("MEMBER_POINT"));  
 		    	session.setAttribute("MEMBER_GENDER", loginChk.get("MEMBER_GENDER")); 
 		    	session.setAttribute("MEMBER_ADDRESS", loginChk.get("MEMBER_ADDRESS")); 
