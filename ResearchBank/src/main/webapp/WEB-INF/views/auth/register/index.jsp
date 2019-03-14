@@ -1,70 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Register!</title>
 <style>
-	form{
-		margin:0 auto;
-		width:1000px
-		}
+form {
+	margin: 0 auto;
+	width: 1000px
+}
 </style>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-<div class="wrap">
-<h1>회원가입</h1>
-<form role="form" name="form" action="register.do" method="post">
- <table class="board_list">
-  <thead align="left" valign=middle>
-   <tr>
-    <td colspan="3">회원약관</td>
-   </tr>
-   <tr>
-    <td colspan="3"><textarea cols="100" rows="20" readonly="readonly"> <%@ include file="/WEB-INF/views/auth/register/terms.txt" %> </textarea></td>
-   </tr>
-   <tr>
-    <td colspan="3" align="center"><input type="radio" id="agree_checkbox" name="agree_checkbox" value="0">약관에 동의합니다.
-    <input type="radio" id="agree_checkbox" name="agree_checkbox" value="1" checked>약관에 동의하지 않습니다.</td>
-    
-   </tr>
-  </thead>
-  <tbody align=left" valign=middle>
-   <tr>
-    <th scope="row">아이디(E-mail)</th>
-    <td><input type="text" id="member_id" name="member_id" placeholder="이메일 주소를 적어주세요">
-    <input type="button" class="btn btn-default" style="width: 30%;" value="중복확인" onclick="duplicationId();" />
-    <td></td>
-   </tr>
-   <tr>
-    <th scope="row">비밀번호</th>
-    <td><input type="password" id="member_pw" name="member_pw" ></td>
-    <td></td>
-   </tr>
-   <tr>
-    <th scope="row">비밀번호확인</th>
-    <td><input type="password" id="member_repw" name="member_repw"></td>
-    <td></td>
-   </tr>
-   <tr>
-    <th scope="row">닉네임</th>
-    <td><input type="text" id="member_nickname" name="member_nickname">
-    <input type="button" class="btn btn-default" style="width: 30%;" value="중복확인" onclick="duplicationNickname();" />
-    <input type="hidden" id="agree_checkboxf" name="agree_checkboxf" value="0">
-   <input type="hidden" id="member_point" name="member_point" value="0">
-   <input type="hidden" id="role_id" name="role_id" value="0">
-    <td></td>
-<!--    </tr>
+	<div class="wrap">
+		<h1>회원가입</h1>
+		<form role="form" name="form" action="register.do" method="post">
+			<table class="board_list">
+				<thead align="left" valign=middle>
+					<tr>
+						<td colspan="3">회원약관</td>
+					</tr>
+					<tr>
+						<td colspan="3"><textarea cols="100" rows="20"
+								readonly="readonly"> <%@ include
+									file="/WEB-INF/views/auth/register/terms.txt"%> </textarea></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center"><input type="radio"
+							id="agree_checkbox" name="agree_checkbox" value="0">약관에
+							동의합니다. <input type="radio" id="agree_checkbox"
+							name="agree_checkbox" value="1" checked>약관에 동의하지 않습니다.</td>
+
+					</tr>
+				</thead>
+				<tbody align=left " valign=middle>
+					<tr>
+						<th scope="row">아이디(E-mail)</th>
+						<td><input type="text" id="member_id" name="member_id"
+							placeholder="이메일 주소를 적어주세요"> <input type="button"
+							class="btn btn-default" style="width: 30%;" value="중복확인"
+							onclick="duplicationId();" />
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">비밀번호</th>
+						<td><input type="password" id="member_pw" name="member_pw"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">비밀번호확인</th>
+						<td><input type="password" id="member_repw"
+							name="member_repw"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">닉네임</th>
+						<td><input type="text" id="member_nickname"
+							name="member_nickname"> <input type="button"
+							class="btn btn-default" style="width: 30%;" value="중복확인"
+							onclick="duplicationNickname();" /> <input type="hidden"
+							id="agree_checkboxf" name="agree_checkboxf" value="0"> <input
+							type="hidden" id="member_point" name="member_point" value="0">
+							<input type="hidden" id="role_id" name="role_id" value="0">
+						<td></td>
+						<!--    </tr>
     <tr>
     <th scope="row">주소</th>
     <td><input type="text" id="member_address" name="ADDRESS" placeholder="주소 검색후 상세주소 작성">
 	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 	</td>
    </tr> -->
-<!--    <tr>
+						<!--    <tr>
     <th scope="row">실거주지역(지역설문조사시)</th>
     <td valign="top">
 		<select id="member_area" name="AREA">
@@ -88,7 +97,7 @@
 		</select>
 	</td>
     </tr> -->
-<!--     <tr>
+						<!--     <tr>
     <th scope="row">생년월일</th>
     <td valign="top">
 		<select id="member_birth_1" name="BIRTH_1">
@@ -261,35 +270,51 @@
      </select>일
 	</td>
    </tr> -->
-<!--    <tr>
+						<!--    <tr>
     <th scope="row">성별</th>
     <td><input type="radio" id="member_gender" name="GENDER" value="0" checked>여자
     <input type="radio" id="member_gender" name="GENDER" value="1">남자
     </td>
    </tr> -->
-<!--     <tr>
+						<!--     <tr>
     <th scope="row">결혼유무</th>
     <td><input type="radio" id="member_marry" name="MARRY" value="0" checked>미혼
     <input type="radio" id="member_marry" name="MARRY" value="1">기혼</td>
    </tr> -->
-<!--     <tr>
+						<!--     <tr>
     <th scope="row">직업</th>
-    <td><input type="text" id="member_job" name="JOB"></td>
+    <td valign="top">
+		<select id="member_job" name="JOB">
+			<option value="전문직">전문직</option>
+			<option value="교직">교직</option>
+			<option value="관리직">관리직</option>
+			<option value="사무직">사무직</option>
+			<option value="자영업">자영업</option>
+			<option value="판매직">판매직</option>
+			<option value="서비스직">서비스직</option>
+			<option value="생산/노무직">생산/노무직</option>
+			<option value="기능직">기능직</option>
+			<option value="농/축/광/수산업">농/축/광/수산업</option>
+			<option value="학생">학생</option>
+			<option value="주부">주부</option>
+			<option value="무직">무직</option>
+			<option value="퇴직/연금생활자">퇴직/연금생활자</option>
+			<option value="기타">기타</option>
+		</select>
    </tr> -->
-   
- </tbody>
-  <tfoot>
-   <tr>
-    <td colspan="3" align="center">
-    	<input type="button" class="btn btn-lg btn-success btn-block" value="회원가입" onclick="DosignUp();" />
-    </td>
-   </tr>
-  </tfoot>
- </table>
-</form>
-</div>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3" align="center"><input type="button"
+							class="btn btn-lg btn-success btn-block" value="회원가입"
+							onclick="DosignUp();" /></td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+	</div>
 
-<!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+	<!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -324,194 +349,220 @@
         });
     }
 </script> -->
-<script type="text/javascript">
-var isCheckId = 0;
-function duplicationId () {
-	var inputId = $("#member_id").val();
-	$.ajax({
-		async: false,
-		type: "post",
-		url: "duplicationCheck.do",
-		data: inputId,
-		success: function (data) {
-			if(data == "S") {
-				alert("사용가능한 아이디입니다.");
-				
-				$("#divInputId").addClass("has-success")
-				$("#divInputId").removeClass("has-error")
-				
-				$("#signUpUserPwd").focus();
-				isCheckId = 1;
-			} else {
-				alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-				
-				$("#divInputId").addClass("has-error")
-				$("#divInputId").removeClass("has-success")
-				
-				$("#signUpUserId").focus();
-			}
-		},
-		error: function(req, status, errThrown) {
-			alert("network error occur");
+	<script type="text/javascript">
+		var isCheckId = 0;
+		function duplicationId() {
+			var inputId = $("#member_id").val();
+			$.ajax({
+				async : false,
+				type : "post",
+				url : "duplicationCheck.do",
+				data : inputId,
+				success : function(data) {
+					if (data == "S") {
+						alert("사용가능한 아이디입니다.");
+
+						$("#divInputId").addClass("has-success")
+						$("#divInputId").removeClass("has-error")
+
+						$("#signUpUserPwd").focus();
+						isCheckId = 1;
+					} else {
+						alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+
+						$("#divInputId").addClass("has-error")
+						$("#divInputId").removeClass("has-success")
+
+						$("#signUpUserId").focus();
+					}
+				},
+				error : function(req, status, errThrown) {
+					alert("network error occur");
+				}
+			});
 		}
-	});
-}
 
-var isCheckNickname = 0;
-function duplicationNickname () {
-	var inputNickname = $("#member_nickname").val();
-	$.ajax({
-		async: false,
-		type: "post",
-		url: "duplicationCheckNickname.do",
-		data: inputNickname,
-		success: function (data) {
-			if(data == "S") {
-				alert("사용가능한 닉네임입니다.");
-				
-				$("#divInputNickname").addClass("has-success")
-				$("#divInputNickname").removeClass("has-error")
-				
-				$("#signUpUserPwd").focus();
-				isCheckNickname = 1;
-			} else {
-				alert("닉네임이 존재합니다. 다른 닉네임을 입력해주세요.");
-				
-				$("#divInputNickname").addClass("has-error")
-				$("#divInputNickname").removeClass("has-success")
-				
-				$("#signUpUserNickname").focus();
-			}
-		},
-		error: function(req, status, errThrown) {
-			alert("network error occur");
+		var isCheckNickname = 0;
+		function duplicationNickname() {
+			var inputNickname = $("#member_nickname").val();
+			$.ajax({
+				async : false,
+				type : "post",
+				url : "duplicationCheckNickname.do",
+				data : inputNickname,
+				success : function(data) {
+					if (data == "S") {
+						alert("사용가능한 닉네임입니다.");
+
+						$("#divInputNickname").addClass("has-success")
+						$("#divInputNickname").removeClass("has-error")
+
+						$("#signUpUserPwd").focus();
+						isCheckNickname = 1;
+					} else {
+						alert("닉네임이 존재합니다. 다른 닉네임을 입력해주세요.");
+
+						$("#divInputNickname").addClass("has-error")
+						$("#divInputNickname").removeClass("has-success")
+
+						$("#signUpUserNickname").focus();
+					}
+				},
+				error : function(req, status, errThrown) {
+					alert("network error occur");
+				}
+			});
 		}
-	});
-}
 
-function DosignUp() {
-	
-	var inputAgree= $("#agree_checkbox").val;
-	var inputAgreef= $("#agree_checkboxf").val;
-	var inputId = $("#member_id").val();
-	var inputPwd = $("#member_pw").val();
-	var inputPwdCfm = $("#member_repw").val();
-	var inputNickName = $("#member_nickname").val();
-	
-	
- 	if(inputAgree != inputAgreef) { alert("약관에 동의하셔야 가입가능합니다."); return; }
+		function DosignUp() {
 
-	if(inputId.length == 0) { alert("아이디를 입력해 주세요."); $("#member_id").focus(); return; }
-	if(isCheckId == 0) { alert("아이디 중복 체크를 해주세요."); $("#member_id").focus(); return; }
-	
-	if(inputPwd.length == 0) { alert("비밀번호를 입력해 주세요."); $("#member_pw").focus(); return; }
-	if(inputPwd != inputPwdCfm) { alert("비밀번호가 서로 다릅니다. 비밀번호를 확인해 주세요."); $("#member_repw").focus(); return; }
-	
-	if(inputNickName.length == 0) { alert("닉네임을 입력해 주세요."); $("#member_nickname").focus(); return; }
-	if(isCheckNickname == 0) { alert("닉네임 중복 체크를 해주세요."); $("#member_nickname").focus(); return; }
-	
-	if(confirm("회원가입을 하시겠습니까?")) {
-		alert("가입!");
-		document.form.submit();
-		/* location.href= "login.do"; */
-	}
-}
+			var inputAgree = $("#agree_checkbox").val;
+			var inputAgreef = $("#agree_checkboxf").val;
+			var inputId = $("#member_id").val();
+			var inputPwd = $("#member_pw").val();
+			var inputPwdCfm = $("#member_repw").val();
+			var inputNickName = $("#member_nickname").val();
 
-/* 
-$(document).ready(function() {
-	 $("#member_id_checkBtn").unbind("click").click(function(e) {
-	  e.preventDefault();
-	  fn_memberIdCheck();
-	 });
-	});
-	 
-	function fn_memberIdCheck() {
-	 var memberId = $("#member_id").val();
-	 var memberData = {"ID": member_id}
-	 var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	  // 검증에 사용할 정규식 변수 regExp에 저장
-	 
-	 if (memberId.length < 1)
-	 {
-	  alert("아이디를 입력해주시기 바랍니다.");
-	 }
-	 else if (memberId.match(regExp) != null) {
-		 $.ajax({
-			   type : "POST", 
-			   url : "/checkMemberId.do",
-			   data : userData,
-			   dataType : "json",
-			   error : function(error) {
-			    alert("서버가 응답하지 않습니다. \n다시 시도해주시기 바랍니다.");
-			   },
-			   success : function(result) {
-			    if (result == 0)
-			    {
-			     $("#member_id").attr("disabled", true);
-			     alert("사용이 가능한 아이디입니다.");
-			    }
-			    else if (result == 1)
-			    {
-			     alert("이미 존재하는 아이디입니다. \n다른 아이디를 사용해주세요.");
-			    }
-			    else
-			    {
-			     alert("에러가 발생하였습니다.");
-			    }
-			   }
-			  });  
-	  }
-	  else {
-	    alert('이메일양식으로 작성해야 합니다.');
-	 }
-	}
+			if (inputAgree != inputAgreef) {
+				alert("약관에 동의하셔야 가입가능합니다.");
+				return;
+			}
 
-	
-	$(document).ready(function() {
-		 $("#member_nickname_checkBtn").unbind("click").click(function(e) {
-		  e.preventDefault();
-		  fn_memberNicknameCheck();
+			if (inputId.length == 0) {
+				alert("아이디를 입력해 주세요.");
+				$("#member_id").focus();
+				return;
+			}
+			if (isCheckId == 0) {
+				alert("아이디 중복 체크를 해주세요.");
+				$("#member_id").focus();
+				return;
+			}
+
+			if (inputPwd.length == 0) {
+				alert("비밀번호를 입력해 주세요.");
+				$("#member_pw").focus();
+				return;
+			}
+			if (inputPwd != inputPwdCfm) {
+				alert("비밀번호가 서로 다릅니다. 비밀번호를 확인해 주세요.");
+				$("#member_repw").focus();
+				return;
+			}
+
+			if (inputNickName.length == 0) {
+				alert("닉네임을 입력해 주세요.");
+				$("#member_nickname").focus();
+				return;
+			}
+			if (isCheckNickname == 0) {
+				alert("닉네임 중복 체크를 해주세요.");
+				$("#member_nickname").focus();
+				return;
+			}
+
+			if (confirm("회원가입을 하시겠습니까?")) {
+				alert("가입!");
+				document.form.submit();
+				/* location.href= "login.do"; */
+			}
+		}
+
+		/* 
+		 $(document).ready(function() {
+		 $("#member_id_checkBtn").unbind("click").click(function(e) {
+		 e.preventDefault();
+		 fn_memberIdCheck();
 		 });
-		});
-		 
-		function fn_memberNicknameCheck() {
-		 var memberNickname = $("#member_nickname").val();
-		 var memberData = {"NICKNAME": member_nickname}
-		 
-		 if (memberNickname.length < 1)
+		 });
+		
+		 function fn_memberIdCheck() {
+		 var memberId = $("#member_id").val();
+		 var memberData = {"ID": member_id}
+		 var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		 // 검증에 사용할 정규식 변수 regExp에 저장
+		
+		 if (memberId.length < 1)
 		 {
-		  alert("별명을 입력해주시기 바랍니다.");
+		 alert("아이디를 입력해주시기 바랍니다.");
+		 }
+		 else if (memberId.match(regExp) != null) {
+		 $.ajax({
+		 type : "POST", 
+		 url : "/checkMemberId.do",
+		 data : userData,
+		 dataType : "json",
+		 error : function(error) {
+		 alert("서버가 응답하지 않습니다. \n다시 시도해주시기 바랍니다.");
+		 },
+		 success : function(result) {
+		 if (result == 0)
+		 {
+		 $("#member_id").attr("disabled", true);
+		 alert("사용이 가능한 아이디입니다.");
+		 }
+		 else if (result == 1)
+		 {
+		 alert("이미 존재하는 아이디입니다. \n다른 아이디를 사용해주세요.");
 		 }
 		 else
 		 {
-		  $.ajax({
-		   type : "POST", 
-		   url : "/checkMemberNickname.do", 
-		   data : userData,
-		   dataType : "json",
-		   error : function(error) {
-		    alert("서버가 응답하지 않습니다. \n다시 시도해주시기 바랍니다.");
-		   },
-		   success : function(result) {
-		    if (result == 0)
-		    {
-		     $("#member_nickname").attr("disabled", true);
-		     alert("사용이 가능한 별명입니다.");
-		    }
-		    else if (result == 1)
-		    {
-		     alert("이미 존재하는 별명입니다. \n다른 아이디를 사용해주세요.");
-		    }
-		    else
-		    {
-		     alert("에러가 발생하였습니다.");
-		    }
-		   }
-		  });
+		 alert("에러가 발생하였습니다.");
 		 }
-		}
- */
-</script>
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+		 }
+		 });  
+		 }
+		 else {
+		 alert('이메일양식으로 작성해야 합니다.');
+		 }
+		 }
+
+		
+		 $(document).ready(function() {
+		 $("#member_nickname_checkBtn").unbind("click").click(function(e) {
+		 e.preventDefault();
+		 fn_memberNicknameCheck();
+		 });
+		 });
+		
+		 function fn_memberNicknameCheck() {
+		 var memberNickname = $("#member_nickname").val();
+		 var memberData = {"NICKNAME": member_nickname}
+		
+		 if (memberNickname.length < 1)
+		 {
+		 alert("별명을 입력해주시기 바랍니다.");
+		 }
+		 else
+		 {
+		 $.ajax({
+		 type : "POST", 
+		 url : "/checkMemberNickname.do", 
+		 data : userData,
+		 dataType : "json",
+		 error : function(error) {
+		 alert("서버가 응답하지 않습니다. \n다시 시도해주시기 바랍니다.");
+		 },
+		 success : function(result) {
+		 if (result == 0)
+		 {
+		 $("#member_nickname").attr("disabled", true);
+		 alert("사용이 가능한 별명입니다.");
+		 }
+		 else if (result == 1)
+		 {
+		 alert("이미 존재하는 별명입니다. \n다른 아이디를 사용해주세요.");
+		 }
+		 else
+		 {
+		 alert("에러가 발생하였습니다.");
+		 }
+		 }
+		 });
+		 }
+		 }
+		 */
+	</script>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

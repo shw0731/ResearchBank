@@ -151,7 +151,7 @@ $("#kakao-login-btn").on("click", function(){
                         member_pw : res.id,
                         member_nickname : res.properties['nickname'],
                         member_point : "0",
-                        role_id : "0",
+                        role_id : "4",
                         })); */
               $.ajax({
 	       	  	  type: "post",
@@ -177,7 +177,7 @@ $("#kakao-login-btn").on("click", function(){
                                 member_pw : res.id,
                                 member_nickname : res.properties['nickname'],
                                 member_point : "0",
-                                role_id : "0",
+                                role_id : "4",
                                 }),
                                 success : function(JSONData){
                                    alert("회원가입이 정상적으로 되었습니다.");
