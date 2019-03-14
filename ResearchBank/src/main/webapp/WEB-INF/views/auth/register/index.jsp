@@ -29,10 +29,8 @@ form {
 									file="/WEB-INF/views/auth/register/terms.txt"%> </textarea></td>
 					</tr>
 					<tr>
-						<td colspan="3" align="center"><input type="radio"
-							id="agree_checkbox" name="agree_checkbox" value="0">약관에
-							동의합니다. <input type="radio" id="agree_checkbox"
-							name="agree_checkbox" value="1" checked>약관에 동의하지 않습니다.</td>
+						<td colspan="3" align="center"><input type="checkbox" name="agree" id="agree" value="" />
+							약관에 동의합니다.</td>
 
 					</tr>
 				</thead>
@@ -61,8 +59,7 @@ form {
 						<td><input type="text" id="member_nickname"
 							name="member_nickname"> <input type="button"
 							class="btn btn-default" style="width: 30%;" value="중복확인"
-							onclick="duplicationNickname();" /> <input type="hidden"
-							id="agree_checkboxf" name="agree_checkboxf" value="0"> <input
+							onclick="duplicationNickname();" /> <input
 							type="hidden" id="member_point" name="member_point" value="0">
 							<input type="hidden" id="role_id" name="role_id" value="0">
 						<td></td>
@@ -353,11 +350,23 @@ form {
 		var isCheckId = 0;
 		function duplicationId() {
 			var inputId = $("#member_id").val();
+			var memberId = $("#member_id").val();
+			var memberData = {"ID": member_id}
+			var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			if (memberId.length < 1)
+			 {
+			 alert("아이디를 입력해주시기 바랍니다.");
+			 }
+			 else if (memberId.match(regExp) != null) {
 			$.ajax({
 				async : false,
 				type : "post",
 				url : "duplicationCheck.do",
 				data : inputId,
+				headers : {
+                    /* "Accept" : "application/json", */
+                    "Content-Type" : "application/json"
+                  },
 				success : function(data) {
 					if (data == "S") {
 						alert("사용가능한 아이디입니다.");
@@ -380,6 +389,10 @@ form {
 					alert("network error occur");
 				}
 			});
+		}
+			 else {
+				 alert('이메일양식으로 작성해야 합니다.');
+				 }
 		}
 
 		var isCheckNickname = 0;
@@ -415,18 +428,17 @@ form {
 		}
 
 		function DosignUp() {
-
-			var inputAgree = $("#agree_checkbox").val;
-			var inputAgreef = $("#agree_checkboxf").val;
+			var chk=document.form.agree.checked;
 			var inputId = $("#member_id").val();
 			var inputPwd = $("#member_pw").val();
 			var inputPwdCfm = $("#member_repw").val();
 			var inputNickName = $("#member_nickname").val();
-
-			if (inputAgree != inputAgreef) {
-				alert("약관에 동의하셔야 가입가능합니다.");
-				return;
+			
+			if (!chk){
+				alert("약관에 동의하셔야 가입가능합니다.")
+				return false;
 			}
+			
 
 			if (inputId.length == 0) {
 				alert("아이디를 입력해 주세요.");
