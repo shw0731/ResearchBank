@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,6 +37,8 @@ import com.kh.researchbank.common.CommandMap;
 
 @Controller
 public class MyPageController {
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	@Resource(name = "mypageService")
 	protected MyPageService mypageService;
@@ -85,10 +89,19 @@ public class MyPageController {
 
 		// updatemember map 선언
 		Map<String, Object> updatemember = new HashMap<String, Object>();
+		 
 		updatemember = commandMap.getMap(); // update 할 정보들 updatemember에 넣음
+		
+		//Map값에서 member_pw값을 암호화 한다.
+		 Object rawPassword = updatemember.get("MEMBER_PW");
+		 String encryptPw = passwordEncoder.encode((String) rawPassword);
+		 //암호화한값을 다시 넣어준다.
+		 updatemember.put("MEMBER_PW", encryptPw);
+		 
 		mypageService.updateMyinfo(updatemember); // update 쿼리 실행
 
 		Map<String, Object> memberMap = new HashMap<String, Object>();
+				 
 		memberMap = mypageService.myinfoDetail(commandMap.getMap()); // 바뀐 회원정보 불러옴
 		model.addAttribute("memberInfo", memberMap); // model에 저장
 
