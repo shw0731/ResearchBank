@@ -10,7 +10,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <meta charset="UTF-8">
 <title>ResearchBank</title>
@@ -77,15 +78,13 @@ tbody>tr:HOVER {
 	<br />
 	<br />
 
-	
-	<div style="width: 50%; margin: 5% 20% 1% 42%; padding: 1px; text-align: center;">
+
+	<div
+		style="width: 50%; margin: 5% 20% 1% 42%; padding: 1px; text-align: center;">
 		<ul class="nav nav-pill">
-			<li role="presentation" class="active">
-				<a href="/admin/member" >회원관리</a>
+			<li role="presentation" class="active"><a href="/admin/member">회원관리</a>
 			</li>
-			<li role="presentation">
-				<a href="/admin/survey">설문관리</a>
-			</li>
+			<li role="presentation"><a href="/admin/survey">설문관리</a></li>
 		</ul>
 	</div>
 
@@ -93,32 +92,54 @@ tbody>tr:HOVER {
 
 	<!-- ------------------멤버리스트------------------------- -->
 	<div role="tabpanel" class="tab-pane active" id="home1"
-		style="width: 500; margin: 5% 5%; padding: 1px; text-align: center;"
+		style="width: 90%; margin: 5% 5%; padding: 1px; text-align: center;"
 		align="center">
 		<h3 align="center">멤버리스트</h3>
 		<table class="table table-striped table-bordered table-hover"
 			id="dataTables-example">
 			<thead>
 				<tr class="info" align="center">
-					<th width="10%">ID</th>
-					<th width="10%">닉네임</th>
-					<th width="10%">보유 Point</th>
+					<th width="5%">ID</th>
+					<th width="5%">닉네임</th>
+					<th width="5%">보유 Point</th>
 					<th width="5%">성별</th>
 					<th width="40%">주소</th>
 					<th width="5%">결혼</th>
 					<th width="5%">지역</th>
 					<th width="5%">직업</th>
+					<th width="5%">상태</th>
+					<th width="5%">삭제</th>
 				</tr>
 			</thead>
 
 			<tbody class="memberList">
-				
+
 			</tbody>
 		</table>
 
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 	</div>
+	<!-- -------------------검색기능-------------------- -->
+<%-- 	<form name="form1" method="post" action="${path}/admin/memberPaging">
+		<select name="searchOption">
+			<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+			<option value="all"
+				<c:out value="${map.searchOption == 'all'?'selected':''}"/>>제목+이름+제목</option>
+			<option value="MEMBER_ID"
+				<c:out value="${map.searchOption == 'MEMBER_ID'?'selected':''}"/>>ID</option>
+			<option value="MEMBER_NICKNAME"
+				<c:out value="${map.searchOption == 'MEMBER_NICKNAME'?'selected':''}"/>>닉네임</option>
+			<option value="MEMBER_POINT"
+				<c:out value="${map.searchOption == 'MEMBER_POINT'?'selected':''}"/>>포인트</option>
+		</select> 
+		<input name="keyword" value="${map.keyword}"> 
+		<input type="submit" value="조회">
+		<button type="button" id="btnWrite">글쓰기</button>
+	</form> --%>
+	<!-- -------------------검색기능-------------------- -->
+	
+
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 	<form id="commonForm" name="commonForm"></form>
@@ -143,13 +164,21 @@ tbody>tr:HOVER {
 					.val()); // 상위 노드에서 인덱스번호 가져오기.
 			comSubmit.submit();
 		} */
+		
+		function fn_delteMember(obj) {
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/admin/member/delete' />");
+			comSubmit.addParam("MEMBER_ID", obj.parent().find("#MEMBER_ID")
+					.val()); // 상위 노드에서 인덱스번호 가져오기.
+			comSubmit.submit();
+		}
 
 		function fn_selectBoardList(pageNo) {
 			var comAjax = new ComAjax();
 			comAjax.setUrl("<c:url value='/admin/memberPaging' />");
 			comAjax.setCallback("fn_selectBoardListCallback");
 			comAjax.addParam("PAGE_INDEX", pageNo);
-			comAjax.addParam("PAGE_ROW", 15);
+			comAjax.addParam("PAGE_ROW", 10);
 			comAjax.ajax();
 		}
 		
@@ -188,7 +217,7 @@ tbody>tr:HOVER {
 												+ value.MEMBER_POINT
 											+ "</td>"
 											+ "<td>"
-												+ value.MEMBER_GENDER
+											+ value.MEMBER_GENDER
 											+ "</td>"
 											+ "<td>"
 												+ value.MEMBER_ADDRESS
@@ -202,14 +231,26 @@ tbody>tr:HOVER {
 											+ "<td>"
 												+ value.MEMBER_JOB
 											+ "</td>"
+											+ "<td>"
+												+ value.ROLE_ID
+											+ "</td>"
+											
+											+ "<td class='delete'>"
+											+ "<a href='#this' name='delete'>"
+												+ "탈퇴"
+											+ "</a>"
+											+ "<input type='hidden' id='MEMBER_ID' name='delete' value="+value.MEMBER_ID+">"
+											+ "</td>"
+										
 										+ "</tr>";
 								});
+				
 				body.append(str);
 
-				/* $("a[name='title']").on("click", function(e) { //제목
+				 $("a[name='delete']").on("click", function(e) { //탈퇴매앤
 					e.preventDefault();
-					fn_showNotice($(this));
-				}); */
+					fn_delteMember($(this));
+				}); 
 
 			}
 		}

@@ -22,5 +22,22 @@
             AAA.RNUM BETWEEN #{START} AND #{END}
     ]]>
 	</sql>
+	
+	<sql id="search">
+	 <![CDATA[
+		<choose>	
+			<when test="searchOption == 'all'">
+				WHERE MEMBER_ID like '%'||#{keyword}||'%'
+				OR
+				MEMBER_NICKNAME like '%'||#{keyword}||'%'
+				OR MEMBER_POINT like
+				'%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				WHERE ${searchOption} like '%'||#{keyword}||'%'
+			</otherwise>
+		</choose>
+		]]>
+	</sql>
 
 </mapper>

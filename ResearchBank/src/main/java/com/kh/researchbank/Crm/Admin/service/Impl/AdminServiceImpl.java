@@ -30,4 +30,25 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.indexSurvey(map);
 	}
 
+
+	@Override
+	public void deleteMember(Map<String, Object> map) {
+		adminDAO.deleteMember(map);
+	
+	}
+
+/*넣기 참조*/
+	@Override
+	public List<Map<String, Object>> listAll(String searchOption, String keyword) {
+		// TODO Auto-generated method stub
+		return adminDAO.listAll(searchOption,keyword);
+	}
+
+
+	@Override
+	public int countArticle(String searchOption, String keyword) {
+		// TODO Auto-generated method stub
+		return adminDAO.countArticle(searchOption, keyword);
+	}
+
 }

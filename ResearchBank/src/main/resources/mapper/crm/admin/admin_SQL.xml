@@ -5,23 +5,36 @@
 
 	<select id="memberList" parameterType="hashmap"
 		resultType="hashmap">
-		<include refid="common.pagingPre" />
 		<![CDATA[
-			SELECT
-				ROW_NUMBER() OVER (ORDER BY ROLE_ID DESC) RNUM,
-				MEMBER_ID,
-				MEMBER_NICKNAME,
-				MEMBER_POINT,
-				MEMBER_GENDER,
-				MEMBER_ADDRESS,
-				MEMBER_MARRY,
-				MEMBER_AREA,
-				MEMBER_JOB,
-				ROLE_ID
-			FROM
-				MEMBER_LIST
+				SELECT
+		            AAA.*
+		        FROM(
 		]]>
-		<include refid="common.pagingPost" />
+		<![CDATA[
+		            SELECT
+		                COUNT(*) OVER() AS TOTAL_COUNT,
+		                AA.*
+		            FROM(
+						SELECT
+							ROW_NUMBER() OVER (ORDER BY ROLE_ID ASC) RNUM,
+							MEMBER_ID,
+							MEMBER_NICKNAME,
+							MEMBER_POINT,
+							DECODE(MEMBER_GENDER,1,'남자',0,'여자',null,'미기입') AS MEMBER_GENDER,
+							DECODE(MEMBER_ADDRESS,null,'미기입',MEMBER_ADDRESS) AS MEMBER_ADDRESS,
+							DECODE(MEMBER_MARRY,null,'미기입',MEMBER_MARRY) AS MEMBER_MARRY,
+							DECODE(MEMBER_AREA,null,'미기입',MEMBER_AREA) AS MEMBER_AREA,
+							DECODE(MEMBER_JOB,null,'미기입',MEMBER_JOB) AS MEMBER_JOB,
+							DECODE(ROLE_ID,0,'회원',1,'관리자',2,'비회원',3,'가회원') AS ROLE_ID,
+							MEMBER_BIRTH
+						FROM
+							MEMBER_LIST
+		]]>
+		<![CDATA[				) AA
+		        ) AAA
+		        WHERE
+		            AAA.RNUM BETWEEN #{START} AND #{END}
+		]]>
 	</select>
 
 	<select id="surveyList" parameterType="hashmap"
@@ -44,6 +57,79 @@
 				SURVEY_LIST
 		]]>
 		<include refid="common.pagingPost" />
+	</select>
+
+	<update id="deleteMember" parameterType="hashmap">
+	<![CDATA[
+        UPDATE MEMBER_LIST
+        SET
+        	ROLE_ID = 2
+        WHERE
+             MEMBER_ID= #{MEMBER_ID}
+    ]]>
+
+	</update>
+
+
+	<select id="memberSearch" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+				SELECT
+		            AAA.*
+		        FROM(
+		]]>
+		<![CDATA[
+		            SELECT
+		                COUNT(*) OVER() AS TOTAL_COUNT,
+		                AA.*
+		            FROM(
+						SELECT
+							ROW_NUMBER() OVER (ORDER BY ROLE_ID ASC) RNUM,
+							MEMBER_ID,
+							MEMBER_NICKNAME,
+							MEMBER_POINT,
+							DECODE(MEMBER_GENDER,1,'남자',0,'여자',null,'미기입') AS MEMBER_GENDER,
+							DECODE(MEMBER_ADDRESS,null,'미기입',MEMBER_ADDRESS) AS MEMBER_ADDRESS,
+							DECODE(MEMBER_MARRY,null,'미기입',MEMBER_MARRY) AS MEMBER_MARRY,
+							DECODE(MEMBER_AREA,null,'미기입',MEMBER_AREA) AS MEMBER_AREA,
+							DECODE(MEMBER_JOB,null,'미기입',MEMBER_JOB) AS MEMBER_JOB,
+							DECODE(ROLE_ID,0,'회원',1,'관리자',2,'비회원',3,'가회원') AS ROLE_ID,
+							MEMBER_BIRTH
+						FROM
+							MEMBER_LIST
+		]]>
+		<![CDATA[				) AA
+		        ) AAA
+		        WHERE
+		            AAA.RNUM BETWEEN #{START} AND #{END}
+		]]>
+		<include refid="search"></include>
+	</select>
+	
+	
+	<!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
+	<select id="listAll" resultType="hashmap">
+		SELECT
+		MEMBER_ID,
+		MEMBER_NICKNAME,
+		MEMBER_POINT,
+		MEMBER_GENDER,
+		MEMBER_ADDRESS,
+		MEMBER_MARRY,
+		MEMBER_AREA,
+		MEMBER_JOB,
+		ROLE_ID,
+		MEMBER_BIRTH
+		FROM
+		MEMBER_LIST
+		<include refid="search"></include>
+		ORDER BY ROLE_ID DESC
+	</select>
+
+	<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="countArticle" resultType="int">
+		SELECT COUNT(*) FROM tbl_board
+		<include refid="search"></include>
 	</select>
 
 </mapper>	

@@ -1,12 +1,15 @@
 package com.kh.researchbank.Crm.Admin.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,7 +38,6 @@ public class AdminController {
 	
 	@Resource(name="adminService")
 	protected AdminService adminservice;
-	
 	
 	//---------------------멤버 조회------------------------------//
 	@RequestMapping(value="/admin/member")
@@ -83,8 +85,39 @@ public class AdminController {
 	    }
 	    return mv;
 	}
+	@RequestMapping(value="/admin/member/delete")
+	public ModelAndView deleteNotice(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/admin/member");
+	    
+	    
+	    adminservice.deleteMember(commandMap.getMap());
+	    
+	    return mv;
+	}
 	
 	
-	
-
+	// 01. 게시글 목록
+	@RequestMapping("list.do")
+	// @RequestParam(defaultValue="") ==> 기본값 할당
+	public ModelAndView list(@RequestParam(defaultValue="title") String searchOption,
+	                        @RequestParam(defaultValue="") String keyword) throws Exception{
+	    List<Map<String,Object>> list = adminservice.listAll(searchOption, keyword);
+	    // 레코드의 갯수
+	    int count = adminservice.countArticle(searchOption, keyword);
+	    // ModelAndView - 모델과 뷰
+	    ModelAndView mv = new ModelAndView();
+	    /*mav.addObject("list", list); // 데이터를 저장
+	    mav.addObject("count", count);
+	    mav.addObject("searchOption", searchOption);
+	    mav.addObject("keyword", keyword);*/
+	    // 데이터를 맵에 저장
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("list", list); // list
+	    map.put("count", count); // 레코드의 갯수
+	    map.put("searchOption", searchOption); // 검색옵션
+	    map.put("keyword", keyword); // 검색키워드
+	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
+	    mv.setViewName("board/list"); // 뷰를 list.jsp로 설정
+	    return mv;
+	}
 }
