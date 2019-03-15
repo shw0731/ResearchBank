@@ -185,7 +185,7 @@ $("#kakao-login-btn").on("click", function(){
                                   		alert("회원가입이 정상적으로 되었습니다.");
                                    		$("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
                                 	}else{
-                                		alert("회원가입이 정상적으로 이루어지지 않았습니다.")
+                                		alert("회원가입이 정상적으로 이루어지지 않았습니다.");
                                 	}
                                 }
                             })
