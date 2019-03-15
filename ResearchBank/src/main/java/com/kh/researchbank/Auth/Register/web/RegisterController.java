@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.researchbank.Auth.Register.service.RegisterService;
-import com.kh.researchbank.Auth.Register.vo.RegisterVO;
+import com.kh.researchbank.Auth.Register.service.vo.RegisterVO;
 
 @Controller
 public class RegisterController {

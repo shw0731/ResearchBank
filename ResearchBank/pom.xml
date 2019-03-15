@@ -12,6 +12,7 @@
 		<org.springframework-version>4.0.4.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<org.springframework.security-version>4.0.2.RELEASE</org.springframework.security-version>
 	</properties>
 	
 <repositories>
@@ -22,6 +23,34 @@
 </repositories>    
 	
 	<dependencies>
+	
+	<!-- Custom Add -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${org.springframework.security-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${org.springframework.security-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${org.springframework.security-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-acl</artifactId>
+            <version>${org.springframework.security-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${org.springframework.security-version}</version>
+        </dependency>
+	
 	<!-- oracle jdbc -->
 	<dependency>
     <groupId>com.oracle</groupId>

@@ -3,7 +3,7 @@ package com.kh.researchbank.Auth.Register.service.dao;
 import java.util.Map;
 
 import com.kh.researchbank.Auth.Login.vo.LoginVO;
-import com.kh.researchbank.Auth.Register.vo.RegisterVO;
+import com.kh.researchbank.Auth.Register.service.vo.RegisterVO;
 
 public interface RegisterDAO {
 	public void insertMember(RegisterVO registerVO);

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.researchbank.Auth.Login.vo.LoginVO;
 import com.kh.researchbank.Auth.Register.service.RegisterService;
 import com.kh.researchbank.Auth.Register.service.dao.RegisterDAO;
-import com.kh.researchbank.Auth.Register.vo.RegisterVO;
+import com.kh.researchbank.Auth.Register.service.vo.RegisterVO;
 
 @Service
 public class RegisterServiceImpl implements RegisterService{

@@ -45,13 +45,14 @@ form {
 					</tr>
 					<tr>
 						<th scope="row">비밀번호</th>
-						<td><input type="password" id="member_pw" name="member_pw"></td>
+						<td><input type="password" id="member_pw" name="member_pw">
+						</td>
 						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">비밀번호확인</th>
-						<td><input type="password" id="member_repw"
-							name="member_repw"></td>
+						<td><input type="password" id="member_repw" name="member_repw">
+						</td>
 						<td></td>
 					</tr>
 					<tr>
@@ -433,7 +434,11 @@ form {
 			var inputPwd = $("#member_pw").val();
 			var inputPwdCfm = $("#member_repw").val();
 			var inputNickName = $("#member_nickname").val();
-			
+			/* //암호화 복호화
+			$("#member_pw").val(Encrypt($("#member_pw").val()));
+			console.log($("#member_pw").val());
+			$("#member_pw").val(unEncrypt($("#member_pw").val()));
+			console.log($("#member_pw").val()); */
 			if (!chk){
 				alert("약관에 동의하셔야 가입가능합니다.")
 				return false;
@@ -479,6 +484,40 @@ form {
 				/* location.href= "login.do"; */
 			}
 		}
+		/* //암호화
+		function Encrypt(theText) {
+		    output = new String;
+		    Temp = new Array();
+		    Temp2 = new Array();
+		    TextSize = theText.length;
+		    for (i = 0; i < TextSize; i++) {
+		        rnd = Math.round(Math.random() * 122) + 68;
+		        Temp[i] = theText.charCodeAt(i) + rnd;
+		        Temp2[i] = rnd;
+		    }
+		    for (i = 0; i < TextSize; i++) {
+		        output += String.fromCharCode(Temp[i], Temp2[i]);
+		    }
+		    return output;
+		}
+		//복호화
+		function unEncrypt(theText) {
+		    output = new String;
+		    Temp = new Array();
+		    Temp2 = new Array();
+		    TextSize = theText.length;
+		    for (i = 0; i < TextSize; i++) {
+		        Temp[i] = theText.charCodeAt(i);
+		        Temp2[i] = theText.charCodeAt(i + 1);
+		    }
+		    for (i = 0; i < TextSize; i = i+2) {
+		        output += String.fromCharCode(Temp[i] - Temp2[i]);
+		    }
+		    return output;
+		} */
+
+
+
 
 		/* 
 		 $(document).ready(function() {

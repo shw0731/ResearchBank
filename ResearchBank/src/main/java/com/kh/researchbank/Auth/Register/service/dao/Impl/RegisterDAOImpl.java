@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.researchbank.Auth.Login.vo.LoginVO;
 import com.kh.researchbank.Auth.Register.service.dao.RegisterDAO;
-import com.kh.researchbank.Auth.Register.vo.RegisterVO;
+import com.kh.researchbank.Auth.Register.service.vo.RegisterVO;
 
 @Repository
 public class RegisterDAOImpl implements RegisterDAO{

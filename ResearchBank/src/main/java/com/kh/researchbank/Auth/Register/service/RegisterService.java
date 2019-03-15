@@ -3,7 +3,7 @@ package com.kh.researchbank.Auth.Register.service;
 import java.util.Map;
 
 import com.kh.researchbank.Auth.Login.vo.LoginVO;
-import com.kh.researchbank.Auth.Register.vo.RegisterVO;
+import com.kh.researchbank.Auth.Register.service.vo.RegisterVO;
 
 public interface RegisterService{
 	
