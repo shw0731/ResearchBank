@@ -86,9 +86,10 @@ public class LoginController
    
 		    	
 		    	return "redirect:/";
-		    }		    		    
+		    } else {	    		    
 		    	model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
-		    	return "auth/login/index";		    
+		    	return "auth/login/index";
+		    }
 		}
 	}
 	

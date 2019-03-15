@@ -24,7 +24,7 @@ form {
 						<td colspan="3">회원약관</td>
 					</tr>
 					<tr>
-						<td colspan="3"><textarea cols="100" rows="20"
+						<td colspan="3"><textarea cols="100" rows="15"
 								readonly="readonly"> <%@ include
 									file="/WEB-INF/views/auth/register/terms.txt"%> </textarea></td>
 					</tr>
@@ -303,8 +303,11 @@ form {
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="3" align="center"><input type="button"
-							class="btn btn-lg btn-success btn-block" value="회원가입"
+						<td colspan="3" align="center">
+						<br/>
+						<br/>
+						<input type="button"
+							class="btn btn-default" value="회원가입"
 							onclick="DosignUp();" /></td>
 					</tr>
 				</tfoot>
