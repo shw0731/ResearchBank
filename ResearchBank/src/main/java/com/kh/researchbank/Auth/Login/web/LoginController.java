@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,9 @@ import com.kh.researchbank.common.CommandMap;
 @Controller
 public class LoginController 
 {
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	
 	@Resource(name="loginService")
 	private LoginService loginService;
 	
@@ -55,8 +60,11 @@ public class LoginController
 			    + "\n 비밀번호2 : " + commandMap.get("MEMBER_PW"));
 			 
 			//비밀번호가 일치하면
-		    if(loginChk.get("MEMBER_PW").toString().
-		    		equals(commandMap.get("MEMBER_PW").toString()))
+			/*
+			 * if(loginChk.get("MEMBER_PW").toString().
+			 * equals(commandMap.get("MEMBER_PW").toString()))
+			 */
+			 if(passwordEncoder.matches(commandMap.get("MEMBER_PW").toString(), loginChk.get("MEMBER_PW").toString()))
 		    {
 		    	//loginChk Map을 "MEMBER" 영역에 저장
 		    	model.addAttribute("MEMBER", loginChk);
