@@ -21,69 +21,73 @@ import com.kh.researchbank.Auth.Register.service.vo.RegisterVO;
 
 @Controller
 public class RegisterController {
-    @Autowired
-    BCryptPasswordEncoder passwordEncoder;
-	
-    @Inject
-    private RegisterService registerService;
-    
-    @RequestMapping(value="/register.do", method=RequestMethod.GET)
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+
+	@Inject
+	private RegisterService registerService;
+
+	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
 	public String RegisterPage() {
 		return "auth/register/index";
 	}
-	@RequestMapping(value="/register.do", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String SubmitRegister(RegisterVO registerVo) {
-		String encryptPw=passwordEncoder.encode(registerVo.getMember_pw());
+		String encryptPw = passwordEncoder.encode(registerVo.getMember_pw());
 		registerVo.setMember_pw(encryptPw);
 		/* System.out.println(registerVo); */
 		registerService.insertMember(registerVo);
 		return "auth/login/index";
 	}
-	
 
-	@RequestMapping(value="/oauth.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/oauth.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String SubmitKakaoRegister(@RequestBody String jsonStr)throws Exception{
+	public String SubmitKakaoRegister(@RequestBody String jsonStr) throws Exception {
 		/* System.out.println(KakaoVo); */
 		ObjectMapper objectMapper = new ObjectMapper();
-	      objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
-	      System.out.println(jsonStr);
-	      Map<String, Object> map = objectMapper.readValue(jsonStr, HashMap.class);
-	      for(String key : map.keySet()){
-	            String value = (String) map.get(key);
-	            System.out.println(key+" : "+value);
-	        }
-		 registerService.insertKakaoMember(map); 
+		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
+		System.out.println(jsonStr);
+		Map<String, Object> map = objectMapper.readValue(jsonStr, HashMap.class);
+		for (String key : map.keySet()) {
+			String value = (String) map.get(key);
+			System.out.println(key + " : " + value);
+		}
+		//암호화
+		Object rawPassword = map.get("member_pw");
+		 String encryptPw = passwordEncoder.encode((String) rawPassword);
+		 map.put("member_pw", encryptPw);
+
+		registerService.insertKakaoMember(map);
 		return "redirect:loginSuccess";
 	}
 
-	
 	@RequestMapping("duplicationCheck.do")
 	@ResponseBody
 	public String CheckDuplication(@RequestBody String inputId) {
-		
+
 		String checkRst;
 		int idCnt = registerService.CheckDuplication(inputId);
 		System.out.println(inputId);
-		if(idCnt > 0) 
+		if (idCnt > 0)
 			checkRst = "F";
-		else 
+		else
 			checkRst = "S";
-		
+
 		return checkRst;
 	}
-	
+
 	@RequestMapping("duplicationCheckNickname.do")
 	@ResponseBody
 	public String CheckDuplicationNickname(@RequestBody String inputNickname) {
-		
+
 		String checkRst;
 		int nickCnt = registerService.CheckDuplicationNickname(inputNickname);
-		if(nickCnt > 0) 
+		if (nickCnt > 0)
 			checkRst = "F";
-		else 
+		else
 			checkRst = "S";
-		
+
 		return checkRst;
 	}
 }
