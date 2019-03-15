@@ -31,7 +31,7 @@ public class InquiryDAO extends AbstractDAO{
 		}
 	
 	public void storecomment(Map<String,Object>map)throws Exception{
-		update("inquiry.comments",map);
+		insert("inquiry.comments",map);
 		
 	}
 		

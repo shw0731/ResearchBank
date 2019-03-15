@@ -6,6 +6,8 @@
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
 <link href="/resources/css/creative.css" rel="stylesheet">
+<link href="/resources/css/board.css" rel="stylesheet">
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -17,33 +19,34 @@
 <title>ResearchBank</title>
 </head>
 <body>
+
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<br />
 	<br />
 	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+<div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
+		<!-- Nav tabs -->
+	<%@ include file="/WEB-INF/views/crm/inquiry/top.jsp"%>
+		</div>
+		
+			<hr/>
+	
 	<div role="tabpanel" class="tab-pane active" id="home"
-		style="width: 60%; margin: 5% 20% 5% 20%" align="center">
-		<img class="small1" src="/resources/images/notice/Title.jpg">
+		style="width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
+		<div class='left-box' style="font-family:a">1:1 QnA</div>
+	
 		
 
-		<table class="table table-striped table-bordered table-hover"
-			id="dataTables-example">
-			<colgroup>
-				<col width="15%" />
-				<col width="35%" />
-				<col width="15%" />
-				<col width="35%" />
-			</colgroup>
+		<table class="type04"
+                        id="dataTables-example">
+			
 			<thead>
 				<tr class="info" align="center">
-					<th scope="row">제목</th>
-					<td colspan="1">${map.NOTICE_SUBJECT }</td>
-					<th scope="row">작성일</th>
+					<th scope="row" width="10%">제목</th>
+					<td width="50%">${map.NOTICE_SUBJECT }</td>
+					<th scope="row" width="10%">작성일</th>
 					<fmt:formatDate var="resultRegDt" value="${map.NOTICE_DATE}" pattern="yyyy-MM-dd"/>			
-					<td colspan="1">${resultRegDt}</td>
+					<td width="50%">${resultRegDt}</td>
 				</tr>
 			</thead>
 			<tbody>

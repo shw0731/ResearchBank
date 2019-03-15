@@ -8,7 +8,7 @@
 <link href="/resources/css/a.css" rel="stylesheet">
 <script type="text/javascript" src="ttps://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
 <script type="text/javascript" src="/inquiry/jquery.validate.min.js"></script>
-
+<link href="/resources/css/board.css" rel="stylesheet">
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
@@ -19,15 +19,7 @@
 .small1 { width: 250px; }
 .small2 { height: 100px; }
 
-/* thead>tr>th{text-align: center;}
-   tbody>tr>td:nth-child(1){width:80px; text-align: center;}
-   tbody>tr>td:nth-child(3){width:110px; text-align: center;}
-   tbody>tr>td:nth-child(4){width:130px; text-align: center;}
-   tbody>tr>td:nth-child(5){width:70px; text-align: center;}
-   tbody>tr:HOVER{color:#da8c92;cursor: pointer;}
-   .menu-wrap{text-align: right;}
-   .form-wrap{text-align: center;}
-    */
+
 #wrap .box{ 
     width:300px;
     height:300px;
@@ -44,44 +36,39 @@ p.a{
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	<br />
-	<br />
-	<br />
-	<div style="margin:3% 20% 1% 20%; text-align: center;">
-	<h2><p class="p">고객지원실</p></h2>
-	</div>
 	
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<br />
+	<br />
+	<br />
+<div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
+		<!-- Nav tabs -->
+	<%@ include file="/WEB-INF/views/crm/inquiry/top.jsp"%>
+		</div>
 		
-		<!-- Tab panes --><!-- 시작 -->
-		<div class="tab-content" style="margin:50px;">
- 
- <!-- 챕터1 -->
-<div role="tabpanel" class="tab-pane active" id="home" style="width: 50%; margin: 1% 25% 10% 25%; padding:1px; text-align: center; font-family:p.a" align="center" >
+			<hr/>
+		
+		 
+ <!-- 챕터1 -->		<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="home"
+ 	style=" width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
+ 		<div class='left-box' style="font-family:a">1:1 QnA</div>
+ 		
 				<form id="frm" name="frm" action="/inquiry/createInquiry">
-
-					<!-- 	<colgroup >
-						<col width="15%"  /> 글번호
-						<col width="*" /> 제목
-						<col width="15%" /> 조회수
-						<col width="30%" /> 작성일
-					</colgroup> -->
-					<img class="small1" src="/resources/images/inquiry/Q.jpg"><br/><br/><br/>
-		
 			<!-- <tbody> -->
 			<img src="/resources/images/icon_secret.gif"> 비밀글
 			<input type="checkbox" name="INQUIRY_STATE" id="INQUIRY_STATE" value="1"/>
-				 <table class="table table-striped"
-                        id="dataTables-example"  >
+				  <table class="type04"
+                        id="dataTables-example">
                         <tbody>
 				<tr class="info" align="center" >
-					<th scope="row">제목</th>
-					<td><input type="text" id="TITLE" name="TITLE"  class="wdp_100">
+					<th scope="row" width="8%">제목</th>
+					<td><input type="text" id="TITLE" name="TITLE"  style="width:100%;">
 </td>
 				</tr>
 				<tr>
 					<td colspan="4" class="view_text">
-						<textarea rows="10%" cols="70%" title="내용" id="CONTENTS" name="CONTENTS">
+						<textarea rows="10%" cols="100%" title="내용" id="CONTENTS" name="CONTENTS" >
 </textarea>
 <input type="hidden" name="MEMBER_ID" value="${MEMBER_ID}">
   <input type="hidden" id="INQUIRY_STATE" value="${row.INQUIRY_STAT}">

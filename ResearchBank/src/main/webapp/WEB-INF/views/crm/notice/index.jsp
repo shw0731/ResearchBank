@@ -28,7 +28,7 @@
 			<thead>
 				<tr class="info" align="center">
 					<th width="*">제목</th>
-					<th width="15%">직상일</th>
+					<th width="15%">작성일</th>
 				</tr>
 			</thead>
 
@@ -104,7 +104,7 @@
 			comAjax.setUrl("<c:url value='/notice/paging' />");
 			comAjax.setCallback("fn_selectBoardListCallback");
 			comAjax.addParam("PAGE_INDEX", pageNo);
-			comAjax.addParam("PAGE_ROW", 15);
+			comAjax.addParam("PAGE_ROW", 10);
 			comAjax.ajax();
 		}
 

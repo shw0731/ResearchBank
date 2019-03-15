@@ -153,7 +153,7 @@ public class InquiryController {
 		mv.addObject("IDX", commandMap.get("IDX"));
 		mv.addObject("PARENTS_ID", commandMap.get("PARENTS_ID"));
 		mv.addObject("MEMBER_ID", commandMap.get("MEMBER_ID"));
-		
+
 		inquiryService.storecomment(commandMap.getMap());
 		
 		return mv;
@@ -174,12 +174,14 @@ public class InquiryController {
 	// 문의글 수정하기 완료
 	@RequestMapping(value = "/inquiry/editInquiry")
 	public ModelAndView editInquiry(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/inquiry/showInquiryDetail");
+		ModelAndView mv = new ModelAndView("redirect:/inquiry");
 
-		inquiryService.update(commandMap.getMap());
 
 		mv.addObject("comment", 0);
 		mv.addObject("IDX", commandMap.get("IDX"));
+		
+		inquiryService.update(commandMap.getMap());
+
 
 		
 		return mv;

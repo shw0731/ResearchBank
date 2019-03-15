@@ -6,8 +6,7 @@
 <link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
-
-<!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
+<link href="/resources/css/board.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 <title>Research!</title>
 
@@ -15,15 +14,7 @@
 .small1 { width: 250px; }
 .small2 { height: 100px; }
 
-/* thead>tr>th{text-align: center;}
-   tbody>tr>td:nth-child(1){width:80px; text-align: center;}
-   tbody>tr>td:nth-child(3){width:110px; text-align: center;}
-   tbody>tr>td:nth-child(4){width:130px; text-align: center;}
-   tbody>tr>td:nth-child(5){width:70px; text-align: center;}
-   tbody>tr:HOVER{color:#da8c92;cursor: pointer;}
-   .menu-wrap{text-align: right;}
-   .form-wrap{text-align: center;}
-    */
+
 #wrap .box{ 
     width:300px;
     height:300px;
@@ -40,41 +31,31 @@ p.a{
 </style>
 </head>
 <body>
+
+
+
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<br />
 	<br />
 	<br />
-	<br />
-	<div style="margin:3% 20% 1% 20%; text-align: center;">
-	<h2><p class="p">고객지원실</p></h2>
-	</div>
-<div role="tabpanel" class="tab-pane active" id="home"
- style=" width: 50%; margin: 5% 20% 1% 41%; padding: 1px; text-align: center; font-family:p.a" align="center" >		<!-- Nav tabs -->
-
-	<ul class="nav nav-pill" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#oneone" aria-controls="oneone" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-		</ul><br/>
+<div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
+		<!-- Nav tabs -->
+	<%@ include file="/WEB-INF/views/crm/inquiry/top.jsp"%>
 		</div>
-		<!-- Tab panes --><!-- 시작 -->
-		<div class="tab-content" style="margin:50px;">
- 
- <!-- 챕터1 -->
-<div role="tabpanel" class="tab-pane active" id="home" style="width: 50%; margin: 1% 25% 10% 25%; padding:1px; text-align: center; font-family:p.a" align="center" >
-
-				<!-- 	<colgroup >
-						<col width="15%"  /> 글번호
-						<col width="*" /> 제목
-						<col width="15%" /> 조회수
-						<col width="30%" /> 작성일
-					</colgroup> -->
-					<img class="small1" src="/resources/images/inquiry/Q.jpg"><br/><br/><br/>
-					 <table class="table table-bordered"
-                        id="dataTables-example"  >
+		
+			<hr/>
+		
+		 
+ <!-- 챕터1 -->		<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="home"
+ 	style=" width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
+ 		<div class='left-box' style="font-family:a">1:1 QnA</div>
+					 <table class="type04"
+                        id="dataTables-example">
                         
 					<thead>
 						<tr class="info" align="center" >
-							<th scope="row" width="15%">제목</th>
+							<th scope="row" width="8%">제목</th>
 				<td colspan="20">${map.TITLE }</td>
 						</tr>
 					</thead>
@@ -88,16 +69,39 @@ p.a{
 				<input type="hidden" id="PARENTS_ID" value="${map.MEMBER_ID}">
 				<div align="right">
 				<a href="/inquiry" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="update">수정하기</a>
+				
 	<c:if test="${ROLE_ID == '1'}">
 	<a href="#this" class="btn" id="comment">답글달기</a>
 	</c:if>
-	<c:if test="${MEMBER_NICKNAME == map.MEMBER_NICKNAME}">
+	<c:if test="${MEMBER_ID == map.MEMBER_ID}">
 	<a href="#this" class="btn" id="delete">삭제하기</a>
+		<a href="#this" class="btn" id="update">수정하기</a>
 				</c:if>
 				</div>
 				
-				</div></div>
+				</div>
+				
+ 		
+	<div role="tabpanel" class="tab-pane" id="oneone" style="width: 40%; margin: 5% 25% 2% 30%; padding: 1px; text-align: center;">
+	<%@ include file="/WEB-INF/views/crm/inquiry/faq.jsp"%>
+	</div>
+			
+	<div role="tabpanel" class="tab-pane" id="profile" style="width: 50%; margin: 5% 25% 2% 35%; padding: 1px;">
+	<%@ include file="/WEB-INF/views/crm/inquiry/milige.jsp"%>
+	</div>
+			
+	<div role="tabpanel" class="tab-pane" id="notice" style=" width: 70%; margin: 0% 25% 2% 14%; padding: 1px; font-family:a">
+ 	<%@ include file="/WEB-INF/views/crm/notice/index.jsp"%>
+	</div>
+			 
+	<div role="tabpanel" class="tab-pane" id="operation" style="width: 50%; margin: 5% 25% 2% 35%; padding: 1px;">
+	<%@ include file="/WEB-INF/views/crm/inquiry/operation.jsp"%>
+		</div>
+				
+				</div>
+				
+				
+				
 				
 				
 	<form id="commonForm" name="commonForm"></form>

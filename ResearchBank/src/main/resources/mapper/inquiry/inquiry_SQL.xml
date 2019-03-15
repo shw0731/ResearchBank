@@ -13,6 +13,7 @@
 			i.REGIST_DATE,
 			i.INQUIRY_STATE,
 			i.RE_REF,
+			i.RE_STEP,
 			r.MEMBER_ID,
 			r.MEMBER_NICKNAME,
 			r.ROLE_ID,
