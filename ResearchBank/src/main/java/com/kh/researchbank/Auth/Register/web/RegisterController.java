@@ -5,6 +5,9 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +21,9 @@ import com.kh.researchbank.Auth.Register.service.vo.RegisterVO;
 
 @Controller
 public class RegisterController {
-    
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+	
     @Inject
     private RegisterService registerService;
     
@@ -28,6 +33,8 @@ public class RegisterController {
 	}
 	@RequestMapping(value="/register.do", method=RequestMethod.POST)
 	public String SubmitRegister(RegisterVO registerVo) {
+		String encryptPw=passwordEncoder.encode(registerVo.getMember_pw());
+		registerVo.setMember_pw(encryptPw);
 		/* System.out.println(registerVo); */
 		registerService.insertMember(registerVo);
 		return "auth/login/index";
