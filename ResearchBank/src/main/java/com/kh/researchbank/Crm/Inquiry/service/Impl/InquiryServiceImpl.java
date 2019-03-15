@@ -59,10 +59,13 @@ public class InquiryServiceImpl implements InquiryService{
 
 	@Override
 	public Map<String, Object> showDetail(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
+		// TODO Auto-generat ed method stub
 			
 		inquiryDAO.updateHitCnt(map);
 		Map<String,Object> resultMap = inquiryDAO.showDetail(map);
+		String text = (String)resultMap.get("CONTENTS");
+		text.replace("\r\n", "<br/>");
+		resultMap.put("CONTENTS", text);
 		return resultMap;
 	}
 	

@@ -35,14 +35,29 @@
 p{
 font-family: 'Noto Sans KR', sans-serif;
 }
-p.a{
+/* p.a{
  font-weight: 300;
+} */
+
+.left-box{
+
+  float: left;
+  width: 5%;
+  margin : 1% 10% 0% 10%;
+  font-size:20px;
 }
+.right-box{
+
+  background: blue;
+  float: right;
+  width: 50%;
+  }
 
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 </head>
 <body>
+    
 <div >
 	<br />
 	<br />
@@ -50,13 +65,12 @@ p.a{
 
 
 	
-	<div role="tabpanel" style="width: 50%; margin: 5% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng; font-size: 25px;" id="#box2-1">
+	<div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
 
 		<!-- Nav tabs -->
-
 	<ul class="nav nav-pill" role="tablist">
     <li role="presentation" class="active">
-    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">QNA</a></li>
+    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">QnA</a></li>
     <li role="presentation">
     <a href="#oneone" aria-controls="oneone" role="tab" data-toggle="tab">FAQ</a></li>
     <li role="presentation">
@@ -64,17 +78,19 @@ p.a{
     <li role="presentation">
     <a href="#notice" aria-controls="notice" role="tab" data-toggle="tab">Notice</a></li>
     <li role="presentation">
-    <a href="#notice2" aria-controls="notice2" role="tab" data-toggle="tab">Operation</a></li>
+    <a href="#operation" aria-controls="operation" role="tab" data-toggle="tab">Operation</a></li>
 		</ul><br/>
 	
 		</div>
+		
+		<hr/>
 		<!-- Tab panes --><!-- 시작 -->
 		<div class="tab-content">
  
- <!-- 챕터1 -->
+ <!-- 챕터1 -->	
  <div role="tabpanel" class="tab-pane active" id="home"
- style=" width: 50%; margin: 1% 25% 2% 26%; padding: 1px; font-family:p.a" align="center" >
-
+ style=" width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
+<div class='left-box' style="font-family:a">1:1 QnA</div>
 				<!-- 	<colgroup >
 			
 						<col width="15%"  /> 글번호
@@ -82,10 +98,10 @@ p.a{
 						<col width="15%" /> 조회수
 						<col width="30%" /> 작성일
 					</colgroup> -->
-		
 					<form id=frm>
 					 <table class="type04"
                         id="dataTables-example">
+                        
 					<thead>
 						<tr class="info" align="center" >
 				<!-- 			<th scope="row" width="15%">글번호</th> -->
@@ -109,7 +125,7 @@ p.a{
 							
     						   <c:choose>
                                 <c:when test="${row.INQUIRY_STATE == '0'}">
-                               		 <a href="#this" name="title">${row.TITLE }</a>
+                               		 <a href="#this" name="Ititle">${row.TITLE }</a>
                                      <input type="hidden" id="IDX" value="${row.IDX }">
                                      <input type="hidden" id="MEMBER_ID" value="${row.MEMBER_ID}">
                                 </c:when>
@@ -120,7 +136,7 @@ p.a{
                                 <c:otherwise><!-- 비밀글이면 -->
 									<c:choose>
                                 		<c:when test="${row.MEMBER_ID == MEMBER_ID  || ROLE_ID == '1' || row.PARENTS_ID == MEMBER_ID}"> <!-- 비밀글인데 관리자거나 아이디 같으면 -->
-                                		 <a href="#this" name="title">${row.TITLE }</a>
+                                		 <a href="#this" name="Ititle">${row.TITLE }</a>
                               	 	    <input type="hidden" id="IDX" value="${row.IDX }">
                              		     <input type="hidden" id="MEMBER_ID" value="${row.MEMBER_ID}">
                             	        <input type="hidden" id="INQUIRY_STATE" value="${row.INQUIRY_STATE}">
@@ -164,7 +180,7 @@ p.a{
 
 
 			</div>
- <div role="tabpanel" class="tab-pane" id="oneone" style="width: 40%; margin: 2% 25% 2% 30%; padding: 1px; text-align: center;">
+ <div role="tabpanel" class="tab-pane" id="oneone" style="width: 40%; margin: 5% 25% 2% 30%; padding: 1px; text-align: center;">
 
 <!-- 아코디언 시작! -->
 <br/>
@@ -273,17 +289,24 @@ p.a{
 				</div>
 				
 			
-			<div role="tabpanel" class="tab-pane" id="profile" style="width: 50%; margin: 5% 25% 2% 26%; padding: 1px; text-align: center;">
+			<div role="tabpanel" class="tab-pane" id="profile" style="width: 50%; margin: 5% 25% 2% 35%; padding: 1px;">
 						
 				RESEARCH BANK 마일리지 프로그램<br /> 1. 포인트 전환 신청 시기: 매월 1일부터 25일까지<br />
 				2. 현금 입금 시기: 포인트 전환 신청을 한 다음 달 영업일 초<br /> 3. 포인트 전환 가능 금액:
 				10,000원부터 10,000원 단위로 전환 가능 <br /> 4. 포인트 전환 계좌 이체 수수료: 500원<br />
 				(참고: 60,000원 이상 전환 시부터 세금이 붙으므로, 포인트 전환은 1회 50,000원 이하로 시도하시는 편이
 				좋습니다)<br /> 5. 계좌오류 등으로 포인트 전환 실패 시, 가입 시 등록한 메일로 '안내 메일'이 발송됩니다.<br />
-
-
-			</div>
 </div>
+			
+			 <div role="tabpanel" class="tab-pane" id="notice"
+ style=" width: 70%; margin: 0% 25% 2% 14%; padding: 1px; font-family:a">
+ 			<%@ include file="/WEB-INF/views/crm/notice/index.jsp"%>
+			</div>
+			
+				<div role="tabpanel" class="tab-pane" id="operation" style="width: 50%; margin: 5% 25% 2% 35%; padding: 1px;">
+		<%@ include file="/WEB-INF/views/crm/inquiry/operation.jsp"%>
+			</div>
+
 
 </div>
 
@@ -296,14 +319,14 @@ p.a{
 	<script type="text/javascript">
 		$(document).ready(function() {
 /* 			fn_selectBoardList(1); */
-			      $("a[name='title']").on("click", function(e){ //제목 
+			      $("a[name='Ititle']").on("click", function(e){ //제목 
                 e.preventDefault();
-                fn_openBoardDetail($(this));
+                fn_openBoard($(this));
             });
             
 			      $("#write").on("click", function(e){ //작성하기 버튼
 						e.preventDefault();
-						fn_insertBoard();
+						fn_insert();
 					});
 			
 			$('#myTab a').click(function (e) {
@@ -318,14 +341,14 @@ p.a{
 			$("list.REGIST_DATE").val($.format.date(new Date(), 'dd M yy'));
 		});
 		
-		function fn_insertBoard(){
+		function fn_insert(){
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/inquiry/storeInquiryWrite' />");
 			comSubmit.submit();
 		}
 
 
-		function fn_openBoardDetail(obj) {
+		function fn_openBoard(obj) {
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/inquiry/showInquiryDetail' />");
 			comSubmit.addParam("IDX", obj.parent().find("#IDX").val());

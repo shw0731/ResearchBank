@@ -2,94 +2,33 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<%-- <head>
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
 <link href="/resources/css/creative.css" rel="stylesheet">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link href="/resources/css/board.css" rel="stylesheet">
 <!-- jQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <meta charset="UTF-8">
 <title>ResearchBank</title>
-<style>
-.small1 {
-	width: 250px;
-}
 
-.small2 {
-	height: 100px;
-}
-
-.box2-1 {
-	width: 100px;
-	height: 100px;
-	background-image: url("/images/inquiry/FAQ.jpg");
-}
-
-thead>tr>th {
-	text-align: center;
-}
-
-tbody>tr>td:nth-child(1) {
-	width: 80px;
-	text-align: center;
-}
-
-tbody>tr>td:nth-child(3) {
-	width: 110px;
-	text-align: center;
-}
-
-tbody>tr>td:nth-child(4) {
-	width: 130px;
-	text-align: center;
-}
-
-tbody>tr>td:nth-child(5) {
-	width: 70px;
-	text-align: center;
-}
-
-tbody>tr:HOVER {
-	color: #da8c92;
-	cursor: pointer;
-}
-
-.menu-wrap {
-	text-align: right;
-}
-
-.form-wrap {
-	text-align: center;
-}
-
-#wrap .box {
-	width: 300px;
-	height: 300px;
-	margin: 0 auto;
-}
-</style>
-</head>
+</head> --%>
 <body>
-	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
 
-	<div role="tabpanel" class="tab-pane active" id="home"
-		style="width: 50%; margin: 10% 25% 10% 25%; padding: 1px; text-align: center;"
-		align="center">
-		<img class="small1" src="/resources/images/notice/Title.jpg">
-		<table class="table table-striped table-bordered table-hover"
-			id="dataTables-example">
+<div class='left-box' style="font-family:a">Notice</div>
+		 <table class="type04"
+                        id="dataTables-example">
 			<thead>
 				<tr class="info" align="center">
-					<th width="15%">글번호</th>
 					<th width="*">제목</th>
-					<th width="15%">날짜</th>
+					<th width="15%">직상일</th>
 				</tr>
 			</thead>
 
@@ -120,19 +59,14 @@ tbody>tr:HOVER {
 
 
 		</table>
-
-
+<div align="right">
+ <a href="#this" class="btn" id="create">글쓰기</a>
+ </div>
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
-		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br /> <a
-			href="#this" class="btn" id="create">글쓰기</a><br /> 
+		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br /><br /> 
 			<strong
 			class="haha"></strong>
-	</div>
-
-	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-
-	<form id="commonForm" name="commonForm"></form>
-
+			
 	<script type="text/javascript">
 		$(document).ready(function() {
 			window.onload = function() {
@@ -211,9 +145,9 @@ tbody>tr:HOVER {
 											+ "</tr>"; */
 											/* $(".haha").append('<p>'+value.NOTICE_IDX+'</p>'); */
 
-											+ "<td>"
+									/* 		+ "<td>"
 											+ value.NOTICE_IDX
-											+ "</td>"
+											+ "</td>" */
 											
 											+ "<td class='title'>"
 											+ "<a href='#this' name='title'>"
