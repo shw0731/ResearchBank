@@ -103,7 +103,7 @@
 		        WHERE
 		            AAA.RNUM BETWEEN #{START} AND #{END}
 		]]>
-		<include refid="search"></include>
+		<include refid="common.search"></include>
 	</select>
 	
 	
@@ -122,14 +122,14 @@
 		MEMBER_BIRTH
 		FROM
 		MEMBER_LIST
-		<include refid="search"></include>
+		<include refid="common.search"></include>
 		ORDER BY ROLE_ID DESC
 	</select>
 
 	<!-- 01_02. 게시글 레코드 갯수 -->
 	<select id="countArticle" resultType="int">
 		SELECT COUNT(*) FROM tbl_board
-		<include refid="search"></include>
+		<include refid="commonsearch"></include>
 	</select>
 
 </mapper>	

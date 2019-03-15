@@ -121,7 +121,7 @@ tbody>tr:HOVER {
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 	</div>
 	<!-- -------------------검색기능-------------------- -->
-<%-- 	<form name="form1" method="post" action="${path}/admin/memberPaging">
+	<form name="form1" method="post" action="${path}/admin/memberSearch">
 		<select name="searchOption">
 			<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 			<option value="all"
@@ -136,7 +136,7 @@ tbody>tr:HOVER {
 		<input name="keyword" value="${map.keyword}"> 
 		<input type="submit" value="조회">
 		<button type="button" id="btnWrite">글쓰기</button>
-	</form> --%>
+	</form>
 	<!-- -------------------검색기능-------------------- -->
 	
 

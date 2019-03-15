@@ -97,9 +97,9 @@ public class AdminController {
 	
 	
 	// 01. 게시글 목록
-	@RequestMapping("list.do")
+	@RequestMapping(value="/admin/memberSearch")
 	// @RequestParam(defaultValue="") ==> 기본값 할당
-	public ModelAndView list(@RequestParam(defaultValue="title") String searchOption,
+	public ModelAndView list(@RequestParam(defaultValue="MEMBER_ID") String searchOption,
 	                        @RequestParam(defaultValue="") String keyword) throws Exception{
 	    List<Map<String,Object>> list = adminservice.listAll(searchOption, keyword);
 	    // 레코드의 갯수
