@@ -25,7 +25,9 @@
 			var inputGender = $("#MEMBER_GENDER").val();  
 			var InputMarry = $("#MEMBER_MARRY").val();  
 			   
-		    
+			var b1 = $("#birth1").val();
+			var b2 = $("#birth2").val();
+			var b3 = $("#birth3").val();
 			
 		    if(inputPwd.length == 0) { 
 				alert("비밀번호를 입력해 주세요."); 
@@ -37,6 +39,16 @@
 				$("#MEMBER_PW2").focus(); 
 				return; 
 				}
+		    
+		    a=document.form1.birth_1.value;
+		    b=document.form1.birth_2.value;
+		    c=document.form1.birth_3.value;
+		    d=a+b+c;
+		    $("#MEMBER_BIRTH").val(d);
+		    
+
+
+		    
 		  /*   if(inputGender == null) { 
 		    	alert("성별을 입력해주세요.");   
 		    	$("#MEMBER_GENDER").focus();  
@@ -90,11 +102,11 @@
 					<input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" checked="checked" value="0">여자
 					<input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" value="1">남자  
 				</div>
-				생년월일
-				<tr>
+				
+				
     <th scope="row">생년월일</th>
     <td valign="top">
-      <select id="MEMBER_BIRTH" name="BIRTH_1">
+      <select id="birth_1" name="birth_1">
       <option value="2018" >2018</option>
           <option value="2017" >2017</option>
         <option value="2016" >2016</option>
@@ -215,30 +227,30 @@
           <option value="1901">1901</option>
           <option value="1900">1900</option>
      </select>년&nbsp;
-     <select name="BIRTH_2">
-       <option value="1">1</option>
-       <option value="2">2</option>
-       <option value="3">3</option>
-       <option value="4">4</option>
-       <option value="5">5</option>
-       <option value="6">6</option>
-       <option value="7">7</option>
-       <option value="8">8</option>
-       <option value="9">9</option>
+     <select id="birth_2" name="birth_2">
+       <option value="01">01</option>
+       <option value="02">02</option>
+       <option value="03">03</option>
+       <option value="04">04</option>
+       <option value="05">05</option>
+       <option value="06">06</option>
+       <option value="07">07</option>
+       <option value="08">08</option>
+       <option value="09">09</option>
        <option value="10">10</option>
        <option value="11">11</option>
        <option value="12">12</option>
      </select>
-     <select name="BIRTH_3">
-       <option value="1">1</option>
-       <option value="2">2</option>
-       <option value="3">3</option>
-       <option value="4">4</option>
-       <option value="5">5</option>
-       <option value="6">6</option>
-       <option value="7">7</option>
-       <option value="8">8</option>
-       <option value="9">9</option>
+     <select id="birth_3" name=birth_3>
+       <option value="01">01</option>
+       <option value="02">02</option>
+       <option value="03">03</option>
+       <option value="04">04</option>
+       <option value="05">05</option>
+       <option value="06">06</option>
+       <option value="07">07</option>
+       <option value="08">08</option>
+       <option value="09">09</option>
        <option value="10">10</option>
        <option value="11">11</option>
        <option value="12">12</option>
@@ -262,16 +274,15 @@
        <option value="30">30</option>
        <option value="31">31</option>
      </select>일
+     <input type="hidden" id="MEMBER_BIRTH" name="MEMBER_BIRTH" value="${map.MEMBER_BIRTH}">
    </td>
    </tr>
-				<div class="form-group">
-					<input type="text" name="MEMBER_BIRTH" value="${map.MEMBER_BIRTH }" class="form-control"/>  
-				</div> 
+				<br><br>
 				주소
-				<div class="form-group">
-					<input type="text" id="sample6_address" class="form-control"  name="MEMBER_ADDRESS" value=${map.MEMBER_ADDRESS }>
-					<button class="button button-dimmed" onclick="sample5_execDaumPostcode()" value="주소 검색">주소 찾기</button> 
-				</div>
+				<td><input type="text" id="MEMBER_ADDRESS" name="MEMBER_ADDRESS" size="100" value="${map.MEMBER_ADDRESS }">
+				<br>
+				<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+				</td>
 				 
 				 결혼유무
 				<div class="form-group">
@@ -348,7 +359,7 @@
                 var addr = data.address; // 최종 주소 변수
 
                 // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("MEMBER_ADDRESS").value = addr; 
+                document.getElementById('MEMBER_ADDRESS').value = addr; 
                 // 주소로 상세 정보를 검색
                 geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
@@ -372,6 +383,11 @@
             autoClose: false //기본값 true
         });
     }
+    
+    function birth(){
+    	
+    }
+    
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
