@@ -59,7 +59,7 @@ public class RegisterController {
 		 map.put("member_pw", encryptPw);
 
 		registerService.insertKakaoMember(map);
-		return "redirect:loginSuccess";
+		return "memberJoinOK";
 	}
 
 	@RequestMapping("duplicationCheck.do")
