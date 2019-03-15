@@ -19,14 +19,17 @@ form {
 		<h1>회원가입</h1>
 		<form role="form" name="form" action="register.do" method="post">
 			<table class="board_list">
+				<!-- 약관부분 -->
 				<thead align="left" valign=middle>
 					<tr>
 						<td colspan="3">회원약관</td>
 					</tr>
 					<tr>
-						<td colspan="3"><textarea cols="100" rows="15"
-								readonly="readonly"> <%@ include
-									file="/WEB-INF/views/auth/register/terms.txt"%> </textarea></td>
+						<td colspan="3">
+						<!-- 폼양식 -->
+						<textarea cols="100" rows="15" readonly="readonly">
+							<!-- 약관파일 가져오기 -->
+							<%@ include file="/WEB-INF/views/auth/register/terms.txt"%> </textarea></td>
 					</tr>
 					<tr>
 						<td colspan="3" align="center"><input type="checkbox" name="agree" id="agree" value="" />
@@ -37,31 +40,35 @@ form {
 				<tbody align=left " valign=middle>
 					<tr>
 						<th scope="row">아이디(E-mail)</th>
+						<!-- 아이디 값 받는 부분 -->
 						<td><input type="text" id="member_id" name="member_id"
-							placeholder="이메일 주소를 적어주세요"> <input type="button"
-							class="btn btn-default" style="width: 30%;" value="중복확인"
-							onclick="duplicationId();" />
+							placeholder="이메일 주소를 적어주세요">
+							<!-- 중복확인 javascript로 전송 -->
+							<input type="button" class="btn btn-default" style="width: 30%;" value="중복확인"	onclick="duplicationId();" />
 						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">비밀번호</th>
+						<!-- 비밀번호 값 받는 부분 -->
 						<td><input type="password" id="member_pw" name="member_pw">
 						</td>
 						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">비밀번호확인</th>
+						<!-- 비밀번호 확인 값 받는 부분 -->
 						<td><input type="password" id="member_repw" name="member_repw">
 						</td>
 						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">닉네임</th>
-						<td><input type="text" id="member_nickname"
-							name="member_nickname"> <input type="button"
-							class="btn btn-default" style="width: 30%;" value="중복확인"
-							onclick="duplicationNickname();" /> <input
-							type="hidden" id="member_point" name="member_point" value="0">
+						<!-- 닉네임 값 받는 부분 -->
+						<td><input type="text" id="member_nickname"	name="member_nickname">
+							<!-- 중복확인 javascript로 전송 -->
+							 <input type="button" class="btn btn-default" style="width: 30%;" value="중복확인" onclick="duplicationNickname();" />\
+							<!-- hidden값으로 기본정의값 지정 --> 
+							<input type="hidden" id="member_point" name="member_point" value="0">
 							<input type="hidden" id="role_id" name="role_id" value="0">
 						<td></td>
 						<!--    </tr>
@@ -306,9 +313,8 @@ form {
 						<td colspan="3" align="center">
 						<br/>
 						<br/>
-						<input type="button"
-							class="btn btn-default" value="회원가입"
-							onclick="DosignUp();" /></td>
+						<!-- JavaScript DosignUp 함수로 전송 -->
+						<input type="button" class="btn btn-default" value="회원가입" onclick="DosignUp();" /></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -353,16 +359,22 @@ form {
 	<script type="text/javascript">
 		var isCheckId = 0;
 		function duplicationId() {
+			//위의 폼에서 집어넣은 값들을 JavaScript 안에서 쓸 값으로 이름 변경
 			var inputId = $("#member_id").val();
 			var memberId = $("#member_id").val();
-			var memberData = {"ID": member_id}
+			
+			var memberData = {"ID": member_id};
+			//이메일 값인지 구별해주는 값 지정
 			var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			//입력 값이 없을때
 			if (memberId.length < 1)
 			 {
 			 alert("아이디를 입력해주시기 바랍니다.");
 			 }
+			//입력값이 이메일 값일때
 			 else if (memberId.match(regExp) != null) {
 			$.ajax({
+				//duplicationCheck.do로 post 방식으로 inputId라는 데이터를 보낸다. 보내는 글의 타입은 application/json이다.
 				async : false,
 				type : "post",
 				url : "duplicationCheck.do",
@@ -371,21 +383,23 @@ form {
                     /* "Accept" : "application/json", */
                     "Content-Type" : "application/json"
                   },
+                  //성공적으로 도착했을때 반환값
 				success : function(data) {
+					//반환값이 S이면
 					if (data == "S") {
 						alert("사용가능한 아이디입니다.");
-
+						//아이디가 존재할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
 						$("#divInputId").addClass("has-success")
 						$("#divInputId").removeClass("has-error")
-
+						//비밀번호 확인한다.
 						$("#signUpUserPwd").focus();
 						isCheckId = 1;
 					} else {
 						alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-
+						//아이디가 존재할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
 						$("#divInputId").addClass("has-error")
 						$("#divInputId").removeClass("has-success")
-
+						//아이디를 다시 확인한다.
 						$("#signUpUserId").focus();
 					}
 				},
@@ -401,6 +415,7 @@ form {
 
 		var isCheckNickname = 0;
 		function duplicationNickname() {
+			//위의 폼에서 집어넣은 값들을 JavaScript 안에서 쓸 값으로 이름 변경
 			var inputNickname = $("#member_nickname").val();
 			$.ajax({
 				async : false,
@@ -432,57 +447,64 @@ form {
 		}
 
 		function DosignUp() {
+			//문서 내부의 이름값이 form이고 값이 agree 인값이 체크가 되어있는지
 			var chk=document.form.agree.checked;
+			//각 값들을 따로 지정
 			var inputId = $("#member_id").val();
 			var inputPwd = $("#member_pw").val();
 			var inputPwdCfm = $("#member_repw").val();
 			var inputNickName = $("#member_nickname").val();
-			/* //암호화 복호화
-			$("#member_pw").val(Encrypt($("#member_pw").val()));
-			console.log($("#member_pw").val());
-			$("#member_pw").val(unEncrypt($("#member_pw").val()));
-			console.log($("#member_pw").val()); */
+			//암호화 복호화
+			//$("#member_pw").val(Encrypt($("#member_pw").val()));
+			//console.log($("#member_pw").val());
+			//$("#member_pw").val(unEncrypt($("#member_pw").val()));
+			//console.log($("#member_pw").val());
+
+			//체크되어있지 않으면
 			if (!chk){
 				alert("약관에 동의하셔야 가입가능합니다.")
 				return false;
 			}
 			
-
+			//id의 길이 값이 0이면
 			if (inputId.length == 0) {
 				alert("아이디를 입력해 주세요.");
 				$("#member_id").focus();
 				return;
 			}
+			//아이디 중복체크가 안되었으면
 			if (isCheckId == 0) {
 				alert("아이디 중복 체크를 해주세요.");
 				$("#member_id").focus();
 				return;
 			}
-
+			//비밀번호의 길이 값이 0이면
 			if (inputPwd.length == 0) {
 				alert("비밀번호를 입력해 주세요.");
 				$("#member_pw").focus();
 				return;
 			}
+			//비밀번호의 두값이 다를때
 			if (inputPwd != inputPwdCfm) {
 				alert("비밀번호가 서로 다릅니다. 비밀번호를 확인해 주세요.");
 				$("#member_repw").focus();
 				return;
 			}
-
+			//닉네임 길이 값이 0이면
 			if (inputNickName.length == 0) {
 				alert("닉네임을 입력해 주세요.");
 				$("#member_nickname").focus();
 				return;
 			}
+			//닉네임 중복체크가 안되었으면
 			if (isCheckNickname == 0) {
 				alert("닉네임 중복 체크를 해주세요.");
 				$("#member_nickname").focus();
 				return;
 			}
-
 			if (confirm("회원가입을 하시겠습니까?")) {
 				alert("가입!");
+				//form에 등록된 action으로 submit으로 입력된 폼 전송
 				document.form.submit();
 				/* location.href= "login.do"; */
 			}

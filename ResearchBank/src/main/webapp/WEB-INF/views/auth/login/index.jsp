@@ -9,6 +9,7 @@
 <title>Login</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
 </script>
+<!-- 가져다 쓸 카카오 sbk지정 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>  
 
@@ -88,18 +89,22 @@
           <!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
 			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
 			</a> -->
+			<!-- 넘겨줘야 하는 값들을 숨겨서 넣어준다. -->
  			<form role="form" name="form" action="/register.do" method="post">
 				<input type="hidden" id="member_id2" name="member_id">
 				<input type="hidden" id="member_pw2" name="member_pw">
 				<input type="hidden" id="member_nickname" name="member_nickname">
 				<input type="hidden" id="member_point" name="member_point" value="0">
 				<input type="hidden" id="role_id" name="role_id" value="0">
+			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
 			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="50%"/>
 			    </a>
 			    <a href="http://developers.kakao.com/logout"></a>
 			</div>
+			
+			
 			</form>
           <hr class="light my-4">
           <div class="login_input_area">
@@ -119,7 +124,7 @@
 
 //카카오 로그인
 Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
-        
+//카카오 로그인 버튼을 누르면
 $("#kakao-login-btn").on("click", function(){
     //1. 로그인 시도
     Kakao.Auth.login({
@@ -130,13 +135,18 @@ $("#kakao-login-btn").on("click", function(){
           //2. 로그인 성공시, API를 호출합니다.
           var isCheckId = 0;
           Kakao.API.request({
+        	//API호줄 url '/v1/user/me' 이나 '/v2/user/me'
             url: '/v2/user/me',
+            //호출로 불러온 값 출력
             success: function(res) {
+            	//res.id는 숫자값으로 나오기 때문에 문자값을 추가해서 문자값으로 변경시켜준다. 그래야 데이터 입력가능
             	res.id += "@k";
+            	//콘솔로그 찍어본다.
               console.log(JSON.stringify(res));
               console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
     	      console.log(res.kakao_account['email']);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
     	      console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
+    	    	//위의 문서에 값들을 넣어준다. 
               $('#member_id').val(res.kakao_account['email']);
               var inputId = res.kakao_account['email'];
               $('#member_nickname').val(res.properties['nickname']);
@@ -153,6 +163,7 @@ $("#kakao-login-btn").on("click", function(){
                         member_point : "0",
                         role_id : "4",
                         })); */
+              // duplicationCheck.do로 중복아이디를 확인해준다.
               $.ajax({
 	       	  	  type: "post",
 	          	  url: "duplicationCheck.do",
@@ -161,10 +172,14 @@ $("#kakao-login-btn").on("click", function(){
                     /* "Accept" : "application/json", */
                     "Content-Type" : "application/json"
                   },
+                  // 성공하면 controller에서 반환된 값을 data로 가져온다
                     success : function(data){
                         console.log(data);
+                        //데이터 값이 S이면
                     	if(data=="S"){ //DB에 아이디가 없을 경우 => 회원가입
+                    		//콘솔에 회원가입중을 찍어준다.
                             console.log("회원가입중...");
+                    		//controller의 회원가입 폼인 oauth.do로 post방식으로 보내준다.
                             $.ajax({
                                 url : "oauth.do",
                                 method : "POST",
