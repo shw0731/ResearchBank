@@ -129,7 +129,7 @@
 	<!-- 01_02. 게시글 레코드 갯수 -->
 	<select id="countArticle" resultType="int">
 		SELECT COUNT(*) FROM tbl_board
-		<include refid="commonsearch"></include>
+		<include refid="common.search"></include>
 	</select>
 
 </mapper>	
