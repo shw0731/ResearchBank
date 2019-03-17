@@ -18,7 +18,20 @@ $('.more').click(function(){
 
 function after(){
   $('body').css('background','#000000');
-  $('.container').css('display','flex');
+  $('.team-wrap').css('display','flex');
   $('.gridcontainer').css('opacity','1');
 }
 setTimeout("after();", 3400);
+
+var fn_intro = function(e){
+	var params ='{"id":"'+e+'"}';
+	callAjax('get', true, "/introduction/"+e, 'json', 'json', params, fn_error, fn_success);
+};
+
+var fn_error =  function(e) {
+	console.log(e);
+}
+
+var fn_success =  function(e) {
+	console.log(e);
+}

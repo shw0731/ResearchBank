@@ -12,22 +12,17 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="wrap">
-		<div class="line1">
-			<div class="line"></div>
-		</div>
-		<div class="line2">
-			<div class="line"></div>
-		</div>
 
-		<div class="texts">
-			<span>{</span> <span class="devtips">Research<br>Bank
-			</span> <span>}</span>
-		</div>
 </div>
-<%@ include file="/WEB-INF/views/crm/introduction/partial/face.jsp"%>
 <%@ include file="/WEB-INF/views/crm/introduction/partial/hello.jsp"%>
+<%@ include file="/WEB-INF/views/crm/introduction/partial/face.jsp"%>
+
 
 </body>
 <script src="/resources/js/introduce/intro.js"></script>
 <script src="/resources/js/introduce/hello.js"></script>
+<script src="/resources/js/common.js"></script>
+<script type="text/javascript">
+	setInterval(function(){init('submit')},8000);
+</script>
 </html>

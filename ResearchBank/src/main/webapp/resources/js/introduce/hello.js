@@ -12,15 +12,10 @@ let rotationY = 0.5;
 let speed = 40;
 let animFrame;
 const texts = [
-  'Greeting!!',
-  '(╯°□°）╯︵ ┻━┻',
-  'Research <3',
-  '{ Research Bank }',
-  'We are the Research Elit',
   'ごεご 안녕하세요!',
   '리서치뱅크에 오신 여러분은 환영합니다.',
   '지금시작하세요!',
-  'Eat your vegetables',
+  'Reseach Everything with us!!'  
 ];
 let textIndex = 0;
 
@@ -62,7 +57,7 @@ class Vector3 {
 }
 
 function init(e) {
-  if (e) e.preventDefault();
+	
   cancelAnimationFrame(animFrame);
   const text = document.getElementById('textInput').value || texts[textIndex++ % texts.length];
   let fontSize = 150;
@@ -158,7 +153,7 @@ function loop() {
     
     const s = 1 - (p.position.z / layers);
     ctx.fillStyle = p.target.z === 0
-      ? 'rgb(114, 204, 255)'
+      ? 'rgb(255, 255, 255)'
       : `rgba(242, 101, 49, ${s})`;
     
     ctx.fillRect(particle.x, particle.y, s * size, s * size);
@@ -170,9 +165,9 @@ function loop() {
 init();
 
 window.addEventListener('mousemove', e => {
-  const halfHeight = window.innerHeight / 2;
-  targetRotationY = (e.clientY - halfHeight) / window.innerHeight; 
-})
+	  const halfHeight = window.innerHeight / 2;
+	  targetRotationY = (e.clientY - halfHeight) / window.innerHeight; 
+	})
 
 function setSpeed(e, val) {
   document.querySelectorAll('button').forEach(el => {

@@ -2,19 +2,18 @@
 
 canvas {
   margin-bottom : 100%;
-  background: linear-gradient(
-    to bottom,
-    rgb(6,9,43) 0%,
-    rgb(30,45,75) 100%
-  );
+  background: linear-gradient(     
+  			    to bottom,     
+			    rgb(144,67,60) 0%,     
+			    rgb(130,193,202) 100%   );
 }
 
 canvas, menu {
   width:100%;
   position: absolute;
-  top: 100;
+  
   color: white;
-  margin-top : 100%;
+  
 }
 input, button {
   color: gray;

@@ -1,20 +1,21 @@
 
-.container {
+.team-wrap {
   position: absolute;
-  top: 50%;
+  top: 177%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   display: none;
   justify-content: center;
+  
 }
-.container > div {
+.team-wrap > div {
   position: relative;
   transition: 0.5s -webkit-transform;
   transition: 0.5s transform;
   transition: 0.5s transform, 0.5s -webkit-transform;
 }
-.container > div:hover {
+.team-wrap > div:hover {
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
 }
@@ -507,7 +508,4 @@ p {
   height: 15px;
   background: #BF3D27;
   border-radius: 3px;
-}
-#mainNav {
-	padding : 1.5rem 1rem;
 }
