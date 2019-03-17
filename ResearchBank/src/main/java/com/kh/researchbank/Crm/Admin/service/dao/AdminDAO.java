@@ -12,8 +12,12 @@ import com.kh.researchbank.common.AbstractDAO;
 public class AdminDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> indexMember(Map<String, Object> map) {
-		return (List<Map<String, Object>>) selectPagingList("admin.memberList", map);
+	public List<Map<String, Object>> indexMember(Map<String, Object> map, String searchOption, String keyword) {
+	    System.out.println("다오 부분: 옵션="+searchOption+"키워드"+keyword);
+
+		map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+		return (List<Map<String, Object>>) selectPagingList("admin.memberSearch", map);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -25,24 +29,6 @@ public class AdminDAO extends AbstractDAO{
 	public void deleteMember(Map<String, Object> map) {
 		update("admin.deleteMember",map);
 		
-	}
-
-	
-
-/*넣기 참조*/
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> listAll(String searchOption, String keyword) {
-		Map<String, String> map = new HashMap<String, String>();
-	    map.put("searchOption", searchOption);
-	    map.put("keyword", keyword);
-	    return selectList("admin.listAll", map);
-	}
-		// 게시글 레코드 갯수
-	public int countArticle(String searchOption, String keyword) {
-		Map<String, String> map = new HashMap<String, String>();
-	    map.put("searchOption", searchOption);
-	    map.put("keyword", keyword);
-	    return (Integer) selectOne("admin.countArticle", map);
 	}
 
 }

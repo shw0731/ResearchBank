@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface AdminService {
 
-	public List<Map<String, Object>> indexMember(Map<String, Object> map);
+	public List<Map<String, Object>> indexMember(Map<String, Object> map, String searchOption, String keyword);
 
 	public List<Map<String, Object>> indexSurvey(Map<String, Object> map);
 
@@ -13,10 +13,6 @@ public interface AdminService {
 
 	
 
-/*넣기 참조*/
-	public List<Map<String, Object>> listAll(String searchOption, String keyword);
 
-	public int countArticle(String searchOption, String keyword);
-	
 	
 }

@@ -18,9 +18,11 @@ public class AdminServiceImpl implements AdminService{
 	
 	
 	@Override
-	public List<Map<String, Object>> indexMember(Map<String, Object> map) {
+	public List<Map<String, Object>> indexMember(Map<String, Object> map, String searchOption, String keyword) {
 		// TODO Auto-generated method stub
-		return adminDAO.indexMember(map);
+	    System.out.println("서비스 : 옵션="+searchOption+"키워드"+keyword);
+
+		return adminDAO.indexMember(map, searchOption, keyword);
 	}
 
 
@@ -37,18 +39,6 @@ public class AdminServiceImpl implements AdminService{
 	
 	}
 
-/*넣기 참조*/
-	@Override
-	public List<Map<String, Object>> listAll(String searchOption, String keyword) {
-		// TODO Auto-generated method stub
-		return adminDAO.listAll(searchOption,keyword);
-	}
-
-
-	@Override
-	public int countArticle(String searchOption, String keyword) {
-		// TODO Auto-generated method stub
-		return adminDAO.countArticle(searchOption, keyword);
-	}
+	
 
 }

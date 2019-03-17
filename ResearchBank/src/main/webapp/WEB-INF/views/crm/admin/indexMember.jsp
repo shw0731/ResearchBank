@@ -121,22 +121,23 @@ tbody>tr:HOVER {
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 	</div>
 	<!-- -------------------검색기능-------------------- -->
-	<form name="form1" method="post" action="${path}/admin/memberSearch">
-		<select name="searchOption">
-			<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
-			<option value="all"
-				<c:out value="${map.searchOption == 'all'?'selected':''}"/>>제목+이름+제목</option>
-			<option value="MEMBER_ID"
-				<c:out value="${map.searchOption == 'MEMBER_ID'?'selected':''}"/>>ID</option>
-			<option value="MEMBER_NICKNAME"
-				<c:out value="${map.searchOption == 'MEMBER_NICKNAME'?'selected':''}"/>>닉네임</option>
-			<option value="MEMBER_POINT"
-				<c:out value="${map.searchOption == 'MEMBER_POINT'?'selected':''}"/>>포인트</option>
-		</select> 
-		<input name="keyword" value="${map.keyword}"> 
-		<input type="submit" value="조회">
-		<button type="button" id="btnWrite">글쓰기</button>
-	</form>
+	<div id="Search_Form" class="tab-pane active" align="center">
+		<form name="form1" action="${path}/admin/member">
+			<select name="searchOption">
+				<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+				<option value="all"
+					<c:out value="${map.searchOption == 'all'?'selected':''}"/>>제목+이름+제목</option>
+				<option value="MEMBER_ID"
+					<c:out value="${map.searchOption == 'MEMBER_ID'?'selected':''}"/>>ID</option>
+				<option value="MEMBER_NICKNAME"
+					<c:out value="${map.searchOption == 'MEMBER_NICKNAME'?'selected':''}"/>>닉네임</option>
+				<option value="MEMBER_POINT"
+					<c:out value="${map.searchOption == 'MEMBER_POINT'?'selected':''}"/>>포인트</option>
+			</select> 
+			<input name="keyword" value="${map.keyword}"> 
+			<input type="submit" value="조회">
+		</form>
+	</div>
 	<!-- -------------------검색기능-------------------- -->
 	
 
@@ -179,6 +180,8 @@ tbody>tr:HOVER {
 			comAjax.setCallback("fn_selectBoardListCallback");
 			comAjax.addParam("PAGE_INDEX", pageNo);
 			comAjax.addParam("PAGE_ROW", 10);
+			comAjax.addParam("searchOption", "${map.searchOption}");
+			comAjax.addParam("keyword", "${map.keyword}");
 			comAjax.ajax();
 		}
 		

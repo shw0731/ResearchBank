@@ -41,9 +41,17 @@ public class AdminController {
 	
 	//---------------------멤버 조회------------------------------//
 	@RequestMapping(value="/admin/member")
-	public @ResponseBody ModelAndView indexMember(CommandMap commandMap) throws Exception {
+	public @ResponseBody ModelAndView indexMember(CommandMap commandMap, 
+			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
+            @RequestParam(defaultValue="") String keyword) throws Exception {
 		ModelAndView mv = new ModelAndView("crm/admin/indexMember");	
-		
+		Map<String, Object> map = new HashMap<String, Object>();
+
+	    System.out.println("컨트롤러 부분1: 옵션="+searchOption+"키워드="+keyword);
+	    map.put("searchOption", searchOption); // 검색옵션
+	    map.put("keyword", keyword); // 검색키워드
+	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
+	    
 		return mv;
 	}
 	@RequestMapping(value="/admin/survey")
@@ -55,12 +63,20 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/admin/memberPaging") // 페이징 구간
-	public ModelAndView indexMemberPaging(CommandMap commandMap) throws Exception{
+	public ModelAndView indexMemberPaging(CommandMap commandMap, 
+			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
+            @RequestParam(defaultValue="") String keyword) throws Exception{
 	    ModelAndView mv = new ModelAndView("jsonView");
-	     
-	    List<Map<String,Object>> list = adminservice.indexMember(commandMap.getMap());
+	    System.out.println("컨트롤러 부분2: 옵션="+searchOption+"키워드="+keyword);
+	    List<Map<String,Object>> list = adminservice.indexMember(commandMap.getMap(),searchOption, keyword);
 	    
+	    Map<String, Object> map = new HashMap<String, Object>();
+	  
+	    map.put("searchOption", searchOption); // 검색옵션
+	    map.put("keyword", keyword); // 검색키워드
+	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
 		mv.addObject("list",list);
+		
 	    if(list.size() > 0){
 	        mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
 	    }
@@ -94,30 +110,5 @@ public class AdminController {
 	    
 	    return mv;
 	}
-	
-	
-	// 01. 게시글 목록
-	@RequestMapping(value="/admin/memberSearch")
-	// @RequestParam(defaultValue="") ==> 기본값 할당
-	public ModelAndView list(@RequestParam(defaultValue="MEMBER_ID") String searchOption,
-	                        @RequestParam(defaultValue="") String keyword) throws Exception{
-	    List<Map<String,Object>> list = adminservice.listAll(searchOption, keyword);
-	    // 레코드의 갯수
-	    int count = adminservice.countArticle(searchOption, keyword);
-	    // ModelAndView - 모델과 뷰
-	    ModelAndView mv = new ModelAndView();
-	    /*mav.addObject("list", list); // 데이터를 저장
-	    mav.addObject("count", count);
-	    mav.addObject("searchOption", searchOption);
-	    mav.addObject("keyword", keyword);*/
-	    // 데이터를 맵에 저장
-	    Map<String, Object> map = new HashMap<String, Object>();
-	    map.put("list", list); // list
-	    map.put("count", count); // 레코드의 갯수
-	    map.put("searchOption", searchOption); // 검색옵션
-	    map.put("keyword", keyword); // 검색키워드
-	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
-	    mv.setViewName("board/list"); // 뷰를 list.jsp로 설정
-	    return mv;
-	}
+
 }
