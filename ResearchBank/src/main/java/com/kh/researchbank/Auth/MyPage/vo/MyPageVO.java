@@ -5,13 +5,13 @@ public class MyPageVO {
 	private String member_id;
 	private String member_pw;
 	private String member_nickname;
-	private int member_point=0;
+	private int member_point;
 	private int member_gender;
 	private String member_address;
 	private int member_marry;
 	private String member_area;
 	private String member_job;
-	private int role_id=0;
+	private int role_id;
 	
 	public String getMember_id() {
 		return member_id;

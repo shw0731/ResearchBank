@@ -22,7 +22,9 @@
 			  MEMBER_ADDRESS = #{MEMBER_ADDRESS, jdbcType=VARCHAR}, 
 			  MEMBER_MARRY = #{MEMBER_MARRY, jdbcType=INTEGER}, 
 			  MEMBER_AREA = #{MEMBER_AREA, jdbcType=VARCHAR}, 
-			  MEMBER_JOB = #{MEMBER_JOB, jdbcType=VARCHAR} 
+			  MEMBER_JOB = #{MEMBER_JOB, jdbcType=VARCHAR},
+			  MEMBER_POINT = #{MEMBER_POINT}+300
+			  
 			
 			  WHERE MEMBER_ID = #{MEMBER_ID}    
 		]]>

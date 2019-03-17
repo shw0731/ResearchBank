@@ -80,6 +80,8 @@
 				아이디
 				<div class="form-group">
 					<input type="text" name="MEMBER_ID" style="font-weight:bold;"class="form-control" value = ${MEMBER_ID } readonly>
+					<input type="hidden" name="MEMBER_POINT" style="font-weight:bold;"class="form-control" value = ${map.MEMBER_POINT }>
+					<input type="hidden" name="ROLE_ID" style="font-weight:bold;"class="form-control" value = ${map.ROLE_ID }>
 				</div> 
 				 
 				비밀번호
