@@ -279,15 +279,13 @@ var JsonSubmit = function(jsonData){
 		data : this.param,
 		dataType: "json",
 		contentType:"application/json;charset=UTF-8",
-		success : successCall,
-		error : errorCall
+		success : successCall
+		
 		});
 	}
 	
 	function successCall(){
 		alert("전송성공");
 	}
-	function errorCall(){
-		alert("전송실패");
-	}
+	
 }

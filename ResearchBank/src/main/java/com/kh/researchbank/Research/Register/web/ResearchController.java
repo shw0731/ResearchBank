@@ -136,7 +136,18 @@ public class ResearchController {
 		mv.addObject("map", map);
 		return mv;
 	}
-	
+	@RequestMapping(value="/research/part", method=RequestMethod.POST)
+	public ModelAndView part(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("research/resultShow");
+		
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
+		System.out.println(request.getParameter("json"));
+		Map<String, Object> iMap = objectMapper.readValue(request.getParameter("json"), HashMap.class);
+		List<Map<String, Object>> list = researchService.part(iMap);
+		return mv;
+	}
 	
 	@RequestMapping(value="/research/create" , method=RequestMethod.GET)
 	public ModelAndView create(CommandMap commandMap) throws Exception {
@@ -154,9 +165,9 @@ public class ResearchController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
 		System.out.println(jsonStr);
-		Map<String, Object> smap = objectMapper.readValue(jsonStr, HashMap.class);
+		Map<String, Object> map = objectMapper.readValue(jsonStr, HashMap.class);
 	
-		researchService.store(smap);
+		researchService.store(map);
 		return mv;
 	}
 }

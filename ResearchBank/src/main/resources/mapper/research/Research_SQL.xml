@@ -138,5 +138,42 @@
 			 FROM question_list WHERE survey_idx = #{survey_idx}
 			 ORDER BY question_order ASC
 	</select>
+	<insert id="part" parameterType="hashmap">
+		INSERT INTO participate_list ( survey_idx
+                             		 , partmember_id
+                             		 <if test="condition0 != null}">
+                                     , condition0
+                                     </if>
+                             		 <if test="condition1 != null}">
+                                     , condition1
+                                     </if>
+                                     <if test="condition2 != null}">
+                                     , condition2
+                                     </if>
+                                     <if test="condition3 != null}">
+                                     , condition3
+                                     </if>
+                                     <if test="condition4 != null}">
+                                     , condition4
+                                     </if>
+                             		 ) values ( #{survey_idx}
+                                     		  , #{partmember_id}
+                                     		  <if test="condition0 != null}">
+                                     		  , #{condition0}
+                                     		  </if>
+                                     		  <if test="condition1 != null}">
+                                     		  , #{condition1}
+                                     		  </if>
+                                     		  <if test="condition2 != null}">
+                                     		  , #{condition2}
+                                     		  </if>
+                                     		  <if test="condition3 != null}">
+                                     		  , #{condition3}
+                                     		  </if>
+                                     		  <if test="condition4 != null}">
+                                     		  , #{condition4}
+                                     		  </if>
+                                      		  )
+	</insert>
 </mapper>
 

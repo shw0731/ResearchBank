@@ -32,4 +32,6 @@ public interface ResearchService {
 	
 	public Map<String, Object> show(int survey_idx) throws Exception;
 	
+	public List<Map<String, Object>> part(Map<String, Object> map)throws Exception;
+	
 }

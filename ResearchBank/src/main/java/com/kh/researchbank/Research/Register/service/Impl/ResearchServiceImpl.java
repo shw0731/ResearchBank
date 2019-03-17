@@ -1,8 +1,10 @@
 package com.kh.researchbank.Research.Register.service.Impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -45,13 +47,35 @@ public class ResearchServiceImpl implements ResearchService {
 	 * @return view
 	 * @throws Exception
 	 */
+	
+	//설문 리스트
 	@Override
 	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception {
-			
+		
+		Set set = map.keySet();
+		Iterator iterator = set.iterator();
+		Map<String, Object> queMap;
+		List<String> queAList = new ArrayList<String>();
+		String key;
+		while(iterator.hasNext()) {
+			key = (String)iterator.next();
+			if(key.contains("questionA")) {
+				queAList.add((String)map.get(key));
+				map.remove(key);
+			}
+		}
+		map.put("answerList", queAList);
+		
 		return researchDAO.selectList(map);
 		
 	}
-	
+	//설문 입력 및 결과 출력
+	@Override
+	public List<Map<String, Object>> part(Map<String, Object> map)throws Exception{
+		
+		return researchDAO.part(map);
+	}
+	//설문 입력창
 	@Override
 	public Map<String, Object> show(int survey_idx) throws Exception {
 		
@@ -62,7 +86,7 @@ public class ResearchServiceImpl implements ResearchService {
 		return map;
 		
 	}
-
+	//설문 등록
 	@Override
 	public void store(Map<String, Object> map) throws Exception {
 

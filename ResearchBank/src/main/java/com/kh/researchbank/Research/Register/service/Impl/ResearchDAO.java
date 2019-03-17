@@ -26,6 +26,9 @@ public class ResearchDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("research.selectQue", survey_idx);
 	}
 	
+	public List<Map<String, Object>> part(Map<String, Object> map){
+		return (List<Map<String, Object>>) insert("research.part", map);
+	}
 	public void store(Map<String, Object> map) {
 		
 		
