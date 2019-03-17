@@ -140,40 +140,93 @@
 	</select>
 	<insert id="part" parameterType="hashmap">
 		INSERT INTO participate_list ( survey_idx
-                             		 , partmember_id
-                             		 <if test="condition0 != null}">
+									 , partmember_id
+                             		 <if test="condition0 != null">
                                      , condition0
                                      </if>
-                             		 <if test="condition1 != null}">
+                             		 <if test="condition1 != null">
                                      , condition1
                                      </if>
-                                     <if test="condition2 != null}">
+                                     <if test="condition2 != null">
                                      , condition2
                                      </if>
-                                     <if test="condition3 != null}">
+                                     <if test="condition3 != null">
                                      , condition3
                                      </if>
-                                     <if test="condition4 != null}">
+                                     <if test="condition4 != null">
                                      , condition4
                                      </if>
-                             		 ) values ( #{survey_idx}
-                                     		  , #{partmember_id}
-                                     		  <if test="condition0 != null}">
-                                     		  , #{condition0}
-                                     		  </if>
-                                     		  <if test="condition1 != null}">
-                                     		  , #{condition1}
-                                     		  </if>
-                                     		  <if test="condition2 != null}">
-                                     		  , #{condition2}
-                                     		  </if>
-                                     		  <if test="condition3 != null}">
-                                     		  , #{condition3}
-                                     		  </if>
-                                     		  <if test="condition4 != null}">
-                                     		  , #{condition4}
-                                     		  </if>
-                                      		  )
+                             		 ) values ( #{survey_idx}                      		 		
+                             		 			, #{partmember_id}
+                             		 			<if test="condition0 != null">
+                                     		  	, #{condition0}
+                                     		  	</if>
+                                     		  	<if test="condition1 != null">
+                                     		  	, #{condition1}
+                                     		  	</if>
+                                     		  	<if test="condition2 != null">
+                                     		  	, #{condition2}
+                                     		  	</if>
+                                     		  	<if test="condition3 != null">
+                                     		  	, #{condition3}
+                                     		  	</if>
+                                     		  	<if test="condition4 != null">
+                                     		  	, #{condition4}
+                                     		  	</if>
+                                      		  	)
+    	
+    	
+    	
+	</insert>
+	<insert id="partNon" parameterType="hashmap">
+		INSERT INTO participate_list ( survey_idx
+									 , partmember_id
+                             		 <if test="condition0 != null">
+                                     , condition0
+                                     </if>
+                             		 <if test="condition1 != null">
+                                     , condition1
+                                     </if>
+                                     <if test="condition2 != null">
+                                     , condition2
+                                     </if>
+                                     <if test="condition3 != null">
+                                     , condition3
+                                     </if>
+                                     <if test="condition4 != null">
+                                     , condition4
+                                     </if>
+                             		 ) values ( #{survey_idx}                      		 		
+                             		 			, PARTMEMBER_SEQ.nextval
+                             		 			<if test="condition0 != null">
+                                     		  	, #{condition0}
+                                     		  	</if>
+                                     		  	<if test="condition1 != null">
+                                     		  	, #{condition1}
+                                     		  	</if>
+                                     		  	<if test="condition2 != null">
+                                     		  	, #{condition2}
+                                     		  	</if>
+                                     		  	<if test="condition3 != null">
+                                     		  	, #{condition3}
+                                     		  	</if>
+                                     		  	<if test="condition4 != null">
+                                     		  	, #{condition4}
+                                     		  	</if>
+                                      		  	)
+	
+		<selectKey keyProperty="partmember_idx" resultType="int">
+     		SELECT PARTMEMBER_SEQ.CURRVAL FROM DUAL
+    	</selectKey>
+	</insert>
+	<insert id="answer" parameterType="hashmap">
+		INSERT INTO answer ( question_idx
+                   		   , answer
+                     	   , partmember_id
+                   		   ) values ( #{idx}
+                   		   			, #{answer}
+                   		   			, #{partmember_id}
+                   		   			)
 	</insert>
 </mapper>
 

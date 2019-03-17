@@ -71,7 +71,7 @@ public class ResearchServiceImpl implements ResearchService {
 	}
 	//설문 입력 및 결과 출력
 	@Override
-	public List<Map<String, Object>> part(Map<String, Object> map)throws Exception{
+	public Map<String, Object> part(Map<String, Object> map)throws Exception{
 		
 		return researchDAO.part(map);
 	}
@@ -81,6 +81,7 @@ public class ResearchServiceImpl implements ResearchService {
 		
 		Map<String, Object> map;
 		map= researchDAO.selectOne(survey_idx);
+		map.put("survey_idx", survey_idx);
 		map.put("conList", researchDAO.selectCon(survey_idx));
 		map.put("queList", researchDAO.selectQue(survey_idx));
 		return map;
@@ -90,12 +91,7 @@ public class ResearchServiceImpl implements ResearchService {
 	@Override
 	public void store(Map<String, Object> map) throws Exception {
 
-		Iterator<String> keys = map.keySet().iterator();
-		keys = map.keySet().iterator();
-		while (keys.hasNext()) {
-			String key = keys.next();
-			System.out.println("방법3) key : " + key + " / value : " + map.get(key));
-		}
+		
 
 		
 		

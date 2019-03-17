@@ -9,7 +9,7 @@
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-
+${map.survey_idx } 
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>

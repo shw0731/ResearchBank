@@ -145,7 +145,8 @@ public class ResearchController {
 		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
 		System.out.println(request.getParameter("json"));
 		Map<String, Object> iMap = objectMapper.readValue(request.getParameter("json"), HashMap.class);
-		List<Map<String, Object>> list = researchService.part(iMap);
+		Map<String, Object> resultMap= researchService.part(iMap);
+		mv.addObject("map", resultMap);
 		return mv;
 	}
 	

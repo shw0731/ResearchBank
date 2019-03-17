@@ -12,13 +12,13 @@
 <div class="wrap" style="margin:5% 20% 1% 30%;">
 설문조사 제목 : ${map.SURVEY_SUBJECT } <br/>
 <form id="frm">
-	<input type="hidden" name="survey_idx" value="${map.SURVEY_IDX}">
+	<input type="hidden" name="survey_idx" value="${map.survey_idx}">
 	<c:choose>
 		<c:when test="${MEMBER_ID != null }">
 			<input type="hidden" name="partmember_id" value="${member_id } ">
 		</c:when>
 		<c:otherwise>
-			<input type="hidden" name="partmember_id" value="non_member">
+			<input type="hidden" name="partmember_id" value="">
 		</c:otherwise>
 	</c:choose>
 		<c:choose>
@@ -92,6 +92,7 @@
 		input.type="hidden";
 		input.name='json';
 		input.value= JSON.stringify($('#frm').serializeObject());
+		console.log(JSON.stringify($('#frm').serializeObject()));
 		$(form).append(input);
 		$('#frm').after(form); 
 		form.submit();

@@ -1,5 +1,6 @@
 package com.kh.researchbank.Research.Register.service.Impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,34 @@ public class ResearchDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("research.selectQue", survey_idx);
 	}
 	
-	public List<Map<String, Object>> part(Map<String, Object> map){
-		return (List<Map<String, Object>>) insert("research.part", map);
+	public Map<String, Object> part(Map<String, Object> map){
+		Map<String, Object> resultMap = new HashMap <String, Object>();
+		
+		if(map.get("partmember_id")=="") {
+			insert("research.partNon", map);
+		}else {
+			insert("research.part", map);
+		}
+		
+		
+		String partmember_id;
+		if(map.get("partmember_idx") != null) {
+			partmember_id = String.valueOf(map.get("partmember_idx"));
+		}else {
+			partmember_id=(String)map.get("partmember_id");
+		}
+		List<Map<String, Object>> ansList = (List<Map<String, Object>>) map.get("question");
+		
+		for(int i=0;i<ansList.size();i++) {
+			
+			ansList.get(i).put("partmember_id", partmember_id);
+			
+			insert("research.answer",ansList.get(i) );
+		}
+		resultMap.put("survey_idx", map.get("survey_idx"));
+		
+		
+		return resultMap;
 	}
 	public void store(Map<String, Object> map) {
 		
