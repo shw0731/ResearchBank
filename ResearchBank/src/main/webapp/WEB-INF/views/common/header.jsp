@@ -114,7 +114,12 @@
             <div class="subnav-content">
 		      <a href="/notice">공지사항</a>
 		      <a href="/inquiry">1:1문의</a>
+		      <c:if test="${MEMBER_NICKNAME != null }">
 		      <a href="/mypage">마이페이지</a>
+		      </c:if>
+		      <c:if test="${MEMBER_NICKNAME == null }">
+		       <a href="/login.do">마이페이지</a>
+		      </c:if>
 		     </div>
           </li>
           <c:if test="${MEMBER_NICKNAME == null }">
