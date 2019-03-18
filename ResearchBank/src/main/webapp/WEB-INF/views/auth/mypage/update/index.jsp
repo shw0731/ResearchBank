@@ -44,7 +44,11 @@
 		    b=document.form1.birth_2.value;
 		    c=document.form1.birth_3.value;
 		    d=a+b+c;
-		    $("#MEMBER_BIRTH").val(d);
+		    if(d.length == 8){
+		    	$("#MEMBER_BIRTH").val(d);
+		    }else{
+		    	$("#MEMBER_BIRTH").val();
+		    }
 		    
 
 
@@ -97,7 +101,11 @@
 			    b=document.form1.birth_2.value;
 			    c=document.form1.birth_3.value;
 			    d=a+b+c;
-			    $("#MEMBER_BIRTH").val(d);
+			    if(d.length == 8){
+			    	$("#MEMBER_BIRTH").val(d);
+			    }else{
+			    	$("#MEMBER_BIRTH").val();
+			    }
 			    
 
 
@@ -162,11 +170,12 @@
     <th scope="row">생년월일</th>
     <td valign="top">
       <select id="birth_1" name="birth_1">
+      <option value="0">년도</option>
       <option value="2018" >2018</option>
-          <option value="2017" >2017</option>
-        <option value="2016" >2016</option>
-       <option value="2015" >2015</option> 
-       <option value="2014" >2014</option>
+      <option value="2017" >2017</option>
+      <option value="2016" >2016</option>
+      <option value="2015" >2015</option> 
+      <option value="2014" >2014</option>
       <option value="2013">2013</option>
        <option value="2012">2012</option>
        <option value="2011">2011</option>
@@ -283,6 +292,7 @@
           <option value="1900">1900</option>
      </select>년&nbsp;
      <select id="birth_2" name="birth_2">
+       <option value="0">월</option>
        <option value="01">01</option>
        <option value="02">02</option>
        <option value="03">03</option>
@@ -297,6 +307,7 @@
        <option value="12">12</option>
      </select>
      <select id="birth_3" name=birth_3>
+       <option value="0">일</option>
        <option value="01">01</option>
        <option value="02">02</option>
        <option value="03">03</option>
