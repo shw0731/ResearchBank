@@ -127,7 +127,7 @@ Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
 //카카오 로그인 버튼을 누르면
 $("#kakao-login-btn").on("click", function(){
     //1. 로그인 시도
-    Kakao.Auth.login({
+    Kakao.Auth.loginForm({
         success: function(authObj) {
           //console.log(JSON.stringify(authObj));
           //console.log(Kakao.Auth.getAccessToken());

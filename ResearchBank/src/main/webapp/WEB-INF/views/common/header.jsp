@@ -124,14 +124,25 @@
    		  </c:if>	
    		  <c:if test="${MEMBER_NICKNAME != null }">
           <li class="nav-item subnav">
-            <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
+            <a class="nav-link js-scroll-trigger" href="/logout" onclick="kout()">Logout</a>
           </li>
    		  </c:if>    	
         </ul>
       </div>
     </div>
   </nav>
-  
+  <script type="text/javascript">
+  function kout(){
+	  		Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
+			Kakao.Auth.logout(function(data){
+				  if(data==true){
+					  alert("성공");
+				  }else{
+				 	 alert("로그아웃 실패!");
+			  }
+		  });
+	  }
+  </script>
   
   <!-- Bootstrap core JavaScript -->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
