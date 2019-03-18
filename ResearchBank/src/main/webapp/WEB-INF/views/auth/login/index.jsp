@@ -115,6 +115,7 @@
 	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>   
 	          </form>   
           </div>
+          <h2 align="center">${message}</h2>
           <a href="#"><p class="text-faded mb-4">forgot your password?</p></a>
         </div>
       </div>
