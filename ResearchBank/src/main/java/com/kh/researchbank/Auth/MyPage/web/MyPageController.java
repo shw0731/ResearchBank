@@ -132,6 +132,43 @@ public class MyPageController {
 		model.addAttribute("memberInfo", memberMap); // model에 저장
 
 		 return "redirect:mypage"; 
-	}	
+	}
+	@RequestMapping(value = "/memberUpdateAction3", method = RequestMethod.POST)
+	public String memUpdateAction3(HttpSession session, Model model, CommandMap commandMap) throws Exception {
 
+		System.out.println("mmmmm : " + commandMap.getMap());
+
+		// updatemember map 선언
+		Map<String, Object> updatemember = new HashMap<String, Object>();
+		 
+		updatemember = commandMap.getMap(); // update 할 정보들 updatemember에 넣음
+		 
+		mypageService.updateMyinfo3(updatemember); // update 쿼리 실행
+
+		Map<String, Object> memberMap = new HashMap<String, Object>();
+				 
+		memberMap = mypageService.myinfoDetail(commandMap.getMap()); // 바뀐 회원정보 불러옴
+		model.addAttribute("memberInfo", memberMap); // model에 저장
+
+		 return "redirect:mypage"; 
+	}
+	@RequestMapping(value = "/memberUpdateAction4", method = RequestMethod.POST)
+	public String memUpdateAction4(HttpSession session, Model model, CommandMap commandMap) throws Exception {
+
+		System.out.println("mmmmm : " + commandMap.getMap());
+
+		// updatemember map 선언
+		Map<String, Object> updatemember = new HashMap<String, Object>();
+		 
+		updatemember = commandMap.getMap(); // update 할 정보들 updatemember에 넣음
+		 
+		mypageService.updateMyinfo4(updatemember); // update 쿼리 실행
+
+		Map<String, Object> memberMap = new HashMap<String, Object>();
+				 
+		memberMap = mypageService.myinfoDetail(commandMap.getMap()); // 바뀐 회원정보 불러옴
+		model.addAttribute("memberInfo", memberMap); // model에 저장
+
+		 return "redirect:mypage"; 
+	}
 }

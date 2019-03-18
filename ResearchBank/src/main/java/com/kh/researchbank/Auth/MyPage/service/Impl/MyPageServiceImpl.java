@@ -56,6 +56,17 @@ public class MyPageServiceImpl implements MyPageService {
 		{
 	       mypageDAO.updateMyinfo2(map);
 		}
+		//카카오톡 정보수정
+		@Override
+		public void updateMyinfo3(Map<String, Object> map) throws Exception
+		{
+	       mypageDAO.updateMyinfo3(map);
+		}
+		
+		public void updateMyinfo4(Map<String, Object> map) throws Exception
+		{
+	       mypageDAO.updateMyinfo4(map);
+		}
 
 		public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception
 		{

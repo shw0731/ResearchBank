@@ -34,4 +34,13 @@ public class MyPageDAO extends AbstractDAO {
 		{
 			update("mypage.updateMyinfo2", map);
 		}
+		//카카오톡 정보수정
+		public void updateMyinfo3(Map<String, Object>map) 
+		{
+			update("mypage.updateMyinfo3", map);
+		}
+		public void updateMyinfo4(Map<String, Object>map) 
+		{
+			update("mypage.updateMyinfo4", map);
+		}
 }
