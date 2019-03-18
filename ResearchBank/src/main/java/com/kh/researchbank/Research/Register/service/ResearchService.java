@@ -34,4 +34,7 @@ public interface ResearchService {
 	
 	public Map<String, Object> part(Map<String, Object> map)throws Exception;
 	
+	public boolean validator(Map<String, Object> map)throws Exception;
+	
+	public Map<String, Object> resultShow(Map<String, Object>map)throws Exception;
 }

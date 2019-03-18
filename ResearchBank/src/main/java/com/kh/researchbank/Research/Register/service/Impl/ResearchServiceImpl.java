@@ -52,28 +52,33 @@ public class ResearchServiceImpl implements ResearchService {
 	@Override
 	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception {
 		
-		Set set = map.keySet();
-		Iterator iterator = set.iterator();
-		Map<String, Object> queMap;
-		List<String> queAList = new ArrayList<String>();
-		String key;
-		while(iterator.hasNext()) {
-			key = (String)iterator.next();
-			if(key.contains("questionA")) {
-				queAList.add((String)map.get(key));
-				map.remove(key);
-			}
-		}
-		map.put("answerList", queAList);
 		
 		return researchDAO.selectList(map);
 		
 	}
-	//설문 입력 및 결과 출력
+	//설문 참여 및 참여수 증가
 	@Override
 	public Map<String, Object> part(Map<String, Object> map)throws Exception{
+		Map<String, Object> aMap = researchDAO.part(map);
+		researchDAO.updatePart((String) map.get("survey_idx"));
+		return aMap;
+	}
+	//설문 유효 검사
+	@Override
+	public boolean validator(Map<String, Object> map)throws Exception{
+		Map<String, Object> smap = researchDAO.selectPart( (String)map.get("survey_idx"));
+		if(Integer.parseInt(String.valueOf(smap.get("CURRENT_PART")))>=Integer.parseInt(String.valueOf(smap.get("MAXIMUM_PART")))) {
+			return false;
+		}else {
+			if(map.get("partmember_id")==""||map.get("partmember_id")==null) {
+				return true;
+			}
+			else if(researchDAO.selectPart2(map).get("SURVEY_IDX")!=null)
+				return false;
+			
+			return true;
+		}
 		
-		return researchDAO.part(map);
 	}
 	//설문 입력창
 	@Override
@@ -86,6 +91,15 @@ public class ResearchServiceImpl implements ResearchService {
 		map.put("queList", researchDAO.selectQue(survey_idx));
 		return map;
 		
+	}
+	//설문 결과창
+	@Override
+	public Map<String, Object> resultShow(Map<String, Object> map)throws Exception{
+		Map<String, Object> resultMap = researchDAO.selectReOne(map);
+		
+		
+		
+		return resultMap;
 	}
 	//설문 등록
 	@Override

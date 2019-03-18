@@ -26,7 +26,7 @@ public class ResearchDAO extends AbstractDAO {
 	public List<Map<String, Object>>selectQue(int survey_idx){
 		return (List<Map<String, Object>>) selectList("research.selectQue", survey_idx);
 	}
-	
+	//설문조사 답변입력
 	public Map<String, Object> part(Map<String, Object> map){
 		Map<String, Object> resultMap = new HashMap <String, Object>();
 		
@@ -56,6 +56,24 @@ public class ResearchDAO extends AbstractDAO {
 		
 		return resultMap;
 	}
+	//참여수,최대참여수 조회
+	public Map<String, Object> selectPart (String survey_idx) throws Exception{
+		return (Map<String, Object>)selectOne("research.selectPart",survey_idx);
+	}
+	
+	//참여했었는지 아닌지 검색
+	public Map<String, Object>selectPart2(Map<String, Object>map)throws Exception{
+		return (Map<String, Object>)selectOne("research.selectPart", map);
+	}
+	
+	
+	
+	//참여수 증가
+	public void updatePart (String survey_idx) {
+		update("research.updatePart",survey_idx);
+	}
+	
+	//설문조사 등록
 	public void store(Map<String, Object> map) {
 		
 		
@@ -72,7 +90,7 @@ public class ResearchDAO extends AbstractDAO {
 		}
 		
 		insert("research.insertSurvey",map);
-		int survey_idx= (Integer) map.get("survey_seq");
+		String survey_idx= (String) map.get("survey_seq");
 		
 		
 		for(int i=0;i<conList.size();i++) {
@@ -86,5 +104,9 @@ public class ResearchDAO extends AbstractDAO {
 			insert("research.insertQue", queList.get(i));
 		}
 		
+	}
+	
+	public Map<String, Object> selectReOne(Map<String, Object>map){
+		return (Map<String, Object>)selectOne("research.selectReOne",map);
 	}
 }

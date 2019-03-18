@@ -15,7 +15,7 @@
 	<input type="hidden" name="survey_idx" value="${map.survey_idx}">
 	<c:choose>
 		<c:when test="${MEMBER_ID != null }">
-			<input type="hidden" name="partmember_id" value="${member_id } ">
+			<input type="hidden" name="partmember_id" value="${MEMBER_ID } ">
 		</c:when>
 		<c:otherwise>
 			<input type="hidden" name="partmember_id" value="">

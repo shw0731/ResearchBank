@@ -2,6 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="research">
+	<!-- Select -->
+	<select id="selectList" parameterType="hashmap" resultType="hashmap">
+		SELECT l.survey_subject 	as survey_subject 
+    		 , l.maximum_part		as maximum_part
+     		 , l.current_part 		as current_part
+    		 , l.deadline_date 		as deadline_date 
+    		 , l.member_id 			as member_id
+    		 , l.survey_idx 		as survey_idx
+    		 , l.survey_point       as survey_point 
+    		 , r.member_nickname 	as member_nickname
+       		   FROM survey_list l
+          		  , member_list r
+          			WHERE l.member_id = r.member_id
+          		    <if test="isSearch != null">
+          		    	<if test="searchNum==0">
+          		    		AND l.survey_subject like '%' ||  #{isSearch} || '%'
+          		    	</if>
+          		    	<if test="searchNum==1">
+          		    		AND r.member_nickname like '%' ||  #{isSearch} || '%'
+          		    	</if>
+          		    	
+          		    </if>
+          		    order by l.survey_subject desc
+	</select>
+	<select id="selectOne" parameterType="String" resultType="hashmap">
+		SELECT survey_subject FROM survey_list WHERE survey_idx = #{survey_idx}
+			 
+	</select>
+	<select id="selectCon" parameterType="String" resultType="hashmap">
+		SELECT condition_idx
+			 , condition_order
+			 , condition_subject
+			 , con_opt0
+			 , con_opt1
+			 , con_opt2
+			 , con_opt3
+			 , con_opt4			 
+			 FROM condition_list WHERE survey_idx = #{survey_idx}
+			 ORDER BY condition_order ASC
+	</select>
+	
+	<select id="selectQue" parameterType="String" resultType="hashmap">
+		SELECT question_idx
+			 , question_order
+			 , question_subject
+			 , que_opt0
+			 , que_opt1
+			 , que_opt2
+			 , que_opt3
+			 , que_opt4			
+			 FROM question_list WHERE survey_idx = #{survey_idx}
+			 ORDER BY question_order ASC
+	</select>
+	
+	<select id="selectPart" parameterType="String" resultType="hashmap">
+		SELECT current_part
+			 , maximum_part
+			 FROM survey_list WHERE survey_idx = #{survey_idx}
+	</select>
+	<select id="selectPart2" parameterType="hashmap" resultType="hashmap">
+		SELECT survey_idx FROM participate_list WHERE survey_idx = #{survey_idx}
+												AND partmember_id = #{partmember_id}
+	</select>
+	<!-- Insert -->
 	<insert id="insertSurvey" parameterType="hashmap">
      <![CDATA[
          INSERT INTO SURVEY_LIST ( SURVEY_IDX
@@ -24,7 +88,7 @@
                                                  , #{survey_subject}
                                                  , '123123')
      ]]>
-     <selectKey keyProperty="survey_seq" resultType="int">
+     <selectKey keyProperty="survey_seq" resultType="String">
      	SELECT SURVEY_SEQ.CURRVAL FROM DUAL
      </selectKey>
     </insert>
@@ -87,57 +151,8 @@
                                    	 )	
     
 	</insert>
-	<select id="selectList" parameterType="hashmap" resultType="hashmap">
-		SELECT l.survey_subject 	as survey_subject 
-    		 , l.maximum_part		as maximum_part
-     		 , l.current_part 		as current_part
-    		 , l.deadline_date 		as deadline_date 
-    		 , l.member_id 			as member_id
-    		 , l.survey_idx 		as survey_idx
-    		 , l.survey_point       as survey_point 
-    		 , r.member_nickname 	as member_nickname
-       		   FROM survey_list l
-          		  , member_list r
-          			WHERE l.member_id = r.member_id
-          		    <if test="isSearch != null">
-          		    	<if test="searchNum==0">
-          		    		AND l.survey_subject like '%' ||  #{isSearch} || '%'
-          		    	</if>
-          		    	<if test="searchNum==1">
-          		    		AND r.member_nickname like '%' ||  #{isSearch} || '%'
-          		    	</if>
-          		    	
-          		    </if>
-          		    order by l.survey_subject desc
-	</select>
-	<select id="selectOne" parameterType="int" resultType="hashmap">
-		SELECT survey_subject FROM survey_list WHERE survey_idx = #{survey_idx}
-			 
-	</select>
-	<select id="selectCon" parameterType="int" resultType="hashmap">
-		SELECT condition_idx
-			 , condition_order
-			 , condition_subject
-			 , con_opt0
-			 , con_opt1
-			 , con_opt2
-			 , con_opt3
-			 , con_opt4			 
-			 FROM condition_list WHERE survey_idx = #{survey_idx}
-			 ORDER BY condition_order ASC
-	</select>
-	<select id="selectQue" parameterType="int" resultType="hashmap">
-		SELECT question_idx
-			 , question_order
-			 , question_subject
-			 , que_opt0
-			 , que_opt1
-			 , que_opt2
-			 , que_opt3
-			 , que_opt4			
-			 FROM question_list WHERE survey_idx = #{survey_idx}
-			 ORDER BY question_order ASC
-	</select>
+	
+	
 	<insert id="part" parameterType="hashmap">
 		INSERT INTO participate_list ( survey_idx
 									 , partmember_id
@@ -178,6 +193,7 @@
     	
     	
 	</insert>
+	
 	<insert id="partNon" parameterType="hashmap">
 		INSERT INTO participate_list ( survey_idx
 									 , partmember_id
@@ -219,6 +235,7 @@
      		SELECT PARTMEMBER_SEQ.CURRVAL FROM DUAL
     	</selectKey>
 	</insert>
+	
 	<insert id="answer" parameterType="hashmap">
 		INSERT INTO answer ( question_idx
                    		   , answer
@@ -228,5 +245,11 @@
                    		   			, #{partmember_id}
                    		   			)
 	</insert>
+	<!-- Update -->
+	<update id="updatePart" parameterType="String">
+		UPDATE survey_list SET current_part = current_part+1 WHERE survey_idx = #{survey_idx}
+	</update>
+	
+	
 </mapper>
 
