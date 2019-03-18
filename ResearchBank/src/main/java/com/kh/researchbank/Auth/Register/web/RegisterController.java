@@ -67,7 +67,7 @@ public class RegisterController {
 		 
 		 //map객체를 받아서 registerService의 insertKakaoMember로 보내어 등록 절차를 완료한다.
 		registerService.insertKakaoMember(map);
-		return "memberJoinOK";
+		return "success";
 	}
 
 	@RequestMapping("duplicationCheck.do")

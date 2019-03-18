@@ -184,7 +184,7 @@ $("#kakao-login-btn").on("click", function(){
                                 url : "oauth.do",
                                 method : "POST",
                                 headers : {
-                                    "Accept" : "application/json",
+                                    /* "Accept" : "application/json", */
                                     "Content-Type" : "application/json"
                                   },
                                 data : JSON.stringify({
@@ -194,14 +194,9 @@ $("#kakao-login-btn").on("click", function(){
                                 member_point : "0",
                                 role_id : "4",
                                 }),
-                                success : function(data){
-                                	console.log(data);
-                                	if(data=="S"){
+                                success : function(success){
                                   		alert("회원가입이 정상적으로 되었습니다.");
                                    		$("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
-                                	}else{
-                                		alert("회원가입이 정상적으로 이루어지지 않았습니다.");
-                                	}
                                 }
                             })
                         }
