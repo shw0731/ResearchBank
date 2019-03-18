@@ -110,12 +110,12 @@
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
           	          <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디를 입력하세요" />
-				<input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호를 입력하세요" />
+				<input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호를 입력하세요" /><br/>
+				<font size="4" align="center" color="red">${message}</font><br/><br/>
 				<button class="btn btn-light btn-xl" onclick="Confirm();">Login</button>
 	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>   
 	          </form>   
           </div>
-          <h2 align="center">${message}</h2>
           <a href="#"><p class="text-faded mb-4">forgot your password?</p></a>
         </div>
       </div>
@@ -126,6 +126,7 @@
 function Confirm(){
 	var inputId = $("#member_id").val();
 	var inputPwd = $("#member_pw").val();
+	var message= $("#message").val();
 	
 	if (inputId.length == 0) {
 		alert("아이디를 입력해 주세요.");
@@ -138,6 +139,7 @@ function Confirm(){
 		$("#member_pw").focus();
 		return;
 	}
+	
 	if(confirm("로그인 하시겠습니까?")){
 		location.href= "loginSuccess";
 	}
