@@ -23,9 +23,30 @@
 			  MEMBER_MARRY = #{MEMBER_MARRY, jdbcType=INTEGER}, 
 			  MEMBER_AREA = #{MEMBER_AREA, jdbcType=VARCHAR}, 
 			  MEMBER_JOB = #{MEMBER_JOB, jdbcType=VARCHAR},
-			  MEMBER_POINT = #{MEMBER_POINT}+300
+			  MEMBER_POINT = #{MEMBER_POINT},
+			  ROLE_ID = #{ROLE_ID}
 			  
 			
+			  WHERE MEMBER_ID = #{MEMBER_ID}    
+		]]>
+</update>
+
+<update id="updateMyinfo2" parameterType="hashmap"> 
+  <![CDATA[
+		UPDATE MEMBER_LIST 
+		  
+		  SET MEMBER_PW = #{MEMBER_PW, jdbcType=VARCHAR} , 
+			  MEMBER_NICKNAME = #{MEMBER_NICKNAME, jdbcType=VARCHAR}, 
+			  MEMBER_GENDER = #{MEMBER_GENDER, jdbcType=INTEGER},
+			  MEMBER_BIRTH = #{MEMBER_BIRTH, jdbcType=VARCHAR}, 
+			  MEMBER_ADDRESS = #{MEMBER_ADDRESS, jdbcType=VARCHAR}, 
+			  MEMBER_MARRY = #{MEMBER_MARRY, jdbcType=INTEGER}, 
+			  MEMBER_AREA = #{MEMBER_AREA, jdbcType=VARCHAR}, 
+			  MEMBER_JOB = #{MEMBER_JOB, jdbcType=VARCHAR},
+			  MEMBER_POINT = #{MEMBER_POINT}+300,
+			  ROLE_ID = #{ROLE_ID}-3
+			  
+			  
 			  WHERE MEMBER_ID = #{MEMBER_ID}    
 		]]>
 </update>

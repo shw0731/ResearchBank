@@ -62,7 +62,7 @@
 				}    */
 		    
 			   
-			document.form1.action = "${path}/memberUpdateAction";
+			document.form1.action = "${path}/memberUpdateAction2";
 			document.form1.submit(); 
 		});
 	}); 

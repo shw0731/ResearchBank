@@ -50,6 +50,12 @@ public class MyPageServiceImpl implements MyPageService {
 		{
 	       mypageDAO.updateMyinfo(map);
 		}
+		
+		@Override
+		public void updateMyinfo2(Map<String, Object> map) throws Exception
+		{
+	       mypageDAO.updateMyinfo2(map);
+		}
 
 		public Map<String, Object> myinfoDetail(Map<String, Object> map) throws Exception
 		{

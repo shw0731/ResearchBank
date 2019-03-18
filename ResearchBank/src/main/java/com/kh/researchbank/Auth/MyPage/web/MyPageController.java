@@ -107,5 +107,31 @@ public class MyPageController {
 
 		 return "redirect:mypage"; 
 	}
+	
+	@RequestMapping(value = "/memberUpdateAction2", method = RequestMethod.POST)
+	public String memUpdateAction2(HttpSession session, Model model, CommandMap commandMap) throws Exception {
+
+		System.out.println("mmmmm : " + commandMap.getMap());
+
+		// updatemember map 선언
+		Map<String, Object> updatemember = new HashMap<String, Object>();
+		 
+		updatemember = commandMap.getMap(); // update 할 정보들 updatemember에 넣음
+		
+		//Map값에서 member_pw값을 암호화 한다.
+		 Object rawPassword = updatemember.get("MEMBER_PW");
+		 String encryptPw = passwordEncoder.encode((String) rawPassword);
+		 //암호화한값을 다시 넣어준다.
+		 updatemember.put("MEMBER_PW", encryptPw);
+		 
+		mypageService.updateMyinfo2(updatemember); // update 쿼리 실행
+
+		Map<String, Object> memberMap = new HashMap<String, Object>();
+				 
+		memberMap = mypageService.myinfoDetail(commandMap.getMap()); // 바뀐 회원정보 불러옴
+		model.addAttribute("memberInfo", memberMap); // model에 저장
+
+		 return "redirect:mypage"; 
+	}	
 
 }
