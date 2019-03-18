@@ -47,7 +47,7 @@ public class NoticeController {
 	
 	@RequestMapping(value="/notice")
 	public @ResponseBody ModelAndView index(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("crm/notice/index");	
+		ModelAndView mv = new ModelAndView("redirect:/inquiry");	
 		
 		
 		return mv;
@@ -82,7 +82,7 @@ public class NoticeController {
 		System.out.println(commandMap.getMap());
 		
        
-	    ModelAndView mv = new ModelAndView("redirect:/notice");
+	    ModelAndView mv = new ModelAndView("redirect:/inquiry");
 	    noticeService.createNotice(commandMap.getMap());
 	     
 	    return mv;
@@ -129,7 +129,7 @@ public class NoticeController {
 	
 	@RequestMapping(value="/notice/delete")
 	public ModelAndView deleteNotice(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/notice");
+	    ModelAndView mv = new ModelAndView("redirect:/inquiry");
 	     
 	    noticeService.deleteNotice(commandMap.getMap());
 	     

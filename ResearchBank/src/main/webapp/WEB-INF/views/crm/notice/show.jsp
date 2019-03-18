@@ -33,7 +33,7 @@
 	
 	<div role="tabpanel" class="tab-pane active" id="home"
 		style="width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
-		<div class='left-box' style="font-family:a">1:1 QnA</div>
+		<div class='left-box' style="font-family:a">Notice</div>
 	
 		
 
@@ -80,7 +80,7 @@
 
 		function fn_indexNotice() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/notice' />");//목록으로
+			comSubmit.setUrl("<c:url value='/inquiry' />");//목록으로
 			comSubmit.submit();
 		}
 

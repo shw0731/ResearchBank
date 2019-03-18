@@ -81,7 +81,7 @@
 
 		function fn_indexNotice() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/notice' />"); //목록으로!
+			comSubmit.setUrl("<c:url value='/inquiry' />"); //목록으로!
 			comSubmit.submit();
 		}
 
