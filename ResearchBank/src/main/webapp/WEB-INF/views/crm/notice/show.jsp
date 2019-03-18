@@ -51,7 +51,8 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td colspan="4">${map.NOTICE_CONTEXT }</td>
+					<td colspan="4"><pre>${map.NOTICE_CONTEXT }</pre></td>
+				
 				</tr>
 			</tbody>
 		</table>
