@@ -54,10 +54,10 @@
                         <td>생년월일:</td>
                         <td>${map.MEMBER_BIRTH}</td>
                       </tr>
-                      <tr>
+         			 <%-- <tr>
                         <td>주소:</td>
                         <td>${map.MEMBER_ADDRESS}</td>
-                      </tr>
+                      </tr> --%>
                       <tr>
                       	 <td>결혼 여부:</td>
 						<c:if test="${map.MEMBER_MARRY == 0}">
@@ -87,6 +87,11 @@
                  <div class="panel-footer">  
 				<a href="updateMember" class="btn btnC_03 btnF_02 mr10">
 					<span>수정하기</span>
+				</a>
+			</div>
+			     <div class="panel-footer">  
+				<a href="/inquiry" class="btn btnC_03 btnF_02 mr10">
+					<span>나의 문의글</span>
 				</a>
 			</div>
                     </div>

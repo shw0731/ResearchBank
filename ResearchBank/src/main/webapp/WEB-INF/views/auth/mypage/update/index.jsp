@@ -65,7 +65,7 @@
 				return;  
 				}    */
 		    
-			   
+			alert("회원정보 수정 완료!");
 			document.form1.action = "${path}/memberUpdateAction";
 			document.form1.submit(); 
 		});
@@ -117,7 +117,7 @@
 				return;  
 				}    */
 		    
-			   
+			alert("회원정보 수정 완료!"); 
 			document.form1.action = "${path}/memberUpdateAction2";
 			document.form1.submit(); 
 		});
@@ -141,7 +141,7 @@
 		    }else{
 		    	$("#MEMBER_BIRTH").val();
 		    }
-		    
+		    alert("회원정보 수정 완료!");
 			document.form1.action = "${path}/memberUpdateAction3";
 			document.form1.submit(); 
 		});
@@ -165,7 +165,7 @@
 		    }else{
 		    	$("#MEMBER_BIRTH").val();
 		    }
-		      
+		    alert("회원정보 수정 완료!");
 			document.form1.action = "${path}/memberUpdateAction4";
 			document.form1.submit(); 
 		});
@@ -228,15 +228,18 @@
 					<input type="text" class="form-control" name="MEMBER_NICKNAME" style="font-weight:bold;" value=${MEMBER_NICKNAME } readonly>
 				</div>
 				성별
-				<div class="form-group">
-					<input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" checked="checked" value="0">여자
-					<input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" value="1">남자  
-				</div>
+
+			<div class="form-group">
+               <input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" value="0"
+               <c:if test="${map.MEMBER_GENDER eq '0'}">checked="checked"</c:if>/>여자
+               <input type="radio" id="MEMBER_GENDER" name="MEMBER_GENDER" style="font-weight:bold;" value="1"
+               <c:if test="${map.MEMBER_GENDER eq '1'}">checked="checked"</c:if>/>남자  
+            </div>
 				
 				
     <th scope="row">생년월일</th>
     <td valign="top">
-      <select id="birth_1" name="birth_1">
+      <select id="birth_1" class=option_checked name="birth_1">
       <option value="0">년도</option>
       <option value="2018" >2018</option>
       <option value="2017" >2017</option>
@@ -410,58 +413,58 @@
      <input type="hidden" id="MEMBER_BIRTH" name="MEMBER_BIRTH" value="${map.MEMBER_BIRTH}">
    </td>
    </tr>
-				<br><br>
-				주소
+<%-- 				주소
 				<td><input type="text" id="MEMBER_ADDRESS" name="MEMBER_ADDRESS" size="100" value="${map.MEMBER_ADDRESS }">
 				<br>
 				<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-				</td>
+				</td> --%> 
 				 
-				 결혼유무
-				<div class="form-group">
-					<input type="radio" id="MEMBER_MARRY" name="MEMBER_MARRY" style="font-weight:bold;" checked="checked" value="0">미혼
-					<input type="radio" id="MEMBER_MARRY" name="MEMBER_MARRY" style="font-weight:bold;" value="1">기혼
-				</div> 
+			<div class="form-group">
+               <input type="radio" id="MEMBER_MARRY" name="MEMBER_MARRY" style="font-weight:bold;" value="0"
+               <c:if test="${map.MEMBER_MARRY eq '0'}">checked="checked"</c:if>/>미혼
+               <input type="radio" id="MEMBER_MARRY" name="MEMBER_MARRY" style="font-weight:bold;" value="1"
+               <c:if test="${map.MEMBER_MARRY eq '1'}">checked="checked"</c:if>/>기혼
+            </div>   
 				거주지역
 				<div class="form-group">
 					<select id="MEMBER_AREA" name="MEMBER_AREA">
-						<option value="서울">서울</option>
-						<option value="대전">대전</option>
-						<option value="대구">대구</option>
-						<option value="부산">부산</option>
-						<option value="인천">인천</option>
-						<option value="광주">광주</option>
-						<option value="울산">울산</option>
-						<option value="세종">세종</option>
-						<option value="경기도">경기도</option>
-						<option value="강원도">강원도</option>
-						<option value="충청북도">충청북도</option>
-						<option value="충청남도">충청남도</option>
-						<option value="전라북도">전라북도</option>
-						<option value="전라남도">전라남도</option>
-						<option value="경상북도">경상북도</option>
-						<option value="경상남도">경상남도</option>
-						<option value="제주도">제주도</option>
+				  <option value="서울" <c:if test="${map.MEMBER_AREA eq '서울'}">selected</c:if>/>서울</option>
+                  <option value="대전" <c:if test="${map.MEMBER_AREA eq '대전'}">selected</c:if>/>대전</option>
+                  <option value="대구" <c:if test="${map.MEMBER_AREA eq '대구'}">selected</c:if>/>대구</option>
+                  <option value="부산" <c:if test="${map.MEMBER_AREA eq '부산'}">selected</c:if>/>부산</option>
+                  <option value="인천" <c:if test="${map.MEMBER_AREA eq '인천'}">selected</c:if>/>인천</option>
+                  <option value="광주" <c:if test="${map.MEMBER_AREA eq '광주'}">selected</c:if>/>광주</option>
+                  <option value="울산" <c:if test="${map.MEMBER_AREA eq '울산'}">selected</c:if>/>울산</option>
+                  <option value="세종" <c:if test="${map.MEMBER_AREA eq '세종'}">selected</c:if>/>세종</option>
+                  <option value="경기도" <c:if test="${map.MEMBER_AREA eq '경기도'}">selected</c:if>/>경기도</option>
+                  <option value="강원도" <c:if test="${map.MEMBER_AREA eq '강원도'}">selected</c:if>/>강원도</option>
+                  <option value="충청북도" <c:if test="${map.MEMBER_AREA eq '충청북도'}">selected</c:if>/>충청북도</option>
+                  <option value="충청남도" <c:if test="${map.MEMBER_AREA eq '충청남도'}">selected</c:if>/>충청남도</option>
+                  <option value="전라북도" <c:if test="${map.MEMBER_AREA eq '전라북도'}">selected</c:if>/>전라북도</option>
+                  <option value="전라남도" <c:if test="${map.MEMBER_AREA eq '전라남도'}">selected</c:if>/>전라남도</option>
+                  <option value="경상북도" <c:if test="${map.MEMBER_AREA eq '경상북도'}">selected</c:if>/>경상북도</option>
+                  <option value="경상남도" <c:if test="${map.MEMBER_AREA eq '경상남도'}">selected</c:if>/>경상남도</option>
+                  <option value="제주도" <c:if test="${map.MEMBER_AREA eq '제주도'}">selected</c:if>/>제주도</option>
 					</select>
 				</div>
 		직업
-    	<div>
+    	<div class="form_group">
       <select id="MEMBER_JOB" name="MEMBER_JOB">
-         <option value="전문직">전문직</option>
-         <option value="교직">교직</option>
-         <option value="관리직">관리직</option>
-         <option value="사무직">사무직</option>
-         <option value="자영업">자영업</option>
-         <option value="판매직">판매직</option>
-         <option value="서비스직">서비스직</option>
-         <option value="생산/노무직">생산/노무직</option>
-         <option value="기능직">기능직</option>
-         <option value="농/축/광/수산업">농/축/광/수산업</option>
-         <option value="학생">학생</option>
-         <option value="주부">주부</option>
-         <option value="무직">무직</option>
-         <option value="퇴직/연금생활자">퇴직/연금생활자</option>
-         <option value="기타">기타</option>
+         <option value="전문직" <c:if test="${map.MEMBER_JOB eq '전문직'}">selected</c:if>/>전문직</option>
+         <option value="교직" <c:if test="${map.MEMBER_JOB eq '교직'}">selected</c:if>/>교직</option>
+         <option value="관리직" <c:if test="${map.MEMBER_JOB eq '관리직'}">selected</c:if>/>관리직</option>
+         <option value="사무직" <c:if test="${map.MEMBER_JOB eq '사무직'}">selected</c:if>/>사무직</option>
+         <option value="자영업" <c:if test="${map.MEMBER_JOB eq '자영업'}">selected</c:if>/>자영업</option>
+         <option value="판매직" <c:if test="${map.MEMBER_JOB eq '판매직'}">selected</c:if>/>판매직</option>
+         <option value="서비스직" <c:if test="${map.MEMBER_JOB eq '서비스직'}">selected</c:if>/>서비스직</option>
+         <option value="생산/노무직" <c:if test="${map.MEMBER_JOB eq '생산/노무직'}">selected</c:if>/>생산/노무직</option>
+         <option value="기능직" <c:if test="${map.MEMBER_JOB eq '서울'}">selected</c:if>/>기능직</option>
+         <option value="농/축/광/수산업" <c:if test="${map.MEMBER_JOB eq '농/축/광/수산업'}">selected</c:if>/>농/축/광/수산업</option>
+         <option value="학생" <c:if test="${map.MEMBER_JOB eq '학생'}">selected</c:if>/>학생</option>
+         <option value="주부" <c:if test="${map.MEMBER_JOB eq '주부'}">selected</c:if>/>주부</option>
+         <option value="무직" <c:if test="${map.MEMBER_JOB eq '무직'}">selected</c:if>/>무직</option>
+         <option value="퇴직/연금생활자" <c:if test="${map.MEMBER_JOB eq '퇴직/연금생활자'}">selected</c:if>/>퇴직/연금생활자</option>
+         <option value="기타" <c:if test="${map.MEMBER_JOB eq '기타'}">selected</c:if>/>기타</option>
       </select>
  	 </div>
 		<br/>
