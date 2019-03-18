@@ -111,7 +111,7 @@
           <form role="form" name="form" action="/loginSuccess" method="post">
           	          <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디를 입력하세요" />
 				<input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호를 입력하세요" />
-				<button class="btn btn-light btn-xl">Login</button>
+				<button class="btn btn-light btn-xl" onclick="Confirm();">Login</button>
 	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>   
 	          </form>   
           </div>
@@ -121,6 +121,26 @@
     </div>
   </section>
 <script type='text/javascript'>
+
+function Confirm(){
+	var inputId = $("#member_id").val();
+	var inputPwd = $("#member_pw").val();
+	
+	if (inputId.length == 0) {
+		alert("아이디를 입력해 주세요.");
+		$("#member_id").focus();
+		return;
+	}
+	//비밀번호의 길이 값이 0이면
+	if (inputPwd.length == 0) {
+		alert("비밀번호를 입력해 주세요.");
+		$("#member_pw").focus();
+		return;
+	}
+	if(confirm("로그인 하시겠습니까?")){
+		location.href= "loginSuccess";
+	}
+}
 
 //카카오 로그인
 Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
