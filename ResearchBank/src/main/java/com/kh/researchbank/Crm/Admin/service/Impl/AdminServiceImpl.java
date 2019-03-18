@@ -20,16 +20,15 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Map<String, Object>> indexMember(Map<String, Object> map, String searchOption, String keyword) {
 		// TODO Auto-generated method stub
-	    System.out.println("서비스 : 옵션="+searchOption+"키워드"+keyword);
 
 		return adminDAO.indexMember(map, searchOption, keyword);
 	}
 
 
 	@Override
-	public List<Map<String, Object>> indexSurvey(Map<String, Object> map) {
+	public List<Map<String, Object>> indexSurvey(Map<String, Object> map, String searchOption, String keyword) {
 		// TODO Auto-generated method stub
-		return adminDAO.indexSurvey(map);
+		return adminDAO.indexSurvey(map, searchOption, keyword);
 	}
 
 

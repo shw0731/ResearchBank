@@ -118,6 +118,26 @@ tbody>tr:HOVER {
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 	</div>
+		<!-- -------------------검색기능-------------------- -->
+	<div id="Search_Form" class="tab-pane active" align="center">
+		<form name="form1" action="${path}/admin/survey">
+			<select name="searchOption">
+				<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+				<option value="all"
+					<c:out value="${map.searchOption == 'all'?'selected':''}"/>>제목+작성자</option>
+				<option value="SURVEY_SUBJECT"
+					<c:out value="${map.searchOption == 'SURVEY_SUBJECT'?'selected':''}"/>>제목</option>
+				<option value="MEMBER_ID"
+					<c:out value="${map.searchOption == 'MEMBER_ID'?'selected':''}"/>>작성자</option>
+			</select> 
+			<input name="keyword" value="${map.keyword}"> 
+			<input type="submit" value="검색">
+		</form>
+	</div>
+	<!-- -------------------검색기능-------------------- -->
+	
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	
 	<form id="commonForm" name="commonForm"></form>
 
 	<script type="text/javascript">
@@ -133,7 +153,9 @@ tbody>tr:HOVER {
 			comAjax.setUrl("<c:url value='/admin/surveyPaging' />");
 			comAjax.setCallback("fn_selectSurveyListCallback");
 			comAjax.addParam("PAGE_INDEX", pageNo);
-			comAjax.addParam("PAGE_ROW", 15);
+			comAjax.addParam("PAGE_ROW", 10);
+			comAjax.addParam("searchOption", "${map.searchOption}");
+			comAjax.addParam("keyword", "${map.keyword}");
 			comAjax.ajax();
 		}
 
@@ -157,15 +179,18 @@ tbody>tr:HOVER {
 				var str = "";
 
 				$.each(data.list, function(key, value) {
-					str += "<tr>" + "<td>" + value.SURVEY_IDX + "</td>"
+					str += "<tr>" 
+							+ "<td>" + value.SURVEY_IDX + "</td>"
 							+ "<td>" + value.REG_DATE + "</td>" + "<td>"
 							+ value.DEADLINE_DATE + "</td>" + "<td>"
 							+ value.SURVEY_POINT + "</td>" + "<td>"
 							+ value.MAXIMUM_PART + "</td>" + "<td>"
 							+ value.CURRENT_PART + "</td>" + "<td>"
-							+ value.ISREPLY + "</td>" + "<td>" + value.ISOPEN
-							+ "</td>" + "<td>" + value.SERVEY_SUBJECT + "</td>"
-							+ "<td>" + value.MEMBER_ID + "</td>" + "</tr>";
+							+ value.ISREPLY + "</td>" + "<td>" 
+							+ value.ISOPEN + "</td>" + "<td>" 
+							+ value.SURVEY_SUBJECT + "</td>" + "<td>" 
+							+ value.MEMBER_ID + "</td>" 
+							+ "</tr>";
 				});
 				body.append(str);
 

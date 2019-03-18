@@ -13,7 +13,6 @@ public class AdminDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> indexMember(Map<String, Object> map, String searchOption, String keyword) {
-	    System.out.println("다오 부분: 옵션="+searchOption+"키워드"+keyword);
 
 		map.put("searchOption", searchOption);
 	    map.put("keyword", keyword);
@@ -21,9 +20,11 @@ public class AdminDAO extends AbstractDAO{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> indexSurvey(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return (List<Map<String, Object>>) selectPagingList("admin.surveyList", map);
+	public List<Map<String, Object>> indexSurvey(Map<String, Object> map, String searchOption, String keyword) {
+		System.out.println("서치옵션은 = "+searchOption+"키워드는 = " + keyword);
+		map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+		return (List<Map<String, Object>>) selectPagingList("admin.surveySearch", map);
 	}
 
 	public void deleteMember(Map<String, Object> map) {

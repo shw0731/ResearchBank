@@ -126,16 +126,16 @@ tbody>tr:HOVER {
 			<select name="searchOption">
 				<!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 				<option value="all"
-					<c:out value="${map.searchOption == 'all'?'selected':''}"/>>제목+이름+제목</option>
+					<c:out value="${map.searchOption == 'all'?'selected':''}"/>>ID+닉네임+주소</option>
 				<option value="MEMBER_ID"
 					<c:out value="${map.searchOption == 'MEMBER_ID'?'selected':''}"/>>ID</option>
 				<option value="MEMBER_NICKNAME"
 					<c:out value="${map.searchOption == 'MEMBER_NICKNAME'?'selected':''}"/>>닉네임</option>
-				<option value="MEMBER_POINT"
-					<c:out value="${map.searchOption == 'MEMBER_POINT'?'selected':''}"/>>포인트</option>
+				<option value="MEMBER_ADDRESS"
+					<c:out value="${map.searchOption == 'MEMBER_ADDRESS'?'selected':''}"/>>주소</option>
 			</select> 
 			<input name="keyword" value="${map.keyword}"> 
-			<input type="submit" value="조회">
+			<input type="submit" value="검색">
 		</form>
 	</div>
 	<!-- -------------------검색기능-------------------- -->

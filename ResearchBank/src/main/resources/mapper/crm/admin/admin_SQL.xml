@@ -3,7 +3,7 @@
 
 <mapper namespace="admin">
 
-	<select id="memberList" parameterType="hashmap"
+<!-- 	<select id="memberList" parameterType="hashmap"
 		resultType="hashmap">
 		<![CDATA[
 				SELECT
@@ -58,6 +58,7 @@
 		]]>
 		<include refid="common.pagingPost" />
 	</select>
+	 -->
 
 	<update id="deleteMember" parameterType="hashmap">
 	<![CDATA[
@@ -95,10 +96,10 @@
 							MEMBER_POINT,
 							DECODE(MEMBER_GENDER,1,'남자',0,'여자',null,'미기입') AS MEMBER_GENDER,
 							DECODE(MEMBER_ADDRESS,null,'미기입',MEMBER_ADDRESS) AS MEMBER_ADDRESS,
-							DECODE(MEMBER_MARRY,null,'미기입',MEMBER_MARRY) AS MEMBER_MARRY,
+							DECODE(MEMBER_MARRY,0,'미혼',1,'기혼',null,'미기입',MEMBER_MARRY) AS MEMBER_MARRY,
 							DECODE(MEMBER_AREA,null,'미기입',MEMBER_AREA) AS MEMBER_AREA,
 							DECODE(MEMBER_JOB,null,'미기입',MEMBER_JOB) AS MEMBER_JOB,
-							DECODE(ROLE_ID,0,'회원',1,'관리자',2,'비회원',3,'가회원') AS ROLE_ID,
+							DECODE(ROLE_ID,0,'회원',1,'관리자',2,'비회원',3,'가회원',4,'카카오',5,'비회원') AS ROLE_ID,
 							MEMBER_BIRTH
 						FROM
 							MEMBER_LIST
@@ -115,7 +116,59 @@
 				WHERE MEMBER_ID like '%'||#{keyword}||'%'
 				OR
 				MEMBER_NICKNAME like '%'||#{keyword}||'%'
-				OR MEMBER_POINT like '%'||#{keyword}||'%'
+				OR MEMBER_ADDRESS like '%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				WHERE ${searchOption} like '%'||#{keyword}||'%'
+			</otherwise>
+		</choose>
+		
+	</select>
+	
+	<select id="surveySearch" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+		SELECT
+			AAAA.*
+		FROM(
+		]]>
+		<![CDATA[
+			SELECT
+		    	AAA.*
+		    FROM(
+		    	SELECT
+		        COUNT(*) OVER() AS TOTAL_COUNT,
+		        	AA.*
+		        FROM(
+		            ]]>
+		<![CDATA[
+			SELECT
+				ROW_NUMBER() OVER (ORDER BY SURVEY_IDX DESC) RNUM,
+				SURVEY_IDX,
+				TO_CHAR(REG_DATE,'YYYY.MM.DD') AS REG_DATE,
+				TO_CHAR(DEADLINE_DATE,'YYYY.MM.DD') AS DEADLINE_DATE,
+				SURVEY_POINT,
+				MAXIMUM_PART,
+				CURRENT_PART,
+				ISREPLY,
+				ISOPEN,
+				SURVEY_SUBJECT,
+				MEMBER_ID
+			FROM
+				SURVEY_LIST
+		]]>
+				<![CDATA[		
+				) AA
+		        ) AAA
+		        WHERE
+				AAA.RNUM BETWEEN #{START} AND #{END}
+		) AAAA
+		]]>
+		<choose>	
+			<when test="searchOption == 'all'">
+				WHERE SURVEY_SUBJECT like '%'||#{keyword}||'%'
+				OR
+				MEMBER_ID like '%'||#{keyword}||'%'
 			</when>
 			<otherwise>
 				WHERE ${searchOption} like '%'||#{keyword}||'%'
