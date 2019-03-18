@@ -62,10 +62,63 @@
 				}    */
 		    
 			   
-			document.form1.action = "${path}/memberUpdateAction2";
+			document.form1.action = "${path}/memberUpdateAction";
 			document.form1.submit(); 
 		});
 	}); 
+	 
+	 $(document).ready(function(){ 
+			
+			
+		 
+			$("#btnUpdate2").click(function(){  
+				
+				var inputPwd = $("#MEMBER_PW").val();
+				var inputPwdCfm = $("#MEMBER_PW2").val();  
+				var inputGender = $("#MEMBER_GENDER").val();  
+				var InputMarry = $("#MEMBER_MARRY").val();  
+				   
+				var b1 = $("#birth1").val();
+				var b2 = $("#birth2").val();
+				var b3 = $("#birth3").val();
+				
+			    if(inputPwd.length == 0) { 
+					alert("비밀번호를 입력해 주세요."); 
+					$("#MEMBER_PW").focus(); 
+					return; 
+					}
+			    if(inputPwd != inputPwdCfm) { 
+					alert("비밀번호가 서로 다릅니다. 비밀번호를 확인해 주세요."); 
+					$("#MEMBER_PW2").focus(); 
+					return; 
+					}
+			    
+			    a=document.form1.birth_1.value;
+			    b=document.form1.birth_2.value;
+			    c=document.form1.birth_3.value;
+			    d=a+b+c;
+			    $("#MEMBER_BIRTH").val(d);
+			    
+
+
+			    
+			  /*   if(inputGender == null) { 
+			    	alert("성별을 입력해주세요.");   
+			    	$("#MEMBER_GENDER").focus();  
+			    	return;  
+			    	} 
+			    
+			    if(inputMarry == "" ) { 
+					alert("결혼여부를 입력해주세요.");      
+					$("#MEMBER_MARRY").focus();  
+					return;  
+					}    */
+			    
+				   
+				document.form1.action = "${path}/memberUpdateAction2";
+				document.form1.submit(); 
+			});
+		}); 	 
 	 
 	
 </script>
@@ -335,7 +388,12 @@
  	 </div>
 		<br/>
 		<div class="btnArea">
+		<c:if test="${map.ROLE_ID != 3}">
  		<input class="effect effect-5" type="button" id="btnUpdate" value="회원정보 수정하기"/> 
+ 		</c:if>
+ 		<c:if test="${map.ROLE_ID ==3}">
+ 		<input class="effect effect-5" type="button" id="btnUpdate2" value="회원정보 수정하기"/> 
+ 		</c:if>
  		</div> 		
  		</form>
 <section class="left_section">
