@@ -7,6 +7,57 @@
 <body id="page-top">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
+  <section class="p-0" id="portfolio">
+    <div class="container-fluid p-0">
+      <div class="row no-gutters popup-gallery">
+      
+        <div class="col-6">
+          <a class="portfolio-box" href="resources/images/portfolio/thumbnails/main_making.jpg">
+            <img class="img-fluid" src="resources/images/portfolio/thumbnails/main_making.jpg" alt="">
+            <div class="portfolio-box-text">Make Research</div>
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Make Survey
+                </div>
+                <div class="project-name">
+                  내 설문지 만들기
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-6">
+          <a class="portfolio-box" href="/resources/images/portfolio/thumbnails/main_surveying.jpg">
+            <img class="img-fluid" src="/resources/images/portfolio/thumbnails/main_surveying.jpg" alt="">
+            <div class="portfolio-box-text">Earn Point</div>
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Participate
+                </div>
+                <div class="project-name">
+                 	설문 참여하기
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+       
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- 
+
+
+
+
   <header class="masthead text-center text-white d-flex">
     <div class="container my-auto">
       <div class="row">
@@ -79,109 +130,13 @@
     </div>
   </section>
 
-  <section class="p-0" id="portfolio">
-    <div class="container-fluid p-0">
-      <div class="row no-gutters popup-gallery">
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="resources/images/portfolio/fullsize/1.jpg">
-            <img class="img-fluid" src="resources/images/portfolio/thumbnails/1.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="/resources/images/portfolio/fullsize/2.jpg">
-            <img class="img-fluid" src="/resources/images/portfolio/thumbnails/2.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="/resources/images/portfolio/fullsize/3.jpg">
-            <img class="img-fluid" src="/resources/images/portfolio/thumbnails/3.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="/resources/images/portfolio/fullsize/4.jpg">
-            <img class="img-fluid" src="/resources/images/portfolio/thumbnails/4.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="/resources/images/portfolio/fullsize/5.jpg">
-            <img class="img-fluid" src="/resources/images/portfolio/thumbnails/5.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="/resources/imgages/portfolio/fullsize/6.jpg">
-            <img class="img-fluid" src="/resources/images/portfolio/thumbnails/6.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="bg-dark text-white">
     <div class="container text-center">
       <h2 class="mb-4">Free Research at Our Research Bank!</h2>
       <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Research Now!</a>
     </div>
-  </section>
+  </section> -->
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
