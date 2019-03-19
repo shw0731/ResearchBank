@@ -70,8 +70,13 @@ form {
 			alert('이메일양식으로 작성해야 합니다.');
 		}
 	}
-
+	
 	function sendpassword(){
+	if (isCheckId == 0) {
+		alert("가입 여부 확인을 해주세요.");
+		$("#member_id").focus();
+		return;
+	}else{	
 		var member_id = $("#member_id").val();
 		var newPsswrod;
 		 var randomValue = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -107,7 +112,8 @@ form {
 				success : function(success){
 					alert("메일을 전송완료하였습니다.");
 				}
-		})
+			})
+		}
 	}
 </script>
 
@@ -129,7 +135,7 @@ form {
 							<input type="hidden" id="tomail" name="tomail" placeholder="상대의 이메일" class="form-control">
 							<input type="hidden" id="title" name="title" placeholder="제목을 입력해주세요" value="ResearchBank 임시비밀번호 발송" class="form-control">
 							<input type="hidden" id="content" name="content" placeholder="내용#" class="form-control"><br/><br/>
-							<input type="button" class="btn btn-primary btn-xl" value="가입여부 확인" onclick="duplicationId();">
+							<input type="button" class="btn btn-primary btn-xl" value="가입 여부 확인" onclick="duplicationId();">
 							<input type="button" value="메일 보내기" class="btn btn-primary btn-xl" onclick="sendpassword();"><br/><br/>
 						<td></td>
 					</tr>
