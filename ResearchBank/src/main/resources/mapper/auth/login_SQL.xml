@@ -18,4 +18,11 @@
         FROM MEMBER_LIST
         WHERE MEMBER_ID = #{member_id} AND MEMBER_PW = #{member_pw}
     </select>
+    
+    <update id="sendPassword" parameterType="hashmap"> 
+    	UPDATE MEMBER_LIST 
+    	SET 
+    		MEMBER_PW = #{member_pw, jdbcType=VARCHAR} 
+    	WHERE MEMBER_ID = #{member_id}
+    </update>
 </mapper> 

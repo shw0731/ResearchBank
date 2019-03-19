@@ -66,7 +66,7 @@ form {
 						<!-- 닉네임 값 받는 부분 -->
 						<td><input type="text" id="member_nickname"	name="member_nickname">
 							<!-- 중복확인 javascript로 전송 -->
-							 <input type="button" class="btn btn-default" style="width: 30%;" value="중복확인" onclick="duplicationNickname();" />\
+							 <input type="button" class="btn btn-default" style="width: 30%;" value="중복확인" onclick="duplicationNickname();" />
 							<!-- hidden값으로 기본정의값 지정 --> 
 							<input type="hidden" id="member_point" name="member_point" value="0">
 							<input type="hidden" id="role_id" name="role_id" value="0">
