@@ -53,13 +53,13 @@ form {
 						$("#divInputId").removeClass("has-success")
 						//아이디를 다시 확인한다.
 						$("#signUpUserId").focus();
-						isCheckId = 1;
 					} else {
 						alert("아이디가 존재합니다.");
 						//아이디가 존재할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
 						$("#divInputId").addClass("has-success")
 						$("#divInputId").removeClass("has-error")
 						$("#tomail").val(inputId);
+						inCheckId = 1;
 					}
 				},
 				error : function(req, status, errThrown) {
