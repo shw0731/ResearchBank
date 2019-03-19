@@ -73,8 +73,9 @@ public class ResearchServiceImpl implements ResearchService {
 			if(map.get("partmember_id")==""||map.get("partmember_id")==null) {
 				return true;
 			}
-			else if(researchDAO.selectPart2(map).get("SURVEY_IDX")!=null)
+			else if(researchDAO.selectPart2(map).get("SURVEY_IDX")!=null) {
 				return false;
+			}
 			
 			return true;
 		}
@@ -82,7 +83,7 @@ public class ResearchServiceImpl implements ResearchService {
 	}
 	//설문 입력창
 	@Override
-	public Map<String, Object> show(int survey_idx) throws Exception {
+	public Map<String, Object> show(String survey_idx) throws Exception {
 		
 		Map<String, Object> map;
 		map= researchDAO.selectOne(survey_idx);
@@ -96,9 +97,10 @@ public class ResearchServiceImpl implements ResearchService {
 	@Override
 	public Map<String, Object> resultShow(Map<String, Object> map)throws Exception{
 		Map<String, Object> resultMap = researchDAO.selectReOne(map);
-		
-		
-		
+		resultMap.put("conList", researchDAO.selectCon((String)map.get("survey_idx")));
+		resultMap.put("queList", researchDAO.selectQue((String)map.get("survey_idx")));
+		resultMap.put("conAList", researchDAO.selectConA(map));
+		resultMap.put("queAList", researchDAO.selectQueA(map));
 		return resultMap;
 	}
 	//설문 등록

@@ -28,7 +28,7 @@
 
 							<tr>
 								<td align="center">${row.SURVEY_POINT}</td>
-								<td class="odd gradeX"> <a href="/research/show?survey_idx=${row.SURVEY_IDX }&survey_subject=${row.SURVEY_SUBJECT}" name="title">${row.SURVEY_SUBJECT }</a> <input
+								<td class="odd gradeX"> <a href="/research/resultShow?survey_idx=${row.SURVEY_IDX }&member_id=${MEMBER_ID}" name="title">${row.SURVEY_SUBJECT }</a> <input
 									type="hidden" id="survey_idx" value="${row.SURVEY_IDX }"></td>
 
 								<td align="center">${row.CURRENT_PART }/${row.MAXIMUM_PART }</td>

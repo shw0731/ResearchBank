@@ -65,6 +65,53 @@
 		SELECT survey_idx FROM participate_list WHERE survey_idx = #{survey_idx}
 												AND partmember_id = #{partmember_id}
 	</select>
+	
+	<select id="selectReOne" parameterType="hashmap" resultType="hashmap">
+		SELECT l.survey_idx
+			 , l.reg_date
+			 , l.deadline_date
+			 , l.survey_point
+			 , l.current_part
+			 , l.maximum_part
+			 , l.survey_subject
+			 , r.member_nickname
+		 	 FROM survey_list l
+		 	    , member_list r
+		 	    WHERE l.member_id = r.member_id
+		 	    AND l.survey_idx = #{survey_idx}	 	 
+	</select>
+	
+	
+	
+	<!-- count -->
+	<select id="countCon" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM condition_list WHERE survey_idx = #{survey_idx}
+	</select>
+	
+	<select id="countConOpt" parameterType="hashmap" resultType="hashmap">
+		select count(decode(${condition}, 0 , 1 , null)) as condition0 
+     		 , count(decode(${condition}, 1 , 1 , null)) as condition1
+     		 , count(decode(${condition}, 2 , 1 , null)) as condition2
+     		 , count(decode(${condition}, 3 , 1 , null)) as condition3
+     		 , count(decode(${condition}, 4 , 1 , null)) as condition4
+     		 FROM participate_list where survey_idx = #{survey_idx}
+	</select>
+	
+	<select id="countQueOpt" parameterType="hashmap" resultType="hashmap">
+		SELECT count(decode(r.answer, 0, 1, null)) as question0
+             , count(decode(r.answer, 1, 1, null)) as question1
+             , count(decode(r.answer, 2, 1, null)) as question2
+             , count(decode(r.answer, 3, 1, null)) as question3
+             , count(decode(r.answer, 4, 1, null)) as question4
+			   FROM question_list l 
+                  , answer r
+                  	WHERE l.question_idx = r.question_idx 
+                  	AND l.survey_idx = #{survey_idx} 
+                    GROUP BY r.question_idx 
+                  	ORDER BY Max(l.question_order)	
+	</select>
+	
+	
 	<!-- Insert -->
 	<insert id="insertSurvey" parameterType="hashmap">
      <![CDATA[
