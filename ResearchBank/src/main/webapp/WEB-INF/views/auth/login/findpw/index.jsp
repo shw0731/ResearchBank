@@ -59,7 +59,7 @@ form {
 						$("#divInputId").addClass("has-success")
 						$("#divInputId").removeClass("has-error")
 						$("#tomail").val(inputId);
-						inCheckId = 1;
+						isCheckId = 1;
 					}
 				},
 				error : function(req, status, errThrown) {
