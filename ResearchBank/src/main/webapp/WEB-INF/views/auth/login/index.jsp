@@ -106,8 +106,8 @@
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
             <font size="4" align="center" color="red">${message}</font>
 <button class="btn btn-primary btn-xl"  onclick="Confirm();" width="100%">Login</button></br>
-				 <a class="mb-5" style="color:black" aling="right" href="/register.do"><strong>Sign In</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class="mb-5" style="color:black"aling="right" href="http://localhost:8080/yogi/members/find"><strong>Find ID/PW</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				 <a class="mb-5" style="color:black" align="right" href="/register.do"><strong>Sign In</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="mb-5" style="color:black"align="right" href="/findpassword.do"><strong>Find ID/PW</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
  
              </form>   
           						
