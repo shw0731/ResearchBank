@@ -13,14 +13,7 @@
 설문조사 제목 : ${map.SURVEY_SUBJECT } <br/>
 <form id="frm">
 	<input type="hidden" name="survey_idx" value="${map.survey_idx}">
-	<c:choose>
-		<c:when test="${MEMBER_ID != null }">
-			<input type="hidden" name="partmember_id" value="${MEMBER_ID } ">
-		</c:when>
-		<c:otherwise>
-			<input type="hidden" name="partmember_id" value="">
-		</c:otherwise>
-	</c:choose>
+	
 		<c:choose>
 			<c:when test="${fn:length(map.conList) > 0}">
 				<c:forEach items="${map.conList }" var="row"  varStatus="status">

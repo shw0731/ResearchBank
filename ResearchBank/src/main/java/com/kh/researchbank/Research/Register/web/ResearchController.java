@@ -132,9 +132,19 @@ public class ResearchController {
 	@RequestMapping(value="/research/show", method=RequestMethod.GET)
 	public ModelAndView show(HttpServletRequest request)throws Exception{
 		ModelAndView mv = new ModelAndView("research/show");
-		Map<String, Object> map = researchService.show(Integer.parseInt(request.getParameter("survey_idx")));
-		mv.addObject("map", map);
-		return mv;
+		Map<String, Object> tmpMap = new HashMap<String, Object>();
+		tmpMap.put("survey_idx",request.getParameter("survey_idx") );
+		tmpMap.put("partmember_id",request.getParameter("partmember_id"));
+		if(researchService.validator(tmpMap)) {
+			
+			Map<String, Object> map = researchService.show(request.getParameter("survey_idx"));
+			mv.addObject("map", map);
+			return mv;
+		}else {
+			mv.setViewName("research/index");
+			return mv;
+		}
+		
 	}
 	@RequestMapping(value="/research/part", method=RequestMethod.POST)
 	public ModelAndView part(HttpServletRequest request) throws Exception{
@@ -148,10 +158,7 @@ public class ResearchController {
 		
 		Map<String, Object> iMap = objectMapper.readValue(request.getParameter("json"), HashMap.class);
 		//참여했었거나, 참여수 다 찼을때
-		if(researchService.validator(iMap)) {
-			researchService.part(iMap);
-			System.out.println("참여성공");
-		}
+		
 		Map<String, Object> map = researchService.resultShow(iMap);
 		mv.addObject("map", map);
 		return mv;
@@ -159,7 +166,10 @@ public class ResearchController {
 	@RequestMapping(value="/research/resultShow")
 	public ModelAndView resultShow(HttpServletRequest request)throws Exception{
 		ModelAndView mv = new ModelAndView("research/resultShow");
-		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("survey_idx", request.getParameter("survey_idx"));
+		map.put("member_id", request.getParameter("member_id"));
+		mv.addObject("map",researchService.resultShow(map));
 		return mv;
 	}
 	@RequestMapping(value="/research/create" , method=RequestMethod.GET)

@@ -30,7 +30,7 @@ public interface ResearchService {
 	
 	public void store(Map<String, Object> map) throws Exception;
 	
-	public Map<String, Object> show(int survey_idx) throws Exception;
+	public Map<String, Object> show(String survey_idx) throws Exception;
 	
 	public Map<String, Object> part(Map<String, Object> map)throws Exception;
 	

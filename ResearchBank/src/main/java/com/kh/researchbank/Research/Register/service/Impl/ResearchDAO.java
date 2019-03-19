@@ -2,6 +2,7 @@ package com.kh.researchbank.Research.Register.service.Impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,13 +18,13 @@ public class ResearchDAO extends AbstractDAO {
 	public List<Map<String, Object>> selectList(Map<String, Object> map){
 		return (List<Map<String, Object>>)selectList("research.selectList", map);
 	}
-	public Map<String, Object> selectOne(int survey_idx){
+	public Map<String, Object> selectOne(String survey_idx){
 		return (Map<String, Object>) selectOne("research.selectOne", survey_idx);
 	}
-	public List<Map<String, Object>>selectCon(int survey_idx){
+	public List<Map<String, Object>>selectCon(String survey_idx){
 		return (List<Map<String, Object>>) selectList("research.selectCon", survey_idx);
 	}
-	public List<Map<String, Object>>selectQue(int survey_idx){
+	public List<Map<String, Object>>selectQue(String survey_idx){
 		return (List<Map<String, Object>>) selectList("research.selectQue", survey_idx);
 	}
 	//설문조사 답변입력
@@ -34,6 +35,7 @@ public class ResearchDAO extends AbstractDAO {
 			insert("research.partNon", map);
 		}else {
 			insert("research.part", map);
+			System.out.println(map.get("partmember_id"));
 		}
 		
 		
@@ -63,9 +65,9 @@ public class ResearchDAO extends AbstractDAO {
 	
 	//참여했었는지 아닌지 검색
 	public Map<String, Object>selectPart2(Map<String, Object>map)throws Exception{
-		return (Map<String, Object>)selectOne("research.selectPart", map);
+		return (Map<String, Object>)selectOne("research.selectPart2", map);
 	}
-	
+	//
 	
 	
 	//참여수 증가
@@ -109,4 +111,56 @@ public class ResearchDAO extends AbstractDAO {
 	public Map<String, Object> selectReOne(Map<String, Object>map){
 		return (Map<String, Object>)selectOne("research.selectReOne",map);
 	}
+	
+	public List<Map<String, Object>>selectConA(Map<String, Object>map){
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		int conCount = (Integer)selectOne("research.countCon" ,map.get("survey_idx"));
+		for(int i=0;i<conCount;i++) {
+			map.put("condition", "condition"+i);
+			Map<String, Object> tmpMap = (Map<String, Object>)selectOne("research.countConOpt",map);
+			int total = 0;
+			int idx =0;
+			for (String key : tmpMap.keySet() ) {
+			    total += Integer.parseInt( String.valueOf(tmpMap.get(key)));
+			    idx++;
+			}
+			
+			for(int j=0; j < idx ; j++ ) {
+				float tmp = ((float)Integer.parseInt( String.valueOf(tmpMap.get("CONDITION"+j)))/total)*100;
+				tmpMap.put("CONDITION_RATIO"+j,tmp);
+			}
+
+
+			
+			result.add(tmpMap);
+			map.remove("condition");
+		}
+		
+		System.out.println(result.toString());
+		return result;
+	}
+	
+	public List<Map<String, Object>>selectQueA(Map<String, Object>map){ 
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> tmpList = new ArrayList<Map<String, Object>>();
+		tmpList = selectList("research.countQueOpt", map	);
+		Map<String, Object> tmpMap = new HashMap<String, Object>();
+		
+		for(int i = 0 ; i<tmpList.size();i++) {
+			tmpMap=tmpList.get(i);
+			int total = 0;
+			int idx = 0;
+			for(String key : tmpMap.keySet()) {
+				total += Integer.parseInt( String.valueOf(tmpMap.get(key)));
+				idx++;
+			}
+			for(int j=0; j < idx ; j++ ) {
+				float tmp = ((float)Integer.parseInt( String.valueOf(tmpMap.get("QUESTION"+j)))/total)*100;
+				tmpMap.put("QUESTION_RATIO"+j,tmp);
+			}
+			result.add(tmpMap);
+		}
+		return result;
+	}
+	
 }
