@@ -85,7 +85,6 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-heading text-white">로그인</h2>
           <!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
 			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
 			</a> -->
@@ -96,27 +95,29 @@
 				<input type="hidden" id="member_nickname" name="member_nickname">
 				<input type="hidden" id="member_point" name="member_point" value="0">
 				<input type="hidden" id="role_id" name="role_id" value="0">
-			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
+
+			
+			
+			</form>
+          <div class="login_input_area">
+          <form role="form" name="form" action="/loginSuccess" method="post">
+          <a href="/"><img src="resources\images\portfolio\thumbnails\6.jpg" ></a><pre></pre><pre></pre><pre></pre><pre></pre>
+                       <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" />
+            <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
+            <font size="4" align="center" color="red">${message}</font>
+<button class="btn btn-primary btn-xl"  onclick="Confirm();" width="100%">Login</button></br>
+				 <a class="mb-5" style="color:black" aling="right" href="/register.do"><strong>Sign In</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="mb-5" style="color:black"aling="right" href="http://localhost:8080/yogi/members/find"><strong>Find ID/PW</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+             </form>   
+          						
+          			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
 			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="50%"/>
 			    </a>
 			    <a href="http://developers.kakao.com/logout"></a>
 			</div>
-			
-			
-			</form>
-          <hr class="light my-4">
-          <div class="login_input_area">
-          <form role="form" name="form" action="/loginSuccess" method="post">
-          	          <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디를 입력하세요" />
-				<input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호를 입력하세요" /><br/>
-				<font size="4" align="center" color="red">${message}</font><br/><br/>
-				<button class="btn btn-light btn-xl" onclick="Confirm();">Login</button>
-	          <a class="btn btn-light btn-xl" href="/register.do">Register</a>   
-	          </form>   
-          </div>
-          <a href="#"><p class="text-faded mb-4">forgot your password?</p></a>
         </div>
       </div>
     </div>

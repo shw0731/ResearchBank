@@ -238,20 +238,8 @@ header.masthead p {
 .portfolio-box {
   position: relative;
   display: block;
-  max-width: 100%;
+  max-width: 650px;
   margin: 0 auto;
-}
-
-.portfolio-box .portfolio-box-text{
-	text-align: center;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate( -50%, -50% );
-	font-weight: bold;
-	font-size: 400%;
-	color: #fff;
-	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .portfolio-box .portfolio-box-caption {
@@ -282,7 +270,7 @@ header.masthead p {
   padding: 0 15px;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
-	
+
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
   font-size: 14px;
   font-weight: 600;
@@ -303,10 +291,10 @@ header.masthead p {
 
 @media (min-width: 768px) {
   .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-    font-size: 200%;
+    font-size: 16px;
   }
   .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-    font-size: 350%;
+    font-size: 22px;
   }
 }
 
@@ -323,12 +311,12 @@ header.masthead p {
 }
 
 .btn-xl {
-  padding: 1rem 2rem;
+  padding: 1rem 11rem;
 }
 
 .btn-primary {
-  background-color: #F05F40;
-  border-color: #F05F40;
+  background-color: #0876ff;;
+  border-color: #0876ff;;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
@@ -346,8 +334,8 @@ div .login_input_area{
 }
 
 div .login_input_area input{
-		width : 300px;
-		height: 50px;
+		width : 400px;
+		height: 70px;
 		margin-left: 5px;
 		margin-bottom: 10px;
 		text-align: center;
@@ -357,7 +345,7 @@ div .login_input_area a{
 }
 tr.hide{display:none}
 
-/*占쎈쐻占쎈윥占쎈퓮占쎈쐻占쎈윥占쎈쭬 占쎈섀占쎈Ŋ�굲�뜝�럥�걤占쎈쐻�뜝占� 占쎈쐻占쎈윞占쎈쭫占쎈쐻占쎈윪占쎌젳*/
+/*�뜝�럥�맶�뜝�럥�쑅�뜝�럥�벍�뜝�럥�맶�뜝�럥�쑅�뜝�럥彛� �뜝�럥���뜝�럥흮占쎄뎡占쎈쐻占쎈윥占쎄광�뜝�럥�맶占쎈쐻�뜝占� �뜝�럥�맶�뜝�럥�쐾�뜝�럥彛ュ뜝�럥�맶�뜝�럥�쑋�뜝�럩�졂*/
 .subnav-content > a {
   font-weight: 700;
   text-transform: uppercase;
