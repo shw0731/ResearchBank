@@ -43,4 +43,9 @@ public class MyPageDAO extends AbstractDAO {
 		{
 			update("mypage.updateMyinfo4", map);
 		}
+		
+		public void deleteMember(Map<String, Object> map) {
+			update("mypage.deleteMember",map);
+			
+		}
 }

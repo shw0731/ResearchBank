@@ -73,5 +73,11 @@ public class MyPageServiceImpl implements MyPageService {
 			Map<String, Object> resultMap = mypageDAO.myinfoDetail(map);
 			return resultMap;
 		}
+		
+		@Override
+		public void deleteMember(Map<String, Object> map) {
+			mypageDAO.deleteMember(map);
+		
+		}
 	
 }

@@ -86,6 +86,16 @@
 			  WHERE MEMBER_ID = #{MEMBER_ID} 
 		]]>
 </update>
+
+<update id="deleteMember" parameterType="hashmap">
+	<![CDATA[
+        UPDATE MEMBER_LIST
+        SET
+        	ROLE_ID = 2
+        WHERE
+             MEMBER_ID= #{MEMBER_ID}
+    ]]>
+</update>
 	
 	
 </mapper>	

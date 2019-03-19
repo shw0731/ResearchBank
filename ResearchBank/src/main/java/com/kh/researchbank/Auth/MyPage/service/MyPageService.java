@@ -20,5 +20,5 @@ public interface MyPageService {
 
 	Map<String, Object> selectOneMember(Map<String, Object> commandMap) throws Exception;
 	
-	
+	public void deleteMember(Map<String, Object> map);
 }

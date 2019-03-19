@@ -169,9 +169,17 @@
 			document.form1.action = "${path}/memberUpdateAction4";
 			document.form1.submit(); 
 		});
+		
+		$("#btnDelete").click(function(){  
+			if(confirm("탈퇴 하시겠습니까?")){
+				
+			
+			document.form2.action = "${path}/memberDeleteAction";
+			document.form2.submit(); 
+			}
+		
 	}); 
-	 
-	 
+}); 		
 	
 </script>
 </head>
@@ -488,6 +496,12 @@
  		</c:if>
  		</div> 		
  		</form>
+ 		
+ 		<form name="form2" method="post"> 
+  		<div class="btnArea">
+  			<input class="effect effect-5" type="button" id="btnDelete" value="탈퇴하기">
+  		</div>
+  		</form>
 <section class="left_section">
  
 </section>

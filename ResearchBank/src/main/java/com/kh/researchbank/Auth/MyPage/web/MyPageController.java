@@ -171,4 +171,17 @@ public class MyPageController {
 
 		 return "redirect:mypage"; 
 	}
+	
+	//회원 탈퇴
+	@RequestMapping(value="/memberDeleteAction")
+	public ModelAndView deleteNotice(HttpSession session,CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/");  
+	    System.out.println("회원탈퇴 : " + commandMap.getMap());
+	    String mem_id = session.getAttribute("MEMBER_ID").toString();
+
+		commandMap.getMap().put("MEMBER_ID", mem_id); 
+	    mypageService.deleteMember(commandMap.getMap()); 
+	    
+	    return mv; 
+	}
 }

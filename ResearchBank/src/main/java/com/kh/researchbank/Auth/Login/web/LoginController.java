@@ -80,16 +80,26 @@ public class LoginController
 		    	session.setAttribute("MEMBER_JOB", loginChk.get("MEMBER_JOB")); 
 		      	session.setAttribute("MEMBER_BIRTH", loginChk.get("MEMBER_BIRTH"));*/
 		    	
+		    	// 탈퇴한 아이디로 로그인 했을경우
+		    	if(Integer.parseInt(loginChk.get("ROLE_ID").toString()) == 2) {  
+					 model.addAttribute("message", "탈퇴한 회원입니다");
+				    	return "auth/login/index"; 
+				 }
 		   
 		    	List<Map<String,Object>> sessionList = new ArrayList<Map<String,Object>>();
 				System.out.println("로그인 세션 생성=============="+sessionList);
-   
-		    	
+				
+				
+				 
 		    	return "redirect:/";
+		
+		    	
 		    } else {	    		    
 		    	model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
 		    	return "auth/login/index";
 		    }
+			 
+			 
 		}
 	}
 	
