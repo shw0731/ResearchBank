@@ -101,7 +101,7 @@
 			</form>
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
-          <a href="/"><img src="resources\images\portfolio\thumbnails\6.jpg" ></a><pre></pre><pre></pre><pre></pre><pre></pre>
+          <a href="/"><img src="resources\images\portfolio\thumbnails\8.jpg" ></a>
                        <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" />
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
             <font size="4" align="center" color="red">${message}</font>
