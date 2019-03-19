@@ -6,22 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Research!</title>
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/a.css" rel="stylesheet">
+<link href="/resources/css/creative.css" rel="stylesheet">
+<link href="/resources/css/board.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div class="wrap">
-<h1>마이페이지</h1>
-<hr />
+<h1>마이페이지</h1>  
   <div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
        <br>
       </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    
    			 <tbody>
                       <tr>
-          <div class="panel panel-info">
+          <div class="panel panel-info"> 
             <div class="panel-heading">
               <h3 class="panel-title">${MEMBER_NICKNAME}님의 프로필 정보</h3>
             </div>
@@ -85,16 +88,12 @@
               </div>
             </div>
                  <div class="panel-footer">  
-				<a href="updateMember" class="btn btnC_03 btnF_02 mr10">
+				<a href="updateMember" class="genric-btn danger-border radius">
 					<span>수정하기</span>
 				</a>
 			</div>
-			     <div class="panel-footer">  
-				<a href="/inquiry" class="btn btnC_03 btnF_02 mr10">
-					<span>나의 문의글</span>
-				</a>
-			</div>
-                    </div>
+			      
+               </div>
             
           </div>
         </div>

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,14 +175,22 @@ public class MyPageController {
 	
 	//회원 탈퇴
 	@RequestMapping(value="/memberDeleteAction")
-	public ModelAndView deleteNotice(HttpSession session,CommandMap commandMap) throws Exception{
+	public ModelAndView deleteNotice(HttpSession session,CommandMap commandMap, HttpServletRequest request) throws Exception{
 	    ModelAndView mv = new ModelAndView("redirect:/");  
 	    System.out.println("회원탈퇴 : " + commandMap.getMap());
 	    String mem_id = session.getAttribute("MEMBER_ID").toString();
 
 		commandMap.getMap().put("MEMBER_ID", mem_id); 
 	    mypageService.deleteMember(commandMap.getMap()); 
-	    
-	    return mv; 
+	  //getSession(false) : 현재 세션이 존재하면 기존 세션 리턴, 없으면 null값 리턴
+	  		session = request.getSession(false);
+	  		
+	  		//현재 세션이 존재하면
+	  		if(session != null)
+	  		{
+	  			//세션 소멸
+	  			session.invalidate();
+	  		}
+	    return mv;  
 	}
 }

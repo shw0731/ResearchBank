@@ -83,6 +83,8 @@ public class LoginController
 		    	// 탈퇴한 아이디로 로그인 했을경우
 		    	if(Integer.parseInt(loginChk.get("ROLE_ID").toString()) == 2) {  
 					 model.addAttribute("message", "탈퇴한 회원입니다");
+					   
+					 session.invalidate();
 				    	return "auth/login/index"; 
 				 }
 		   

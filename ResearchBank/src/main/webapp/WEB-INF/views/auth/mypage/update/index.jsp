@@ -8,8 +8,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Research!</title>
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/a.css" rel="stylesheet">
+<link href="/resources/css/creative.css" rel="stylesheet">
+<link href="/resources/css/board.css" rel="stylesheet">   
+    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script charset="UTF-8" type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/postcode/1484723365148/170118.js"></script>
@@ -187,7 +193,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div class="wrap">
 <h1>회원정보 수정</h1>
-<hr />
 <form name="form1" method="post">     
 
 				아이디
@@ -494,14 +499,14 @@
  		<c:if test="${map.ROLE_ID ==3}">
  		<input class="effect effect-5" type="button" id="btnUpdate2" value="회원정보 수정하기"/> 
  		</c:if>
- 		</div> 		
+ 			
  		</form>
  		
  		<form name="form2" method="post"> 
-  		<div class="btnArea">
+  		
   			<input class="effect effect-5" type="button" id="btnDelete" value="탈퇴하기">
-  		</div>
-  		</form>
+  		
+  		</form>    
 <section class="left_section">
  
 </section>
