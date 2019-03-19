@@ -91,7 +91,7 @@ form {
 		   newPassword += Pwdchar;
 		  }
 		 }
-		 alert(newPassword);
+		 /* alert(newPassword); */
 		 var content = newPassword;
 		 content += "가 임시비밀번호 입니다. 로그인후에 변경 부탁드립니다.";
 		
