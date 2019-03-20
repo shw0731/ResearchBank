@@ -19,10 +19,16 @@ form {
 		var nowPoint=$("#member_point").val();
 		var refundPoint=$("#refund_price").val();
 		var memberId=$("#member_id").val();
+		refundPoint = Math.floor(refundPoint/10000) * 10000;
+		$("#refund_price").val(refundPoint);
+		var refundPoint=$("#refund_price").val();
+		n= refundPoint;
+		n += "이 환전 됩니다. (만원이하내림)";
+		alert(n);
 		resultPoint = nowPoint-refundPoint;
 		$("#result_point").val(resultPoint);
 		var remain=$("#result_point").val();
-		
+
 		
 		if(refundPoint.length == '0'){
 			alert("환전받을 포인트를 입력해주세요");
@@ -47,7 +53,6 @@ form {
 					"Content-Type" : "application/json"
 				},
 				success : function(success){
-					alert("포인트 환전 신청이 완료되었습니다.");
 					var memberId=$("#member_id").val();
 					$.ajax({
 						type : "post",
@@ -61,7 +66,7 @@ form {
 							"Content-Type" : "application/json"
 						},
 						success : function(success){
-							alert("모든작업을 완료하였습니다.");
+							alert("포인트 환전 신청이 완료되었습니다.");
 							location.href= "/mypage";
 						}
 					})
@@ -89,7 +94,7 @@ form {
 						<input type="text" id="member_point" name="member_point" value = ${map.MEMBER_POINT } readonly>
 						<th scope="row">
 						<font color=black>환전 포인트</font></th>&nbsp;&nbsp;
-						<td><input type="text" id="refund_price" name="refund_price" placeholder="10000포인트 이상부터 환전가능합니다.">
+						<td><input type="number" id="refund_price" name="refund_price" step="10000" placeholder="10000포인트부터 환전가능">
 						</td></table>
 						<input type="hidden" id="member_id" name="member_id" value=${MEMBER_ID }>
 						<input type="hidden" id="result_point" name="result_point">
