@@ -102,12 +102,12 @@
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
           <a href="/"><img src="resources\images\portfolio\thumbnails\8.jpg" ></a><br/><br/>
-                       <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" />
+                       <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" /><br/>
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
             <font size="4" align="center" color="red">${message}</font>
 <button class="btn btn-primary btn-xl"  onclick="Confirm();" width="100%">Login</button></br>
 				 <a class="mb-5" style="color:black" align="right" href="/register.do"><strong>Sign In</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class="mb-5" style="color:black"align="right" href="/findpassword.do"><strong>Find ID/PW</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="mb-5" style="color:black"align="right" href="/findpassword.do"><strong>비밀번호 찾기</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
  
              </form>   
           						

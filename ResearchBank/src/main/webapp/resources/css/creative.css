@@ -323,17 +323,17 @@ header.masthead p {
 }
 
 .btn-xl {
-  padding: 1rem 2rem;
+  padding: 1rem 11rem;
 }
 
 .btn-primary {
-  background-color: #F05F40;
-  border-color: #F05F40;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   color: #fff;
-  background-color: #ee4b28 !important;
+  background-color: #007bff !important;
 }
 
 .btn-primary:active, .btn-primary:focus {
@@ -346,9 +346,9 @@ div .login_input_area{
 }
 
 div .login_input_area input{
-		width : 300px;
-		height: 50px;
-		margin-left: 5px;
+		width : 400px;
+		height: 60px;
+		margin-left: 0px;
 		margin-bottom: 10px;
 		text-align: center;
 }
@@ -364,3 +364,4 @@ tr.hide{display:none}
   margin-left:15px;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
+input:focus::-webkit-input-placeholder {color:transparent; }
