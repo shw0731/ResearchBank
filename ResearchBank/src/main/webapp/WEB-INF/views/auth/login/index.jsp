@@ -40,7 +40,7 @@
           <div class="col-12 my-auto">
             <div class="masthead-content text-white py-5 py-md-0">
 
-  <section class="bg-primary" id="about" style="padding: 16rem 0;">
+  <section class="bg-primary" id="about" style="padding: 0rem 0;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
