@@ -112,14 +112,23 @@
           <li class="nav-item subnav">
             <a class="nav-link js-scroll-trigger subnavbtn" href="#contact">Services</a>
             <div class="subnav-content">
-		      <a href="/notice">공지사항</a>
 		      <a href="/inquiry">1:1문의</a>
-		      <c:if test="${MEMBER_NICKNAME != null }">
-		      <a href="/mypage">마이페이지</a>
-		      </c:if>
-		      <c:if test="${MEMBER_NICKNAME == null }">
-		       <a href="/login.do">마이페이지</a>
-		      </c:if>
+		      
+		      <c:choose>	
+			      <c:when test="${MEMBER_NICKNAME != null }">
+			      <c:choose>	
+			      	<c:when test="${ROLE_ID == 1 }">
+			      		<a href="/admin/member">관리자페이지</a>
+			      	</c:when>
+			      	<c:otherwise>
+			      		<a href="/mypage">마이페이지</a>
+			      	</c:otherwise>
+			      </c:choose>
+			      </c:when>
+			      <c:otherwise>
+			       <a href="/login.do">마이페이지</a>
+			      </c:otherwise>
+		      </c:choose>
 		     </div>
           </li>
           <c:if test="${MEMBER_NICKNAME == null }">
