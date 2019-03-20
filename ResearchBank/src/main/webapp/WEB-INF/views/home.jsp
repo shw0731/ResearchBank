@@ -29,7 +29,7 @@
         </div>
         
         <div class="col-6">
-          <a class="portfolio-box" href="/resources/images/portfolio/thumbnails/main_surveying.jpg">
+          <a class="portfolio-box" href="/research/index">
             <img class="img-fluid" src="/resources/images/portfolio/thumbnails/main_surveying.jpg" alt="">
             <div class="portfolio-box-text">Earn Point</div>
             <div class="portfolio-box-caption">
