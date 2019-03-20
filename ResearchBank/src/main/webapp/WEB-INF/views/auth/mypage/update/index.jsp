@@ -14,7 +14,13 @@
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
 <link href="/resources/css/creative.css" rel="stylesheet">
-<link href="/resources/css/board.css" rel="stylesheet">   
+<link href="/resources/css/board.css" rel="stylesheet">
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/css/face.css" rel="stylesheet">
+<link href="/resources/css/hello.css" rel="stylesheet">
+<link href="/resources/css/intro.css" rel="stylesheet">
+<link href="/resources/css/sb-admin-2.css" rel="stylesheet">
+<link href="/resources/css/bootstrap-theme.min.css" rel="stylesheet">  
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -501,7 +507,7 @@
  		</c:if>
  			
  		</form>
- 		
+ 		<br/> <br/> 
  		<form name="form2" method="post"> 
   		
   			<input class="effect effect-5" type="button" id="btnDelete" value="탈퇴하기">
