@@ -321,7 +321,7 @@ header.masthead p {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   color: #fff;
-  background-color: #ee4b28 !important;
+  background-color: #0876ff !important;
 }
 
 .btn-primary:active, .btn-primary:focus {
@@ -335,9 +335,9 @@ div .login_input_area{
 
 div .login_input_area input{
 		width : 400px;
-		height: 70px;
-		margin-left: 5px;
-		margin-bottom: 10px;
+		height: 60px;
+		margin-left: 0px;
+		margin-bottom: 7px;
 		text-align: center;
 }
 div .login_input_area a{
@@ -345,7 +345,7 @@ div .login_input_area a{
 }
 tr.hide{display:none}
 
-/*占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윥占쎈쾷占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윥壤쏉옙 占쎈쐻占쎈윥占쏙옙占쎈쐻占쎈윥�씙�뜝�럡�렊�뜝�럥�맶�뜝�럥�쑅�뜝�럡愿묕옙�쐻占쎈윥占쎈㎍�뜝�럥�맶占쎈쐻�뜝占� 占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌맽占쎈쐻占쎈윥壤쎼깷�쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몝占쎈쐻占쎈윪占쎌죧*/
+/*�뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쑅�뜝�럥苡룟뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쑅鶯ㅼ룊�삕 �뜝�럥�맶�뜝�럥�쑅�뜝�룞�삕�뜝�럥�맶�뜝�럥�쑅占쎌뵗占쎈쐻占쎈윞占쎈젇占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윞�꽴臾뺤삕占쎌맶�뜝�럥�쑅�뜝�럥�럪占쎈쐻占쎈윥占쎈㎍�뜝�럥�맶占쎈쐻�뜝占� �뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩留썲뜝�럥�맶�뜝�럥�쑅鶯ㅼ렯源뤄옙�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐앭뜝�럥�맶�뜝�럥�쑋�뜝�럩二�*/
 .subnav-content > a {
   font-weight: 700;
   text-transform: uppercase;
@@ -353,3 +353,5 @@ tr.hide{display:none}
   margin-left:15px;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
+
+input:focus::-webkit-input-placeholder {color:transparent; }
