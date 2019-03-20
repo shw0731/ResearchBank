@@ -115,7 +115,7 @@
           			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
-			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="55.5%"/>
+			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="55.3%"/>
 			    </a>
 			    <a href="http://developers.kakao.com/logout"></a>
 			</div>
