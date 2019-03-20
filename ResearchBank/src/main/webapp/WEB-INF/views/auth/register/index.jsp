@@ -26,9 +26,8 @@ form {
 					</tr>
 					<tr>
 						<td colspan="3">
-						<!-- 폼양식 -->
+						<!-- 폼양식 --><!-- 약관파일 가져오기 -->
 						<textarea cols="100" rows="15" readonly="readonly">
-							<!-- 약관파일 가져오기 -->
 							<%@ include file="/WEB-INF/views/auth/register/terms.txt"%> </textarea></td>
 					</tr>
 					<tr>
