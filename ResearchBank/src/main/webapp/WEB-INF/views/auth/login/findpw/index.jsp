@@ -14,7 +14,6 @@ form {
 	width: 1000px
 }
 </style>
-
 <script type="text/javascript">
 	var isCheckId = 0;
 	function duplicationId() {
@@ -122,27 +121,28 @@ form {
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	
 	<section id="about" style="padding: 21.5rem 0;">
-	<div style="background:#777777; filter:alpha(opacity:''80'');">
+	<!-- <div style="background:#777777; filter:alpha(opacity:''80'');"> -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto text-center">
-					<br/><h2 class="section-heading text-white">비밀번호 찾기</h2><br/><br/>
+					<br/><h2 class="section-heading text-black">비밀번호 찾기</h2><br/><br/>
 					<tr>
-						<th scope="row"><font color=white>아이디(E-mail)</font></th>&nbsp;&nbsp;
+						<th scope="row"><font color=black>아이디(E-mail)</font></th>&nbsp;&nbsp;
 						<!-- 아이디 값 받는 부분 -->
 						<td><input type="text" id="member_id" name="member_id"	placeholder="이메일 주소를 적어주세요">
 							<input type="hidden" id="member_pw" name="member_pw"> <!-- 중복확인 javascript로 전송 -->
 							<input type="hidden" id="tomail" name="tomail" placeholder="상대의 이메일" class="form-control">
 							<input type="hidden" id="title" name="title" placeholder="제목을 입력해주세요" value="ResearchBank 임시비밀번호 발송" class="form-control">
 							<input type="hidden" id="content" name="content" placeholder="내용#" class="form-control"><br/><br/>
-							<input type="button" class="btn btn-primary btn-xl" value="가입 여부 확인" onclick="duplicationId();">
-							<input type="button" value="메일 보내기" class="btn btn-primary btn-xl" onclick="sendpassword();"><br/><br/>
+							<button class="btn" onclick="duplicationId();">가입 여부 확인</button>
+							<button class="btn" onclick="sendpassword();">메일 보내기</button><br/><br/>
+							
 						<td></td>
 					</tr>
 				</div>
 			</div>
 		</div>
-		</div>
+		<!-- </div> -->
 	</section>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
