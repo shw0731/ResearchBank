@@ -102,9 +102,10 @@
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
           <a href="/"><img src="resources\images\portfolio\thumbnails\8.jpg" ></a><br/><br/><br/>
+           <font size="4" align="center" color="red">${message}</font><br/>
                        <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" /><br/>
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
-            <font size="4" align="center" color="red">${message}</font>
+            
 <button class="btn btn-primary btn-xl"  onclick="Confirm();" width="100%">Login</button></br>
 				&nbsp;&nbsp;아직 회원이 아니신가요?&nbsp;&nbsp;
 				 <a class="mb-5" style="text-decoration:none" align="right" href="/register.do"><span style="color:#17a2b8">회원 가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -118,7 +119,8 @@
 			    <img src="resources\images\portfolio\thumbnails\kakao.jpg" style="cursor:pointer" height="55%" width="55.3%" />
 			    			    </a>
 
-			    <a href="http://developers.kakao.com/logout"></a>
+			    <a href="http://developers.kakao.com/logout"></a><br/>
+			   
 			</div>
         </div>
       </div>

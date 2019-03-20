@@ -23,7 +23,7 @@ public class LoginController
 {
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
-	
+		
 	@Resource(name="loginService")
 	private LoginService loginService;
 	
