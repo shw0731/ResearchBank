@@ -15,12 +15,12 @@
 <link href="/resources/css/a.css" rel="stylesheet">
 <link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/board.css" rel="stylesheet">
-<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/css/face.css" rel="stylesheet">
 <link href="/resources/css/hello.css" rel="stylesheet">
 <link href="/resources/css/intro.css" rel="stylesheet">
 <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
-<link href="/resources/css/bootstrap-theme.min.css" rel="stylesheet">  
+<link href="/resources/css/bootstrap-theme.min.css" rel="stylesheet">  -->
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -200,7 +200,9 @@
 <div class="wrap">
 <h1>회원정보 수정</h1>
 <form name="form1" method="post">     
-
+<div class="panel panel-info"> 
+	<div class=" col-md-9 col-lg-9 ">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 				아이디
 				<div class="form-group">
 					<input type="text" name="MEMBER_ID" style="font-weight:bold;"class="form-control" value = ${MEMBER_ID } readonly>
@@ -503,16 +505,19 @@
 			</c:if>
  		</c:if>
  		<c:if test="${map.ROLE_ID ==3}">
- 		<input class="effect effect-5" type="button" id="btnUpdate2" value="회원정보 수정하기"/> 
+ 		<input type="button" id="btnUpdate2" value="회원정보 수정하기"/> 
  		</c:if>
  			
  		</form>
  		<br/> <br/> 
- 		<form name="form2" method="post"> 
+ 		<form name="form2" method="post">  
   		
-  			<input class="effect effect-5" type="button" id="btnDelete" value="탈퇴하기">
+  			<input type="button" id="btnDelete" value="탈퇴하기"> 
   		
-  		</form>    
+  		</form>  
+  		</div>
+  	</div>	  
+  </div>	
 <section class="left_section">
  
 </section>
@@ -570,3 +575,35 @@
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>
+<style>
+.panel-info {
+    border-color: #f0ad4e;
+}
+
+.form-control {
+    display: block;
+    width: 50%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #777;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #f0ad4e;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+input, button {
+    color: #333;
+    font-size: 30px;
+    background: transparent;
+    border: 3px solid #f0ad4e;
+    padding: 5px;
+    margin-top: 5px;
+    transition: all 500ms;
+}
+
+</style>

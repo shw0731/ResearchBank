@@ -10,12 +10,12 @@
 <link href="/resources/css/a.css" rel="stylesheet">
 <link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/board.css" rel="stylesheet">
-<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/css/face.css" rel="stylesheet">
 <link href="/resources/css/hello.css" rel="stylesheet">
 <link href="/resources/css/intro.css" rel="stylesheet">
 <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
-<link href="/resources/css/bootstrap-theme.min.css" rel="stylesheet"> 
+<link href="/resources/css/bootstrap-theme.min.css" rel="stylesheet">  -->
 
 </head>
 <body>
