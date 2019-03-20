@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 
 <html>
@@ -7,6 +10,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <title>Login</title>
+ 	<!-- Bootstrap core CSS -->
+    <link href="http://localhost:8080/yogi/resources/first/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="http://localhost:8080/yogi/resources/first/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://localhost:8080/resources/css/login.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
 </script>
 <!-- 가져다 쓸 카카오 sbk지정 -->
@@ -15,79 +28,22 @@
 
 <body style="background-color: gray;">
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<div class="overlay"></div>
+	<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+		<source src="http://localhost:8080/resources/mp4/bg.mp4" type="video/mp4">
+	</video>
 
- <%-- <form name="loginform" method="post" action="/loginSuccess">
-      <div id="loginformmiddle">
-
-         <h2>Login</h2>
-
-         <div id="id_label">ID</div>
-         <div id="username_input">
-
-            <div id="username_inputleft"></div>
-            
-               <div id="username_inputmiddle">
-                  
-                  <input type="text" name="MEMBER_ID" id="ID" required="required"> 
-                  <img id="url_user" src="resources/file/img/login/mailicon.png" alt="">
-
-               </div>
-
-               <div id="username_inputright"></div>
-         </div>
-         <div id="password_label">비밀번호</div>
-     
-         <div id="password_input">
-
-            <div id="password_inputleft"></div>
-
-            <div id="password_inputmiddle">
-                    
-               <input type="password" name="MEMBER_PW" id="PW" required="required"> 
-               <img id="url_password" src="resources/file/img/login/passicon.png" alt="">
-
-            </div>
-
-
-            <div id="password_inputright"></div>
-
-         </div>
-
-         <div id="submit">
-          <!--   로그인 버튼이 이미지이기 때문에 따로 submit 설정 -->
-            <input type="image" src="resources/file/img/login/login.png" id="submit2"
-               value="Sign In" onchange="javascript:document.getElementById('frm').value=this.value">
-              <!--  onchange : 버튼 -> 태그 ID가 frm인 것의 값을 찾아서 바꿔줌 -->
-         </div>
-         <li>${MEMBER_NICKNAME}&nbsp;님 로그인 상태입니다</li>	
-         
-         아이디/비밀번호 찾기
-         <div id="links_left">
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="javascript:find_Id();">아이디 찾기</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="javascript:find_Pw();">비밀번호 찾기</a>
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             
-             아이디 저장
-             <input type="checkbox" id="idsave" name="idsave" value="" onclick="">아이디 저장
-             
-         </div>
-         
-         회원가입 페이지로
-         <div id="links_right">
-            <a href="/SG/joinEmail">회원가입</a>
-         </div>
-      </div>
-      </form>  --%>
+    <div class="masthead">
+      <div class="masthead-bg"></div>
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-12 my-auto">
+            <div class="masthead-content text-white py-5 py-md-0">
 
   <section class="bg-primary" id="about" style="padding: 16rem 0;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
-			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-			</a> -->
 			<!-- 넘겨줘야 하는 값들을 숨겨서 넣어준다. -->
  			<form role="form" name="form" action="/register.do" method="post">
 				<input type="hidden" id="member_id2" name="member_id">
@@ -107,16 +63,16 @@
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
             
 <button class="btn btn-primary btn-xl"  onclick="Confirm();" width="100%">Login</button></br>
-				&nbsp;&nbsp;아직 회원이 아니신가요?&nbsp;&nbsp;
-				 <a class="mb-5" style="text-decoration:none" align="right" href="/register.do"><span style="color:#17a2b8">회원 가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class="mb-5" style="text-decoration:none"align="right" href="/findpassword.do">비밀번호 찾기</a>&nbsp;&nbsp; 
+				
+				 &nbsp;&nbsp;&nbsp;&nbsp;<a class="mb-5" style="text-decoration:none" align="right" href="/register.do"><span style="color:#17a2b8">회원 가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="mb-5" style="text-decoration:none"align="right" href="/findpassword.do">비밀번호 찾기</a>
  
              </form>   
           						
           			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
-			    <img src="resources\images\portfolio\thumbnails\kakao.jpg" style="cursor:pointer" height="55%" width="55.3%" />
+			    <img src="resources\images\portfolio\thumbnails\kakao.jpg" style="cursor:pointer" width="110%" />
 			    			    </a>
 
 			    <a href="http://developers.kakao.com/logout"></a><br/>
@@ -157,8 +113,6 @@ $("#kakao-login-btn").on("click", function(){
     //1. 로그인 시도
     Kakao.Auth.loginForm({
         success: function(authObj) {
-          //console.log(JSON.stringify(authObj));
-          //console.log(Kakao.Auth.getAccessToken());
         
           //2. 로그인 성공시, API를 호출합니다.
           var isCheckId = 0;
@@ -180,17 +134,7 @@ $("#kakao-login-btn").on("click", function(){
               $('#member_nickname').val(res.properties['nickname']);
         	  $('#member_id').val(res.kakao_account['email']);
         	  $('#member_pw').val(res.id);
-        	  /* var inputPw = res.id;
-        	  var inputNickname= $('#member_nickname').val();
-        	  var inputPoint= $('#member_point').val();
-        	  var inputRole=$('#role_id').val(); */
-        	  /* alert(JSON.stringify({
-                        member_id : res.kakao_account['email'],
-                        member_pw : res.id,
-                        member_nickname : res.properties['nickname'],
-                        member_point : "0",
-                        role_id : "4",
-                        })); */
+        	  
               // duplicationCheck.do로 중복아이디를 확인해준다.
               $.ajax({
 	       	  	  type: "post",
@@ -246,77 +190,21 @@ $("#kakao-login-btn").on("click", function(){
         }
       });
         
-})//e.o.kakao
+})
+   	<!-- 팝업창을 눈에 보이지 않게 띄우기 위해 설정한 iframe -->
+	<iframe width=0 height=0 name="hiddenframe1" style="display:none;"></iframe>
+	<iframe width=0 height=0 name="hiddenframe2" style="display:none;"></iframe>
+    <!-- Bootstrap core JavaScript -->
+    <script src="http://localhost:8080/yogi/resources/first/vendor/jquery/jquery.min.js"></script>
+    <script src="http://localhost:8080/yogi/resources/first/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="http://localhost:8080/yogi/resources/first/js/coming-soon.min.js"></script>
+	
+	<script type="text/javascript">
+//e.o.kakao
 
 </script>
-<!-- <script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-        Kakao.init('2781e3026435a73d6cb50a6d5f3d32ab');
- 		   Kakao.Auth.createLoginButton({
-    	   container: '#kakao-login-btn',
-    	   success: function(authObj) {
-    	     Kakao.API.request({
-    	       url: '/v1/user/me',
-    	       success: function(res) {
-    	             /* alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
-    	             alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력 */
-    	             console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
-    	             console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
-    	             console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
-/* 					alert(res.id);
-    	             alert(res.kaccount_email);
-    	             alert(res.properties['nickname']); */
-    	         // res.properties.nickname으로도 접근 가능 )
-    	             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
-    	             kakaoLogin(res);
-    	            	  $('#member_nickname').val(res.properties['nickname']);
-    	            	  $('#member_id2').val(res.kaccount_email);
-    	            	  $('#member_pw2').val(res.id);
-    	            	 /*  location.href= "oauth.do" */
-    	              
-    	           }
-    	         })
-    	       },
-    	       fail: function(error) {
-    	         alert(JSON.stringify(error));
-    	       }
-    	     });
-
-  //]]>
-  
-  var kakaoLogin = function (res){
-	  var jstr = res;
-	  $.ajax({
-		  async: false,
-		  type: "post",
-		  url: "register.do",
-		  data: jstr,
-		  success: function(data)
-		  	if(data == "S") {
-				alert("가입하시겠습니까?");
-				$("#signUpUserPwd").focus();
-		  	}else{
-				alert("계정이 존재합니다. 로그인 해주세요.");
-				$("#signUpUserId").focus();
-		  	}
-				,
-		  error:  function(req, status, errThrown) {
-				alert("network error occur");
-			}
-		  
-	})
-  }
-</script>-->
-<!-- <script type="text/javascript">
-function CacaoReg() {
-	if(confirm("회원가입을 하시겠습니까?")) {
-		alert("가입!");
-		document.form.submit();
-	}
-}
-
-</script> -->
 
 </body>
 </html>
