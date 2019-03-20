@@ -42,7 +42,7 @@
                       </tr> 
                       <tr>
                         <td>포인트:</td>
-                        <td>${map.MEMBER_POINT}</td> 
+                        <td>${map.MEMBER_POINT}<a href="/refund.do" class="btn"> 환전하기 </a> </td>
                       </tr>                  
                       <tr>
                         <td>성별:</td>
