@@ -12,7 +12,9 @@
       <div class="row no-gutters popup-gallery">
       
         <div class="col-6">
-          <a class="portfolio-box" href="resources/images/portfolio/thumbnails/main_making.jpg">
+         <c:choose>
+         <c:when test="${MEMBER_NICKNAME != null }">
+          <a class="portfolio-box" href="research/create">
             <img class="img-fluid" src="resources/images/portfolio/thumbnails/main_making.jpg" alt="">
             <div class="portfolio-box-text">Make Research</div>
             <div class="portfolio-box-caption">
@@ -26,6 +28,26 @@
               </div>
             </div>
           </a>
+          </c:when>
+          <c:otherwise>
+          <a class="portfolio-box" href="login.do">
+            <img class="img-fluid" src="resources/images/portfolio/thumbnails/main_making.jpg" alt="">
+            <div class="portfolio-box-text">Make Research</div>
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Make Survey
+                </div>
+                <div class="project-name">
+                  내 설문지 만들기
+                </div>
+              </div>
+            </div>
+          </a>
+          
+          
+          </c:otherwise>
+          </c:choose>
         </div>
         
         <div class="col-6">
