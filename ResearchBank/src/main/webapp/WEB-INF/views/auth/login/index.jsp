@@ -101,20 +101,21 @@
 			</form>
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
-          <a href="/"><img src="resources\images\portfolio\thumbnails\8.jpg" ></a><br/><br/>
+          <a href="/"><img src="resources\images\portfolio\thumbnails\8.jpg" ></a><br/><br/><br/>
                        <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" /><br/>
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
             <font size="4" align="center" color="red">${message}</font>
 <button class="btn btn-primary btn-xl"  onclick="Confirm();" width="100%">Login</button></br>
-				 <a class="mb-5" style="color:black" align="right" href="/register.do"><strong>Sign In</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class="mb-5" style="color:black"align="right" href="/findpassword.do"><strong>비밀번호 찾기</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;아직 회원이 아니신가요?&nbsp;&nbsp;
+				 <a class="mb-5" style="text-decoration:none" align="right" href="/register.do"><span style="color:#856404">회원 가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="mb-5" style="text-decoration:none"align="right" href="/findpassword.do">비밀번호 찾기</a>&nbsp;&nbsp; 
  
              </form>   
           						
           			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
-			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="50%"/>
+			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="55.5%"/>
 			    </a>
 			    <a href="http://developers.kakao.com/logout"></a>
 			</div>
