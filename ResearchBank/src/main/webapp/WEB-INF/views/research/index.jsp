@@ -16,7 +16,7 @@
 		<div class="col-lg-8 mx-auto text-center">
 			<h2 class="section-heading">Let's Get In Touch!</h2>
 			<p class="mb-5">Ready for perfect service for you</p>
-		</div>
+		</div> 
 	</div>
 	<hr />
 	<div class="wrap" style="margin: 10% 20% 10% 20%;">
