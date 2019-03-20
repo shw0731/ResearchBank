@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-  color: #007bff;
+  color: #17a2b8;
 }
 h1 {
 	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -263,7 +263,7 @@ header.masthead p {
   text-align: center;
   opacity: 0;
   color: #fff;
-  background: rgba(240, 95, 64, 0.9);
+  background: rgba(240, 95, 64, 0.7);
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }

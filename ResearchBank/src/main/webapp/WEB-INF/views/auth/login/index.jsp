@@ -81,7 +81,7 @@
       </div>
       </form>  --%>
 
-  <section class="bg-primary" id="about" style="padding: 15.5rem 0;">
+  <section class="bg-primary" id="about" style="padding: 16rem 0;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
@@ -107,7 +107,7 @@
             <font size="4" align="center" color="red">${message}</font>
 <button class="btn btn-primary btn-xl"  onclick="Confirm();" width="100%">Login</button></br>
 				&nbsp;&nbsp;아직 회원이 아니신가요?&nbsp;&nbsp;
-				 <a class="mb-5" style="text-decoration:none" align="right" href="/register.do"><span style="color:#856404">회원 가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 <a class="mb-5" style="text-decoration:none" align="right" href="/register.do"><span style="color:#17a2b8">회원 가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class="mb-5" style="text-decoration:none"align="right" href="/findpassword.do">비밀번호 찾기</a>&nbsp;&nbsp; 
  
              </form>   
@@ -115,15 +115,16 @@
           			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
-			    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="55.3%"/>
-			    </a>
+			    <img src="resources\images\portfolio\thumbnails\kakao.jpg" style="cursor:pointer" height="55%" width="55.3%" />
+			    			    </a>
+
 			    <a href="http://developers.kakao.com/logout"></a>
 			</div>
         </div>
       </div>
     </div>
   </section>
-<script type='text/javascript'>
+<script type='text/javascript'> 
 
 function Confirm(){
 	var inputId = $("#member_id").val();
