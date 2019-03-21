@@ -10,32 +10,13 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
 <title>Research!</title>
 
-<style>
-.small1 { width: 250px; }
-.small2 { height: 100px; }
-
-
-#wrap .box{ 
-    width:300px;
-    height:300px;
-    margin:0 auto;
-}
-
-p{
-font-family: 'Noto Sans KR', sans-serif;
-}
-p.a{
- font-weight: 300;
-}
-
-</style>
 </head>
 <body>
 
 
 
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-<br />
+	<br />
 	<br />
 	<br />
 <div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
@@ -46,9 +27,9 @@ p.a{
 			<hr/>
 		
 		 
- <!-- 챕터1 -->		<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="home"
- 	style=" width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
+ 		<!-- 챕터1 -->		
+ 		<div class="tab-content">
+`		<div role="tabpanel" class="tab-pane active" id="home" style=" width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
  		<div class='left-box' style="font-family:a">1:1 QnA</div>
 					 <table class="type04"
                         id="dataTables-example">
@@ -59,23 +40,24 @@ p.a{
 				<td colspan="20">${map.TITLE }</td>
 						</tr>
 					</thead>
+					
 					<tbody>
-						<td colspan="4" height="30%">${map.CONTENTS }</td>
+						<td colspan="4" height="30%"><pre>${map.CONTENTS }</pre></td>
 						
 					</tbody>
 					
 				</table>
 				<input type="hidden" id="INQUIRY_STATE" value="${map.INQUIRY_STAT}">
 				<input type="hidden" id="PARENTS_ID" value="${map.MEMBER_ID}">
+				
 				<div align="right">
 				<a href="/inquiry" class="btn" id="list">목록으로</a>
-				
-	<c:if test="${ROLE_ID == '1'}">
-	<a href="#this" class="btn" id="comment">답글달기</a>
-	</c:if>
-	<c:if test="${MEMBER_ID == map.MEMBER_ID}">
-	<a href="#this" class="btn" id="delete">삭제하기</a>
-		<a href="#this" class="btn" id="update">수정하기</a>
+			<c:if test="${ROLE_ID == '1'}">
+			<a href="#this" class="btn" id="comment">답글달기</a>
+			</c:if>
+			<c:if test="${MEMBER_ID == map.MEMBER_ID}">
+			<a href="#this" class="btn" id="delete">삭제하기</a>
+				<a href="#this" class="btn" id="update">수정하기</a>
 				</c:if>
 				</div>
 				

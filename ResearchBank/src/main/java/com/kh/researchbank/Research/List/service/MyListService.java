@@ -1,13 +1,15 @@
 package com.kh.researchbank.Research.List.service;
 
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Class Name : ResearchService.java
- * @Description : 설문조사
+ * @Description : �꽕臾몄“�궗
  * @Modification Information
- *  수정일      수정자              수정내용
+ *  �닔�젙�씪      �닔�젙�옄              �닔�젙�궡�슜
  * ---------   ---------   -------------------------------
- * 2019.02.07              최초생성
+ * 2019.02.07              理쒖큹�깮�꽦
  *
  * @author KH 
  * @since 2019. 02.07
@@ -20,10 +22,18 @@ package com.kh.researchbank.Research.List.service;
 public interface MyListService {
 
 	/**********
-	 * @title 마이리스트 
+	 * @title 留덉씠由ъ뒪�듃 
 	 * @return
 	 * @throws Exception
 	 */
 	public String index() throws Exception;
+	
+	List<Map<String, Object>> show(Map<String, Object>map) throws Exception;
+	
+	void create(Map<String, Object> map) throws Exception;
+	
+	void update(Map<String, Object> map) throws Exception;
+
+	void delete(Map<String, Object> map) throws Exception;
 		
 }

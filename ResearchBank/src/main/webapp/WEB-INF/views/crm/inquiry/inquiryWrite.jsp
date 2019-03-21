@@ -96,8 +96,12 @@ p.a{
          fn_insertBoard();
          
       });
+      
+      $('#write').val().replaceAll(/\n/g, "<br>");
+      $('#text').val().replace(/\n/g, "<br>")
    });
-   
+ 
+
    function fn_openBoardList(){
       var comSubmit = new ComSubmit();
       comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");

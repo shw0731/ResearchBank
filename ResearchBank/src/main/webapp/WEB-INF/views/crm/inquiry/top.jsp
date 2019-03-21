@@ -13,7 +13,7 @@
     <li role="presentation">
     <a href="#oneone" aria-controls="oneone" role="tab" data-toggle="tab">FAQ</a></li>
     <li role="presentation">
-    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Milige</a></li>
+    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mileage</a></li>
      <li role="presentation">
     <a href="#notice" aria-controls="notice" role="tab" data-toggle="tab">Notice</a></li>
     <li role="presentation">

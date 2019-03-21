@@ -109,12 +109,12 @@ public class InquiryController {
 	public ModelAndView createInquiry(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/inquiry");
 		Map<String,Object> map = commandMap.getMap();
-		
 		if(commandMap.get("INQUIRY_STATE") == null) {
 			map.put("INQUIRY_STATE", 0);
 		}else {
 			map.put("INQUIRY_STATE", 1);
 		}	
+		
 		inquiryService.creat(map);
 		
 		return mv;

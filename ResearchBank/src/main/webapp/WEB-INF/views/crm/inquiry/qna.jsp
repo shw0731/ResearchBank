@@ -93,7 +93,7 @@
 				</table>
 				</form>
 				 <c:if test="${MEMBER_ID != null }">
-				<div align="right">
+				<div align="right" >
 				<a href="#this" class="btn" id="write">작성하기</a>
 				</div>
 				</c:if>

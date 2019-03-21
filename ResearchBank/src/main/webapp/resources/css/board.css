@@ -1,10 +1,10 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
 
 Eng{
-	font-family: 'Montserrat', sans-serif;
+   font-family: 'Montserrat', sans-serif;
 }
 Eng.a{
-	 font-weight: 700;
+    font-weight: 700;
 }
 
 table.type04 {
@@ -62,9 +62,61 @@ font-family: 'Noto Sans KR', sans-serif;
   margin : 1% 10% 0% 10%;
   font-size:20px;
 }
+.left-box1{
+
+  float: left;
+  width: 15%;
+  margin : 1% 5% 0% 20%;
+  font-size:20px;
+}
 .right-box{
 
   background: blue;
   float: right;
   width: 50%;
   }
+table.type05 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    margin: 1% 1%;
+}
+table.type05 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #efefef;
+}
+table.type05 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+table.type01 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin : 20px 10px;
+}
+table.type01 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid #ccc;
+}
+table.type01 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+}  
+  
+  
+  

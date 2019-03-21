@@ -1,0 +1,64 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mylist">
+
+
+	<select id="show" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				m.MEMBER_ID,
+				c.REGIST_DATE,
+				c.COMMENT_CONTEXT,
+				c.SURVEY_IDX,
+				c.COMMENT_IDX
+			FROM
+			   	COMMENT_LIST c,
+			   	MEMBER_LIST m
+			WHERE
+				c.MEMBER_ID = m.MEMBER_ID
+			ORDER BY c.COMMENT_IDX DESC
+		]]>
+	</select>
+	
+	<insert id="create" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO COMMENT_LIST
+			(
+				SURVEY_IDX,
+				COMMENT_IDX,
+				COMMENT_CONTEXT,
+				REGIST_DATE,
+				MEMBER_ID
+			)
+			VALUES
+			(
+				#{SURVEY_ID},
+				SEQ_MYLIST_IDX.NEXTVAL,
+				#{COMMENT_CONTEXT},
+				SYSDATE,
+				#{MEMBER_ID}
+			)
+		]]>
+	</insert>
+
+	
+	<update id="update" parameterType="hashmap">
+		<![CDATA[
+			UPDATE COMMENT_LIST
+			SET
+				CONTENTS = #{CONTENTS}
+			WHERE
+				COMMENT_IDX = #{COMMENT_IDX}	
+		]]>
+	</update>
+	
+	<update id="delete" parameterType="hashmap">
+		<![CDATA[
+			DELETE
+			FROM 
+				COMMENT_LIST
+			WHERE
+				COMMENT_IDX = #{COMMENT_IDX}
+		]]>
+	</update>
+</mapper>

@@ -15,13 +15,7 @@
 <link href="/resources/css/a.css" rel="stylesheet">
 <link href="/resources/css/creative.css" rel="stylesheet">
 <link href="/resources/css/board.css" rel="stylesheet">
-<!-- <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="/resources/css/face.css" rel="stylesheet">
-<link href="/resources/css/hello.css" rel="stylesheet">
-<link href="/resources/css/intro.css" rel="stylesheet">
-<link href="/resources/css/sb-admin-2.css" rel="stylesheet">
-<link href="/resources/css/bootstrap-theme.min.css" rel="stylesheet">  -->
-    
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script charset="UTF-8" type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/postcode/1484723365148/170118.js"></script>
@@ -197,19 +191,23 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<div class="wrap">
-<h1>회원정보 수정</h1>
-<form name="form1" method="post">     
-<div class="panel panel-info"> 
-	<div class=" col-md-9 col-lg-9 ">
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+<br/><br/><br/><br/>
+
+
+<div style=" width: 50%; margin: 3% 25% 2% 25%; padding: 1px; font-family:a">   
+            
+<form name="form1" method="post">  
+		<div class="panel-heading">
+           <p style="font-size:25px;"> 개인정보 수정</p><p style="font-size:13px;">정확한 정보를 입력하셔야 조사 참여의 기회가 제공됩니다.
+            </p>
+            </div><hr/>
+            
+            <
 				아이디
-				<div class="form-group">
 					<input type="text" name="MEMBER_ID" style="font-weight:bold;"class="form-control" value = ${MEMBER_ID } readonly>
 					<input type="hidden" name="MEMBER_POINT" style="font-weight:bold;"class="form-control" value = ${map.MEMBER_POINT }>
 					<input type="hidden" name="ROLE_ID" style="font-weight:bold;"class="form-control" value = ${map.ROLE_ID }>
-				</div> 
-				 
 				비밀번호
 				
 				<div class="form-group">
@@ -505,33 +503,14 @@
 			</c:if>
  		</c:if>
  		<c:if test="${map.ROLE_ID ==3}">
- 		<input type="button" id="btnUpdate2" value="회원정보 수정하기"/> 
+ 		<input class="btn btn-default" type="button" id="btnUpdate2"  value="저장하기"/> 
  		</c:if>
- 			
- 		</form>
- 		<br/> <br/> 
+		</form>
  		<form name="form2" method="post">  
-  		
-  			<input type="button" id="btnDelete" value="탈퇴하기"> 
-  		
-  		</form>  
-  		</div>
-  	</div>	  
-  </div>	
-<section class="left_section">
- 
-</section>
-
-<section class="section_content">
-
-</section>
-
-<section class="right_section">
-
-</section>
+  			<input class="btn btn-default" type="button" id="btnDelete" value="탈퇴하기"> 
+  		</form> 		</div>
 </div>
-
-<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+<!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div> -->
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -575,35 +554,4 @@
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>
-<style>
-.panel-info {
-    border-color: #f0ad4e;
-}
 
-.form-control {
-    display: block;
-    width: 50%;
-    height: calc(2.25rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #777;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #f0ad4e;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-input, button {
-    color: #333;
-    font-size: 30px;
-    background: transparent;
-    border: 3px solid #f0ad4e;
-    padding: 5px;
-    margin-top: 5px;
-    transition: all 500ms;
-}
-
-</style>

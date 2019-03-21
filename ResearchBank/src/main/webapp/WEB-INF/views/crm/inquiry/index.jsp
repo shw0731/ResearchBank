@@ -7,46 +7,10 @@
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/css/a.css" rel="stylesheet">
 <link href="/resources/css/board.css" rel="stylesheet">
-
-
-
-<!-- <link href="/resources/css/sb-admin-2.css" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+
 <title>Research!</title>
 
-<style>
-.small1 { width: 250px; }
-.small2 { height: 60px; }
-
-#wrap .box{ 
-    width:300px;
-    height:300px;
-    margin:0 auto;
-}
-#box1-1{ background-color: #e2e2e2; }
-}
-p{
-font-family: 'Noto Sans KR', sans-serif;
-}
-/* p.a{
- font-weight: 300;
-} */
-
-.left-box{
-
-  float: left;
-  width: 5%;
-  margin : 1% 10% 0% 10%;
-  font-size:20px;
-}
-.right-box{
-
-  background: blue;
-  float: right;
-  width: 50%;
-  }
-
-</style>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 </head>
 <body>
@@ -55,9 +19,8 @@ font-family: 'Noto Sans KR', sans-serif;
 	<br />
 
 
-	
+	<!-- Nav tabs -->
 	<div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
-		<!-- Nav tabs -->
 	<%@ include file="/WEB-INF/views/crm/inquiry/top.jsp"%>
 		</div>
 		
@@ -95,10 +58,10 @@ font-family: 'Noto Sans KR', sans-serif;
 	<!-- 탭판넬 ㅡ아코디언-->
 	<form id="commonForm" name="commonForm"></form>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
-/* 			fn_selectBoardList(1); */
-			      $("a[name='Ititle']").on("click", function(e){ //제목 
+			      $("a[name='Ititle']").on("click", function(e){ //제목 누르면
                 e.preventDefault();
                 fn_openBoard($(this));
             });

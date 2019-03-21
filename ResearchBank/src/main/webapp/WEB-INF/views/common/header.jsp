@@ -122,7 +122,6 @@
 			      	</c:when>
 			      	<c:otherwise>
 			      		<a href="/mypage">마이페이지</a>
-			      		<a href="/refundmylist.do">환전신청내역</a>
 			      	</c:otherwise>
 			      </c:choose>
 			      </c:when>

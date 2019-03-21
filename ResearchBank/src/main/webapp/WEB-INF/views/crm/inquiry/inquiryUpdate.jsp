@@ -11,77 +11,56 @@
 
 
 <title>Research!</title>
-
-<style>
-.small1 { width: 250px; }
-.small2 { height: 100px; }
-
-
-#wrap .box{ 
-    width:300px;
-    height:300px;
-    margin:0 auto;
-}
-
-p{
-font-family: 'Noto Sans KR', sans-serif;
-}
-p.a{
- font-weight: 300;
-}
-
-</style>
 </head>
+
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <br />
 	<br />
 	<br />
-	
 <div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
 		<!-- Nav tabs -->
 	<%@ include file="/WEB-INF/views/crm/inquiry/top.jsp"%>
 		</div>
-		
 			<hr/>
 		
 		 
- <!-- 챕터1 -->		<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="home"
- 	style=" width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">    	<form id="frm">
+ 		<!-- 챕터1 -->
+ 		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home" style=" width: 70%; margin: 3% 25% 2% 15%; padding: 1px; font-family:a">
+		    	<form id="frm">
  		<div class='left-box' style="font-family:a">1:1 QnA</div>
 					 	 <table class="type04"
                         id="dataTables-example">
                     
-			
-				<thead>
+					<thead>
 						<tr class="info" align="center" >
 							<th>글번호</th>
-							
-							<th>제목</th>						
-						
+							<th>제목</th>			
 						</tr>
 						<tr>
+						
 		<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
 				
 						<td>${map.HIT_CNT }</td>
 						<td>
 						<c:choose>
-				<c:when test = "${comment == 0}">
+				<c:when test = "${comment == 0}"> <!-- 일반 수정글이면 -->
 				<input type="text" id="TITLE" name="TITLE" value="${map.TITLE }"/>
 				</c:when>
-				<c:when test = "${comment == 1 }">
+				<c:when test = "${comment == 1 }"> <!-- 답글이면 -->
 				<input type="text" id="TITLE" name="TITLE" value="    RE:답변입니다 :-)"/>
 				<input type="hidden" id="INQUIRY_STATE" value="${map.INQUIRY_STAT}">
 				<input type="hidden" id="MEMBER_NICKNAME" value="${MEMBER_NICKNAME}">
-				<input type="hidden" id="MEMBER_NICKNAME" value="${map.IDX}">
+				<input type="hidden" id="IDX" value="${map.IDX}">
 				</c:when>
 						</c:choose>
 						</td>
 						</tr>
 					</thead>
+					
 				 <c:choose>
-				<c:when test = "${comment == 0}">
+				<c:when test = "${comment == 0}"><!-- 일반 수정글이면 -->
 			 	<tr>
 					<td colspan="4" class="view_text">
 						<textarea rows="10%" cols="100%" title="내용" id="CONTENTS" name="CONTENTS">${map.CONTENTS }</textarea>
@@ -92,7 +71,7 @@ p.a{
 					</td>
 				</tr>
 			 	 </c:when>
-				<c:when test = "${comment == 1 }">
+				<c:when test = "${comment == 1 }"> <!-- 답변글이면s -->
 				
 				<tr>
 					<td colspan="4" class="view_text">
