@@ -1,6 +1,7 @@
 package com.kh.researchbank.Auth.MyPage.web;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -193,4 +194,15 @@ public class MyPageController {
 	  		}
 	    return mv;  
 	}
+	//나의 QNA
+	@RequestMapping("/myqna")
+	public ModelAndView myQna(CommandMap commandMap, HttpSession session) throws Exception { 
+		ModelAndView mv = new ModelAndView("auth/mypage/myQna");
+		String mem_id = session.getAttribute("MEMBER_ID").toString();
+
+		commandMap.getMap().put("MEMBER_ID", mem_id);
+		List<Map<String, Object>> list = mypageService.show(commandMap.getMap()); 
+        mv.addObject("list", list); 
+		return mv;  
+	} 
 }

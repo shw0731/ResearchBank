@@ -1,5 +1,6 @@
 package com.kh.researchbank.Auth.MyPage.service.Impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.researchbank.Auth.MyPage.dao.MyPageDAO;
 import com.kh.researchbank.Auth.MyPage.service.MyPageService;
+import com.kh.researchbank.common.CommandMap;
 
 
 /**
@@ -79,5 +81,18 @@ public class MyPageServiceImpl implements MyPageService {
 			mypageDAO.deleteMember(map);
 		
 		}
+		
+		
+		
+		@Override
+		public List<Map<String, Object>> show(Map<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return mypageDAO.show(map);
+			
+		}
+		
+
+
+	
 	
 }

@@ -1,5 +1,6 @@
 package com.kh.researchbank.Auth.MyPage.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.kh.researchbank.common.CommandMap;
@@ -21,4 +22,8 @@ public interface MyPageService {
 	Map<String, Object> selectOneMember(Map<String, Object> commandMap) throws Exception;
 	
 	public void deleteMember(Map<String, Object> map);
+	
+	List<Map<String, Object>> show(Map<String, Object> map) throws Exception; 
+
+	
 }

@@ -152,7 +152,25 @@
 		WHERE 
 			MEMBER_ID = #member_id and REGIST_DATE=#regist_date
 	]]>
+	  
 </update> -->
+
+<!-- 나의 QNA -->
+<select id="myQna" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                IDX,
+                TITLE,
+                HIT_CNT,
+                REGIST_DATE
+            FROM
+                INQUIRY 
+            WHERE
+                MEMBER_ID = #{MEMBER_ID}  
+            
+        ]]>
+    </select>
+
 
 
 	

@@ -1,10 +1,12 @@
 package com.kh.researchbank.Auth.MyPage.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.kh.researchbank.common.AbstractDAO;
+import com.kh.researchbank.common.CommandMap;
 
 
 
@@ -48,4 +50,12 @@ public class MyPageDAO extends AbstractDAO {
 			update("mypage.deleteMember",map);
 			
 		}
+		
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> show(Map<String, Object> map) throws Exception{
+			return (List<Map<String, Object>>)selectList("mypage.myQna", map);
+		}
+
+
+	
 }

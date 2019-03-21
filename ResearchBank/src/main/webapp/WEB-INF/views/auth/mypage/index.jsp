@@ -32,7 +32,7 @@
         </td>
     </tr>
     <tr>
-        <td>나의 QnA</td>
+        <td><a href="/myqna">나의 QnA</a></td>
     </tr>
     <tr>
         <td><a href="/refundmylist.do">포인트 환전 내역</a><br/>
