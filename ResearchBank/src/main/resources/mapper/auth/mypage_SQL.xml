@@ -113,6 +113,13 @@
 		SELECT * FROM REFUND_LIST where REFUND_STATE = '1'
 	]]>
 </select> -->
+<!-- 최근이 위로가게 정렬 -->
+<select id="refundMyList" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT * FROM REFUND_LIST 
+		WHERE MEMBER_ID = #{MEMBER_ID}
+	]]>
+</select>
 
 <insert id="regRefund" parameterType="hashmap">
 	<![CDATA[
@@ -122,7 +129,7 @@
 		#{member_id},
 		#{refund_price},
 		'0',
-		to_date(sysdate,'yyyy-mm-dd hh24:mi')
+		to_date(sysdate,'yy-mm-dd')
 		)
 	]]>
 </insert>
@@ -146,6 +153,7 @@
 			MEMBER_ID = #member_id and REGIST_DATE=#regist_date
 	]]>
 </update> -->
+
 
 	
 </mapper>	

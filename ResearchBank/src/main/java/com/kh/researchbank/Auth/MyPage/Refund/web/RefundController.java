@@ -1,9 +1,11 @@
 package com.kh.researchbank.Auth.MyPage.Refund.web;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -17,10 +19,12 @@ import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.researchbank.Auth.MyPage.Refund.service.RefundService;
 import com.kh.researchbank.Auth.MyPage.service.MyPageService;
+import com.kh.researchbank.Crm.Inquiry.Paging;
 import com.kh.researchbank.common.CommandMap;
 
 @Controller
 public class RefundController {
+	
 	
 	@Resource
 	protected RefundService refundService;
@@ -72,8 +76,18 @@ public class RefundController {
 		return "success";
 	}
 	
-	@RequestMapping(value="/refundlist.do")
-	public String RefundList() {
-		return "관리자 페이지에서 jsp만들어서";
-	}
+	@RequestMapping(value="/refundmylist.do")
+    public ModelAndView refundMyList(HttpSession session, CommandMap commandMap, Map<String, Object> map) throws Exception{
+        ModelAndView mv = new ModelAndView("auth/mypage/refund/mylist/index");
+        
+        System.out.println("===========나의 정보 조회 컨트롤러 진입==========");
+		String mem_id = session.getAttribute("MEMBER_ID").toString();
+		map.put("MEMBER_ID", mem_id);
+         
+        List<Map<String,Object>> list = refundService.show(map);
+        mv.addObject("list", list);
+        System.out.println(list);
+         
+        return mv;
+    }
 }
