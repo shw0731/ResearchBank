@@ -58,7 +58,7 @@
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
           <a href="/"><img src="resources\images\portfolio\thumbnails\8.jpg" ></a><br/><br/>
-           <font size="4" align="center" color="red">${message}</font><br/>
+           <font size="3" align="center" color="red">${message}</font><br/>
                        <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" /><br/>
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
             
@@ -190,16 +190,8 @@ $("#kakao-login-btn").on("click", function(){
         }
       });
         
-})
-   	<!-- 팝업창을 눈에 보이지 않게 띄우기 위해 설정한 iframe -->
-	<iframe width=0 height=0 name="hiddenframe1" style="display:none;"></iframe>
-	<iframe width=0 height=0 name="hiddenframe2" style="display:none;"></iframe>
-    <!-- Bootstrap core JavaScript -->
-    <script src="http://localhost:8080/yogi/resources/first/vendor/jquery/jquery.min.js"></script>
-    <script src="http://localhost:8080/yogi/resources/first/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="http://localhost:8080/yogi/resources/first/js/coming-soon.min.js"></script>
+}
+   
 	
 	<script type="text/javascript">
 //e.o.kakao

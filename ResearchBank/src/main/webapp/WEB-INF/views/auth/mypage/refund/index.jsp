@@ -34,7 +34,7 @@ form {
 			alert("환전받을 포인트를 입력해주세요");
 			return;
 		}					
-		if(nowPoint < refundPoint){
+		if(resultPoint<0){
 			alert("포인트가 부족합니다.");
 			return;
 		} else if(refundPoint < 10000){
