@@ -59,9 +59,9 @@ form {
 							<div class="form-group">
 								<div class="input-group-append">
 									<input type="text" id="member_id" class="form-control"
-										name="member_id" placeholder="이메일 주소"> <input
+										name="member_id" placeholder="이메일을 입력하세요"> <input
 										type="button" class="btn btn-danger btn-send-message"
-										value="중복확인" onclick="duplicationId();" />
+										value="중복확인" onclick="duplicationId();" /> 
 								</div>
 							</div>
 						<td></td>
@@ -71,7 +71,7 @@ form {
 							<div class="form-group">
 								<div class="input-group-append">
 									<input type="password" id="member_pw" class="form-control"
-										name="member_pw" placeholder="비밀번호">
+										name="member_pw" placeholder="비밀번호를 입력하세요">
 								</div>
 							</div>
 						<td></td>
@@ -81,7 +81,7 @@ form {
 							<div class="form-group">
 								<div class="input-group-append">
 									<input type="password" class="form-control" id="member_repw"
-										name="member_repw" placeholder="비밀번호를 다시 한번 입력하세요">
+										name="member_repw" placeholder="비밀번호를 다시 한 번 입력하세요">
 								</div>
 							</div>
 						<td></td>
@@ -124,7 +124,7 @@ form {
 						</tr>
 						<tr>
 							<td colspan="3" align="right"><input type="checkbox"
-								name="agree" id="agree" value="" /> 약관에 동의합니다.</td>
+								name="agree" id="agree" value="" /> 약관에 동의합니다</td>
 					</tfoot>
 				</table>
 	</form>
