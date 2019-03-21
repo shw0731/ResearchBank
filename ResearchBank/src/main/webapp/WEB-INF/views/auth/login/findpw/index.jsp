@@ -6,7 +6,32 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+
 <title>Find Password</title>
+<!-- Bootstrap core CSS -->
+<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="/resources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+	rel='stylesheet' type='text/css'>
+
+<!-- Plugin CSS -->
+<link href="/resources/vendor/magnific-popup/magnific-popup.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/resources/css/creative.css" rel="stylesheet">
+
+
 
 <style>
 form {
@@ -125,6 +150,7 @@ form {
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto text-center">
+				     <div class="jumbotron" style="padding-top: 20px;">
 					<br/><h2 class="section-heading text-black">비밀번호 찾기</h2><br/><br/>
 					<tr>
 						<th scope="row"><font color=black>아이디(E-mail)</font></th>&nbsp;&nbsp;
@@ -134,14 +160,12 @@ form {
 							<input type="hidden" id="tomail" name="tomail" placeholder="상대의 이메일" class="form-control">
 							<input type="hidden" id="title" name="title" placeholder="제목을 입력해주세요" value="ResearchBank 임시비밀번호 발송" class="form-control">
 							<input type="hidden" id="content" name="content" placeholder="내용#" class="form-control"><br/><br/>
-							<button class="btn" onclick="duplicationId();">가입 여부 확인</button>
-							<button class="btn" onclick="sendpassword();">메일 보내기</button><br/><br/>
-							
-						<td></td>
-					</tr>
-				</div>
-			</div>
-		</div>
+									<input type="button" class="btn btn-info btn-send-message" value="가엽 여부 확인" onclick="duplicationId();" />
+									<input type="button" class="btn btn-info btn-send-message" value="메일 보내기" "onclick="sendpassword();" />
+								</div>
+							</div>
+							</div>	
+					</div>
 		<!-- </div> -->
 	</section>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
