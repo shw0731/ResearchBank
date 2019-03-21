@@ -14,12 +14,15 @@
 		<br />
 	<div class="row">
 		<div class="col-lg-8 mx-auto text-center">
-			<h2 class="section-heading">Let's Get In Touch!</h2>
-			<p class="mb-5">Ready for perfect service for you</p>
+			<h2 class="section-heading">Let's Get Survey!</h2>
+			<p class="mb-5">Do it and make some money</p>
 		</div> 
 	</div>
 	<hr />
+	
+	
 	<div class="wrap" style="margin: 10% 20% 10% 20%;">
+		<div class='left-box' style="font-family:a">1:1 QnA</div>
 		<table class="type04" id="dataTables-example">
 			<thead>
 				<tr class="info" align="center">
@@ -34,7 +37,7 @@
 				<c:choose>
 					<c:when test="${fn:length(list) > 0}">
 						<c:forEach items="${list }" var="row">
-
+						
 							<tr  height="50px">
 								<td align="center">${row.SURVEY_POINT}</td>
 								<td class="odd gradeX">
@@ -45,8 +48,8 @@
 								<td align="center">${row.CURRENT_PART }/${row.MAXIMUM_PART }</td>
 								<td align="center">${row.DEADLINE_DATE}</td>
 								<td align="center">${row.MEMBER_NICKNAME}</td>
+								
 							</tr>
-
 						</c:forEach>
 					</c:when>
 
