@@ -194,10 +194,7 @@ $("#kakao-login-btn").on("click", function(){
         }
       });
         
-}
-   
-	
-	<script type="text/javascript">
+})
 //e.o.kakao
 
 </script>
