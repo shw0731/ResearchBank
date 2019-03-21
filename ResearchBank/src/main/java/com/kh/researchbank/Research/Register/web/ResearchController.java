@@ -157,7 +157,7 @@ public class ResearchController {
 		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
 		
 		Map<String, Object> iMap = objectMapper.readValue(request.getParameter("json"), HashMap.class);
-		//참여했었거나, 참여수 다 찼을때
+		researchService.part(iMap);
 		
 		Map<String, Object> map = researchService.resultShow(iMap);
 		mv.addObject("map", map);
@@ -172,6 +172,8 @@ public class ResearchController {
 		mv.addObject("map",researchService.resultShow(map));
 		return mv;
 	}
+	
+	
 	@RequestMapping(value="/research/create" , method=RequestMethod.GET)
 	public ModelAndView create(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("research/create");
@@ -192,5 +194,16 @@ public class ResearchController {
 	
 		researchService.store(map);
 		return mv;
+	}
+	@RequestMapping(value="/research/resultShowDetail", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> showDetail(@RequestBody String str)throws Exception{
+		String jsonStr =str;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
+		System.out.println(jsonStr);
+		Map<String, Object> map = objectMapper.readValue(jsonStr, HashMap.class);
+		
+		return researchService.resultShowDetail(map);
 	}
 }

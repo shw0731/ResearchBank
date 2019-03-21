@@ -1,10 +1,8 @@
 package com.kh.researchbank.Research.Register.service.Impl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -103,6 +101,14 @@ public class ResearchServiceImpl implements ResearchService {
 		resultMap.put("queAList", researchDAO.selectQueA(map));
 		return resultMap;
 	}
+	//설문조사 자세히 보기
+	@Override
+	public Map<String, Object> resultShowDetail(Map<String, Object>map)throws Exception{
+		Map<String, Object> resultMap = researchDAO.selectDetail(map);
+		resultMap.put("detailList", researchDAO.selectDetailList(map));
+		return resultMap;
+	}
+	 
 	//설문 등록
 	@Override
 	public void store(Map<String, Object> map) throws Exception {

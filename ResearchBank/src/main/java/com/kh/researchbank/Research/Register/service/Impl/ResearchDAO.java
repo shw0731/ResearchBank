@@ -2,7 +2,6 @@ package com.kh.researchbank.Research.Register.service.Impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -94,12 +93,13 @@ public class ResearchDAO extends AbstractDAO {
 		insert("research.insertSurvey",map);
 		String survey_idx= (String) map.get("survey_seq");
 		
-		
-		for(int i=0;i<conList.size();i++) {
-			
-			conList.get(i).put("survey_idx", survey_idx);
-			
-			insert("research.insertCon",conList.get(i) );
+		if(map.get("conCheck").equals("Y")) {
+			for (int i = 0; i < conList.size(); i++) {
+
+				conList.get(i).put("survey_idx", survey_idx);
+
+				insert("research.insertCon", conList.get(i));
+			}
 		}
 		for(int i=0; i<queList.size();i++) {
 			queList.get(i).put("survey_idx", survey_idx);
@@ -107,11 +107,11 @@ public class ResearchDAO extends AbstractDAO {
 		}
 		
 	}
-	
+	//결과 보기 기본데이터
 	public Map<String, Object> selectReOne(Map<String, Object>map){
 		return (Map<String, Object>)selectOne("research.selectReOne",map);
 	}
-	
+	//조건 결과
 	public List<Map<String, Object>>selectConA(Map<String, Object>map){
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		int conCount = (Integer)selectOne("research.countCon" ,map.get("survey_idx"));
@@ -139,7 +139,7 @@ public class ResearchDAO extends AbstractDAO {
 		System.out.println(result.toString());
 		return result;
 	}
-	
+	//문항 결과
 	public List<Map<String, Object>>selectQueA(Map<String, Object>map){ 
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> tmpList = new ArrayList<Map<String, Object>>();
@@ -161,6 +161,35 @@ public class ResearchDAO extends AbstractDAO {
 			result.add(tmpMap);
 		}
 		return result;
+	}
+	//자세히보기 기본 데이터
+	public Map<String, Object>selectDetail(Map<String, Object> map){
+		Map<String, Object>resultMap = (Map<String, Object>)selectOne("research.selectDetail", map);
+		resultMap.put("conList", selectList("research.selectCon", map.get("survey_idx")));
+		resultMap.put("question", selectList("research.selectDetailQue", map.get("question_idx")));
+		resultMap.put("idx", map.get("idx"));
+		return resultMap;
+	}
+	
+	//자세히보기 조건 비교 데이터
+	public List<Map<String, Object>>selectDetailList(Map<String, Object>map){
+		List<Map<String, Object>> detailList = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> tmpList = new ArrayList<Map<String, Object>>();
+		int conCount = (Integer)selectOne("research.countCon" ,map.get("survey_idx"));
+		
+		for (int i = 0; i < conCount; i++) {
+			map.put("con_idx", i);
+			for (int j = 0; j < 5; j++) {
+				map.put("conOpt_idx", j);
+				tmpList.add((Map<String, Object>) selectOne("research.selectDetailAnswer", map));
+				map.remove("conOpt");
+			}
+			detailList.addAll(tmpList);
+			tmpList.clear();
+			map.remove("con_idx");
+		}
+
+		return detailList;
 	}
 	
 }

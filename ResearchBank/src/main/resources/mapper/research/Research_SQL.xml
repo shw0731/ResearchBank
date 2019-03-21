@@ -30,6 +30,11 @@
 		SELECT survey_subject FROM survey_list WHERE survey_idx = #{survey_idx}
 			 
 	</select>
+	<select id="selectDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT survey_idx
+			 , question_idx
+			 FROM question_list WHERE question_idx = #{question_idx}
+	</select>
 	<select id="selectCon" parameterType="String" resultType="hashmap">
 		SELECT condition_idx
 			 , condition_order
@@ -81,6 +86,17 @@
 		 	    AND l.survey_idx = #{survey_idx}	 	 
 	</select>
 	
+	<select id="selectDetailQue" parameterType="String" resultType="hashmap">
+		SELECT question_idx
+			 , question_order
+			 , question_subject
+			 , que_opt0
+			 , que_opt1
+			 , que_opt2
+			 , que_opt3
+			 , que_opt4			
+			 FROM question_list WHERE question_idx = #{question_idx} 
+	</select>
 	
 	
 	<!-- count -->
@@ -110,8 +126,22 @@
                     GROUP BY r.question_idx 
                   	ORDER BY Max(l.question_order)	
 	</select>
+	<select id="selectDetailAnswer" parameterType="hashmap" resultType="hashmap">
+		SELECT count(decode(r.answer, 0, 1, null)) as con${con_idx}_question0
+             , count(decode(r.answer, 1, 1, null)) as con${con_idx}_question1
+             , count(decode(r.answer, 2, 1, null)) as con${con_idx}_question2
+             , count(decode(r.answer, 3, 1, null)) as con${con_idx}_question3
+             , count(decode(r.answer, 4, 1, null)) as con${con_idx}_question4
+			   FROM question_list l 
+                  , answer r
+                  , participate_list m
+                  	WHERE r.question_idx = #{question_idx}
+                  	AND l.survey_idx = #{survey_idx}
+                  	AND m.condition${con_idx} = #{conOpt_idx}
+                  	AND r.partmember_id = m.partmember_id
+                  	AND r.question_idx = l.question_idx
 	
-	
+	</select>
 	<!-- Insert -->
 	<insert id="insertSurvey" parameterType="hashmap">
      <![CDATA[
@@ -133,7 +163,7 @@
                                                  , 0
                                                  , 0
                                                  , #{survey_subject}
-                                                 , '123123')
+                                                 , #{member_id})
      ]]>
      <selectKey keyProperty="survey_seq" resultType="String">
      	SELECT SURVEY_SEQ.CURRVAL FROM DUAL

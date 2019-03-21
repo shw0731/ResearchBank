@@ -22,10 +22,16 @@
 $(document).ready(function(){
 	$('.condition').hide();
 	$('#condition').change(function(){
-		if(this.checked)
+		if(this.checked){
 			$('.condition').show();
-		else
+			
+				$('#conCheck').attr('value','Y');
+		}else{
 			$('.condition').hide();
+			
+				$('#conCheck').attr('value','N');
+			
+		}
 	});
 	$.ajaxSetup({
 	    headers: {
@@ -45,10 +51,12 @@ $(document).ready(function(){
 	<div id="survey_subject">
 		<strong>제목:</strong><input id="survey_subject" name="survey_subject" type="text">
 	
-		<input type="checkbox" id="condition" name="conCheck" value="Y">조건<br/>
+		<input type="checkbox" id="condition" value="Y">조건<br/>
 		마감일:<input type="date" name="deadline_date"> <br/>
 		설문조사 포인트:<input type="text" name="survey_point"><br/>
 		총 참여자수<input type="text" name="maximum_part"><br/>
+		<input type="hidden" name="member_id" value="${MEMBER_ID}">
+		<input type="hidden" id="conCheck" name="conCheck" value="N">
 		
 	</div>
 <br/>
@@ -89,6 +97,7 @@ $(document).ready(function(){
 		</div>
 		<button type="button" id="storeSurvey" onclick="fn_storeSurvey(); return false;">저장</button>
 	</div>
+	
 </form>
 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
