@@ -187,9 +187,18 @@ tbody>tr:HOVER {
 							+ value.MAXIMUM_PART + "</td>" + "<td>"
 							+ value.CURRENT_PART + "</td>" + "<td>"
 							+ value.ISREPLY + "</td>" + "<td>" 
-							+ value.ISOPEN + "</td>" + "<td>" 
-							+ value.SURVEY_SUBJECT + "</td>" + "<td>" 
-							+ value.MEMBER_ID + "</td>" 
+							+ value.ISOPEN + "</td>" 
+							
+							+ "<td>" 
+							+ "<a href='/research/resultShow?survey_idx="+value.SURVEY_IDX+"'>"   
+							+ value.SURVEY_SUBJECT 
+							+ "</a>"
+							+ "</td>" 
+							
+							+ "<td>" 
+							+ value.MEMBER_ID 
+							+ "</td>" 
+							
 							+ "</tr>";
 				});
 				body.append(str);
