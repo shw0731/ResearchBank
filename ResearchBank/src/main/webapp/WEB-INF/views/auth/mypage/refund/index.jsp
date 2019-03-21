@@ -23,15 +23,15 @@ form {
 		$("#refund_price").val(refundPoint);
 		var refundPoint=$("#refund_price").val();
 		n= refundPoint;
-		n += "이 환전 됩니다. (만원이하내림)";
+		n += "이 환전을 신청하셨습니다. (만원이하내림)";
 		alert(n);
 		resultPoint = nowPoint-refundPoint;
 		$("#result_point").val(resultPoint);
 		var remain=$("#result_point").val();
 
 		
-		if(refundPoint.length == '0'){
-			alert("환전받을 포인트를 입력해주세요");
+		if(refundPoint.length < 5){
+			alert("환전받을 포인트가 없습니다.");
 			return;
 		}					
 		if(resultPoint<0){
