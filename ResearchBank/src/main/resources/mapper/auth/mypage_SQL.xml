@@ -124,12 +124,13 @@
 <insert id="regRefund" parameterType="hashmap">
 	<![CDATA[
 		INSERT INTO REFUND_LIST 
-			(MEMBER_ID, REFUND_PRICE, REFUND_STATE, REGIST_DATE)
+			(MEMBER_ID, REFUND_PRICE, REFUND_STATE, REGIST_DATE, REFUND_NO)
 		VALUES (
 		#{member_id},
 		#{refund_price},
 		'0',
-		to_date(sysdate,'yy-mm-dd')
+		to_date(sysdate,'yy-mm-dd'),
+		REFUND_LIST_SEQ.NEXTVAL
 		)
 	]]>
 </insert>
