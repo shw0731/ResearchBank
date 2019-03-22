@@ -3,62 +3,21 @@
 
 <mapper namespace="admin">
 
-<!-- 	<select id="memberList" parameterType="hashmap"
-		resultType="hashmap">
-		<![CDATA[
-				SELECT
-		            AAA.*
-		        FROM(
-		]]>
-		<![CDATA[
-		            SELECT
-		                COUNT(*) OVER() AS TOTAL_COUNT,
-		                AA.*
-		            FROM(
-						SELECT
-							ROW_NUMBER() OVER (ORDER BY ROLE_ID ASC) RNUM,
-							MEMBER_ID,
-							MEMBER_NICKNAME,
-							MEMBER_POINT,
-							DECODE(MEMBER_GENDER,1,'남자',0,'여자',null,'미기입') AS MEMBER_GENDER,
-							DECODE(MEMBER_ADDRESS,null,'미기입',MEMBER_ADDRESS) AS MEMBER_ADDRESS,
-							DECODE(MEMBER_MARRY,null,'미기입',MEMBER_MARRY) AS MEMBER_MARRY,
-							DECODE(MEMBER_AREA,null,'미기입',MEMBER_AREA) AS MEMBER_AREA,
-							DECODE(MEMBER_JOB,null,'미기입',MEMBER_JOB) AS MEMBER_JOB,
-							DECODE(ROLE_ID,0,'회원',1,'관리자',2,'비회원',3,'가회원') AS ROLE_ID,
-							MEMBER_BIRTH
-						FROM
-							MEMBER_LIST
-		]]>
-		<![CDATA[				) AA
-		        ) AAA
-		        WHERE
-		            AAA.RNUM BETWEEN #{START} AND #{END}
-		]]>
-	</select>
-
-	<select id="surveyList" parameterType="hashmap"
-		resultType="hashmap">
-		<include refid="common.pagingPre" />
-		<![CDATA[
-			SELECT
-				ROW_NUMBER() OVER (ORDER BY SURVEY_IDX DESC) RNUM,
-				SURVEY_IDX,
-				TO_CHAR(REG_DATE,'YYYY.MM.DD') AS REG_DATE,
-				TO_CHAR(DEADLINE_DATE,'YYYY.MM.DD') AS DEADLINE_DATE,
-				SURVEY_POINT,
-				MAXIMUM_PART,
-				CURRENT_PART,
-				ISREPLY,
-				ISOPEN,
-				SURVEY_SUBJECT,
-				MEMBER_ID
-			FROM
-				SURVEY_LIST
-		]]>
-		<include refid="common.pagingPost" />
-	</select>
-	 -->
+	<!-- <select id="memberList" parameterType="hashmap" resultType="hashmap"> 
+		<![CDATA[ SELECT AAA.* FROM( ]]> <![CDATA[ SELECT COUNT(*) OVER() AS TOTAL_COUNT, 
+		AA.* FROM( SELECT ROW_NUMBER() OVER (ORDER BY ROLE_ID ASC) RNUM, MEMBER_ID, 
+		MEMBER_NICKNAME, MEMBER_POINT, DECODE(MEMBER_GENDER,1,'남자',0,'여자',null,'미기입') 
+		AS MEMBER_GENDER, DECODE(MEMBER_ADDRESS,null,'미기입',MEMBER_ADDRESS) AS MEMBER_ADDRESS, 
+		DECODE(MEMBER_MARRY,null,'미기입',MEMBER_MARRY) AS MEMBER_MARRY, DECODE(MEMBER_AREA,null,'미기입',MEMBER_AREA) 
+		AS MEMBER_AREA, DECODE(MEMBER_JOB,null,'미기입',MEMBER_JOB) AS MEMBER_JOB, DECODE(ROLE_ID,0,'회원',1,'관리자',2,'비회원',3,'가회원') 
+		AS ROLE_ID, MEMBER_BIRTH FROM MEMBER_LIST ]]> <![CDATA[ ) AA ) AAA WHERE 
+		AAA.RNUM BETWEEN #{START} AND #{END} ]]> </select> <select id="surveyList" 
+		parameterType="hashmap" resultType="hashmap"> <include refid="common.pagingPre" 
+		/> <![CDATA[ SELECT ROW_NUMBER() OVER (ORDER BY SURVEY_IDX DESC) RNUM, SURVEY_IDX, 
+		TO_CHAR(REG_DATE,'YYYY.MM.DD') AS REG_DATE, TO_CHAR(DEADLINE_DATE,'YYYY.MM.DD') 
+		AS DEADLINE_DATE, SURVEY_POINT, MAXIMUM_PART, CURRENT_PART, ISREPLY, ISOPEN, 
+		SURVEY_SUBJECT, MEMBER_ID FROM SURVEY_LIST ]]> <include refid="common.pagingPost" 
+		/> </select> -->
 
 	<update id="deleteMember" parameterType="hashmap">
 	<![CDATA[
@@ -110,21 +69,22 @@
 				AAA.RNUM BETWEEN #{START} AND #{END}
 		) AAAA
 		]]>
-		
-		<choose>	
+
+		<choose>
 			<when test="searchOption == 'all'">
 				WHERE MEMBER_ID like '%'||#{keyword}||'%'
 				OR
 				MEMBER_NICKNAME like '%'||#{keyword}||'%'
-				OR MEMBER_ADDRESS like '%'||#{keyword}||'%'
+				OR MEMBER_ADDRESS like
+				'%'||#{keyword}||'%'
 			</when>
 			<otherwise>
 				WHERE ${searchOption} like '%'||#{keyword}||'%'
 			</otherwise>
 		</choose>
-		
+
 	</select>
-	
+
 	<select id="surveySearch" parameterType="hashmap"
 		resultType="hashmap">
 		<![CDATA[
@@ -164,7 +124,7 @@
 				AAA.RNUM BETWEEN #{START} AND #{END}
 		) AAAA
 		]]>
-		<choose>	
+		<choose>
 			<when test="searchOption == 'all'">
 				WHERE SURVEY_SUBJECT like '%'||#{keyword}||'%'
 				OR
@@ -174,8 +134,50 @@
 				WHERE ${searchOption} like '%'||#{keyword}||'%'
 			</otherwise>
 		</choose>
-		
+
 	</select>
+
+<!-- 리펀드페이지 -->
+	<select id="refundSearch" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+		    	AAA.*
+		    FROM(
+		    	SELECT
+		        COUNT(*) OVER() AS TOTAL_COUNT,
+		        	AA.*
+		        FROM(
+		            ]]>
+				<![CDATA[
+			SELECT
+				ROW_NUMBER() OVER (ORDER BY REFUND_NO DESC) RNUM,
+				MEMBER_ID,
+				TO_CHAR(REFUND_PRICE,'999,999,999,999,999,999') AS REFUND_PRICE,
+				DECODE(REFUND_STATE,0,'미지급',1,'지급완료') AS REFUND_STATE,
+				TO_CHAR(REGIST_DATE,'yy-mm-dd') AS REGIST_DATE,
+				REFUND_NO
+			FROM
+				REFUND_LIST
+				]]>
+				<![CDATA[		
+				) AA
+		        ) AAA
+		        WHERE
+				AAA.RNUM BETWEEN #{START} AND #{END}
+		]]>
+	</select>
+	
+		<update id="refunding" parameterType="hashmap">
+	<![CDATA[
+        UPDATE 
+        	REFUND_LIST
+        SET
+        	REFUND_STATE = 1
+        WHERE
+             MEMBER_ID= #{MEMBER_ID} AND REFUND_NO= #{REFUND_NO}
+    ]]>
+	</update>
+	
 
 
 </mapper>	

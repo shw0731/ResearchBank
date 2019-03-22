@@ -38,6 +38,20 @@ public class AdminServiceImpl implements AdminService{
 	
 	}
 
+
+	@Override
+	public List<Map<String, Object>> indexRefund(Map<String, Object> map) {
+		
+		return adminDAO.indexRefund(map);
+	}
+
+
+	@Override
+	public void refundMember(Map<String, Object> map) {
+		adminDAO.refundMember(map);
+		
+	}
+
 	
 
 }

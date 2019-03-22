@@ -11,6 +11,10 @@ public interface AdminService {
 
 	public void deleteMember(Map<String, Object> map);
 
+	public List<Map<String, Object>> indexRefund(Map<String, Object> map);
+
+	public void refundMember(Map<String, Object> map);
+
 	
 
 
