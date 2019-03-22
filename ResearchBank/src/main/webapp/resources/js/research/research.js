@@ -231,14 +231,11 @@ var fn_rmQueOpt = function(queIdx, optIdx){
 
 //설문조사 저장
 var fn_storeSurvey = function(){
-
-	
 	var jsonData = JSON.stringify($('#frm').serializeObject());
 	var jsonSubmit = new JsonSubmit(jsonData);
 	jsonSubmit.setUrl("/research/store");
 	jsonSubmit.ajax();
 
-	
 }
 
 var fn_search = function(){
