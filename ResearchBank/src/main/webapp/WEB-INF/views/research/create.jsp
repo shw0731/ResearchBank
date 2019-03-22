@@ -96,7 +96,7 @@ function Doconfirm() {
 	<div id="condition_subject" class="condition">
 		<strong>조건1:</strong><input name="condition[0][condition_subject]" type="text">
 		<input type="hidden" name="condition[0][condition_order]" value=0>
-		
+		<input type="hidden" name="condition[0][conOpt_num]" value=2>
 		<button type="button" id="conAddBtn" onclick="fn_addCon(); return false;">+</button><br/>
 		<div id="condition_option" class="option">
 			<strong>보기1:</strong>
@@ -115,6 +115,7 @@ function Doconfirm() {
 	<div id="question_subject" class="question">
 		<strong>문항:1</strong><input name="question[0][question_subject]" type="text">
 		<input type="hidden" name="question[0][question_order]" value=0>
+		<input type="hidden" name="question[0][queOpt_num]" value=2>
 		<button type="button" id="queAddBtn" onclick="fn_addQue(); return false;">+</button><br/>
 		<div id="question_option" class="option">
 			<strong>보기1:</strong>

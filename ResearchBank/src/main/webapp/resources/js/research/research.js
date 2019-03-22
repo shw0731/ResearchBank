@@ -74,6 +74,7 @@ var fn_addCon = function(){
 		
 		$('.condition').eq(idx-1).after('<div id="condition_subject" class="condition"><strong>조건'+(idx+1)+':</strong><input name="condition['+idx+'][condition_subject]" type="text" >'
 		+'<input type="hidden" name="condition['+idx+'][condition_order]" value='+idx+'>'
+		+'<input type="hidden" name="condition['+idx+'][conOpt_num]" value=2>'
 		+'<button type="button" id="conAddBtn" onclick="fn_addCon(); return false;">+</button>'
 		+'<button type="button" id="conRmBtn" onclick="fn_rmCon('+idx+'); return false;">X</button>'
 		+'<div id="condition_option" class="option"><strong>보기1:</strong><input id="opt" name="condition['+idx+'][con_opt][0]" type="text"></div><div id="condition_option" class="option">'
@@ -96,6 +97,7 @@ var fn_rmCon = function(idx){
 		$(' > strong', this).text('조건'+(idx+1)+':');
 		$(' > input', this).eq(0).attr('name', 'condition['+idx+'][condition_subject]');
 		$(' > input', this).eq(1).attr('name', 'condition['+idx+'][condition_order]');
+		$(' > input', this).eq(2).attr('name', 'condition['+idx+'][conOpt_num]');
 		$(' > button', this).eq(1).attr('onclick','fn_rmCon('+idx+')');
 		$(' > div', this).each(function(optIdx){
 			$(' > input', this).eq(0).attr('name','condition['+idx+'][con_opt]['+optIdx+']');
@@ -121,7 +123,9 @@ var fn_addConOpt = function(conIdx,optIdx){
 			+'<strong>보기'+(optIdx+2)+':</strong>	<input id="opt" name="condition['+conIdx+'][con_opt]['+(optIdx+1)+']" type="text">'
 			+'<button type="button" id="optAddBtn" onclick="fn_addConOpt('+conIdx+','+(optIdx+1)+'); return false;">+</button>'
 			+'<button type="button" id="optRmBtn" onclick="fn_rmConOpt('+conIdx+','+(optIdx+1)+'); return false;">x</button></div>');
+		$('.condition').eq(conIdx).find('input').eq(2).attr('value',(optIdx+2));
 		$('.condition').eq(conIdx).find('div').eq(optIdx).find('button').eq(0).hide();
+		
 		if(optIdx==3)
 			$('.condition').eq(conIdx).find('div').eq(optIdx+1).find('button').eq(0).hide();
 	}else{
@@ -131,6 +135,7 @@ var fn_addConOpt = function(conIdx,optIdx){
 //조건 보기 삭제
 var fn_rmConOpt = function(conIdx, optIdx){
 	$('.condition').eq(conIdx).find('div').eq(optIdx).remove();
+	$('.condition').eq(conIdx).find('input').eq(2).attr('value', optIdx);
 	$('.condition').eq(conIdx).find('div').each(function(idx){
 		$(' > strong', this).text('보기'+(idx+1)+':');
 		$(' > input', this).eq(0).attr('name','condition['+conIdx+'][con_opt]['+idx+']');
@@ -154,6 +159,7 @@ var fn_addQue = function(){
 		
 	$('.question').eq(idx-1).after('<div id="question_subject" class="question"><strong>문항'+(idx+1)+':</strong><input name="question['+idx+'][question_subject]" type="text" >'
 	+'<input type="hidden" name="question['+idx+'][question_order]" value='+idx+'>'
+	+'<input type="hidden" name="question['+idx+'][queOpt_num]" value=2>'
 	+'<button type="button" id="queAddBtn" onclick="fn_addQue(); return false;">+</button>'
 	+'<button type="button" id="queRmBtn" onclick="fn_rmQue('+idx+'); return false;">X</button>'
 	+'<div id="question_option" class="option"><strong>보기1:</strong><input id="opt" name="question['+idx+'][que_opt][0]" type="text"></div><div id="question_option" class="option">'
@@ -174,6 +180,7 @@ var fn_rmQue = function(idx){
 		$(' > strong', this).text('문항'+(idx+1)+':');
 		$(' > input', this).eq(0).attr('name','question['+idx+'][question_subject]');
 		$(' > input', this).eq(1).attr('name','question['+idx+'][question_order]');
+		$(' > input', this).eq(2).attr('name','question['+idx+'][queOpt_num]');
 		$(' > button', this).eq(1).attr('onclick','fn_rmQue('+idx+')');
 		$(' > div', this).each(function(optIdx){
 			$(' > input', this).eq(0).attr('name', 'question['+idx+'][que_opt]['+optIdx+']');
@@ -204,6 +211,7 @@ var fn_addQueOpt = function(queIdx,optIdx){
 			+'<button type="button" id="optAddBtn" onclick="fn_addQueOpt('+queIdx+','+(optIdx+1)+'); return false;">+</button>'
 			+'<button type="button" id="optRmBtn" onclick="fn_rmQueOpt('+queIdx+','+(optIdx+1)+'); return false;">x</button></div>');
 		$('.question').eq(queIdx).find('div').eq(optIdx).find('button').eq(0).hide();
+		$('.question').eq(queIdx).find('input').eq(2).attr('value',(optIdx+2));
 		if(optIdx==3)
 			$('.question').eq(queIdx).find('div').eq(optIdx+1).find('button').eq(0).hide();
 	}else{
@@ -213,6 +221,7 @@ var fn_addQueOpt = function(queIdx,optIdx){
 //문항 보기 제거
 var fn_rmQueOpt = function(queIdx, optIdx){
 	$('.question').eq(queIdx).find('div').eq(optIdx).remove();
+	$('.question').eq(queIdx).find('input').eq(2).attr('value', optIdx);
 	$('.question').eq(queIdx).find('div').each(function(idx){
 		$(' > strong', this).text('보기'+(idx+1)+':');
 		$(' > input', this).eq(0).attr('name', 'question['+idx+'][que_opt]['+idx+']');
