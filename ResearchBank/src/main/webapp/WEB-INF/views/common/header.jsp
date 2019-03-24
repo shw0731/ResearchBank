@@ -50,15 +50,15 @@
 }
 /* Style the subnav content - positioned absolute */
 .subnav-content {
-      position: absolute;
-    margin-top: 0px;
-    margin-left: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 1;
-    transition: 1s;
-    top: 62px;
-    display:none;
+  display: none;
+  position: absolute;
+  background-color: #2e3436;
+  margin-top : 0px;
+  margin-left: 15px;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  transition: 1s;
 }
 .subnav:before {
 	content: '';
@@ -89,10 +89,10 @@
   display: block;
   
 }
+
 .subnav:hover:before {
 	opacity: 1;
 }
-
 </style>
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -104,7 +104,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/introduction.do">About</a>
           </li>
           <li class="nav-item subnav">
@@ -151,7 +151,7 @@
           </li>
    		  </c:if>	
    		  <c:if test="${MEMBER_NICKNAME != null }">
-          <li class="nav-item subnav">
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/logout" onclick="kout()">Logout</a>
           </li>
    		  </c:if>    	

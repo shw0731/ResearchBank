@@ -177,3 +177,9 @@ input::-webkit-input-placeholder { color: white; }
 .editable {
 	display: inline-block;
 }
+
+#savebtn > button{
+	margin-left: 45%;
+    border-color: gray;
+    border-width: unset;
+}

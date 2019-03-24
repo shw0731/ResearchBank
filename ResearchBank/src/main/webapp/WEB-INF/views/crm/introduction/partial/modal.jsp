@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <div id="modal">
 	<div>
 		<div class="topStripe">
@@ -7,9 +7,7 @@
 				<h3 id="modal_title"></h3>
 			</div>
 			<div id="half" class="half">
-			<div id="savebtn" style="display:none;">
-			<button type="button" class="btn" onclick="fn_save(); return false;">Save</button>
-			</div>
+
 				<button id="close">
 					<div>
 						<div class="stripe"></div>
@@ -19,15 +17,19 @@
 			</div>
 		</div>
 		<div class="plate">
-			<p id="modal_content">
-			</p>
+			<p id="modal_content"></p>
+		</div>
+		<div class="modal_footer">
+			<div id="savebtn" style="display: none;">
+				<button type="button" class="btn" onclick="fn_save(); return false;">Save</button>
+			</div>
 		</div>
 	</div>
-<form id="profile">
-<input type="hidden" id="team_name" name="team_name"/>
-<input type="hidden" id="team_id" name="team_id"/>
-<textarea name="team_context" id="team_context" style="display:none;"></textarea>
-</form>
+	<form id="profile">
+		<input type="hidden" id="team_name" name="team_name" /> <input
+			type="hidden" id="team_id" name="team_id" />
+		<textarea name="team_context" id="team_context" style="display: none;"></textarea>
+	</form>
 </div>
 <script type="text/javascript">
 var fn_save =  function(){
