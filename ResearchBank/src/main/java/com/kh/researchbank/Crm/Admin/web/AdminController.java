@@ -6,8 +6,10 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.AlternativeJdkIdGenerator;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,10 +45,18 @@ public class AdminController {
 	@RequestMapping(value="/admin/member")
 	public @ResponseBody ModelAndView indexMember(CommandMap commandMap, 
 			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
-            @RequestParam(defaultValue="") String keyword) throws Exception {
+            @RequestParam(defaultValue="") String keyword, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("crm/admin/indexMember");	
+		
 		Map<String, Object> map = new HashMap<String, Object>();
-
+		
+		String se_rol_id = session.getAttribute("ROLE_ID").toString();
+		
+		if(se_rol_id != "1")
+		{
+			return mv = new ModelAndView("redirect:/");
+		}
+		
 	    map.put("searchOption", searchOption); // 검색옵션
 	    map.put("keyword", keyword); // 검색키워드
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
@@ -58,10 +68,17 @@ public class AdminController {
 	@RequestMapping(value="/admin/survey")
 	public @ResponseBody ModelAndView indexSurvey(CommandMap commandMap,
 			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
-            @RequestParam(defaultValue="") String keyword) throws Exception {
+            @RequestParam(defaultValue="") String keyword, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("crm/admin/indexSurvey");	
 		Map<String, Object> map = new HashMap<String, Object>();
-
+		
+		String se_rol_id = session.getAttribute("ROLE_ID").toString();
+		
+		if(se_rol_id != "1")
+		{
+			return mv = new ModelAndView("redirect:/");
+		}
+		
 	    map.put("searchOption", searchOption); // 검색옵션
 	    map.put("keyword", keyword); // 검색키워드
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
@@ -71,10 +88,17 @@ public class AdminController {
 	
 	//---------------------리펀드 조회------------------------------//
 	@RequestMapping(value="/admin/refund")
-	public @ResponseBody ModelAndView indexRefund(CommandMap commandMap) throws Exception {
+	public @ResponseBody ModelAndView indexRefund(CommandMap commandMap, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("crm/admin/indexRefund");	
 		Map<String, Object> map = new HashMap<String, Object>();
 
+		String se_rol_id = session.getAttribute("ROLE_ID").toString();
+		
+		if(se_rol_id != "1")
+		{
+			return mv = new ModelAndView("redirect:/");
+		}
+		
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
 	    
 		return mv;
@@ -82,14 +106,14 @@ public class AdminController {
 	
 	//---------------------맴버 페이징------------------------------//
 	@RequestMapping(value="/admin/memberPaging") // 페이징 구간
-	public ModelAndView indexMemberPaging(CommandMap commandMap, 
+	public ModelAndView indexMemberPaging(HttpSession session,CommandMap commandMap, 
 			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
             @RequestParam(defaultValue="") String keyword) throws Exception{
 	    ModelAndView mv = new ModelAndView("jsonView");
 	    List<Map<String,Object>> list = adminservice.indexMember(commandMap.getMap(),searchOption, keyword);
 	    
 	    Map<String, Object> map = new HashMap<String, Object>();
-	  
+	    
 	    map.put("searchOption", searchOption); // 검색옵션
 	    map.put("keyword", keyword); // 검색키워드
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
@@ -110,10 +134,13 @@ public class AdminController {
 			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
             @RequestParam(defaultValue="") String keyword) throws Exception{
 	    ModelAndView mv = new ModelAndView("jsonView");
-	     
-	    List<Map<String,Object>> list = adminservice.indexSurvey(commandMap.getMap(),searchOption, keyword);
+	   
+	    
+
+		
+		List<Map<String,Object>> list = adminservice.indexSurvey(commandMap.getMap(),searchOption, keyword);
 	    Map<String, Object> map = new HashMap<String, Object>();
-		  
+		 
 	    map.put("searchOption", searchOption); // 검색옵션
 	    map.put("keyword", keyword); // 검색키워드
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장

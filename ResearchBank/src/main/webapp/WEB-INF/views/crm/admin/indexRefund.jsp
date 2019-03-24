@@ -80,7 +80,7 @@ tbody>tr:HOVER {
 
 
 	<div
-		style="width: 50%; margin: 5% 20% 1% 42%; padding: 1px; text-align: center;">
+		style="width: 50%; margin: margin: 5% 37%%; padding: 1px; text-align: center;">
 		<ul class="nav nav-pill">
 			<li role="presentation"><a href="/admin/member">회원관리</a>
 			</li>
