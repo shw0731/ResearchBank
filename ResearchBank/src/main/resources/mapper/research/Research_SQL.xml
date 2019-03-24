@@ -43,7 +43,8 @@
 			 , con_opt1
 			 , con_opt2
 			 , con_opt3
-			 , con_opt4			 
+			 , con_opt4
+			 , conopt_num			 
 			 FROM condition_list WHERE survey_idx = #{survey_idx}
 			 ORDER BY condition_order ASC
 	</select>
@@ -98,6 +99,9 @@
 			 FROM question_list WHERE question_idx = #{question_idx} 
 	</select>
 	
+	<select id="countConOptDetail" parameterType="String" resultType="hashmap">
+		SELECT conopt_num FROM condition_list WHERE survey_idx = #{survey_idx} ORDER BY condition_order ASC
+	</select>
 	
 	<!-- count -->
 	<select id="countCon" parameterType="String" resultType="int">
@@ -111,6 +115,15 @@
      		 , count(decode(${condition}, 3 , 1 , null)) as condition3
      		 , count(decode(${condition}, 4 , 1 , null)) as condition4
      		 FROM participate_list where survey_idx = #{survey_idx}
+	</select>
+	
+	<select id="countQueAnswer" parameterType="String" resultType="hashmap">
+		select count(decode(answer, 0, 1, null)) as answer0
+			 , count(decode(answer, 1, 1, null)) as answer1
+			 , count(decode(answer, 2, 1, null)) as answer2
+			 , count(decode(answer, 3, 1, null)) as answer3
+			 , count(decode(answer, 4, 1, null)) as answer4
+			   FROM answer where question_idx = #{question_idx}
 	</select>
 	
 	<select id="countQueOpt" parameterType="hashmap" resultType="hashmap">

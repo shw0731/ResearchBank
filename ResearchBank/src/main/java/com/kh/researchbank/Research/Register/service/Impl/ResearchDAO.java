@@ -167,6 +167,7 @@ public class ResearchDAO extends AbstractDAO {
 		Map<String, Object>resultMap = (Map<String, Object>)selectOne("research.selectDetail", map);
 		resultMap.put("conList", selectList("research.selectCon", map.get("survey_idx")));
 		resultMap.put("question", selectList("research.selectDetailQue", map.get("question_idx")));
+		resultMap.put("queAnswer", selectOne("research.countQueAnswer", map.get("question_idx")));
 		resultMap.put("idx", map.get("idx"));
 		return resultMap;
 	}
@@ -175,11 +176,11 @@ public class ResearchDAO extends AbstractDAO {
 	public List<Map<String, Object>>selectDetailList(Map<String, Object>map){
 		List<Map<String, Object>> detailList = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> tmpList = new ArrayList<Map<String, Object>>();
-		int conCount = (Integer)selectOne("research.countCon" ,map.get("survey_idx"));
+		List<Map<String, Object>> conOptCount = (List<Map<String, Object>>)selectList("research.countConOptDetail" ,map.get("survey_idx"));
 		
-		for (int i = 0; i < conCount; i++) {
+		for (int i = 0; i < conOptCount.size(); i++) {
 			map.put("con_idx", i);
-			for (int j = 0; j < 5; j++) {
+			for (int j = 0; j < Integer.parseInt( String.valueOf(conOptCount.get(i).get("CONOPT_NUM"))); j++) {
 				map.put("conOpt_idx", j);
 				tmpList.add((Map<String, Object>) selectOne("research.selectDetailAnswer", map));
 				map.remove("conOpt");
