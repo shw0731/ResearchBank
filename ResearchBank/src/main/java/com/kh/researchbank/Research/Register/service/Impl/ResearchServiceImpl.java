@@ -56,6 +56,15 @@ public class ResearchServiceImpl implements ResearchService {
 	}
 	//설문 참여 및 참여수 증가
 	@Override
+	public boolean checkPart(Map<String, Object> map)throws Exception{
+		
+		if(researchDAO.checkPart(map)==0) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
 	public Map<String, Object> part(Map<String, Object> map)throws Exception{
 		Map<String, Object> aMap = researchDAO.part(map);
 		researchDAO.updatePart((String) map.get("survey_idx"));
@@ -71,7 +80,7 @@ public class ResearchServiceImpl implements ResearchService {
 			if(map.get("partmember_id")==""||map.get("partmember_id")==null) {
 				return true;
 			}
-			else if(researchDAO.selectPart2(map).get("SURVEY_IDX")!=null) {
+			else if(researchDAO.selectPart2(map)!=null) {
 				return false;
 			}
 			

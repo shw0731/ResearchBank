@@ -141,7 +141,7 @@ public class ResearchController {
 			mv.addObject("map", map);
 			return mv;
 		}else {
-			mv.setViewName("research/index");
+			mv.setViewName("home");
 			return mv;
 		}
 		
@@ -169,6 +169,23 @@ public class ResearchController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("survey_idx", request.getParameter("survey_idx"));
 		map.put("member_id", request.getParameter("member_id"));
+		if(researchService.checkPart(map)) {
+			map.remove("member_id");
+			map.put("partmember_id", request.getParameter("member_id"));
+			if(researchService.validator(map)) {
+				mv.setViewName("research/show");
+				Map<String, Object> resultMap = researchService.show(request.getParameter("survey_idx"));
+				mv.addObject("map", resultMap);
+				return mv;
+			}else {
+				mv.setViewName("research/index");
+				return mv;
+			}
+			
+			
+			
+		}
+		System.out.println(mv.getViewName());
 		mv.addObject("map",researchService.resultShow(map));
 		return mv;
 	}

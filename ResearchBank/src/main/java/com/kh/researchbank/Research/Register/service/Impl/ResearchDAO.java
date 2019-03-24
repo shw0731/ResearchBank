@@ -68,6 +68,10 @@ public class ResearchDAO extends AbstractDAO {
 	}
 	//
 	
+	public int checkPart (Map<String, Object>map) throws Exception{
+		return (Integer)selectOne("research.selectPartNum", map);
+	}
+	
 	
 	//참여수 증가
 	public void updatePart (String survey_idx) {

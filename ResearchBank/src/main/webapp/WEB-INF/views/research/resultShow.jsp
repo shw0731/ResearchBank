@@ -337,8 +337,13 @@ a {
 			for(var j=tmp ;j<tmp+(data.conList[i].CONOPT_NUM);j++ ){
 				
 				
-				
-				
+				var answerSum =0;
+				for(var k =0 ; k<5 ; k++){
+					answerSum += eval('data.detailList['+j+'].CON'+i+'_QUESTION'+k);
+				}
+				if(answerSum==0){
+					break;
+				}
 				var options = {									
 	  	                  title: eval('data.conList['+i+'].CON_OPT'+(j-tmp)),
 	  	                  pieHole: 0.4,

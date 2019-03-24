@@ -103,6 +103,10 @@
 		SELECT conopt_num FROM condition_list WHERE survey_idx = #{survey_idx} ORDER BY condition_order ASC
 	</select>
 	
+	<select id="selectPartNum" parameterType="hashmap" resultType="int">
+		SELECT current_part FROM survey_list WHERE survey_idx = #{survey_idx}
+	</select>
+	
 	<!-- count -->
 	<select id="countCon" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM condition_list WHERE survey_idx = #{survey_idx}
@@ -187,15 +191,18 @@
                          , CONDITION_IDX
                          , CONDITION_ORDER
                          , CONDITION_SUBJECT
+                         , CONOPT_NUM
                          , CON_OPT0
                          , CON_OPT1
                          , CON_OPT2
                          , CON_OPT3
                          , CON_OPT4
+                         
                          ) values ( #{survey_idx}
                                   , CONDITION_SEQ.nextval
                                   , #{condition_order}
                                   , #{condition_subject}
+                                  , #{conOpt_num}
                                   <foreach collection="con_opt" item="item">
                                   , #{item}
                                   </foreach>
