@@ -86,7 +86,7 @@ public class ResearchController {
 			
 			totalCount = list.size();
 			
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "research/index", searchNum, isSearch);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "index", searchNum, isSearch);
 			pagingHtml = page.getPagingHtml().toString();
 		
 			int lastCount = totalCount;
@@ -110,7 +110,7 @@ public class ResearchController {
 		
 		totalCount = list.size();
 		
-		page = new Paging(currentPage, totalCount, blockCount, blockPage, "research/index");
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "index");
 		pagingHtml=page.getPagingHtml().toString();  
 		
 		int lastCount = totalCount;
