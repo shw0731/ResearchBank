@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
@@ -16,7 +17,7 @@ public interface IntroductionService {
 	 * @return
 	 * @throws Exception
 	 */
-	public String index() throws Exception;
+	public String index(ModelMap model,HttpServletRequest req, HttpServletResponse res) throws Exception;
 	
 	
 	/**********
@@ -24,7 +25,7 @@ public interface IntroductionService {
 	 * @return
 	 * @throws Exception
 	 */
-	public String show(Map<String , Object> params, ModelMap map, HttpServletRequest req, HttpServletResponse res) throws Exception;
+	public String show(Map<String , Object> params, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception;
 	
 	
 	/**********
@@ -33,5 +34,5 @@ public interface IntroductionService {
 	 * @throws Exception
 	 */
 	
-	public String store(Map<String , Object> params, ModelMap map, HttpServletRequest req, HttpServletResponse res) throws Exception;
+	public String store(Map<String , Object> params, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception;
 }

@@ -44,8 +44,8 @@ public class IntroductionController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/introduction" , method = RequestMethod.GET)
-	public String index() throws Exception {
-		return introductionService.index();
+	public String index(ModelMap model ,HttpServletRequest req, HttpServletResponse res) throws Exception {
+		return introductionService.index(model,req,res);
 	}
 	
 	/**********
@@ -64,9 +64,8 @@ public class IntroductionController {
 	 * @return 
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/introduction" , method = RequestMethod.POST , produces = "application/text; charset=utf8")
-	@ResponseBody
-	public String store(Map<String , Object> params, ModelMap map, HttpServletRequest req, HttpServletResponse res) throws Exception {
-		return introductionService.store(params, map, req, res);
+	@RequestMapping(value="/introduction" , method = RequestMethod.POST)
+	public String store(@RequestParam Map<String , Object> params, ModelMap model, HttpServletRequest req, HttpServletResponse res) throws Exception {
+		return introductionService.store(params, model, req, res);
 	}
 }

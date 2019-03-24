@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="team_intro_tb">
+
+<!-- 팀 소개 조회 -->
+<select id="selectIntroduce" parameterType="hashmap" resultType="hashmap">
+			<![CDATA[
+			SELECT ID                                        AS ID 
+			     , TEAM_NAME      								AS team_name
+				  , TO_CHAR(REGIST_DATE,'YYYY-MM-DD')        AS regist_date
+				  , TEAM_CONTEXT 									AS team_context
+				  , FILE_PATH     								AS file_path
+				  , USE_YN             							AS use_yn
+				  , REGIST_ID       								AS regist_id
+			  FROM team_intro
+			 WHERE ID = #{id}
+			 ]]> 
+</select>
+
+<!-- 팀 소개 등록 -->
+<insert id="insertIntroduce" parameterType="hashmap">
+	INSERT INTO team_intro ( ID
+							  , TEAM_NAME    
+							  , REGIST_DATE  
+							  , TEAM_CONTEXT 
+							  , FILE_PATH    
+							  , USE_YN       
+							  , REGIST_ID) VALUES ( INTRO_SEQ.nextval
+							  						  , #{team_name , jdbcType=VARCHAR}
+							  						  , SYSDATE
+							  						  , #{team_context , jdbcType=VARCHAR}
+							  						  , #{file_path, jdbcType=VARCHAR}
+							  						  , #{use_yn, jdbcType=INTEGER}
+							  						  , #{user_id, jdbcType=VARCHAR}
+							  						  )
+</insert>
+
+<!-- 팀 소개 등록 -->
+<update id="updateIntroduce" parameterType="hashmap">
+<![CDATA[
+	UPDATE team_intro
+	   SET TEAM_NAME = #{team_name}
+	   AND TEAM_CONTEXT = #{team_context}
+	 WHERE ID = #{teamId}
+ ]]>   
+</update>
+
+
+</mapper>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-canvas {
+#electronic_display canvas {
   margin-bottom : 100%;
   background: linear-gradient(     
   			    to bottom,     
@@ -8,14 +8,14 @@ canvas {
 			    rgb(130,193,202) 100%   );
 }
 
-canvas, menu {
+#electronic_display canvas, menu {
   width:100%;
   position: absolute;
   
   color: white;
   
 }
-input, button {
+#electronic_display  input, #electronic_display button {
   color: gray;
   font-size: 30px;
   background: transparent;
@@ -25,7 +25,7 @@ input, button {
   transition: all 500ms;
 }
 
-button.active {
+#electronic_display  button.active {
   color: aqua;
   border-color: aqua;
   box-shadow: 0 0 4px aqua;
@@ -33,7 +33,7 @@ button.active {
   transition: all 500ms;
 }
 
-label {
+#electronic_display  label {
   display: inline-block;
   color: gray;
   padding: 10px;
