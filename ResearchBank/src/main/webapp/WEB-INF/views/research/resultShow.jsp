@@ -147,9 +147,10 @@ a {
 	<div class="wrap" style="margin: 5% 20% 1% 30%;">
 		설문조사 제목 : ${map.SURVEY_SUBJECT }<a
 			href="/research/show?survey_idx=${map.SURVEY_IDX }&partmember_id=${MEMBER_ID}"
-			name="part">참여하기</a><br /> 작성자 : ${map.SURVEY_SUBJECT }<br /> 참여율 :
+			name="part">참여하기</a><br /> 작성자 : ${map.MEMBER_NICKNAME }<br /> 참여율 :
 		${map.CURRENT_PART } / ${map.MAXIMUM_PART } <br /> 포인트 :
 		${map.SURVEY_POINT } <br />
+		참여 비율
 		<c:choose>
 			<c:when test="${fn:length(map.conList) > 0}">
 				<c:forEach items="${map.conList }" var="row" varStatus="status">
@@ -160,6 +161,7 @@ a {
 				</c:forEach>
 			</c:when>
 		</c:choose>
+		문항 <br/>
 		<c:choose>
 			<c:when test="${fn:length(map.queList) > 0}">
 
