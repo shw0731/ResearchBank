@@ -16,8 +16,7 @@ public class IntroductionDAO extends AbstractDAO{
 	
 	public void insertIntroduce(Map<String, Object> map) throws Exception{
 		System.out.println("value check ==> " + map);
-
-		 insert("selectIntroduce",map);
+		 insert("insertIntroduce",map);
 	}
 	
 	public void updateIntroduce(Map<String, Object> map) throws Exception{

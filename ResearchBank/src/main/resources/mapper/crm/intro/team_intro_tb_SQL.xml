@@ -41,8 +41,8 @@
 <![CDATA[
 	UPDATE team_intro
 	   SET TEAM_NAME = #{team_name}
-	   AND TEAM_CONTEXT = #{team_context}
-	 WHERE ID = #{teamId}
+	     , TEAM_CONTEXT = #{team_context}
+	 WHERE ID = #{team_id}
  ]]>   
 </update>
 

@@ -90,7 +90,10 @@ public class IntroductionServiceIml implements IntroductionService{
 				putData.put("user_id",req.getSession().getAttribute("MEMBER_ID"));
 				introductionDao.insertIntroduce(putData);
 			} else {
-				introductionDao.updateIntroduce(params);
+				putData.put("team_id", Integer.parseInt((String)params.get("team_id")));
+				putData.put("team_name", params.get("team_name"));
+				putData.put("team_context", params.get("team_context"));
+				introductionDao.updateIntroduce(putData);
 			}
 		} catch (Exception e) {
 			LOGGER.debug("IntroductionServiceIml =>" + e.getMessage() + " / " + e.toString());
