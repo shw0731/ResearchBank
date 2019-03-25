@@ -55,7 +55,7 @@ public class RanklistController {
 
 			totalCount = list.size();
 
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "index", searchNum, isSearch);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "rank", searchNum, isSearch);
 			pagingHtml = page.getPagingHtml().toString();
 
 			int lastCount = totalCount;
@@ -77,7 +77,7 @@ public class RanklistController {
 
 		totalCount = list.size();
 
-		page = new Paging(currentPage, totalCount, blockCount, blockPage, "index");
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "rank");
 		pagingHtml = page.getPagingHtml().toString();
 
 		int lastCount = totalCount;
@@ -121,7 +121,7 @@ public class RanklistController {
 
 			totalCount = list.size();
 
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "index", searchNum, isSearch);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "rankpoint", searchNum, isSearch);
 			pagingHtml = page.getPagingHtml().toString();
 
 			int lastCount = totalCount;
@@ -143,7 +143,7 @@ public class RanklistController {
 
 		totalCount = list.size();
 
-		page = new Paging(currentPage, totalCount, blockCount, blockPage, "index");
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "rankpoint");
 		pagingHtml = page.getPagingHtml().toString();
 
 		int lastCount = totalCount;
@@ -187,7 +187,7 @@ public class RanklistController {
 
 			totalCount = list.size();
 
-			page = new Paging(currentPage, totalCount, blockCount, blockPage, "index", searchNum, isSearch);
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "deadline", searchNum, isSearch);
 			pagingHtml = page.getPagingHtml().toString();
 
 			int lastCount = totalCount;
@@ -209,7 +209,7 @@ public class RanklistController {
 
 		totalCount = list.size();
 
-		page = new Paging(currentPage, totalCount, blockCount, blockPage, "index");
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "deadline");
 		pagingHtml = page.getPagingHtml().toString();
 
 		int lastCount = totalCount;
