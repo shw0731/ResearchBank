@@ -5,7 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>설문조사</title>
+<style type="text/css">
+input[type=text]:focus {
+  border: 3px solid #555;
+}
 
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>

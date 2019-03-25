@@ -194,8 +194,14 @@ public class ResearchController {
 	
 	
 	@RequestMapping(value="/research/create" , method=RequestMethod.GET)
-	public ModelAndView create(CommandMap commandMap) throws Exception {
+	public ModelAndView create(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("research/create");
+		if( request.getParameter("member_id")==null||request.getParameter("member_id")=="") {
+			mv.setViewName("auth/login/index");
+		}
+		
+		
+		
 		return mv;
 	}
 	

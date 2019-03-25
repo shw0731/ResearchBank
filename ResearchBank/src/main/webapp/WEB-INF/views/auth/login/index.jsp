@@ -60,7 +60,7 @@
 			</form>
           <div class="login_input_area">
           <form role="form" name="form" action="/loginSuccess" method="post">
-          <a href="/"><img src="resources\images\portfolio\thumbnails\8.png" ></a><br/><br/>
+          <a href="/"><img src=<c:url value='/resources/images/portfolio/thumbnails/8.png'/> ></a><br/><br/>
            <font size="3" align="center" color="red">${message}</font><br/>
                        <input type="text" id="member_id" name="MEMBER_ID" placeholder="아이디" /><br/>
             <input type="password" id="member_pw" name="MEMBER_PW" placeholder="비밀번호" /><br/>
@@ -75,7 +75,7 @@
           			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
-			    <img src="resources\images\portfolio\thumbnails\kakao.jpg" style="cursor:pointer ; width: 269px; height: 56px" />
+			    <img src=<c:url value='/resources/images/portfolio/thumbnails/kakao.jpg'/> style="cursor:pointer ; width: 269px; height: 56px" />
 			    			    </a>
 
 			    <a href="http://developers.kakao.com/logout"></a><br/>

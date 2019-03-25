@@ -28,7 +28,6 @@
 .box2-1 {
 	width: 100px;
 	height: 100px;
-	background-image: url("/images/inquiry/FAQ.jpg");
 }
 
 thead>tr>th {
@@ -79,8 +78,9 @@ tbody>tr:HOVER {
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
+	<br />
 
-	<div style="width: 50%; margin: 5% 37%; padding: 1px; text-align: center;">
+	<div style="width: 50%; margin: 5% 37%; padding: 1px; text-align: center; ">
 		<ul class="nav nav-pill">
 			<li role="presentation"><a href="/admin/member">회원관리</a>
 			</li>
@@ -94,7 +94,7 @@ tbody>tr:HOVER {
 		style="width: 500; margin: 5% 5%; padding: 1px; text-align: center;"
 		align="center">
 		<h3 align="center">설문리스트</h3>
-		<table class="table table-striped table-bordered table-hover"
+		<table class="type04"
 			id="dataTables-example">
 			<thead>
 				<tr class="info" align="center">

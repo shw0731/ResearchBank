@@ -64,8 +64,8 @@
  </div>
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br /><br /> 
-			<strong
-			class="haha"></strong>
+			
+			<strong class="haha"></strong>
 			
 	<script type="text/javascript">
 		$(document).ready(function() {
