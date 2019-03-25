@@ -8,10 +8,10 @@
 	right: 5%;
 	top: 90%;
 	color: #fff;
-	background-image: url("resources/images/portfolio/top.png");
+	background-image: url("/resources/images/portfolio/top.png");
 	background-position: center center;
   	background-size: cover;
-	
+
 }
 </style>
 <script type="text/javascript">
