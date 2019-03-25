@@ -161,7 +161,7 @@ form {
 							<input type="hidden" id="title" name="title" placeholder="제목을 입력해주세요" value="ResearchBank 임시비밀번호 발송" class="form-control">
 							<input type="hidden" id="content" name="content" placeholder="내용#" class="form-control"><br/><br/>
 									<input type="button" class="btn btn-info btn-send-message" value="가엽 여부 확인" onclick="duplicationId();" />
-									<input type="button" class="btn btn-info btn-send-message" value="메일 보내기" "onclick="sendpassword();" />
+									<input type="button" class="btn btn-info btn-send-message" value="메일 보내기" onclick="sendpassword();" />
 								</div>
 							</div>
 							</div>	
