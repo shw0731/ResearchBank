@@ -60,7 +60,7 @@
   z-index: 1;
   transition: 1s;
 }
-.subnav:before {
+/* .subnav:before {
 	content: '';
     width: 100%;
     height: 40px;
@@ -69,7 +69,7 @@
     left: 0;
     background: #2e3436;
     opacity:0;
-}
+} */
 /* Style the subnav links */
 .subnav-content a {
   
