@@ -200,7 +200,7 @@
     		 , r.member_nickname 	as member_nickname
        		   FROM survey_list l
           		  , member_list r
-          			WHERE l.member_id = r.member_id
+          			WHERE l.member_id = r.member_id AND l.deadline_date >= SYSDATE AND l.maximum_part > l.current_part 
           		    <if test="isSearch != null">
           		    	<if test="searchNum==0">
           		    		AND l.survey_subject like '%' ||  #{isSearch} || '%'
