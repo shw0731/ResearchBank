@@ -34,4 +34,9 @@ public class RanklistServiceImpl implements RanklistService{
 		return ranklistDAO.selectList1(map);
 		
 	}
+public List<Map<String, Object>> Deadline(Map<String, Object> map) throws Exception {
+		
+		return ranklistDAO.selectList2(map);
+		
+	}
 }

@@ -111,6 +111,7 @@
             <a class="nav-link js-scroll-trigger subnavbtn" href="#services">Research</a>
             <div class="subnav-content">
 		      <a href="/research/index">최근 설문</a>
+		      <a href="/research/deadline">마감일 임박 설문</a>
 		      <a href="/research/rank">조회수 RANKing </a>
 		      <a href="/research/rankpoint">포인트 RANKing</a>
 		    </div>

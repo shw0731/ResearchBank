@@ -162,4 +162,70 @@ public class RanklistController {
 		return mv;
 
 	}
+	@RequestMapping(value = "/research/deadline", method = RequestMethod.GET)
+	public ModelAndView index3(CommandMap commandMap, HttpServletRequest request) throws Exception {
+
+		ModelAndView mv = new ModelAndView("research/index");
+		Map map = commandMap.getMap();
+		if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
+				|| request.getParameter("currentPage").equals("0")) {
+			currentPage = 1;
+		} else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+
+		isSearch = request.getParameter("isSearch");
+		if (isSearch != null)
+			searchNum = Integer.parseInt(request.getParameter("searchNum"));
+
+		map.put("isSearch", isSearch);
+		map.put("searchNum", searchNum);
+
+		List<Map<String, Object>> list = ranklistService.Deadline(map);
+
+		if (isSearch != null) {
+
+			totalCount = list.size();
+
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "index", searchNum, isSearch);
+			pagingHtml = page.getPagingHtml().toString();
+
+			int lastCount = totalCount;
+
+			if (page.getEndCount() < totalCount)
+				lastCount = page.getEndCount() + 1;
+
+			list = list.subList(page.getStartCount(), lastCount);
+
+			mv.addObject("isSearch", isSearch);
+			mv.addObject("searchNum", searchNum);
+			mv.addObject("totalCount", totalCount);
+			mv.addObject("pagingHtml", pagingHtml);
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("list", list);
+
+			return mv;
+		}
+
+		totalCount = list.size();
+
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "index");
+		pagingHtml = page.getPagingHtml().toString();
+
+		int lastCount = totalCount;
+
+		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+
+		list = list.subList(page.getStartCount(), lastCount);
+
+		mv.addObject("totalCount", totalCount);
+		mv.addObject("pagingHtml", pagingHtml);
+		mv.addObject("currentPage", currentPage);
+
+		mv.addObject("list", list);
+
+		return mv;
+
+	}
 }

@@ -17,4 +17,7 @@ public class RanklistDAO extends AbstractDAO{
 	public List<Map<String, Object>> selectList1(Map<String, Object> map){
 		return (List<Map<String, Object>>)selectList("PointRanklist", map);
 	}
+	public List<Map<String, Object>> selectList2(Map<String, Object> map){
+		return (List<Map<String, Object>>)selectList("DeadlineRanklist", map);
+	}
 }
