@@ -161,6 +161,57 @@
                   	AND r.question_idx = l.question_idx
 	
 	</select>
+	
+		<!-- 조회순 RankList 쿼리 -->
+	<select id="RankList" parameterType="hashmap" resultType="hashmap">
+		SELECT l.survey_subject 	as survey_subject 
+    		 , l.maximum_part		as maximum_part
+     		 , l.current_part 		as current_part
+    		 , l.deadline_date 		as deadline_date 
+    		 , l.member_id 			as member_id
+    		 , l.survey_idx 		as survey_idx
+    		 , l.survey_point       as survey_point 
+    		 , l.survey_hitcount 	as survey_hitcount
+    		 , r.member_nickname 	as member_nickname
+       		   FROM survey_list l
+          		  , member_list r
+          			WHERE l.member_id = r.member_id
+          		    <if test="isSearch != null">
+          		    	<if test="searchNum==0">
+          		    		AND l.survey_subject like '%' ||  #{isSearch} || '%'
+          		    	</if>
+          		    	<if test="searchNum==1">
+          		    		AND r.member_nickname like '%' ||  #{isSearch} || '%'
+          		    	</if>
+          		    	
+          		    </if>
+          		    order by l.survey_hitcount desc
+	</select>
+		<!-- 포인트순 RankList 쿼리 -->
+	<select id="PointRanklist" parameterType="hashmap" resultType="hashmap">
+		SELECT l.survey_subject 	as survey_subject 
+    		 , l.maximum_part		as maximum_part
+     		 , l.current_part 		as current_part
+    		 , l.deadline_date 		as deadline_date 
+    		 , l.member_id 			as member_id
+    		 , l.survey_idx 		as survey_idx
+    		 , l.survey_point       as survey_point 
+    		 , l.survey_hitcount 	as survey_hitcount
+    		 , r.member_nickname 	as member_nickname
+       		   FROM survey_list l
+          		  , member_list r
+          			WHERE l.member_id = r.member_id
+          		    <if test="isSearch != null">
+          		    	<if test="searchNum==0">
+          		    		AND l.survey_subject like '%' ||  #{isSearch} || '%'
+          		    	</if>
+          		    	<if test="searchNum==1">
+          		    		AND r.member_nickname like '%' ||  #{isSearch} || '%'
+          		    	</if>
+          		    	
+          		    </if>
+          		    order by l.survey_point desc
+	</select>
 	<!-- Insert -->
 	<insert id="insertSurvey" parameterType="hashmap">
      <![CDATA[

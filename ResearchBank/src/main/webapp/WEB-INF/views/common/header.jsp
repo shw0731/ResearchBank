@@ -110,9 +110,9 @@
           <li class="nav-item subnav">
             <a class="nav-link js-scroll-trigger subnavbtn" href="#services">Research</a>
             <div class="subnav-content">
-		      <a href="/research/index">리서치뱅크</a>
-		      <a href="#">TOP 10 </a>
-		      <a href="#">랭크 오브 리서치</a>
+		      <a href="/research/index">최근 설문</a>
+		      <a href="/research/rank">조회수 RANKing </a>
+		      <a href="/research/rankpoint">포인트 RANKing</a>
 		    </div>
           </li>
           <li class="nav-item subnav">

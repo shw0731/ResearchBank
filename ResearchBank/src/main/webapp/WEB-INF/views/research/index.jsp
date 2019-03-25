@@ -22,7 +22,7 @@
 	
 	
 	<div class="wrap" style="margin: 10% 20% 10% 20%;">
-		<div class='left-box' style="font-family:a">1:1 QnA</div>
+		<div class='left-box' style="font-family:a">설문조사 리스트</div>
 		<table class="type04" id="dataTables-example">
 			<thead>
 				<tr class="info" align="center">
