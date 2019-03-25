@@ -108,7 +108,7 @@
             <a class="nav-link js-scroll-trigger" href="/introduction.do">About</a>
           </li>
           <li class="nav-item subnav">
-            <a class="nav-link js-scroll-trigger subnavbtn" href="#services">Research</a>
+            <a class="nav-link js-scroll-trigger subnavbtn">Research</a>
             <div class="subnav-content">
 		      <a href="/research/index">최근 설문</a>
 		      <a href="/research/deadline">마감일 임박 설문</a>
@@ -117,7 +117,7 @@
 		    </div>
           </li>
           <li class="nav-item subnav">
-            <a class="nav-link js-scroll-trigger subnavbtn" href="#portfolio">My Bank</a>
+            <a class="nav-link js-scroll-trigger subnavbtn">My Bank</a>
             <div class="subnav-content">
 		      <a href="/mylist">내 설문조사</a>  
 		      <a href="#">참여한설문조사</a>
@@ -125,7 +125,7 @@
 		     </div>
           </li>
           <li class="nav-item subnav">
-            <a class="nav-link js-scroll-trigger subnavbtn" href="#contact">Services</a>
+            <a class="nav-link js-scroll-trigger subnavbtn">Services</a>
             <div class="subnav-content">
 		      <a href="/inquiry">1:1문의</a>
 		      
