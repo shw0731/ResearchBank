@@ -139,9 +139,9 @@ var fn_rmConOpt = function(conIdx, optIdx){
 	$('.condition').eq(conIdx).find('div').each(function(idx){
 		$(' > strong', this).text('보기'+(idx+1)+':');
 		$(' > input', this).eq(0).attr('name','condition['+conIdx+'][con_opt]['+idx+']');
-		if(idx==2){
+		if(idx==1){
 			$(' > button',this).eq(0).attr('onclick','fn_addConOpt('+conIdx+','+idx+')');
-		}else if(optIdx>2){
+		}else if(optIdx>=2){
 			$(' > button',this).eq(0).attr('onclick','fn_addConOpt('+conIdx+','+idx+')');
 			$(' > button',this).eq(1).attr('onclick','fn_rmConOpt('+conIdx+','+idx+')');
 		}
@@ -225,9 +225,9 @@ var fn_rmQueOpt = function(queIdx, optIdx){
 	$('.question').eq(queIdx).find('div').each(function(idx){
 		$(' > strong', this).text('보기'+(idx+1)+':');
 		$(' > input', this).eq(0).attr('name', 'question['+idx+'][que_opt]['+idx+']');
-		if(idx==2){
+		if(idx==1){
 			$(' > button',this).eq(0).attr('onclick','fn_addQueOpt('+queIdx+','+idx+')');
-		}else if(optIdx>2){
+		}else if(optIdx>=2){
 			$(' > button',this).eq(0).attr('onclick','fn_addQueOpt('+queIdx+','+idx+')');
 			$(' > button',this).eq(1).attr('onclick','fn_rmQueOpt('+queIdx+','+idx+')');
 		}

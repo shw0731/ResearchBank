@@ -5,15 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>설문조사</title>
-<style type="text/css">
-input[type=text]:focus {
-  border: 3px solid #555;
-}
 
-</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <div class="wrap" style="margin:5% 20% 1% 30%;">
 설문조사 제목 : ${map.SURVEY_SUBJECT } <br/>
 <form id="frm">

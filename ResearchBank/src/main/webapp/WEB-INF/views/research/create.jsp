@@ -1,18 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+
+
 <head>
 <meta charset="UTF-8">
 <title>Research!</title>
+
+<style>
+input[type=text] {
+  width: 80%;
+  padding: 6px 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+
+.button {
+  display: block;
+  font-size: $font_size;
+  text-align: center;
+  line-height: $height;
+  text-decoration: none;
+  color: $txt_color;
+  background-color: $bg;
+  border-radius: 4px;
+  @include middle($width, $height);
+  @include text-shadow(0 -1px -1px darken($bg, 7%));
+  @include box-shadow(
+    0 4px 0 darken($bg, 7%),
+    0 5px 5px 1px $bg_shadow);
+  @include transition(all .15s ease-in-out);
+  
+  &:hover{
+    background-color: $bg_hover;
+    @include text-shadow(0 -1px -1px darken($bg_hover, 7%));
+    @include box-shadow(
+      0 4px 0 darken($bg_hover, 7%),
+      0 5px 5px 1px $bg_shadow);
+  }
+  &:active {
+    margin-top: (-$height)/2 + 4;
+    @include box-shadow(none);
+  }
+}
+</style>
+
 
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <style>
 #opt{
-	width:150px;
+	width:70%;
 }
+
 </style>
 
 <script src="/resources/js/research/jquery.serializeObject.js"></script>
@@ -75,26 +116,47 @@ function Doconfirm() {
 }
 </script>
 
+
+
 <div class="wrap" style="margin:5% 20% 1% 30%;">
 
-
-<h1>설문조사시작</h1>
+<h1>설문조사등록</h1>
 <hr />
-<form id="frm">
-	<div id="survey_subject">
-		<strong>제목:</strong><input id="survey_subject" name="survey_subject" type="text">
+<form id="frm" class="form-horizontal">
+	<div class="row">
 	
-		<input type="checkbox" id="condition" value="Y">조건<br/>
-		마감일:<input type="date" id="deadline_date" name="deadline_date"> <br/>
-		설문조사 포인트:<input type="text" id="survey_point" name="survey_point"><br/>
-		총 참여자수<input type="text" id="maximum_part" name="maximum_part"><br/>
+		<label for="survey_subject" class="col-sm-2 control-label">제목:</label>
+		<div class="col-sm-8">
+			<input id="survey_subject" class="form-control" name="survey_subject" type="text"><br/>
+		</div>
+		<div class="col-sm-2">
+			<input type="checkbox" id="condition" value="Y">조건<br/>
+		</div>
+		<label for="deadline_date" class="col-sm-2 control-label">마감일:</label>
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="deadline_date" name="deadline_date"><br/>
+		</div>
+		<label for="survey_point" class="col-sm-2 control-label">설문조사 포인트:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="survey_point" name="survey_point"><br/>
+		</div>
+		<label for="maximum_part" class="col-sm-2 control-label">총 참여자 수:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="maximum_part" name="maximum_part"><br/>
+		</div>
+	
+	</div>	
+		
 		<input type="hidden" name="member_id" value="${MEMBER_ID}">
 		<input type="hidden" id="conCheck" name="conCheck" value="N">
 		
-	</div>
+	
 <br/>
+	
 	<div id="condition_subject" class="condition">
-		<strong>조건1:</strong><input name="condition[0][condition_subject]" type="text">
+		남자,여자 등 구분하는 항목을 넣으세요 <br/>
+		<strong>조건 1:</strong>
+		<input name="condition[0][condition_subject]" type="text" >
 		<input type="hidden" name="condition[0][condition_order]" value=0>
 		<input type="hidden" name="condition[0][conOpt_num]" value=2>
 		<button type="button" id="conAddBtn" onclick="fn_addCon(); return false;">+</button><br/>
@@ -134,6 +196,6 @@ function Doconfirm() {
 	
 </form>
 </div>
+
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
-</html>

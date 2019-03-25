@@ -14,8 +14,8 @@
         <div class="col-6">
          <c:choose>
          <c:when test="${MEMBER_NICKNAME != null }">
-          <a class="portfolio-box" href="research/create">
-            <img class="img-fluid" src="resources/images/portfolio/thumbnails/main_making.jpg" alt="">
+          <a class="portfolio-box" href="research/create?member_id=${MEMBER_ID}">
+            <img class="img-fluid" src=<c:url value='resources/images/portfolio/thumbnails/main_making.jpg'/> alt="">
             <div class="portfolio-box-text">Make Research</div>
             <div class="portfolio-box-caption">
               <div class="portfolio-box-caption-content">
@@ -31,7 +31,7 @@
           </c:when>
           <c:otherwise>
           <a class="portfolio-box" href="login.do">
-            <img class="img-fluid" src="resources/images/portfolio/thumbnails/main_making.jpg" alt="">
+            <img class="img-fluid" src=<c:url value='resources/images/portfolio/thumbnails/main_making.jpg'/> alt="">
             <div class="portfolio-box-text">Make Research</div>
             <div class="portfolio-box-caption">
               <div class="portfolio-box-caption-content">
@@ -52,7 +52,7 @@
         
         <div class="col-6">
           <a class="portfolio-box" href="/research/index">
-            <img class="img-fluid" src="/resources/images/portfolio/thumbnails/main_surveying.jpg" alt="">
+            <img class="img-fluid" src=<c:url value='/resources/images/portfolio/thumbnails/main_surveying.jpg'/> alt="">
             <div class="portfolio-box-text">Earn Point</div>
             <div class="portfolio-box-caption">
               <div class="portfolio-box-caption-content">
