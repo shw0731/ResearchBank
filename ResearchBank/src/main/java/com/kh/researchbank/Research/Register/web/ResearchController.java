@@ -22,11 +22,11 @@ import com.kh.researchbank.common.CommandMap;
 
 /**
  * @Class Name : ResearchController.java
- * @Description : 리서치
+ * @Description : 由ъ꽌移�
  * @Modification Information
- *  수정일      수정자              수정내용
+ *  �닔�젙�씪      �닔�젙�옄              �닔�젙�궡�슜
  * ---------   ---------   -------------------------------
- * 2019.03.03              최초생성
+ * 2019.03.03              理쒖큹�깮�꽦
  *
  * @author KH 
  * @since 2019. 02.07
@@ -54,7 +54,7 @@ public class ResearchController {
 	
 	
 	/**********
-	 * @title 리서치페이지 
+	 * @title 由ъ꽌移섑럹�씠吏� 
 	 * @return view
 	 * @throws Exception
 	 */
@@ -135,6 +135,7 @@ public class ResearchController {
 		Map<String, Object> tmpMap = new HashMap<String, Object>();
 		tmpMap.put("survey_idx",request.getParameter("survey_idx") );
 		tmpMap.put("partmember_id",request.getParameter("partmember_id"));
+		
 		if(researchService.validator(tmpMap)) {
 			
 			Map<String, Object> map = researchService.show(request.getParameter("survey_idx"));
@@ -169,6 +170,7 @@ public class ResearchController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("survey_idx", request.getParameter("survey_idx"));
 		map.put("member_id", request.getParameter("member_id"));
+		
 		if(researchService.checkPart(map)) {
 			map.remove("member_id");
 			map.put("partmember_id", request.getParameter("member_id"));

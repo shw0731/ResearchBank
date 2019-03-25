@@ -11,7 +11,9 @@
     		 , l.member_id 			as member_id
     		 , l.survey_idx 		as survey_idx
     		 , l.survey_point       as survey_point 
+    		 , l.survey_hitcount 	as survey_hitcount
     		 , r.member_nickname 	as member_nickname
+    		 
        		   FROM survey_list l
           		  , member_list r
           			WHERE l.member_id = r.member_id
@@ -345,6 +347,10 @@
 	<!-- Update -->
 	<update id="updatePart" parameterType="String">
 		UPDATE survey_list SET current_part = current_part+1 WHERE survey_idx = #{survey_idx}
+	</update>
+	
+	<update id="updateCount" parameterType="String">
+		UPDATE survey_list SET survey_hitcount = survey_hitcount+1 WHERE survey_idx = #{survey_idx}
 	</update>
 	
 	

@@ -108,6 +108,7 @@ public class ResearchServiceImpl implements ResearchService {
 		resultMap.put("queList", researchDAO.selectQue((String)map.get("survey_idx")));
 		resultMap.put("conAList", researchDAO.selectConA(map));
 		resultMap.put("queAList", researchDAO.selectQueA(map));
+		researchDAO.updateCount((String)map.get("survey_idx"));
 		return resultMap;
 	}
 	//설문조사 자세히 보기

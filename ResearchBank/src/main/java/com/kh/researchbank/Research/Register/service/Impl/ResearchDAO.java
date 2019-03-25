@@ -78,6 +78,10 @@ public class ResearchDAO extends AbstractDAO {
 		update("research.updatePart",survey_idx);
 	}
 	
+	public void updateCount (String survey_idx) {
+		update("research.updateCount", survey_idx);
+	}
+	
 	//설문조사 등록
 	public void store(Map<String, Object> map) {
 		
