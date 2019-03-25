@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="<c:url value='/resources/common.js'/>" charset="utf-8"></script>
 <!-- jQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -79,8 +80,7 @@ tbody>tr:HOVER {
 	<br />
 	<br />
 
-	<div
-		style="width: 50%; margin: 5% 37%%; padding: 1px; text-align: center;">
+	<div style="width: 50%; margin: 5% 37%; padding: 1px; text-align: center; ">
 		<ul class="nav nav-pill">
 			<li role="presentation" class="active"><a href="/admin/member">회원관리</a>
 			</li>

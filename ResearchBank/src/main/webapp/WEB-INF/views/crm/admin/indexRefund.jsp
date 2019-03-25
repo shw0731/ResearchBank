@@ -77,10 +77,9 @@ tbody>tr:HOVER {
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
+	<br />
 
-
-	<div
-		style="width: 50%; margin: margin: 5% 37%%; padding: 1px; text-align: center;">
+	<div style="width: 50%; margin: 5% 37%; padding: 1px; text-align: center; ">
 		<ul class="nav nav-pill">
 			<li role="presentation"><a href="/admin/member">회원관리</a>
 			</li>
@@ -144,11 +143,18 @@ tbody>tr:HOVER {
 		} */
 		
 		function fn_refundMember(obj) {
-			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/admin/member/refunding' />");
-			comSubmit.addParam("MEMBER_ID", obj.parent().find("#MEMBER_ID").val()); // 상위 노드에서 인덱스번호 가져오기.
-			comSubmit.addParam("REFUND_NO", obj.parent().find("#REFUND_NO").val()); // 상위 노드에서 인덱스번호 가져오기.
-			comSubmit.submit();
+			console.log(obj.parent().find("#REFUND_STATE").val());
+			if((obj.parent().find("#REFUND_STATE").val())=='지급완료')
+			{
+				alert("이미 송금한 대상입니다.");
+			}
+			else{
+				var comSubmit = new ComSubmit();
+				comSubmit.setUrl("<c:url value='/admin/member/refunding' />");
+				comSubmit.addParam("MEMBER_ID", obj.parent().find("#MEMBER_ID").val()); // 상위 노드에서 인덱스번호 가져오기.
+				comSubmit.addParam("REFUND_NO", obj.parent().find("#REFUND_NO").val()); // 상위 노드에서 인덱스번호 가져오기.
+				comSubmit.submit();
+			}
 		} 
 
 		function fn_selectBoardList(pageNo) {
@@ -208,6 +214,7 @@ tbody>tr:HOVER {
 											+ "</a>"
 											+ "<input type='hidden' id='MEMBER_ID' name='MEMBER_ID' value="+value.MEMBER_ID+">"
 											+ "<input type='hidden' id='REFUND_NO' name='REFUND_NO' value="+value.REFUND_NO+">"
+											+ "<input type='hidden' id='REFUND_STATE' name='REFUND_STATE' value="+value.REFUND_STATE+">"
 											+ "</td>"
 										
 										+ "</tr>";
@@ -216,11 +223,13 @@ tbody>tr:HOVER {
 				body.append(str);
 
 				$("a[name='refunding']").on("click", function(e) { //환전
-					var message = confirm("송금 하시겠습니까?");
-					if(message ==true){
-						e.preventDefault();
-						fn_refundMember($(this));
-					}
+					
+						var message = confirm("송금 하시겠습니까?");
+						if(message ==true){
+							e.preventDefault();
+							fn_refundMember($(this));
+						}
+					
 				});  
 
 			}
