@@ -26,7 +26,7 @@
           		    	</if>
           		    	
           		    </if>
-          		    order by l.survey_subject desc
+          		    order by l.reg_date desc
 	</select>
 	<select id="selectOne" parameterType="String" resultType="hashmap">
 		SELECT survey_subject FROM survey_list WHERE survey_idx = #{survey_idx}
