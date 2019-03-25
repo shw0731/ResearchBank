@@ -96,19 +96,19 @@ tbody>tr:HOVER {
 		style="width: 90%; margin: 5% 5%; padding: 1px; text-align: center;"
 		align="center">
 		<h3 align="center">멤버리스트</h3>
-		<table class="table table-striped table-bordered table-hover"
-			id="dataTables-example">
+		<table class="type04"
+			id="dataTables-example" >
 			<thead>
 				<tr class="info" align="center">
 					<th width="5%">ID</th>
 					<th width="5%">닉네임</th>
 					<th width="5%">보유 Point</th>
-					<th width="5%">성별</th>
-					<th width="40%">주소</th>
-					<th width="5%">결혼</th>
-					<th width="5%">지역</th>
-					<th width="5%">직업</th>
-					<th width="5%">상태</th>
+					<th width="6%">성별</th>
+					<th width="*%">주소</th>
+					<th width="6%">결혼</th>
+					<th width="6%">지역</th>
+					<th width="10%">직업</th>
+					<th width="6%">상태</th>
 					<th width="5%">삭제</th>
 				</tr>
 			</thead>

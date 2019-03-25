@@ -94,7 +94,7 @@ tbody>tr:HOVER {
 		style="width: 90%; margin: 5% 5%; padding: 1px; text-align: center;"
 		align="center">
 		<h3 align="center">환급관리</h3>
-		<table class="table table-striped table-bordered table-hover"
+		<table class="type04"
 			id="dataTables-example">
 			<thead>
 				<tr class="info" align="center">
