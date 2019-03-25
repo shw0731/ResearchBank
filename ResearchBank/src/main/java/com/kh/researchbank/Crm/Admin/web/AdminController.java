@@ -42,6 +42,7 @@ public class AdminController {
 	protected AdminService adminservice;
 	
 	//---------------------멤버 조회------------------------------//
+	@SuppressWarnings("unlikely-arg-type")
 	@RequestMapping(value="/admin/member")
 	public @ResponseBody ModelAndView indexMember(CommandMap commandMap, 
 			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
@@ -51,9 +52,10 @@ public class AdminController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		String se_rol_id = session.getAttribute("ROLE_ID").toString();
-		
-		if(se_rol_id != "1")
+		System.out.println("롤아이디는 = "+ se_rol_id);
+		if(se_rol_id.equals(1))
 		{
+			System.out.println("관리자가아닙니다. 2차");
 			return mv = new ModelAndView("redirect:/");
 		}
 		
@@ -65,6 +67,7 @@ public class AdminController {
 	}
 	
 	//---------------------설문 조회------------------------------//
+	@SuppressWarnings("unlikely-arg-type")
 	@RequestMapping(value="/admin/survey")
 	public @ResponseBody ModelAndView indexSurvey(CommandMap commandMap,
 			@RequestParam(defaultValue="MEMBER_ID") String searchOption,
@@ -74,7 +77,7 @@ public class AdminController {
 		
 		String se_rol_id = session.getAttribute("ROLE_ID").toString();
 		
-		if(se_rol_id != "1")
+		if(se_rol_id.equals(1))
 		{
 			return mv = new ModelAndView("redirect:/");
 		}
@@ -87,6 +90,7 @@ public class AdminController {
 	}
 	
 	//---------------------리펀드 조회------------------------------//
+	@SuppressWarnings("unlikely-arg-type")
 	@RequestMapping(value="/admin/refund")
 	public @ResponseBody ModelAndView indexRefund(CommandMap commandMap, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("crm/admin/indexRefund");	
@@ -94,7 +98,7 @@ public class AdminController {
 
 		String se_rol_id = session.getAttribute("ROLE_ID").toString();
 		
-		if(se_rol_id != "1")
+		if(se_rol_id.equals(1))
 		{
 			return mv = new ModelAndView("redirect:/");
 		}

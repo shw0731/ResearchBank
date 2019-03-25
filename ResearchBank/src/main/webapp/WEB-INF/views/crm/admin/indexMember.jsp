@@ -77,7 +77,7 @@ tbody>tr:HOVER {
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<br />
 	<br />
-
+	<br />
 
 	<div
 		style="width: 50%; margin: 5% 37%%; padding: 1px; text-align: center;">
