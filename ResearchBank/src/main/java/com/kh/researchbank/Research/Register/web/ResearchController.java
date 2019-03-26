@@ -142,7 +142,7 @@ public class ResearchController {
 			mv.addObject("map", map);
 			return mv;
 		}else {
-			mv.setViewName("home");
+			mv.setViewName("redirect:/");
 			return mv;
 		}
 		
@@ -206,16 +206,16 @@ public class ResearchController {
 	}
 	
 	@RequestMapping(value="/research/store", method=RequestMethod.POST)
-	public ModelAndView store(@RequestBody String str)throws Exception{
-		ModelAndView mv = new ModelAndView("research/index");
+	public ModelAndView store(HttpServletRequest request)throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/");
 		
 		
-		String jsonStr =str;
+		
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
-		System.out.println(jsonStr);
-		Map<String, Object> map = objectMapper.readValue(jsonStr, HashMap.class);
+		
+		Map<String, Object> map = objectMapper.readValue(request.getParameter("json"), HashMap.class);
 	
 		researchService.store(map);
 		return mv;

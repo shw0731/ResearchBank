@@ -240,10 +240,19 @@ var fn_rmQueOpt = function(queIdx, optIdx){
 
 //설문조사 저장
 var fn_storeSurvey = function(){
-	var jsonData = JSON.stringify($('#frm').serializeObject());
-	var jsonSubmit = new JsonSubmit(jsonData);
-	jsonSubmit.setUrl("/research/store");
-	jsonSubmit.ajax();
+	var form=document.createElement("form");
+	form.name='tempPost';
+	    form.method='post';
+	form.action="/research/store";  
+	  
+ 	var input=document.createElement("input");
+	input.type="hidden";
+	input.name='json';
+	input.value= JSON.stringify($('#frm').serializeObject());
+	console.log(JSON.stringify($('#frm').serializeObject()));
+	$(form).append(input);
+	$('#frm').after(form); 
+	form.submit();
 
 }
 
@@ -260,38 +269,3 @@ var fn_search = function(){
      frm.submit();  
 }
 
-var JsonSubmit = function(jsonData){
-	this.url = "";
-	this.param = jsonData;
-	
-	this.setUrl = function setUrl(url){
-		this.url = url;
-	};
-	
-	this.submit = function submit(){
-		var frm = jsonData;
-		frm.action = this.url;
-		frm.method = "post";
-		frm.submit();
-	};
-	
-	this.setCallback = function setCallback(callBack){
-		fv_ajaxCallback = callBack;
-	}
-	this.ajax = function ajax(){
-		$.ajax({
-		type :  "POST",
-		url : this.url,
-		data : this.param,
-		dataType: "json",
-		contentType:"application/json;charset=UTF-8",
-		success : successCall
-		
-		});
-	}
-	
-	function successCall(){
-		alert("전송성공");
-	}
-	
-}
