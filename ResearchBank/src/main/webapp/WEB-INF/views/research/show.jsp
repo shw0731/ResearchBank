@@ -15,6 +15,7 @@
 <form id="frm">
 	<input type="hidden" name="survey_idx" value="${map.survey_idx}">
 	<input type="hidden" name="partmember_id" value="${MEMBER_ID }">
+	<input type="hidden" name="survey_point" value="${map.SURVEY_POINT }">
 		<c:choose>
 			<c:when test="${fn:length(map.conList) > 0}">
 				<c:forEach items="${map.conList }" var="row"  varStatus="status">

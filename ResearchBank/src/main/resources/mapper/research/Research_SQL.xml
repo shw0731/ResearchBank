@@ -29,7 +29,8 @@
           		    order by l.reg_date desc
 	</select>
 	<select id="selectOne" parameterType="String" resultType="hashmap">
-		SELECT survey_subject FROM survey_list WHERE survey_idx = #{survey_idx}
+		SELECT survey_subject
+			 , survey_point FROM survey_list WHERE survey_idx = #{survey_idx}
 			 
 	</select>
 	<select id="selectDetail" parameterType="hashmap" resultType="hashmap">
@@ -429,6 +430,9 @@
 		UPDATE survey_list SET survey_hitcount = survey_hitcount+1 WHERE survey_idx = #{survey_idx}
 	</update>
 	
+	<update id="updatePoint" parameterType="hashmap">
+		UPDATE member_list SET member_point = member_point + #{survey_point} WHERE member_id = #{partmember_id}
+	</update>
 	
 </mapper>
 

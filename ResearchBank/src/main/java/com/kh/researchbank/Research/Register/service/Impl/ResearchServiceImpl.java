@@ -68,6 +68,7 @@ public class ResearchServiceImpl implements ResearchService {
 	public Map<String, Object> part(Map<String, Object> map)throws Exception{
 		Map<String, Object> aMap = researchDAO.part(map);
 		researchDAO.updatePart((String) map.get("survey_idx"));
+		researchDAO.updatePoint(map);
 		return aMap;
 	}
 	//설문 유효 검사
