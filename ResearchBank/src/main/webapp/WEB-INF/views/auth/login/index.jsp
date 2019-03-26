@@ -102,9 +102,11 @@ function Confirm(){
 		alert("비밀번호를 입력해 주세요.");
 		$("#member_pw").focus();
 		return;
-	{
-		location.href= "loginSuccess";
+	}
 	
+	if(confirm("로그인 하시겠습니까?")){
+		location.href= "loginSuccess";
+	}
 }
 
 //카카오 로그인
