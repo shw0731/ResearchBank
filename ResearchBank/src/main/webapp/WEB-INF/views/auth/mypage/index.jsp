@@ -28,8 +28,7 @@
              <div class='left-box1' style="font-family:a; font-size:17px;">&nbsp;&nbsp;My Page
 <table class="type01">
     <tr>
-        <td>참여한 설문조사<br/>
-        </td>
+        <td><a href="/surveyed">참여한 설문조사</a><br /></td>
     </tr>
     <tr>
         <td><a href="/myqna">나의 QnA</a></td>

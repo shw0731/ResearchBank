@@ -47,7 +47,7 @@ $(document).ready(function() {
 <a href="#" class="top">
 <div id="floatMenu">
 <img class="img-fluid" src=<c:url value='/resources/images/portfolio/top.png'/> alt="">
-</div>""
+</div>
 </a>
 
    
