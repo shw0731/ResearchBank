@@ -8,7 +8,7 @@
 	right: 5%;
 	top: 90%;
 	color: #fff;
-	background-image: url("/resources/images/portfolio/top.png");
+/* 	background-image: url("/resources/images/portfolio/top.png"); */
 	background-position: center center;
   	background-size: cover;
 
@@ -44,7 +44,11 @@ $(document).ready(function() {
 });
 </script> 
 
-<a href="#" class="top"><div id="floatMenu"></div></a>
+<a href="#" class="top">
+<div id="floatMenu">
+<img class="img-fluid" src=<c:url value='/resources/images/portfolio/top.png'/> alt="">
+</div>""
+</a>
 
    
     
