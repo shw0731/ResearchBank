@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.researchbank.Auth.MyPage.service.MyPageService;
 import com.kh.researchbank.Auth.MyPage.service.Impl.MyPageServiceImpl;
 import com.kh.researchbank.Auth.MyPage.vo.MyPageVO;
+import com.kh.researchbank.Crm.Inquiry.Paging;
 import com.kh.researchbank.common.CommandMap;
 
 /**
@@ -39,6 +40,17 @@ import com.kh.researchbank.common.CommandMap;
 
 @Controller
 public class MyPageController {
+	private int currentPage = 1;
+	private int totalCount;
+	private int blockCount = 10;
+	private int blockPage = 5;
+	private String pagingHtml;
+	private Paging page;
+	
+	private int searchNum;
+	private String isSearch;
+	
+	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 
@@ -205,4 +217,81 @@ public class MyPageController {
         mv.addObject("list", list); 
 		return mv;  
 	} 
+	
+	@RequestMapping("/surveyed")
+	public ModelAndView mySurveyed(CommandMap commandMap, HttpSession session, HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("auth/mypage/mySurveyed");
+		
+		String mem_id = session.getAttribute("MEMBER_ID").toString();
+		commandMap.getMap().put("MEMBER_ID", mem_id);
+		
+		List<Map<String, Object>> list = mypageService.showSurveyed(commandMap.getMap()); 
+		Map map =commandMap.getMap();
+		
+		
+		if(request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty() || request.getParameter("currentPage").equals("0")) {
+            currentPage = 1;
+        } else {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
+		
+		isSearch = request.getParameter("isSearch");
+		if(isSearch!=null)
+		searchNum =Integer.parseInt(request.getParameter("searchNum"));
+		
+		map.put("isSearch", isSearch);
+		map.put("searchNum", searchNum);
+		
+		if(isSearch != null)
+		{
+	
+			totalCount = list.size();
+			
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "index", searchNum, isSearch);
+			pagingHtml = page.getPagingHtml().toString();
+		
+			int lastCount = totalCount;
+		
+			if(page.getEndCount() < totalCount)
+				lastCount = page.getEndCount() + 1;
+			
+			list = list.subList(page.getStartCount(), lastCount);
+			
+			mv.addObject("isSearch", isSearch);
+			mv.addObject("searchNum", searchNum);
+			mv.addObject("totalCount", totalCount);
+			mv.addObject("pagingHtml", pagingHtml);
+			mv.addObject("currentPage", currentPage);
+			
+			mv.addObject("list", list);
+			
+			return mv;
+		}
+		
+		
+		
+		totalCount = list.size();
+		
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "index");
+		pagingHtml=page.getPagingHtml().toString();  
+		
+		int lastCount = totalCount;
+		 
+		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		 
+		list = list.subList(page.getStartCount(), lastCount);
+		
+		
+		mv.addObject("totalCount", totalCount);
+		mv.addObject("pagingHtml", pagingHtml);
+		mv.addObject("currentPage", currentPage);
+		
+		
+		mv.addObject("list", list); 
+		return mv;
+		
+		
+	}
+	
 }

@@ -23,7 +23,9 @@ public interface MyPageService {
 	
 	public void deleteMember(Map<String, Object> map);
 	
-	List<Map<String, Object>> show(Map<String, Object> map) throws Exception; 
+	List<Map<String, Object>> show(Map<String, Object> map) throws Exception;
+
+	List<Map<String, Object>> showSurveyed(Map<String, Object> map) throws Exception; 
 
 	
 }

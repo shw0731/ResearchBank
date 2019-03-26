@@ -172,7 +172,20 @@
         ]]>
     </select>
 
-
+<select id="surveyed" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+		SELECT 
+			L.SURVEY_IDX , 
+			R.SURVEY_SUBJECT, 
+			M.MEMBER_NICKNAME
+		FROM PARTICIPATE_LIST L, 
+			SURVEY_LIST R, 
+			MEMBER_LIST M
+		WHERE L.PARTMEMBER_ID = #{MEMBER_ID}  
+			AND L.SURVEY_IDX = R.SURVEY_IDX
+			AND R.MEMBER_ID = M.MEMBER_ID      
+        ]]>
+    </select>
 
 	
 </mapper>	

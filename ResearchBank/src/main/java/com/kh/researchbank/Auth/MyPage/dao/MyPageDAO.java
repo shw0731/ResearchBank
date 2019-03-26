@@ -56,6 +56,9 @@ public class MyPageDAO extends AbstractDAO {
 			return (List<Map<String, Object>>)selectList("mypage.myQna", map);
 		}
 
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> showSurveyed(Map<String, Object> map) throws Exception{
+			return (List<Map<String, Object>>)selectList("mypage.surveyed", map);
+		}
 
-	
 }

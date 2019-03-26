@@ -90,6 +90,12 @@ public class MyPageServiceImpl implements MyPageService {
 			return mypageDAO.show(map);
 			
 		}
+
+		@Override
+		public List<Map<String, Object>> showSurveyed(Map<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return mypageDAO.showSurveyed(map);
+		}
 		
 
 

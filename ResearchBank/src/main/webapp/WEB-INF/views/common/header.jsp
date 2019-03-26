@@ -118,9 +118,8 @@
           </li>
           <li class="nav-item subnav">
             <a class="nav-link js-scroll-trigger subnavbtn">My Bank</a>
-            <div class="subnav-content">
-		      <a href="/mylist">내 설문조사</a>  
-		      <a href="#">참여한설문조사</a>
+            <div class="subnav-content"> 
+		      <a href="/surveyed">참여한설문조사</a>
 		      <a href="/research/create?member_id=${MEMBER_ID }">설문조사등록</a>
 		     </div>
           </li>
