@@ -40,7 +40,7 @@ form {
 
 		
 		<div class='left-box1' style="font-family: a; font-size: 0.8em;">
-		&nbsp;&nbsp;My Page
+		&nbsp;&nbsp;<a href="/mypage">My Page</a>
 		<table class="type01">
 			<tr>
 				<td><a href="/surveyed">참여한 설문조사</a><br /></td>

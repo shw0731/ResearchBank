@@ -31,7 +31,7 @@
 	</div>
 
 	<div class='left-box1' style="font-family: a; font-size: 0.8em;">
-		&nbsp;&nbsp;My Page
+		&nbsp;&nbsp;<a href="/mypage">My Page</a>
 		<table class="type01">
 			<tr>
 				<td><a href="/surveyed">참여한 설문조사</a><br /></td>
@@ -48,13 +48,13 @@
 		</table>
 	</div>
 
-	<div style="width: 80%">	
+	<div style="width: 87%">	
 		<table class="type04" id="dataTables-example">
 		    <colgroup>
 		        <col width="15%"/>
 		        <col width="*"/>
 		        <col width="15%"/>
-		        <col width="20%"/>
+		        <col width="23%"/>
 		    </colgroup>
 		    <thead>
 		        <tr class="info" align="center"  style="font-size: 0.8em">
@@ -69,10 +69,10 @@
 		            <c:when test="${fn:length(list) > 0}">
 		                <c:forEach items="${list}" var="row">
 		                    <tr height="1em" style="font-size: 0.8em">
-		                        <td>${row.IDX}</td>
-		                        <td>${row.TITLE}</td>
-		                        <td>${row.HIT_CNT}</td>
-		                        <td>${row.REGIST_DATE}</td>
+		                        <td align="center">${row.IDX}</td>
+		                        <td align="left">${row.TITLE}</td>
+		                        <td align="center">${row.HIT_CNT}</td>
+		                        <td align="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${row.REGIST_DATE}" /></td>
 		                    </tr>
 		                </c:forEach>
 		            </c:when>

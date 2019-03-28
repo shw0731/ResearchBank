@@ -118,10 +118,22 @@
           </li>
           <li class="nav-item subnav">
             <a class="nav-link js-scroll-trigger subnavbtn">My Bank</a>
-            <div class="subnav-content"> 
-		      <a href="/surveyed">참여한설문조사</a>
-		      <a href="/research/create?member_id=${MEMBER_ID }">설문조사등록</a>
-		     </div>
+		      <c:choose>
+		    	<c:when test="${MEMBER_NICKNAME != null}">      
+		            <div class="subnav-content"> 
+				      <a href="/surveyed">참여한 설문</a>
+				      <a href="/mysurveylist">내가 만든 설문</a>
+				      <a href="/research/create?member_id=${MEMBER_ID }">설문조사등록</a>
+				     </div>
+				</c:when>
+				<c:otherwise>
+					<div class="subnav-content"> 
+				      <a href="/login.do">참여한 설문</a>
+				      <a href="/login.do">내가 만든 설문</a>
+				      <a href="/login.do">설문조사등록</a>
+				     </div>
+				</c:otherwise>
+			</c:choose>     
           </li>
           <li class="nav-item subnav">
             <a class="nav-link js-scroll-trigger subnavbtn">Services</a>

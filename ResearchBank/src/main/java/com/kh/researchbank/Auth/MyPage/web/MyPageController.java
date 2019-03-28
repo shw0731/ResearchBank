@@ -225,6 +225,7 @@ public class MyPageController {
 		String mem_id = session.getAttribute("MEMBER_ID").toString();
 		commandMap.getMap().put("MEMBER_ID", mem_id);
 		
+		
 		List<Map<String, Object>> list = mypageService.showSurveyed(commandMap.getMap()); 
 		Map map =commandMap.getMap();
 		
