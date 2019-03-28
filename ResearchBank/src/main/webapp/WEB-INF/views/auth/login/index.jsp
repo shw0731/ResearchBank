@@ -103,8 +103,7 @@ function Confirm(){
 		$("#member_pw").focus();
 		return;
 	}
-	
-	if(confirm("로그인 하시겠습니까?")){
+	{
 		location.href= "loginSuccess";
 	}
 }
@@ -174,10 +173,6 @@ $("#kakao-login-btn").on("click", function(){
                                    		$("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
                                 }
                             })
-                        }
-                    	else { //DB에 아이디가 존재할 경우 => 로그인
-                            console.log("로그인중...");
-                            $("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
                         }
                     }
               })
