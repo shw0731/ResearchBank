@@ -294,4 +294,49 @@ public class MyPageController {
 		
 	}
 	
+	
+	@RequestMapping("/mysurveylist")
+	public ModelAndView mySurveyList(CommandMap commandMap, HttpSession session, HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView("auth/mypage/mySurveyList");
+		
+		String mem_id = session.getAttribute("MEMBER_ID").toString();
+		commandMap.getMap().put("MEMBER_ID", mem_id);
+		
+		List<Map<String, Object>> list = mypageService.showMySurveyList(commandMap.getMap()); 
+		Map map =commandMap.getMap();
+		
+		
+		if(request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty() || request.getParameter("currentPage").equals("0")) {
+            currentPage = 1;
+        } else {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
+		
+		isSearch = request.getParameter("isSearch");
+		if(isSearch!=null)
+		searchNum =Integer.parseInt(request.getParameter("searchNum"));
+		
+		totalCount = list.size();
+		
+		page = new Paging(currentPage, totalCount, blockCount, blockPage, "index");
+		pagingHtml=page.getPagingHtml().toString();  
+		
+		int lastCount = totalCount;
+		 
+		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		 
+		list = list.subList(page.getStartCount(), lastCount);
+		
+		
+		mv.addObject("totalCount", totalCount);
+		mv.addObject("pagingHtml", pagingHtml);
+		mv.addObject("currentPage", currentPage);
+		
+		
+		mv.addObject("list", list); 
+		return mv;
+		
+	}
+	
 }

@@ -25,7 +25,9 @@ public interface MyPageService {
 	
 	List<Map<String, Object>> show(Map<String, Object> map) throws Exception;
 
-	List<Map<String, Object>> showSurveyed(Map<String, Object> map) throws Exception; 
+	List<Map<String, Object>> showSurveyed(Map<String, Object> map) throws Exception;
+
+	List<Map<String, Object>> showMySurveyList(Map<String, Object> map) throws Exception;
 
 	
 }

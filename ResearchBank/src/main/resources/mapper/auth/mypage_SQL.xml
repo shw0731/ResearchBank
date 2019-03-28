@@ -187,5 +187,20 @@
         ]]>
     </select>
 
+	<select id="mySurveyList" parameterType="hashmap" resultType="hashmap">
+	        <![CDATA[
+			SELECT 
+				DEADLINE_DATE,
+				SURVEY_POINT,
+				MAXIMUM_PART,
+				CURRENT_PART,
+				SURVEY_SUBJECT,
+				SURVEY_HITCOUNT
+			FROM 
+				SURVEY_LIST
+			WHERE MEMBER_ID = #{MEMBER_ID}
+	        ]]>
+	</select>
+
 	
 </mapper>	

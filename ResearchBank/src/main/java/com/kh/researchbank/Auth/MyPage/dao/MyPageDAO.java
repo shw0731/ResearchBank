@@ -61,4 +61,8 @@ public class MyPageDAO extends AbstractDAO {
 			return (List<Map<String, Object>>)selectList("mypage.surveyed", map);
 		}
 
+		public List<Map<String, Object>> showMySurveyList(Map<String, Object> map) throws Exception {
+			return  (List<Map<String, Object>>)selectList("mypage.mySurveyList", map);
+		}
+
 }

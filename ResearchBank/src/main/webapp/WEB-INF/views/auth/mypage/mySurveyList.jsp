@@ -24,7 +24,7 @@
 
 
 	<div class="panel-heading" align="center">
-		<p style="font-size: 25px;">참여한 설문조사 내역</p>
+		<p style="font-size: 25px;">내가 만든 설문조사</p>
 		<p style="font-size: 13px;">Research Bank는 회원님의 개인정보를 신중히 취급하며,
 			회원님의 동의 없이는 기재하신 회원정보가 공개되지 않습니다.</p>
 		<hr />
@@ -50,58 +50,52 @@
 	</div>
 
 	<div style="width: 80%">
-	<table class="type04" id="dataTables-example">
-		<thead>
-			<tr class="info" align="center">
-				<th width="20%">글번호</th>
-				<th width="*">제목</th>
-				<th width="20%">작성자</th>
+		<table class="type04" id="dataTables-example">
+			<thead>
+				<tr class="info" align="center"  style="font-size: 0.8em;">
+					<th width="15%">포인트</th>
+					<th width="*">제목</th>
+					<th width="15%">참여수</th>
+					<th width="20%">마감일</th>
+					<th width="15%">조회수</th>
 
-			</tr>
-		</thead>
-		<tbody>
-			<c:choose>
-				<c:when test="${fn:length(list) > 0}">
-					<c:forEach items="${list }" var="row">
+				</tr>
+			</thead>
+			<tbody>
+				<c:choose>
+					<c:when test="${fn:length(list) > 0}">
+						<c:forEach items="${list }" var="row">
 
-						<tr height="50px">
-							<td align="center">${row.SURVEY_IDX}</td>
-							<td class="odd gradeX"><a
-								href="/research/resultShow?survey_idx=${row.SURVEY_IDX }&member_id=${MEMBER_ID}"
-								name="title"> ${row.SURVEY_SUBJECT } </a> <input type="hidden"
-								id="survey_idx" value="${row.SURVEY_IDX }"></td>
-							<td align="center">${row.MEMBER_NICKNAME}</td>
+							<tr height="1em" style="font-size: 0.8em">
+								<td align="center">${row.SURVEY_POINT}</td>
+								<td class="odd gradeX"><a
+									href="/research/resultShow?survey_idx=${row.SURVEY_IDX }&member_id=${MEMBER_ID}"
+									name="title"> ${row.SURVEY_SUBJECT } </a> <input type="hidden"
+									id="survey_idx" value="${row.SURVEY_IDX }"></td>
+								<td align="center">${row.CURRENT_PART }/${row.MAXIMUM_PART }</td>
+								<td align="center"><fmt:formatDate pattern="yyy-MM-dd"
+										value="${row.DEADLINE_DATE}" /></td>
+								<td align="center">${row.SURVEY_HITCOUNT}</td>
 
+
+							</tr>
+						</c:forEach>
+					</c:when>
+
+					<c:otherwise>
+						<tr style="font-size: 0.8em">
+							<td colspan="4" >조회된 결과가 없습니다.</td>
 						</tr>
-					</c:forEach>
-				</c:when>
-
-				<c:otherwise>
-					<tr>
-						<td colspan="4">조회된 결과가 없습니다.</td>
-					</tr>
-				</c:otherwise>
+					</c:otherwise>
 
 
-			</c:choose>
-		</tbody>
+				</c:choose>
+			</tbody>
 
-	</table>
-	
-	<div class="paging" align="center">${pagingHtml}</div>
+		</table>
+
+		<div class="paging" align="center">${pagingHtml}</div>
 	</div>
-	<script>
-		$(document).ready(function() {
-			$("#btnDelete").click(function() {
-				if (confirm("탈퇴 하시겠습니까?")) {
-
-					document.form2.action = "${path}/memberDeleteAction";
-					document.form2.submit();
-				}
-
-			});
-		});
-	</script>
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
