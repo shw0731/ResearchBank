@@ -60,7 +60,7 @@
 							</c:when>
 						</c:choose>
 						<c:choose>
-							<c:when test="${row.QUE_OP4 !=null}">
+							<c:when test="${row.QUE_OPT4 !=null}">
 								<input type="radio" name="question[${status.index }][answer]" value="4">${row.QUE_OPT4 }<br />
 							</c:when>
 						</c:choose>

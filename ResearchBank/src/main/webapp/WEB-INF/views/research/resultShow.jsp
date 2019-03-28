@@ -310,7 +310,7 @@ a {
 	}
 	function fn_success(data){
 		console.log(data);
-		console.log(data.conList[1].CONOPT_NUM);
+		
 		var html = "";
 		google.charts.load("current", {packages:["corechart"]});
 		google.charts.setOnLoadCallback(drawDetail(data));
