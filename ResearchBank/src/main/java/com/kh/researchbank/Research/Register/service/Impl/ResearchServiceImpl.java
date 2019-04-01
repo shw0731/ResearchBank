@@ -1,6 +1,5 @@
 package com.kh.researchbank.Research.Register.service.Impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.researchbank.Research.Register.service.ResearchService;
 
@@ -63,7 +63,7 @@ public class ResearchServiceImpl implements ResearchService {
 		}
 		return false;
 	}
-	
+	@Transactional
 	@Override
 	public Map<String, Object> part(Map<String, Object> map)throws Exception{
 		Map<String, Object> aMap = researchDAO.part(map);
@@ -90,6 +90,7 @@ public class ResearchServiceImpl implements ResearchService {
 		
 	}
 	//설문 입력창
+	@Transactional
 	@Override
 	public Map<String, Object> show(String survey_idx) throws Exception {
 		
@@ -102,6 +103,7 @@ public class ResearchServiceImpl implements ResearchService {
 		
 	}
 	//설문 결과창
+	@Transactional
 	@Override
 	public Map<String, Object> resultShow(Map<String, Object> map)throws Exception{
 		Map<String, Object> resultMap = researchDAO.selectReOne(map);
@@ -121,6 +123,7 @@ public class ResearchServiceImpl implements ResearchService {
 	}
 	 
 	//설문 등록
+	@Transactional
 	@Override
 	public void store(Map<String, Object> map) throws Exception {
 
