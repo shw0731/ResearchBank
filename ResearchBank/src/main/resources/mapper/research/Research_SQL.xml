@@ -434,5 +434,23 @@
 		UPDATE member_list SET member_point = member_point + #{survey_point} WHERE member_id = #{partmember_id}
 	</update>
 	
+	
+	<insert id="addComment">
+	INSERT INTO COMMENT_LIST(
+		SURVEY_IDX,
+		COMMENT_IDX,
+		COMMENT_CONTEXT,
+		REGIST_DATE,
+		MEMBER_ID
+		)VALUES(
+		#{survey_idx},
+		SEQ_COMMENT_IDX.NEXTVAL,
+		#{context},
+		SYSDATE,
+		#{MEMBER_ID}
+		)
+	
+	</insert>
+	
 </mapper>
 

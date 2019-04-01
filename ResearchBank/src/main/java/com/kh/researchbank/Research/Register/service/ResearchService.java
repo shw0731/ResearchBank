@@ -5,11 +5,11 @@ import java.util.Map;
 
 /**
  * @Class Name : ResearchService.java
- * @Description : 설문조사
+ * @Description : �꽕臾몄“�궗
  * @Modification Information
- *  수정일      수정자              수정내용
+ *  �닔�젙�씪      �닔�젙�옄              �닔�젙�궡�슜
  * ---------   ---------   -------------------------------
- * 2019.02.07              최초생성
+ * 2019.02.07              理쒖큹�깮�꽦
  *
  * @author KH 
  * @since 2019. 02.07
@@ -22,7 +22,7 @@ import java.util.Map;
 public interface ResearchService {
 
 	/**********
-	 * @title 리서치 
+	 * @title 由ъ꽌移� 
 	 * @return
 	 * @throws Exception
 	 */
@@ -41,4 +41,6 @@ public interface ResearchService {
 	public Map<String, Object> resultShowDetail(Map<String, Object>map)throws Exception;
 	
 	public boolean checkPart (Map<String, Object>map) throws Exception;
+	
+	void addComment(Map<String, Object> map) throws Exception;
 }

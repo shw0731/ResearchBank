@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,11 +24,11 @@ import com.kh.researchbank.common.CommandMap;
 
 /**
  * @Class Name : ResearchController.java
- * @Description : 由ъ꽌移�
+ * @Description : �뵳�딄퐣燁삼옙
  * @Modification Information
- *  �닔�젙�씪      �닔�젙�옄              �닔�젙�궡�슜
+ *  占쎈땾占쎌젟占쎌뵬      占쎈땾占쎌젟占쎌쁽              占쎈땾占쎌젟占쎄땀占쎌뒠
  * ---------   ---------   -------------------------------
- * 2019.03.03              理쒖큹�깮�꽦
+ * 2019.03.03              筌ㅼ뮇�겧占쎄문占쎄쉐
  *
  * @author KH 
  * @since 2019. 02.07
@@ -54,7 +56,7 @@ public class ResearchController {
 	
 	
 	/**********
-	 * @title 由ъ꽌移섑럹�씠吏� 
+	 * @title �뵳�딄퐣燁살꼹�읂占쎌뵠筌욑옙 
 	 * @return view
 	 * @throws Exception
 	 */
@@ -231,4 +233,16 @@ public class ResearchController {
 		
 		return researchService.resultShowDetail(map);
 	}
+
+	@RequestMapping(value="/research/addComment", method=RequestMethod.POST)
+	@ResponseBody
+	public void addComment(HttpSession session, CommandMap commandMap)throws Exception{
+		String MEMBER_ID = session.getAttribute("MEMBER_ID").toString();
+		commandMap.getMap().put("MEMBER_ID", MEMBER_ID);
+		Map<String,Object> map = commandMap.getMap();
+	
+		researchService.addComment(map);
+	}
 }
+
+

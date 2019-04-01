@@ -26,7 +26,7 @@ public class ResearchDAO extends AbstractDAO {
 	public List<Map<String, Object>>selectQue(String survey_idx){
 		return (List<Map<String, Object>>) selectList("research.selectQue", survey_idx);
 	}
-	//설문조사 답변입력
+	//�꽕臾몄“�궗 �떟蹂��엯�젰
 	public Map<String, Object> part(Map<String, Object> map){
 		Map<String, Object> resultMap = new HashMap <String, Object>();
 		
@@ -57,12 +57,12 @@ public class ResearchDAO extends AbstractDAO {
 		
 		return resultMap;
 	}
-	//참여수,최대참여수 조회
+	//李몄뿬�닔,理쒕�李몄뿬�닔 議고쉶
 	public Map<String, Object> selectPart (String survey_idx) throws Exception{
 		return (Map<String, Object>)selectOne("research.selectPart",survey_idx);
 	}
 	
-	//참여했었는지 아닌지 검색
+	//李몄뿬�뻽�뿀�뒗吏� �븘�땶吏� 寃��깋
 	public Map<String, Object>selectPart2(Map<String, Object>map)throws Exception{
 		return (Map<String, Object>)selectOne("research.selectPart2", map);
 	}
@@ -73,7 +73,7 @@ public class ResearchDAO extends AbstractDAO {
 	}
 	
 	
-	//참여수 증가
+	//李몄뿬�닔 利앷�
 	public void updatePart (String survey_idx) {
 		update("research.updatePart",survey_idx);
 	}
@@ -85,7 +85,7 @@ public class ResearchDAO extends AbstractDAO {
 	public void updatePoint(Map<String, Object> map) {
 		update("research.updatePoint", map);
 	}
-	//설문조사 등록
+	//�꽕臾몄“�궗 �벑濡�
 	public void store(Map<String, Object> map) {
 		
 		
@@ -118,11 +118,11 @@ public class ResearchDAO extends AbstractDAO {
 		}
 		
 	}
-	//결과 보기 기본데이터
+	//寃곌낵 蹂닿린 湲곕낯�뜲�씠�꽣
 	public Map<String, Object> selectReOne(Map<String, Object>map){
 		return (Map<String, Object>)selectOne("research.selectReOne",map);
 	}
-	//조건 결과
+	//議곌굔 寃곌낵
 	public List<Map<String, Object>>selectConA(Map<String, Object>map){
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		int conCount = (Integer)selectOne("research.countCon" ,map.get("survey_idx"));
@@ -150,7 +150,7 @@ public class ResearchDAO extends AbstractDAO {
 		System.out.println(result.toString());
 		return result;
 	}
-	//문항 결과
+	//臾명빆 寃곌낵
 	public List<Map<String, Object>>selectQueA(Map<String, Object>map){ 
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> tmpList = new ArrayList<Map<String, Object>>();
@@ -173,7 +173,7 @@ public class ResearchDAO extends AbstractDAO {
 		}
 		return result;
 	}
-	//자세히보기 기본 데이터
+	//�옄�꽭�엳蹂닿린 湲곕낯 �뜲�씠�꽣
 	public Map<String, Object>selectDetail(Map<String, Object> map){
 		Map<String, Object>resultMap = (Map<String, Object>)selectOne("research.selectDetail", map);
 		resultMap.put("conList", selectList("research.selectCon", map.get("survey_idx")));
@@ -183,7 +183,7 @@ public class ResearchDAO extends AbstractDAO {
 		return resultMap;
 	}
 	
-	//자세히보기 조건 비교 데이터
+	//�옄�꽭�엳蹂닿린 議곌굔 鍮꾧탳 �뜲�씠�꽣
 	public List<Map<String, Object>>selectDetailList(Map<String, Object>map){
 		List<Map<String, Object>> detailList = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> tmpList = new ArrayList<Map<String, Object>>();
@@ -203,5 +203,11 @@ public class ResearchDAO extends AbstractDAO {
 
 		return detailList;
 	}
+	public void addComment(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		insert("research.addComment",map);
+	}
+	
+	
 	
 }

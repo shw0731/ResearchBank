@@ -15,9 +15,9 @@ import com.kh.researchbank.Research.Register.service.ResearchService;
 
 /**
  * @Class Name : ResearchServiceImpl.java
- * @Description : 설문조사
- * @Modification Information 수정일 수정자 수정내용 --------- ---------
- *               ------------------------------- 2019.03.03 최초생성
+ * @Description : �꽕臾몄“�궗
+ * @Modification Information �닔�젙�씪 �닔�젙�옄 �닔�젙�궡�슜 --------- ---------
+ *               ------------------------------- 2019.03.03 理쒖큹�깮�꽦
  *
  * @author KH
  * @since 2019. 02.07
@@ -41,12 +41,12 @@ public class ResearchServiceImpl implements ResearchService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ResearchServiceImpl.class);
 
 	/**********
-	 * @title 리서치페이지
+	 * @title 由ъ꽌移섑럹�씠吏�
 	 * @return view
 	 * @throws Exception
 	 */
 	
-	//설문 리스트
+	//�꽕臾� 由ъ뒪�듃
 	@Override
 	public List<Map<String, Object>> index(Map<String, Object> map) throws Exception {
 		
@@ -54,7 +54,7 @@ public class ResearchServiceImpl implements ResearchService {
 		return researchDAO.selectList(map);
 		
 	}
-	//설문 참여 및 참여수 증가
+	//�꽕臾� 李몄뿬 諛� 李몄뿬�닔 利앷�
 	@Override
 	public boolean checkPart(Map<String, Object> map)throws Exception{
 		
@@ -71,7 +71,7 @@ public class ResearchServiceImpl implements ResearchService {
 		researchDAO.updatePoint(map);
 		return aMap;
 	}
-	//설문 유효 검사
+	//�꽕臾� �쑀�슚 寃��궗
 	@Override
 	public boolean validator(Map<String, Object> map)throws Exception{
 		Map<String, Object> smap = researchDAO.selectPart( (String)map.get("survey_idx"));
@@ -89,7 +89,7 @@ public class ResearchServiceImpl implements ResearchService {
 		}
 		
 	}
-	//설문 입력창
+	//�꽕臾� �엯�젰李�
 	@Transactional
 	@Override
 	public Map<String, Object> show(String survey_idx) throws Exception {
@@ -102,7 +102,7 @@ public class ResearchServiceImpl implements ResearchService {
 		return map;
 		
 	}
-	//설문 결과창
+	//�꽕臾� 寃곌낵李�
 	@Transactional
 	@Override
 	public Map<String, Object> resultShow(Map<String, Object> map)throws Exception{
@@ -114,7 +114,7 @@ public class ResearchServiceImpl implements ResearchService {
 		researchDAO.updateCount((String)map.get("survey_idx"));
 		return resultMap;
 	}
-	//설문조사 자세히 보기
+	//�꽕臾몄“�궗 �옄�꽭�엳 蹂닿린
 	@Override
 	public Map<String, Object> resultShowDetail(Map<String, Object>map)throws Exception{
 		Map<String, Object> resultMap = researchDAO.selectDetail(map);
@@ -122,7 +122,7 @@ public class ResearchServiceImpl implements ResearchService {
 		return resultMap;
 	}
 	 
-	//설문 등록
+	//�꽕臾� �벑濡�
 	@Transactional
 	@Override
 	public void store(Map<String, Object> map) throws Exception {
@@ -133,6 +133,13 @@ public class ResearchServiceImpl implements ResearchService {
 		
 		researchDAO.store(map);
 
+	}
+	@Override
+	public void addComment(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+	
+		
+		researchDAO.addComment(map);
 	}
 
 }

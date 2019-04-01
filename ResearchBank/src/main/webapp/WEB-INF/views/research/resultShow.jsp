@@ -253,8 +253,13 @@ a {
 		</div>
 
 	</div>
+	
+	
+<%@ include file="/WEB-INF/views/research/comment.jsp" %>
+	
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
+
 <script src=<c:url value='/resources/js/common.js'/>></script>
 <script
 	src=<c:url value='/resources/js/research/jquery.serializeObject.js'/>></script>

@@ -14,7 +14,6 @@
 <body style="background-color: #efa151;">
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="wrap"></div>
-	<%@ include file="/WEB-INF/views/crm/introduction/partial/hello.jsp"%>
 	<%@ include file="/WEB-INF/views/crm/introduction/partial/face.jsp"%>
 	<%@ include file="/WEB-INF/views/crm/introduction/partial/modal.jsp"%>
 
