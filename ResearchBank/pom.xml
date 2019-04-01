@@ -257,8 +257,14 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.2</version>
         </dependency>
+        
+        <!-- 엑셀 -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
 				
-		    
 	</dependencies>
     <build>
         <plugins>

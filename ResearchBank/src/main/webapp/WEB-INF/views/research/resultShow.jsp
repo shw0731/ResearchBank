@@ -14,8 +14,8 @@
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       
-      
-      
+
+
      
       
       
@@ -147,7 +147,12 @@ a {
 	<div class="wrap" style="margin: 5% 20% 1% 30%;">
 		설문조사 제목 : ${map.SURVEY_SUBJECT }<a
 			href="/research/show?survey_idx=${map.SURVEY_IDX }&partmember_id=${MEMBER_ID}"
-			name="part">참여하기</a><br /> 작성자 : ${map.MEMBER_NICKNAME }<br /> 참여율 :
+			name="part">참여하기</a>
+			
+			<form name="clipboard"><input name="url" type="text"></form>
+<a href="javascript:urlClipCopy()">현재 URL을 Clipboard에 복사하기</a>
+			
+			<br /> 작성자 : ${map.MEMBER_NICKNAME }<br /> 참여율 :
 		${map.CURRENT_PART } / ${map.MAXIMUM_PART } <br /> 포인트 :
 		${map.SURVEY_POINT } <br />
 		참여 비율
@@ -253,7 +258,8 @@ a {
 <script src=<c:url value='/resources/js/common.js'/>></script>
 <script
 	src=<c:url value='/resources/js/research/jquery.serializeObject.js'/>></script>
-
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="/resources/js/research/clipboard.min.js"></script>
 <script type="text/javascript">
 
   
@@ -391,5 +397,16 @@ a {
 		
 		
 	}
+	
+	  function urlClipCopy() { 
+    	  var f = document.clipboard.url;
+    	  f.value = document.location.href;
+    	  f.select() ;
+    	  therange=f.createTextRange() ;
+    	  therange.execCommand("Copy");
+    	  alert("클립보드로 URL이 복사되었습니다.");
+    	  }
+	  
+	  
 </script>
 </html>

@@ -64,12 +64,12 @@ $(document).ready(function() {
       <div class="row"src/main/java/com/kh/researchbank/Auth/service/Impl/LoginServiceImpl.java"">
         <div class="col-lg-4 ml-auto text-center">
           <i class="fas fa-phone fa-3x mb-3 sr-contact-1"></i>
-          <p>123-456-6789</p>
+          <p>02-654-4782</p>
         </div>
         <div class="col-lg-4 mr-auto text-center">
           <i class="fas fa-envelope fa-3x mb-3 sr-contact-2"></i>
           <p>
-            <a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+            <a href="mailto:your-email@your-domain.com">researchbank@gmail.com</a>
           </p>
         </div>
       </div>
