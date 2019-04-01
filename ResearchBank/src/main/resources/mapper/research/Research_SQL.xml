@@ -445,12 +445,26 @@
 		)VALUES(
 		#{survey_idx},
 		SEQ_COMMENT_IDX.NEXTVAL,
-		#{context},
+		#{comment_context},
 		SYSDATE,
 		#{MEMBER_ID}
 		)
 	
 	</insert>
+	
+	<select id="commentList" parameterType="hashmap" resultType="hashmap">
+	SELECT
+		MEMBER_ID,
+		COMMENT_CONTEXT,
+		COMMENT_IDX
+	FROM
+		COMMENT_LIST
+	WHERE
+		SURVEY_IDX = #{survey_idx}
+	ORDER BY COMMENT_IDX DESC
+	
+	
+	</select>
 	
 </mapper>
 

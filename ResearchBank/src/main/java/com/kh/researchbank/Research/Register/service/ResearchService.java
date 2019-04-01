@@ -43,4 +43,6 @@ public interface ResearchService {
 	public boolean checkPart (Map<String, Object>map) throws Exception;
 	
 	void addComment(Map<String, Object> map) throws Exception;
+
+	public List<Map<String, Object>> commentList(Map<String, Object> map) throws Exception;
 }

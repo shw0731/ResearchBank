@@ -22,10 +22,10 @@
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 1100px" rows="3" cols="30" id="context" name="context" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea style="width: 1100px" rows="3" cols="30" id="comment_context" name="comment_context" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
-                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
+                                <input type="button" onClick="fn_comment('${result.code }')" class="btn pull-right btn-success" value="등록"></a>
                             </div>
                         </td>
                     </tr>
@@ -53,11 +53,11 @@ function fn_comment(code){
         url : "/research/addComment",
         data:$("#commentForm").serialize(),
         success : function(data){
-            if(data=="success")
-            {
+          
+            
                 getCommentList();
-                $("#context").val("");
-            }
+                $("#comment_context").val("");
+            
         },
         error:function(request,status,error){
             //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -90,13 +90,13 @@ function getCommentList(){
             
             var html = "";
             var cCnt = data.length;
-            
+            console.log(data);
             if(data.length > 0){
                 
                 for(i=0; i<data.length; i++){
                     html += "<div>";
-                    html += "<div><table class='table'><h6><strong>"+data[i].member_id+"</strong></h6>";
-                    html += data[i].comment_context + "<tr><td></td></tr>";
+                    html += "<div><table class='table'><h6><strong>"+data[i].MEMBER_ID+"</strong></h6>";
+                    html += data[i].COMMENT_CONTEXT + "<tr><td></td></tr>";
                     html += "</table></div>";
                     html += "</div>";
                 }

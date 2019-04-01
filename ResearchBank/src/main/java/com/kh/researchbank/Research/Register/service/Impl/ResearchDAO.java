@@ -208,6 +208,10 @@ public class ResearchDAO extends AbstractDAO {
 		insert("research.addComment",map);
 	}
 	
+	public List<Map<String, Object>> commentList(Map<String, Object> map) throws Exception{
+		return (List<Map<String, Object>>)selectList("research.commentList", map);
+	}
+	
 	
 	
 }

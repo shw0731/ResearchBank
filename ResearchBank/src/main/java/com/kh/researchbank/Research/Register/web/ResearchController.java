@@ -243,6 +243,15 @@ public class ResearchController {
 	
 		researchService.addComment(map);
 	}
+	@RequestMapping(value="/research/commentList")
+	@ResponseBody
+	public List<Map<String,Object>> commentList(HttpSession session, CommandMap commandMap)throws Exception{
+		String MEMBER_ID = session.getAttribute("MEMBER_ID").toString();
+		commandMap.getMap().put("MEMBER_ID", MEMBER_ID);
+		List<Map<String,Object>> list = researchService.commentList(commandMap.getMap());
+		
+		return list;
+	}
 }
 
 

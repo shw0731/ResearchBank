@@ -141,5 +141,13 @@ public class ResearchServiceImpl implements ResearchService {
 		
 		researchDAO.addComment(map);
 	}
+	@Override
+	public List<Map<String, Object>> commentList(Map<String, Object> map) throws Exception{
+		// TODO Auto-generated method stub
+		
+		return researchDAO.commentList(map);
+	}
+	
+	
 
 }
