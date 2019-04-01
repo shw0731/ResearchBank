@@ -173,6 +173,9 @@ $("#kakao-login-btn").on("click", function(){
                                    		$("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
                                 }
                             })
+                        } else { //DB에 아이디가 존재할 경우 => 로그인
+                            console.log("로그인중...");
+                            $("form").attr("method","POST").attr("action","/loginSuccess").attr("target","_parent").submit();
                         }
                     }
               })
