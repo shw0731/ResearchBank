@@ -73,6 +73,12 @@ tbody>tr:HOVER {
 	margin: 0 auto;
 }
 </style>
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/a.css" rel="stylesheet">
+<link href="/resources/css/creative.css" rel="stylesheet">
+<link href="/resources/css/board.css" rel="stylesheet">
+
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -101,7 +107,7 @@ tbody>tr:HOVER {
 			<thead>
 				<tr class="info" align="center">
 					<th width="5%">ID</th>
-					<th width="5%">닉네임</th>
+					<th width="6%">닉네임</th>
 					<th width="5%">보유 Point</th>
 					<th width="6%">성별</th>
 					<th width="*%">주소</th>

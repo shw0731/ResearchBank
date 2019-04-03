@@ -73,6 +73,11 @@ tbody>tr:HOVER {
 	margin: 0 auto;
 }
 </style>
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/css/a.css" rel="stylesheet">
+<link href="/resources/css/creative.css" rel="stylesheet">
+<link href="/resources/css/board.css" rel="stylesheet">
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
