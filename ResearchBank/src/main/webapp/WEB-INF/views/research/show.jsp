@@ -77,7 +77,7 @@ p.b{
 			<c:when test="${fn:length(map.conList) > 0}">
 				<c:forEach items="${map.conList }" var="row"  varStatus="status">
 					    <tr>
-					<th scope="row">${row.CONDITION_SUBJECT }</th><br/>
+					<th scope="row">${row.CONDITION_SUBJECT }</th>
 					<td><input type="radio" name="condition${status.index }" value="0">${row.CON_OPT0 }<br/>
 					<input type="radio" name="condition${status.index }" value="1">${row.CON_OPT1 }<br/>
 						<c:choose>
