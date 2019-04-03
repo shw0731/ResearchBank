@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,21 +145,80 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
+table.type09 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+
+}
+table.type09 thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #369;
+    border-bottom: 3px solid #036;
+    width : 50%;
+}
+table.type09 tbody th {
+    width: 1%;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #f3f6f7;
+}
+table.type09 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+ p {
+		font-family: 'Do Hyeon', sans-serif;
+        font-size: 23px;
+      }
+      
+ p.a {
+		font-family: 'Do Hyeon', sans-serif;
+        font-size: 30px;
+      }
+      
 </style>
 	<div class="wrap" style="margin: 5% 20% 1% 30%;">
-		설문조사 제목 : ${map.SURVEY_SUBJECT }<a
+<table class="type09">
+    <thead>
+    <tr>
+        <th scope="cols">${map.SURVEY_SUBJECT }</th>
+         <th scope="cols"><a
 			href="/research/show?survey_idx=${map.SURVEY_IDX }&partmember_id=${MEMBER_ID}"
-			name="part">참여하기</a>
-			
-			<form name="clipboard"><input name="url" type="text"></form>
-<a href="javascript:urlClipCopy()">현재 URL을 Clipboard에 복사하기</a>
-			
-			<br /> 작성자 : ${map.MEMBER_NICKNAME }<br /> 참여율 :
-		${map.CURRENT_PART } / ${map.MAXIMUM_PART } <br /> 포인트 :
-		${map.SURVEY_POINT } <br />
-		참여 비율
+			name="part">참여하기</a></th>
+    </tr>
+    </thead>
+    <tbody>
+ 
+    <tr>
+        <th scope="row">작성자</th>
+        <td>${map.MEMBER_NICKNAME }</td>
+    </tr>
+    <tr>
+        <th scope="row">참여율</th>
+        <td>${map.CURRENT_PART } / ${map.MAXIMUM_PART }</td>
+    </tr>
+       <tr>
+        <th scope="row">포인트</th>
+        <td>${map.SURVEY_POINT }</td>
+    </tr>
+    </tbody>
+</table>
+
+
+        <br/><td width="50"><form name="clipboard"><input name="url" type="text">
+<a href="javascript:urlClipCopy()">URL 복사하기</a></form></td><br/><br/>
+
 		<c:choose>
 			<c:when test="${fn:length(map.conList) > 0}">
+					<p class="a">참여 비율</p>
 				<c:forEach items="${map.conList }" var="row" varStatus="status">
 
 					<div id="conChart${status.index }"
@@ -166,9 +227,10 @@ a {
 				</c:forEach>
 			</c:when>
 		</c:choose>
-		문항 <br/>
+
 		<c:choose>
 			<c:when test="${fn:length(map.queList) > 0}">
+				<p class="a">문항</p> <br/>
 
 				<c:forEach items="${map.queList }" var="row" varStatus="status">
 
@@ -183,6 +245,8 @@ a {
 		<br />
 
 	</div>
+	
+	<%@ include file="/WEB-INF/views/research/comment.jsp" %>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -247,17 +311,18 @@ a {
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
+						
 				</div>
+				
 
 			</div>
+			
 		</div>
 
 	</div>
-	
-	
-<%@ include file="/WEB-INF/views/research/comment.jsp" %>
-	
+	<div class="wrap" style="margin: 5% 20% 1% 30%;">
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	</div>
 </body>
 
 <script src=<c:url value='/resources/js/common.js'/>></script>

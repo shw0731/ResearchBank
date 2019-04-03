@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
-<div class="container">
+<div class="container"  style="margin: 0% 20% -7% 30%;">
     <form id="commentForm" name="commentForm" method="post">
     <br><br>
         <div>
@@ -22,9 +22,9 @@
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 1100px" rows="3" cols="30" id="comment_context" name="comment_context" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea style="width: 70%; align:center;" rows="7" id="comment_context" name="comment_context" placeholder="댓글을 입력하세요"></textarea>
                             <br>
-                            <div>
+                            <div style="margin: 1% 30%;">
                                 <input type="button" onClick="fn_comment('${result.code }')" class="btn pull-right btn-success" value="등록"></a>
                             </div>
                         </td>
@@ -35,7 +35,7 @@
         <input type="hidden" id="survey_idx" name="survey_idx" value="${map.SURVEY_IDX}" />
     </form>
 </div>
-<div class="container">
+<div class="container" style="margin: 5% 20% 1% 30%;">
     <form id="commentListForm" name="commentListForm" method="post">
         <div id="commentList">
         </div>
