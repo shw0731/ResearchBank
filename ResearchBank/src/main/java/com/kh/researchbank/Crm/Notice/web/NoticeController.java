@@ -98,6 +98,7 @@ public class NoticeController {
 		System.out.println("=================TEST_create=================");
 		System.out.println(commandMap.getMap());
 		
+		
        
 	    ModelAndView mv = new ModelAndView("redirect:/inquiry");
 	    noticeService.createNotice(commandMap.getMap());
@@ -121,12 +122,23 @@ public class NoticeController {
 
 
 	@RequestMapping(value="/notice/update")// 수정하기
-	public ModelAndView openBoardUpdate(CommandMap commandMap) throws Exception{
+	public ModelAndView openBoardUpdate(CommandMap commandMap, HttpSession session) throws Exception{
 	    ModelAndView mv = new ModelAndView("crm/notice/update");
 	    System.out.println("=================TEST_update=================");
 		System.out.println(commandMap.getMap());
 	     
 	    Map<String,Object> map = noticeService.showNotice(commandMap.getMap());
+	    
+	    String se_rol_id = session.getAttribute("ROLE_ID").toString();
+		mv.addObject("SE_ROLE_ID",se_rol_id);
+		System.out.println("test3 ==================="+se_rol_id);
+		
+		if(!(se_rol_id.equals("1")))
+		{
+			System.out.println("관리자가 아님 ==================="+se_rol_id);
+			return mv = new ModelAndView("redirect:/inquiry");
+		}
+	    
 	    mv.addObject("map", map);
 	     
 	    return mv;

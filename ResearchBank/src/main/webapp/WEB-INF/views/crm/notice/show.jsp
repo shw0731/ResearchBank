@@ -58,8 +58,21 @@
 		</table>
 		<div align="right">
 			<a href="#this" class="btn" id="index">목록으로</a> 
-			<a href="#this" class="btn" id="update">수정하기</a>
+			<c:choose>
+				<c:when test="${ROLE_ID == 1}">
+		
+					<a href="#this" class="btn" id="update">수정하기</a>
+					
+				</c:when>
+				<c:otherwise>
+				
+				</c:otherwise>
+		 </c:choose>
 		</div>
+		
+		
+		
+		
 	</div>
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
