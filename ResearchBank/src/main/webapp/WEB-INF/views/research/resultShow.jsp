@@ -126,6 +126,7 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 90%; /* Could be more or less, depending on screen size */
+	height: fit-content;
 }
 
 /* The Close Button */
@@ -320,9 +321,8 @@ table.type09 td {
 		</div>
 
 	</div>
-	<div class="wrap" style="margin: 5% 20% 1% 30%;">
+	
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-	</div>
 </body>
 
 <script src=<c:url value='/resources/js/common.js'/>></script>
