@@ -61,9 +61,8 @@ public class NoticeController {
 	     
 	    List<Map<String,Object>> list = noticeService.index(commandMap.getMap());
 	    
-		int se_rol_id = Integer.parseInt(session.getAttribute("ROLE_ID").toString());
-		mv.addObject("SE_ROLE_ID",se_rol_id);
-		System.out.println("test2 ==================="+se_rol_id);
+		
+		
 		
 		mv.addObject("list",list);
 		
@@ -76,6 +75,7 @@ public class NoticeController {
 	    return mv;
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@RequestMapping(value="/notice/create") //글작성 뷰로 이동
 	public ModelAndView openNoticeWrite(CommandMap commandMap ,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView("crm/notice/create");
@@ -83,8 +83,9 @@ public class NoticeController {
 		mv.addObject("SE_ROLE_ID",se_rol_id);
 		System.out.println("test3 ==================="+se_rol_id);
 		
-		if(!(se_rol_id.equals(1)))
+		if(!(se_rol_id.equals("1")))
 		{
+			System.out.println("관리자가 아님 ==================="+se_rol_id);
 			return mv = new ModelAndView("redirect:/inquiry");
 		}
 		
