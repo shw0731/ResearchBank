@@ -9,6 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+   <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="596558277264-6lot6elml81pogeuaf0i1i243a0cgju9.apps.googleusercontent.com">
 <title>Login</title>
  	  <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,6 +30,7 @@
 </script>
 <!-- 가져다 쓸 카카오 sbk지정 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>  
 
 <body style="background-color: gray;">
@@ -71,7 +74,8 @@
 				<a class="mb-5" style="text-decoration:none"align="right" href="/findpassword.do">비밀번호 찾기</a>
  
              </form>   
-          						
+
+
           			<!-- 카카오로그인 관련 버튼을 만들어준다. -->
 			<div id="kakaoLogin" align="center">
 			    <a id="kakao-login-btn">
