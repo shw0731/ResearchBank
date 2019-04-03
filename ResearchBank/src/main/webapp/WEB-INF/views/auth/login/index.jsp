@@ -37,7 +37,8 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div class="overlay"></div>
 	<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-		<source src="http://localhost:8080/resources/mp4/bg.mp4" type="video/mp4">
+		<source src="http://192.168.30.186:8080/resources/mp4/bg.mp4" type="video/mp4">
+		<!-- <source src="http://localhost:8080/resources/mp4/bg.mp4" type="video/mp4"> -->
 	</video>
 
     <div class="masthead">
