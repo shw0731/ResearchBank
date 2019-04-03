@@ -68,9 +68,10 @@
 
 							<tr height="1em" style="font-size: 0.8em">
 								<td align="center">${row.SURVEY_POINT}</td>
-								<td class="odd gradeX"><a
-									href="/research/resultShow?survey_idx=${row.SURVEY_IDX }&member_id=${MEMBER_ID}"
-									name="title"> ${row.SURVEY_SUBJECT } </a> <input type="hidden"
+								<td class="odd gradeX">
+									<a href="/research/resultShow?survey_idx=${row.SURVEY_IDX }&member_id=${MEMBER_ID}"
+									name="title"> ${row.SURVEY_SUBJECT } </a> 
+									<input type="hidden"
 									id="survey_idx" value="${row.SURVEY_IDX }"></td>
 								<td align="center">${row.CURRENT_PART }/${row.MAXIMUM_PART }</td>
 								<td align="center"><fmt:formatDate pattern="yyy-MM-dd"

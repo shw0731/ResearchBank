@@ -8,10 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.kh.researchbank.common.AbstractDAO;
 import com.kh.researchbank.common.CommandMap;
 
-
-
-    
-
 @Repository("mypageDAO")
 public class MyPageDAO extends AbstractDAO {      
 	@SuppressWarnings("unchecked")
@@ -61,6 +57,7 @@ public class MyPageDAO extends AbstractDAO {
 			return (List<Map<String, Object>>)selectList("mypage.surveyed", map);
 		}
 
+		@SuppressWarnings("unchecked")
 		public List<Map<String, Object>> showMySurveyList(Map<String, Object> map) throws Exception {
 			return  (List<Map<String, Object>>)selectList("mypage.mySurveyList", map);
 		}

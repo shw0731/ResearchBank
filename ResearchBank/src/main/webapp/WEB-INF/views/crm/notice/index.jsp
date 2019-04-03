@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <%-- <head>
@@ -59,9 +60,20 @@
 
 
 		</table>
-<div align="right">
- <a href="#this" class="btn" id="create">글쓰기</a>
- </div>
+		
+		<c:choose>
+		<c:when test="${ROLE_ID == 1}">
+
+			<div align="right">
+			<a href="#this" class="btn" id="create">글쓰기</a>
+			</div>
+			
+		</c:when>
+		<c:otherwise>
+		
+		</c:otherwise>
+ </c:choose>
+
 		<div id="PAGE_NAVI" class="paging" align="center"></div>
 		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br /><br /> 
 			

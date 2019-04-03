@@ -52,10 +52,9 @@ public class AdminController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		String se_rol_id = session.getAttribute("ROLE_ID").toString();
-		System.out.println("롤아이디는 = "+ se_rol_id);
+
 		if(se_rol_id.equals(1))
 		{
-			System.out.println("관리자가아닙니다. 2차");
 			return mv = new ModelAndView("redirect:/");
 		}
 		
