@@ -75,11 +75,7 @@
 	<div role="tabpanel" class="tab-pane" id="notice" style=" width: 70%; margin: 0% 25% 2% 14%; padding: 1px; font-family:a">
  	<%@ include file="/WEB-INF/views/crm/notice/index.jsp"%>
 	</div>
-			 
-	<div role="tabpanel" class="tab-pane" id="operation" style="width: 50%; margin: 5% 25% 2% 35%; padding: 1px;">
-	<%@ include file="/WEB-INF/views/crm/inquiry/operation.jsp"%>
-		</div>
-				
+
 				</div>
 				
 				

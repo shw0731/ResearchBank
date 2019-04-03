@@ -20,7 +20,7 @@
 
 
 	<!-- Nav tabs -->
-	<div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 30%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
+	<div role="tabpanel" style="width: 50%; margin: 0% 20% 1% 37%; padding: 1px; text-align: center; font-family: Eng;  font-weight: bold ;font-size: 30px;" id="#box2-1">
 	<%@ include file="/WEB-INF/views/crm/inquiry/top.jsp"%>
 		</div>
 		
@@ -45,9 +45,7 @@
 	<div role="tabpanel" class="tab-pane" id="notice" style=" width: 70%; margin: 0% 25% 2% 14%; padding: 1px; font-family:a">
  	<%@ include file="/WEB-INF/views/crm/notice/index.jsp"%>
 	</div>
-	<div role="tabpanel" class="tab-pane" id="operation" style="width: 50%; margin: 5% 25% 2% 35%; padding: 1px;">
-	<%@ include file="/WEB-INF/views/crm/inquiry/operation.jsp"%>
-		</div>
+
 
 
 </div>

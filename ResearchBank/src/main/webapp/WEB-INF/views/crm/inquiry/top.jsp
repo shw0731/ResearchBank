@@ -16,8 +16,6 @@
     <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mileage</a></li>
      <li role="presentation">
     <a href="#notice" aria-controls="notice" role="tab" data-toggle="tab">Notice</a></li>
-    <li role="presentation">
-    <a href="#operation" aria-controls="operation" role="tab" data-toggle="tab">Operation</a></li>
 		</ul><br/>
 </body>
 </html>
