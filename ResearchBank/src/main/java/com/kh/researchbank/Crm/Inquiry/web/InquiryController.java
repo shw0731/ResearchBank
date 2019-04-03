@@ -1,26 +1,19 @@
 package com.kh.researchbank.Crm.Inquiry.web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.researchbank.Crm.Inquiry.Paging;
 import com.kh.researchbank.Crm.Inquiry.service.InquiryService;
 import com.kh.researchbank.common.CommandMap;
-import com.kh.researchbank.Crm.Inquiry.Paging;
 
 /**
  * @Class Name : InquiryController.java
@@ -122,9 +115,17 @@ public class InquiryController {
 
 	// 문의 상세보기
 	@RequestMapping(value = "/inquiry/showInquiryDetail")
-	public ModelAndView showInquiryDetail(CommandMap commandMap) throws Exception {
+	public ModelAndView showInquiryDetail(CommandMap commandMap,HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("crm/inquiry/inquiryDetail");
-		Map<String, Object> map = inquiryService.showDetail(commandMap.getMap());
+		Map<String,Object> tmpMap = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(request.getAttribute("IDX")!=null) {
+			tmpMap.put("IDX", request.getAttribute("IDX"));
+			map = inquiryService.showDetail(commandMap.getMap());
+		}else {
+			map = inquiryService.showDetail(commandMap.getMap());
+		}
+		
 		mv.addObject("map", map);
 		mv.addObject("INQUIRY_STATE", commandMap.get("INQUIRY_STATE"));
 		mv.addObject("MEMBER_ID", commandMap.get("MEMBER_ID"));
