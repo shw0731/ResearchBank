@@ -53,7 +53,35 @@ input[type=text] {
 #opt{
 	width:70%;
 }
+table.type09 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    align:center;
+    width:100%
 
+}
+table.type09 thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #369;
+    border-bottom: 3px solid #036;
+}
+table.type09 tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #f3f6f7;
+}
+table.type09 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
 </style>
 
 <script src="/resources/js/research/jquery.serializeObject.js"></script>
@@ -122,10 +150,46 @@ function Doconfirm() {
 
 <h1>설문조사등록</h1>
 <hr />
+
+
+
 <form id="frm" class="form-horizontal">
 	<div class="row">
 	
-		<label for="survey_subject" class="col-sm-2 control-label">제목:</label>
+<table class="type09">
+    <thead>
+    <tr>
+        <th scope="cols">기본 설정</th>
+        <td><input type="checkbox" id="condition" value="Y">조건<br/></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">제목</th>
+        <td><input id="survey_subject" class="form-control" name="survey_subject" type="text" style="width:100%;"></td>
+    </tr>
+    <tr>
+        <th scope="row">마감일</th>
+        <td>	<input type="date" class="form-control" id="deadline_date" name="deadline_date"><br/></td>
+    </tr>
+    <tr>
+        <th scope="row">설문조사 포인트</th>
+        <td><input type="text" class="form-control" id="survey_point" name="survey_point" style="width:100%;"><br/></td>
+    </tr>
+    <tr>
+        <th scope="row">총 참여자 수</th>
+        <td><input type="text" class="form-control" id="maximum_part" name="maximum_part" style="width:100%;"><br/></td>
+    </tr>
+    </tbody>
+    
+</table>
+
+<!-- 
+
+<form id="frm" class="form-horizontal">
+	<div class="row"> -->
+	
+<!-- 		<label for="survey_subject" class="col-sm-2 control-label">제목:</label>
 		<div class="col-sm-8">
 			<input id="survey_subject" class="form-control" name="survey_subject" type="text"><br/>
 		</div>
@@ -143,7 +207,7 @@ function Doconfirm() {
 		<label for="maximum_part" class="col-sm-2 control-label">총 참여자 수:</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="maximum_part" name="maximum_part"><br/>
-		</div>
+		</div> -->
 	
 	</div>	
 		

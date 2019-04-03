@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,20 +47,25 @@ public class NoticeController {
 	 */
 	
 	@RequestMapping(value="/notice")
-	public @ResponseBody ModelAndView index(CommandMap commandMap) throws Exception {
+	public @ResponseBody ModelAndView index(CommandMap commandMap, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/inquiry");	
-		
-		
+		int se_rol_id = Integer.parseInt(session.getAttribute("ROLE_ID").toString());
+		mv.addObject("SE_ROLE_ID",se_rol_id);
+		System.out.println("test1 ==================="+se_rol_id);
 		return mv;
 	}
 	
 	@RequestMapping(value="/notice/paging") // 페이징 구간
-	public ModelAndView indexPaging(CommandMap commandMap) throws Exception{
+	public ModelAndView indexPaging(CommandMap commandMap, HttpSession session) throws Exception{
 	    ModelAndView mv = new ModelAndView("jsonView");
 	     
 	    List<Map<String,Object>> list = noticeService.index(commandMap.getMap());
 	    
+		
+		
+		
 		mv.addObject("list",list);
+		
 	    if(list.size() > 0){
 	        mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
 	    }
@@ -69,9 +75,20 @@ public class NoticeController {
 	    return mv;
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@RequestMapping(value="/notice/create") //글작성 뷰로 이동
-	public ModelAndView openNoticeWrite(CommandMap commandMap) throws Exception{
+	public ModelAndView openNoticeWrite(CommandMap commandMap ,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView("crm/notice/create");
+		String se_rol_id = session.getAttribute("ROLE_ID").toString();
+		mv.addObject("SE_ROLE_ID",se_rol_id);
+		System.out.println("test3 ==================="+se_rol_id);
+		
+		if(!(se_rol_id.equals("1")))
+		{
+			System.out.println("관리자가 아님 ==================="+se_rol_id);
+			return mv = new ModelAndView("redirect:/inquiry");
+		}
+		
 		
 		return mv;
 	}
@@ -80,6 +97,7 @@ public class NoticeController {
 		
 		System.out.println("=================TEST_create=================");
 		System.out.println(commandMap.getMap());
+		
 		
        
 	    ModelAndView mv = new ModelAndView("redirect:/inquiry");
@@ -104,12 +122,23 @@ public class NoticeController {
 
 
 	@RequestMapping(value="/notice/update")// 수정하기
-	public ModelAndView openBoardUpdate(CommandMap commandMap) throws Exception{
+	public ModelAndView openBoardUpdate(CommandMap commandMap, HttpSession session) throws Exception{
 	    ModelAndView mv = new ModelAndView("crm/notice/update");
 	    System.out.println("=================TEST_update=================");
 		System.out.println(commandMap.getMap());
 	     
 	    Map<String,Object> map = noticeService.showNotice(commandMap.getMap());
+	    
+	    String se_rol_id = session.getAttribute("ROLE_ID").toString();
+		mv.addObject("SE_ROLE_ID",se_rol_id);
+		System.out.println("test3 ==================="+se_rol_id);
+		
+		if(!(se_rol_id.equals("1")))
+		{
+			System.out.println("관리자가 아님 ==================="+se_rol_id);
+			return mv = new ModelAndView("redirect:/inquiry");
+		}
+	    
 	    mv.addObject("map", map);
 	     
 	    return mv;

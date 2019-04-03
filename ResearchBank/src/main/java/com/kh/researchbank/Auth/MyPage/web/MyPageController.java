@@ -218,6 +218,8 @@ public class MyPageController {
 		return mv;  
 	} 
 	
+	
+	
 	@RequestMapping("/surveyed")
 	public ModelAndView mySurveyed(CommandMap commandMap, HttpSession session, HttpServletRequest request)throws Exception {
 		ModelAndView mv = new ModelAndView("auth/mypage/mySurveyed");
