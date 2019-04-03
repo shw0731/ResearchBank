@@ -76,7 +76,7 @@
 			document.form1.submit(); 
 		});
 		$("#btnUpdate2").click(function(){  
-			
+			alert ("회원 정보 최초수정시 300포인트가 적립됩니다.");
 			var inputPwd = $("#MEMBER_PW").val();
 			var inputPwdCfm = $("#MEMBER_PW2").val();  
 			var inputGender = $("#MEMBER_GENDER").val();  
@@ -203,7 +203,6 @@
             </p>
             </div><hr/>
             
-            <
 				아이디
 					<input type="text" name="MEMBER_ID" style="font-weight:bold;"class="form-control" value = ${MEMBER_ID } readonly>
 					<input type="hidden" name="MEMBER_POINT" style="font-weight:bold;"class="form-control" value = ${map.MEMBER_POINT }>
