@@ -129,7 +129,7 @@
 		});
 		
 		$("#btnUpdate3").click(function(){  
-			  
+			alert ("회원 정보 최초수정시 300포인트가 적립됩니다.");
 			var inputGender = $("#MEMBER_GENDER").val();  
 			var InputMarry = $("#MEMBER_MARRY").val();
 			var oriPwd= $("#map.MEMBER_PW").val();
