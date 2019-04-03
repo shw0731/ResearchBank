@@ -102,7 +102,7 @@ form {
 						<td></td>
 						<input type="hidden" id="member_point" name="member_point"
 							value="0">
-						<input type="hidden" id="role_id" name="role_id" value="0">
+						<input type="hidden" id="role_id" name="role_id" value="3">
 					</tbody>
 					<tfoot>
 						<tr>
